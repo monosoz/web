@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c284a9c122da36c99a8b6597bdce7aa6",
-    "content-hash": "8b1485987e7c5949da82435d403e52e8",
+    "hash": "f77f5d68329aeb721c46af68c6c33a0e",
+    "content-hash": "81b233d05242bd09b7349606143dfe92",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1781,6 +1781,64 @@
     ],
     "packages-dev": [
         {
+            "name": "amsgames/laravel-shop",
+            "version": "v0.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/admono/laravel-shop.git",
+                "reference": "bf815583744579d3414288ea31265827de96a615"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/admono/laravel-shop/zipball/bf815583744579d3414288ea31265827de96a615",
+                "reference": "bf815583744579d3414288ea31265827de96a615",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Commands"
+                ],
+                "psr-4": {
+                    "Amsgames\\LaravelShop\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amsgames, LLC",
+                    "email": "support@amsgames.com"
+                },
+                {
+                    "name": "Alejandro Mostajo",
+                    "email": "amostajo@gmail.com"
+                }
+            ],
+            "description": "Package set to provide shop or e-commerce functionality (such as CART, ORDERS, TRANSACTIONS and ITEMS) to Laravel for customizable builds.",
+            "keywords": [
+                "cart",
+                "e-commerce",
+                "ecommerce",
+                "laravel",
+                "orders",
+                "shop",
+                "shopping",
+                "shopping cart",
+                "transactions"
+            ],
+            "support": {
+                "source": "https://github.com/admono/laravel-shop/tree/v0.1"
+            },
+            "time": "2016-06-21 13:56:27"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -3153,7 +3211,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "amsgames/laravel-shop": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
