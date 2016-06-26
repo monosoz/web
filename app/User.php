@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Amsgames\LaravelShop\Traits\ShopUserTrait;
 
 class User extends Authenticatable
 {
@@ -11,6 +12,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    use ShopUserTrait;
     protected $fillable = [
         'name', 'email', 'mobile_number', 'password', 'address', 'location',
     ];

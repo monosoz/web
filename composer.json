@@ -11,7 +11,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/admono/laravel-shop.git"
+            "url": "https://gitlab.com/admono/laravel-shop.git"
     }],
     "require-dev": {
         "fzaninotto/faker": "~1.4",
