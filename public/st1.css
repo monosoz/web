@@ -1,19 +1,36 @@
 #toTop {
-    display: none;
     text-decoration: none;
     position: fixed;
     bottom: 1.75rem;
     right: 1.75rem;
     overflow: hidden;
-    width: 43px;
-    height: 43px;
+    width: 45px;
+    height: 45px;
     border: none;
-    z-index: 1;
+    z-index: 10;
+}
+.cart{
+    display: none;
+    position: fixed;
+    top: 60px;
+    bottom: 0px;
+    right: 0px;
+    overflow: hidden;
+    width: 320px;
+    border: none;
+    z-index: 5;
+}
+.pull-down{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0
 }
 .iccon{
 	padding: 5px;
 }
-/*a:link, a:visited {
+/*
+a:link, a:visited {
     color: #ccc;
 }
 a {

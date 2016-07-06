@@ -19,24 +19,25 @@ class CreateProductsTable extends Migration
             $table->binary('image');
             $table->timestamps();
         });
-        Schema::create('filters', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->integer('id')->unsigned();
             $table->string('name');
             $table->text('description');
             $table->primary('id');
         });
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('product_tag', function (Blueprint $table) {
             $table->integer('product_id')->unsigned();
-            $table->integer('filter_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
-            $table->foreign('filter_id')
+            $table->foreign('tag_id')
                 ->references('id')
-                ->on('filters')
+                ->on('tags')
                 ->onDelete('cascade');
         });
+
             
         Schema::create('variants', function (Blueprint $table) {
             $table->increments('id');
@@ -61,8 +62,8 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::drop('variants');
+        Schema::drop('product_tag');
         Schema::drop('tags');
-        Schema::drop('filters');
         Schema::drop('products');
     }
 }

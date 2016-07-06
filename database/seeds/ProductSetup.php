@@ -11,9 +11,9 @@ class ProductSetup extends Seeder
      */
     public function run()
     {
-        DB::table('filters')->delete();
+        DB::table('tags')->delete();
 
-    	DB::table('filters')->insert([
+    	DB::table('tags')->insert([
 		    [
 		    		'id'			=> '1',
 		    		'name' 			=> 'veg',

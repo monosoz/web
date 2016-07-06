@@ -14,8 +14,9 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
 
         //Model::unguard();
-        //$this->call('LaravelShopSeeder');
-        //$this->call('ProductSetup');
+        $this->call('LaravelShopSeeder');
+        $this->call('ProductSetup');
+        $this->call('Fake');
         //Model::reguard();
     }
 }

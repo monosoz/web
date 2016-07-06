@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/w', function () {
     return view('welcome');
 });
 
@@ -19,4 +19,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/main', 'PagesController@index');
+Route::get('/', 'PagesController@index');
+
+Route::post('/cart', 'PagesController@cart');
+
+Route::post('/cart/{item}', 'PagesController@item');
+
+Route::get('/pay', 'PagesController@pay');

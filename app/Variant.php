@@ -24,4 +24,9 @@ class Variant extends Model
     //protected $itemRouteParams = ['slug'];
 
     // MY METHODS AND MODEL DEFINITIONS........
+    public function product()
+    {
+        return $this->belongsTo('App\Product');
+    }
+
 }

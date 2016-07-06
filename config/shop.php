@@ -144,7 +144,7 @@ return [
     | Currency to use within shop.
     |
     */
-    'currency' => 'USD',
+    'currency' => 'INR',
 
     /*
     |--------------------------------------------------------------------------
@@ -154,7 +154,7 @@ return [
     | Currency symbol to use within shop.
     |
     */
-    'currency_symbol' => '$',
+    'currency_symbol' => 'Rs',
 
     /*
     |--------------------------------------------------------------------------
@@ -182,7 +182,7 @@ return [
     | Example result: '$0.99 (USD)'
     |
     */
-    'display_price_format' => ':symbol:price',
+    'display_price_format' => ':symbol :price',
 
     /*
     |--------------------------------------------------------------------------
