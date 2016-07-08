@@ -17,7 +17,7 @@
     </div>
     <div class="cart panel panel-collapse panel-default" id="app-cart-collapse">
       <div class="panel-heading"> 
-        Cart ({{ Auth::user()->name }})
+        Cart ({{ $cart->id }})
         <span class="pull-right">Items: {{ $cart->count }}</span>
       </div>
       <div class="">

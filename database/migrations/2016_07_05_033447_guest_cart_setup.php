@@ -13,9 +13,9 @@ class GuestCartSetup extends Migration
     public function up()
     {
         // Create table for storing carts
-        Schema::create('guestcarts', function (Blueprint $table) {
+        Schema::create('guestcart', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('cart_id')->unsigned();
+            $table->bigInteger('cart_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('cart_id')
                 ->references('id')
@@ -23,6 +23,7 @@ class GuestCartSetup extends Migration
         });
         // Create table for storing items
         Schema::create('guestitems', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('guestcart_id')->unsigned()->nullable();
             $table->string('sku');
             $table->decimal('price', 20, 2);
@@ -35,7 +36,7 @@ class GuestCartSetup extends Migration
             $table->timestamps();
             $table->foreign('guestcart_id')
                 ->references('id')
-                ->on('guestcarts')
+                ->on('guestcart')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->unique(['sku', 'guestcart_id']);
@@ -51,6 +52,6 @@ class GuestCartSetup extends Migration
     public function down()
     {
         Schema::drop('guestitems');
-        Schema::drop('guestcarts');
+        Schema::drop('guestcart');
     }
 }

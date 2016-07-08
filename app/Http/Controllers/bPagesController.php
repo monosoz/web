@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-
-Use Shop;
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests\AddToCart;
@@ -20,45 +16,20 @@ use App\Tag;
 
 use App\Cart;
 
-use App\GuestItem;
-
-use App\GuestCart;
-
 use App\User;
+
+use App\Auth;
+
+Use Shop;
 
 class PagesController extends Controller
 {
 	public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
         //$this->guestMiddleware('guest');
         //$this->middleware('guest');
-
-        if (Auth::check()) {
-            $this->cart = Cart::current();
-            if (!session('cartclear')) {
-                $tcart=GuestCart::findOrFail(session('cartId'));
-                foreach ($tcart->items as $item) {
-                    if ($item->hasObject) {
-                        $this->cart->add($item->object, $item->count());
-                    }
-                    else{
-                        $this->cart->add(['sku' => $item->sku, 'price' => $item->price,], $item->quantity);
-                    }
-                }
-                $tcart->clear();
-                session(['cartclear' => true]);
-            }
-        } else {
-            if (session()->has('cartId')) {
-                $this->cart = GuestCart::findOrFail(session('cartId'));
-                session(['cartclear' => false]);
-            } else {
-                $this->cart = GuestCart::create();
-                session(['cartId' => $this->cart->id, 'cartclear' => false]);
-            }
-        }
-        
+        $this->cart = Cart::current();
 
     }
 
