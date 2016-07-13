@@ -14,7 +14,7 @@ class User extends Authenticatable
      */
     use ShopUserTrait;
     protected $fillable = [
-        'name', 'email', 'mobile_number', 'password', 'address', 'location',
+        'name', 'email', 'mobile_number', 'password',
     ];
 
     /**
@@ -25,4 +25,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function locations()
+    {
+        return $this->hasMany('App\Location');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }

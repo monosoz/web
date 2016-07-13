@@ -25,4 +25,4 @@ Route::post('/cart', 'PagesController@cart');
 
 Route::post('/cart/{item}', 'PagesController@item');
 
-Route::get('/pay', 'PagesController@pay');
+Route::get('/checkout', 'AuthPagesController@pay');

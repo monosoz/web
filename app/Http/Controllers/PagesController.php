@@ -30,42 +30,23 @@ class PagesController extends Controller
 {
 	public function __construct()
     {
-        //$this->middleware('auth');
-        //$this->guestMiddleware('guest');
-        //$this->middleware('guest');
 
         if (Auth::check()) {
             $this->cart = Cart::current();
-            if (!session('cartclear')) {
-                $tcart=GuestCart::findOrFail(session('cartId'));
-                foreach ($tcart->items as $item) {
-                    if ($item->hasObject) {
-                        $this->cart->add($item->object, $item->count());
-                    }
-                    else{
-                        $this->cart->add(['sku' => $item->sku, 'price' => $item->price,], $item->quantity);
-                    }
-                }
-                $tcart->clear();
-                session(['cartclear' => true]);
-            }
         } else {
             if (session()->has('cartId')) {
                 $this->cart = GuestCart::findOrFail(session('cartId'));
-                session(['cartclear' => false]);
             } else {
                 $this->cart = GuestCart::create();
-                session(['cartId' => $this->cart->id, 'cartclear' => false]);
+                session(['cartId' => $this->cart->id]);
             }
         }
-        
-
     }
 
     public function index()
     {
 
-        return view('main', ['products' => Product::all(), 'tags' => Tag::all(), 'tags' => Tag::all(), 'products' => Product::all(), 'cart' => $this->cart,]);
+        return view('main', ['products' => Product::all(), 'tags' => Tag::all(), 'cart' => $this->cart,]);
     }
 
     public function cart(AddToCart $request)
@@ -80,28 +61,14 @@ class PagesController extends Controller
         return redirect()->back();
     }
 
-        /**
-     * Destroy the given task.
-     *
-     * @param  Request  $request
-     * @param  Task  $task
-     * @return Response
-     */
     public function item(Request $request, $item)
     {
         if ( $request->get('action') == 'rm' ) {
-            $this->cart->remove(['sku' => $item]);
+            $this->cart->remove(['sku' => $item], 1);
         } elseif ( $request->get('action') == 'add' ) {
             $this->cart->add(['sku' => $item]);
         }
         return redirect()->back();
-    }
-    public function pay()
-    {
-        Shop::setGateway('pay');
-        $this->success = Shop::checkout();
-        $this->order = Shop::placeOrder();
-        return redirect('/');
     }
 
 }

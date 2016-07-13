@@ -20,13 +20,11 @@
         Cart ({{ $cart->id }})
         <span class="pull-right">Items: {{ $cart->count }}</span>
       </div>
-      <div class="">
-        <div>
+      <div>
           @include('blocks.cart')
-        </div>
       </div>
-      <div class="panel-footer pull-down">
-        <a href="{{url('pay')}}">Pay: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
+      <div class="panel-footer">
+        <a href="{{url('checkout')}}">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
       </div>
     </div>
   </div>

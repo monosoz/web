@@ -9,26 +9,6 @@
     border: none;
     z-index: 10;
 }
-.cart{
-    display: none;
-    position: fixed;
-    top: 60px;
-    bottom: 0px;
-    right: 0px;
-    overflow: hidden;
-    width: 320px;
-    border: none;
-    z-index: 5;
-}
-.pull-down{
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0
-}
-.iccon{
-	padding: 5px;
-}
 /*
 a:link, a:visited {
     color: #ccc;
@@ -143,10 +123,60 @@ a:-webkit-any-link {
             min-width: 100%;
             min-height: 100%;
             }
+.mthumb {
+                float: right;
+            }
+.pname{
+    display: block;
+    font-size: 1.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.textclip{
+    display: block;
+    height: 80px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cart{
+    display: none;
+    position: fixed;
+    top: 60px;
+    bottom: 0px;
+    right: 0px;
+    overflow: hidden;
+    width: 320px;
+    border: none;
+    z-index: 5;
+}
+.panel-footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.buy-form{
+    position: absolute;
+    bottom: 5px;
+}
+.iccon{
+    padding: 5px;
+}
 .itemcard{
     background-color: #acb;
     border: 0px solid #111;
+    height: 160px;
+    position: relative;
+    padding: 5px;
+}
+.tag{
+    width: 100%;
+    background-color: #e5e5e5;
 }
 /*.conl{
     height: 100%;
 }*/
+#new_map {
+    width: 500px;
+    height: 300px;
+    }

@@ -36,6 +36,7 @@ class CreateProductsTable extends Migration
                 ->references('id')
                 ->on('tags')
                 ->onDelete('cascade');
+            $table->unique(['product_id', 'tag_id']);
         });
 
             
