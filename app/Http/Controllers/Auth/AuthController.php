@@ -102,6 +102,8 @@ class AuthController extends Controller
     {
         $tcart= \App\GuestCart::findOrFail(session('cartId'));
         $cart = \App\Cart::current();
+            $tcart->cart_id = $cart->id;
+            $tcart->save();
         foreach ($tcart->items as $item) {
             if ($item->hasObject) {
                 $cart->add($item->object, $item->count());

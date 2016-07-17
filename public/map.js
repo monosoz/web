@@ -23,6 +23,7 @@ function Reset(controlDiv, map) {
   google.maps.event.addDomListener(controlUI, 'click', function() {
 
     geolocate();
+    map.setZoom(12);
     map.setCenter(monosoz_latlng)
   });
 }
@@ -65,7 +66,12 @@ function geolocate() {
         lng: position.coords.longitude
       };
       clearMarkers();
-      addMarker(geolocation);
+  var marker = new google.maps.Marker({
+    position: geolocation,
+    map: map
+  });
+  document.getElementById('mapinput').innerHTML = '<input type="hidden" name="lat" value="' + geolocation.lat + '"><input type="hidden" name="lng" value="' + geolocation.lng + '">';
+  markers.push(marker);
     });
   }
 }
@@ -86,6 +92,7 @@ function addMarker(location) {
     position: location,
     map: map
   });
+  document.getElementById('mapinput').innerHTML = '<input type="hidden" name="lat" value="' + location.lat() + '"><input type="hidden" name="lng" value="' + location.lng() + '">';
   markers.push(marker);
 }
 
@@ -114,5 +121,4 @@ function deleteMarkers() {
 
 $(document).ready(function(e) {
   initMap();
-  geoFindMe();
 });

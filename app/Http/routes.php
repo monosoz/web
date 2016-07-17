@@ -25,4 +25,10 @@ Route::post('/cart', 'PagesController@cart');
 
 Route::post('/cart/{item}', 'PagesController@item');
 
-Route::get('/checkout', 'AuthPagesController@pay');
+Route::get('/checkout', 'AuthPagesController@checkout');
+
+Route::post('/checkout', 'AuthPagesController@checkout');
+
+Route::get('/user/address', 'AuthPagesController@address');
+
+Route::post('/user/address', 'AuthPagesController@address');

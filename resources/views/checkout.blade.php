@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-sm-12 col-lg-10 col-lg-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">Checkout</div>
         <div class="panel-body">
@@ -19,20 +19,26 @@
             @else
             <div class="clearfix">
               <p>Select Delivery Address:</p>
-              <ol class="locations">
                 @foreach ($user->locations as $location)
-                <li>
+                <div class="addcard col-lg-10 col-lg-offset-1">
                   @include('blocks.addresscard')
-                </li>
+                </div>
                 @endforeach
-              </ol>
             </div>
             @endif
+            <hr>
             <div>
               <p>New Address:
               </p>
-              <div id="new_map"></div>
-              <div id="message"></div>
+              <form class="form-horizontal" method="POST" action="/user/address">
+                {{ csrf_field() }}
+                <div class="col-sm-6">                @include('blocks.addressform')
+                <div id="mapinput"></div>
+                </div>
+                <div class="col-sm-6">
+                  <div id="new_map"></div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -44,5 +50,5 @@
 
 @section('scripts')
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfq4C_gKmaC-onksNumXb9cWfY4omo3pE"></script>
-    <script src="map.js"></script>
+    <script src="{{ url('map.js') }}"></script>
 @endsection

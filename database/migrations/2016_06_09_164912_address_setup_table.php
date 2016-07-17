@@ -15,7 +15,11 @@ class AddressSetupTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->string('name');
+            $table->string('mobile_number');
+            $table->string('pincode', 6);
             $table->text('address');
+            $table->text('usercomment');
             $table->float('lat', 10, 6);
             $table->float('lng', 10, 6);
             $table->text('comment');

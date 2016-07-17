@@ -3,21 +3,23 @@
 @section('content')
 <div>
   <div class="col-md-12">
-    <div class="col-md-12 container">
-      <div>
+    <div class="container col-md-12">
+      <div class="row">
         @include('blocks.product')
       </div>
     </div>
 
     <!-- Collapsed Hamburger -->
 
-    <div id="toTop" type="button" class="panel-collapse collapsed" data-toggle="collapse" data-target="#app-cart-collapse">
+    <div id="toTop" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
 
       <i class="fa fa-shopping-cart fa-3x"aria-hidden="true"></i>
     </div>
-    <div class="cart panel panel-collapse panel-default" id="app-cart-collapse">
-      <div class="panel-heading"> 
-        Cart ({{ $cart->id }})
+    <div class="modal fade" id="app-cart-modal">
+    <div class="cart panel panel-default modal-content">
+      <div class="panel-heading">
+        <button type="button" class="" data-dismiss="modal">&times;</button>
+        &nbspCart ({{ $cart->id }})
         <span class="pull-right">Items: {{ $cart->count }}</span>
       </div>
       <div>
@@ -26,6 +28,7 @@
       <div class="panel-footer">
         <a href="{{url('checkout')}}">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
       </div>
+    </div>
     </div>
   </div>
 </div>

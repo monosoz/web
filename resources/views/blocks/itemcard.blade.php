@@ -1,4 +1,4 @@
-<div class="iccon col-lg-4 col-sm-6">
+<div class="iccon col-md-4 col-sm-6">
   <div class="itemcard card clearfix">
     <img class="pthumb" src="data:image/jpeg;base64,{{base64_encode($product->image)}}">
     <span class="pname">{{$product->name}}</span>
