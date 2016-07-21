@@ -38,10 +38,21 @@ class AuthPagesController extends Controller
         //$this->order = Shop::placeOrder();
     }
 
+    public function addresses()
+    {
+        //return $request->all();
+        return view('addresses', ['user' => Auth::user(),]);
+    }
+
     public function address(Request $request)
     {
+        $location = Auth::user()->locations()->where('id', $request->address_id)->first();
+        return view('address', ['location' => $location, 'requrl' => $request->requrl,]);
+    }
 
-        //return $request->all();
+    public function addaddress(Request $request)
+    {
+
         $location = new Location;
         $location->name = $request->name;
         $location->mobile_number = $request->mobile;
@@ -51,7 +62,42 @@ class AuthPagesController extends Controller
         $location->lng = $request->lng;
         $location->usercomment = $request->comment;
         Auth::user()->locations()->save($location);
-        return view('checkout', ['user' => Auth::user(),]);
+        return redirect()->back();
+        
+    }
+
+    public function editaddress(Request $request)
+    {
+
+        $location = Auth::user()->locations()->where('id', $request->address_id)->first();
+        $location->name = $request->name;
+        $location->mobile_number = $request->mobile;
+        $location->pincode = $request->pincode;
+        $location->address = $request->address;
+        $location->lat = $request->lat;
+        $location->lng = $request->lng;
+        $location->usercomment = $request->comment;
+        $location->update = substr($location->updated_at, -8);
+        Auth::user()->locations()->save($location);
+        return redirect($request->requrl);
+        
+    }
+
+    public function selectaddress(Request $request)
+    {
+
+        $location = Auth::user()->locations()->where('id', $request->address_id)->first();
+        $location->update = substr($location->updated_at, -8);
+        Auth::user()->locations()->save($location);
+        return redirect()->back();
+        
+    }
+
+    public function deleteaddress(Request $request)
+    {
+
+        $location = Auth::user()->locations()->where('id', $request->address_id)->first();
+        $location->delete();
         return redirect()->back();
         
     }

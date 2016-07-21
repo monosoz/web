@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
 	protected $fillable = [
-        'name', 'mobile_number', 'pincode', 'address', 'lat', 'lng', 'usercomment', 'comment',
+        'name', 'mobile_number', 'pincode', 'address', 'lat', 'lng', 'usercomment', 'comment', 'update',
     ];
 
     public function user()

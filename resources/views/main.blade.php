@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
-  <div class="col-md-12">
-    <div class="container col-md-12">
-      <div class="row">
+    <div class="container">
+      <div class="col-ls-12">
         @include('blocks.product')
       </div>
     </div>
@@ -30,6 +28,4 @@
       </div>
     </div>
     </div>
-  </div>
-</div>
 @endsection

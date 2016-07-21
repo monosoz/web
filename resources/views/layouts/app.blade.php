@@ -28,7 +28,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -41,8 +41,8 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" alt="mono" />
+                <a class="home-logo" href="{{ url('/') }}">
+                    <img class="nav-logo" src="{{ url('/img/monolv003.png') }}" alt="mono" />
                 </a>
             </div>
 
@@ -75,6 +75,22 @@
     </nav>
 
     @yield('content')
+
+    <footer class="footer cs-footer">
+        <div class="container">
+            <ul class="footer-list">
+                <li class="footer-li">
+                    <a href="">About Us</a>
+                </li>
+                <li class="footer-li">
+                    <a href="">Contact Us</a>
+                </li>
+                <li class="footer-li">
+                    <a href="">Policies</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
 
     <!-- JavaScripts >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script-->

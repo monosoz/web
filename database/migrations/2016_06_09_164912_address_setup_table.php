@@ -23,6 +23,7 @@ class AddressSetupTable extends Migration
             $table->float('lat', 10, 6);
             $table->float('lng', 10, 6);
             $table->text('comment');
+            $table->string('update', 8);
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')

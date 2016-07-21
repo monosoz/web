@@ -26,9 +26,10 @@ Route::post('/cart', 'PagesController@cart');
 Route::post('/cart/{item}', 'PagesController@item');
 
 Route::get('/checkout', 'AuthPagesController@checkout');
+Route::patch('/checkout', 'AuthPagesController@selectaddress');
 
-Route::post('/checkout', 'AuthPagesController@checkout');
-
-Route::get('/user/address', 'AuthPagesController@address');
-
-Route::post('/user/address', 'AuthPagesController@address');
+Route::get('/user/address', 'AuthPagesController@addresses');
+Route::put('/user/address', 'AuthPagesController@address');
+Route::post('/user/address', 'AuthPagesController@addaddress');
+Route::patch('/user/address', 'AuthPagesController@editaddress');
+Route::delete('/user/address', 'AuthPagesController@deleteaddress');
