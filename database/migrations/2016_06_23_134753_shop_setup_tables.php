@@ -83,7 +83,6 @@ class ShopSetupTables extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('location_id')->unsigned();
             $table->string('statusCode', 32);
             $table->timestamps();
             $table->foreign('user_id')
@@ -95,9 +94,6 @@ class ShopSetupTables extends Migration
                 ->references('code')
                 ->on('order_status')
                 ->onUpdate('cascade');
-            $table->foreign('location_id')
-                ->references('id')
-                ->on('locations');
             $table->index(['user_id', 'statusCode']);
             $table->index(['id', 'user_id', 'statusCode']);
         });

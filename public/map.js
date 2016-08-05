@@ -43,7 +43,7 @@ function initMap() {
   var reset = new Reset(resetDiv, map);
   //  homeControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_RIGHT].push(resetDiv);
-  var image = 'img/map_store.png';
+  var image = '/img/map_store.png';
         var storeMarker = new google.maps.Marker({
           position: monosoz_latlng,
           map: map,

@@ -16,19 +16,25 @@ class Fake extends Seeder
         $faker = Faker::create();
         foreach (range(1,10) as $index) {
             DB::table('products')->insert([
-                'name' => $faker->word,
+                'name' => $faker->word.' pizza' ,
                 'description' => $faker->sentence,
             ]);
         }
         foreach (Product::all() as $product) {
             $sku = $faker->numerify('PIZZA####');
-            $price = $faker->numberBetween($min = 149, $max = 349);
+            $price = $faker->numberBetween($min = 149, $max = 189);
             
             DB::table('variants')->insert([
                 'product_id' => $product->id,
-                'sku' => $sku.'M',
+                'sku' => $sku.'S',
                 'price' => $price,
                 'name' => $product->name.'-Medium',
+            ]);
+            DB::table('variants')->insert([
+                'product_id' => $product->id,
+                'sku' => $sku.'M',
+                'price' => $price+$faker->numberBetween($min = 100, $max = 200),
+                'name' => $product->name.'-Large',
             ]);
             DB::table('variants')->insert([
                 'product_id' => $product->id,

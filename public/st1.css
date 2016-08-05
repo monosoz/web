@@ -115,6 +115,13 @@ a:-webkit-any-link {
     height: 100%;
 }
 
+.fanav {
+    width: 14px;
+    text-align: right;
+}
+.navbar-right{
+    margin-right: 15px;
+}
 .pthumb {
                 border-radius: 50%;
                 overflow: hidden;
@@ -157,6 +164,16 @@ a:-webkit-any-link {
     border: none;
     z-index: 1051;
 }
+.cart-table>tbody>tr>td{
+    min-width: 6em;
+}
+.cart-table>tbody>tr>td>form{
+    float: right;
+}
+.cart-table>tbody>tr>td>form>button{
+    padding-left: 0px;
+    padding-right: 0px;
+}
 .panel-footer{
     position: absolute;
     width: 100%;
@@ -181,6 +198,15 @@ a:-webkit-any-link {
     height: 160px;
     position: relative;
     padding: 5px;
+}
+.prod-price{
+    padding-left: 3px
+}
+.itemcard>form>button{
+    padding-top: 0px;
+    padding-right: 6px;
+    padding-bottom: 0px;
+    padding-left: 6px;
 }
 .tag{
     width: auto;
@@ -251,7 +277,7 @@ a:-webkit-any-link {
     border-color: #e7e7e7;
     }
 body {
-    margin-top: 56px;
+    margin-top: 61px;
     margin-bottom: 56px;
 }
 html {

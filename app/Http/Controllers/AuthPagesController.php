@@ -33,9 +33,6 @@ class AuthPagesController extends Controller
     public function checkout()
     {
         return view('checkout', ['user' => Auth::user(),]);
-        //Shop::setGateway('pay');
-        //$this->success = Shop::checkout();
-        //$this->order = Shop::placeOrder();
     }
 
     public function addresses()
@@ -87,9 +84,10 @@ class AuthPagesController extends Controller
     {
 
         $location = Auth::user()->locations()->where('id', $request->address_id)->first();
+        session(['selectaddress' => $request->address_id]);
         $location->update = substr($location->updated_at, -8);
         Auth::user()->locations()->save($location);
-        return redirect()->back();
+        return view('checkoutpay', ['user' => Auth::user(), 'selectadd' => Auth::user()->locations()->where('id', session('selectaddress'))->first(),]);
         
     }
 
@@ -99,6 +97,29 @@ class AuthPagesController extends Controller
         $location = Auth::user()->locations()->where('id', $request->address_id)->first();
         $location->delete();
         return redirect()->back();
+        
+    }
+
+    public function transact(Request $request)
+    {
+
+        Shop::setGateway('pay');
+        $this->success = Shop::checkout();
+        $this->order = Shop::placeOrder();
+        return redirect('/orders');
+        
+    }
+
+    public function orders(Request $request)
+    {
+
+        return redirect('/');
+        
+    }
+    public function account(Request $request)
+    {
+
+        return redirect('/');
         
     }
 }

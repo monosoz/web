@@ -27,7 +27,7 @@
             </div>
             @endif
             <hr>
-            <div>
+            <div class="clearfix">
               <p>New Address:
               </p>
               <form class="form-horizontal" method="POST" action="/user/address">
@@ -49,6 +49,6 @@
 @endsection
 
 @section('scripts')
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfq4C_gKmaC-onksNumXb9cWfY4omo3pE"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{config('app.map_key')}}"></script>
     <script src="{{ url('map.js') }}"></script>
 @endsection

@@ -34,8 +34,8 @@ class PagesController extends Controller
         if (Auth::check()) {
             $this->cart = Cart::current();
         } else {
-            if (session()->has('cartId')) {
-                $this->cart = GuestCart::findOrFail(session('cartId'));
+            if (session()->has('cartId')&GuestCart::find(session('cartId'))!=null) {
+                $this->cart = GuestCart::find(session('cartId'));
             } else {
                 $this->cart = GuestCart::create();
                 session(['cartId' => $this->cart->id]);

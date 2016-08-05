@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://monosoz.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -112,6 +112,7 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    'map_key' => env('MAP_KEY', 'AIzaSyAxorN2U5jUui5VNpvy7HlF_m5QdVCMZcY'),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

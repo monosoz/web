@@ -6,8 +6,8 @@
     <form class="buy-form" action="{{ url('cart') }}" method="POST">
       @foreach ($product->variants->all() as $variant)
       {{ csrf_field() }}
-      <button type="submit" class="btn btn-primary" name="id" value="{{$variant->id}}">{{substr("$variant->sku", -1)}}&nbsp
-        <i class="fa fa-inr">&nbsp</i>{{$variant->price+0}}
+      <button type="submit" class="btn btn-primary" name="id" value="{{$variant->id}}">
+        <i class="fa fa-inr"></i><span class="prod-price">{{$variant->price+0}}</span>
       </button>
       @endforeach
     </form>
