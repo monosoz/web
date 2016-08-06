@@ -1,0 +1,286 @@
+#toTop {
+    text-decoration: none;
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+    border: none;
+    z-index: 1051;
+}
+/*
+a:link, a:visited {
+    color: #ccc;
+}
+a {
+    text-decoration: none;
+}
+a {
+    border-bottom: 1px solid;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+.row {
+    margin-bottom: 20px;
+}
+.nav {
+    top: 0px;
+    padding-left: 0;
+    margin-bottom: 0;
+    position: fixed;
+    width: 100%;
+    list-style: none;
+    background-color: #337AB7;
+    z-index: 1;
+}
+.navr{
+    float: left;
+    height: inherit;
+}
+.botr{
+	 position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 20px;
+}
+
+
+@media(max-width:1366px) {
+	 .nav {
+    height: 60px;
+    }
+	 body {
+    margin-top: 60px;
+    }
+}
+
+@media(max-width:991px) {
+	.nav {
+    height: 60px;
+}
+	 body {
+    margin-top: 60px;
+}
+}
+
+@media(max-width:768px) {
+	.nav {
+    height: 40px;
+}
+	 body {
+    margin-top: 40px;
+}
+}
+
+@media(max-width:668px) {
+	
+	.nav {
+    height: 40px;
+}
+	 body {
+    margin-top: 40px;
+}
+}
+
+@media(max-width:640px) {
+	.nav {
+    height: 40px;
+}
+	 body {
+    margin-top: 40px;
+}
+}
+
+@media(max-width:375px) {
+	.nav {
+    height: 40px;
+}
+	 body {
+    margin-top: 40px;
+}
+}*/
+.home-logo {
+    float: left;
+    height: 50px;
+    padding: 5px;
+    font-size: 18px;
+    line-height: 20px;
+}
+.nav-logo{
+    height: 100%;
+}
+
+.fanav {
+    width: 14px;
+    text-align: right;
+}
+.navbar-right{
+    margin-right: 15px;
+}
+.pthumb {
+                border-radius: 50%;
+                overflow: hidden;
+                width: 150px;
+                height: 150px;
+                float: right;
+            }
+.pthumb img {
+                display: block;
+            /* Stretch 
+                  height: 100%;
+                  width: 100%; */
+            min-width: 100%;
+            min-height: 100%;
+            }
+.mthumb {
+                float: right;
+            }
+.pname{
+    display: block;
+    font-size: 1.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.textclip{
+    display: block;
+    height: 80px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.cart{
+    position: fixed;
+    top: 60px;
+    bottom: 0px;
+    right: 0px;
+    left: auto;
+    overflow: hidden;
+    width: 320px;
+    border: none;
+    z-index: 1051;
+}
+.cart-table>tbody>tr>td{
+    min-width: 6em;
+}
+.cart-table>tbody>tr>td>form{
+    float: right;
+}
+.cart-table>tbody>tr>td>form>button{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.panel-footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.buy-form{
+    position: absolute;
+    bottom: 5px;
+}
+.iccon{
+    padding: 5px;
+}
+.addcard{
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: grey;
+    border-radius: 5px;
+}
+.itemcard{
+    background-color: #acb;
+    border: 0px solid #111;
+    height: 160px;
+    position: relative;
+    padding: 5px;
+}
+.prod-price{
+    padding-left: 3px
+}
+.itemcard>form>button{
+    padding-top: 0px;
+    padding-right: 6px;
+    padding-bottom: 0px;
+    padding-left: 6px;
+}
+.tag{
+    width: auto;
+    background-color: #e5e5e5;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    left: 0px;
+    right: 0px;
+    padding-left: 15px;
+}
+.address{
+    width: 100%;
+}
+/*.conl{
+    height: 100%;
+}*/
+.height-100{
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    height: auto;
+}
+.pull-down{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    width: auto;
+    bottom: 0px;
+}
+.add-options{
+    min-width: 250px;
+    z-index: 100;
+    right: 10px;
+}
+.add-text{
+    min-width: 200px;
+}
+.add-map{
+    min-width: 230px;
+    float: right;
+}
+.add-field{
+    width: 5em;
+    display: inline-block;
+}
+.footer-list{
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.footer-li{
+    float: left;
+    padding: 15px;
+}
+#new_map {
+    width: 100%;
+    height: 300px;
+    }
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.cs-footer{
+    background-color: #f8f8f8;
+    border-top-style: solid;
+    border-top-width : 1px;
+    border-color: #e7e7e7;
+    }
+body {
+    margin-top: 61px;
+    margin-bottom: 56px;
+}
+html {
+position: relative;
+min-height: 100%;
+}

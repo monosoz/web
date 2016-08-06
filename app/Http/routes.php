@@ -11,10 +11,33 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/w', function () {
     return view('welcome');
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/policy', function () { return view('static.policy'); });
+Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+
+Route::get('/', 'PagesController@index');
+
+Route::post('/cart', 'PagesController@cart');
+
+Route::post('/cart/{item}', 'PagesController@item');
+
+Route::get('/checkout', 'AuthPagesController@checkout');
+Route::patch('/checkout', 'AuthPagesController@selectaddress');
+Route::post('/checkout', 'AuthPagesController@transact');
+
+Route::get('/user/address', 'AuthPagesController@addresses');
+Route::put('/user/address', 'AuthPagesController@address');
+Route::post('/user/address', 'AuthPagesController@addaddress');
+Route::patch('/user/address', 'AuthPagesController@editaddress');
+Route::delete('/user/address', 'AuthPagesController@deleteaddress');
+
+
+Route::get('/orders', 'AuthPagesController@orders');
+Route::get('/account', 'AuthPagesController@account');

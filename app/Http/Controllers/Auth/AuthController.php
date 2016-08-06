@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -70,5 +72,46 @@ class AuthController extends Controller
             'mobile_number' => $data['mobile_number'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    protected function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        Auth::guard($this->getGuard())->login($this->create($request->all()));
+        $this->movecart();
+
+        return redirect()->back();
+    }
+
+    protected function authenticated()
+    {
+        if (session()->has('cartId')) {
+                $this->movecart();
+            }
+        return redirect()->intended($this->redirectPath());
+    }
+
+    protected function movecart()
+    {
+        $tcart= \App\GuestCart::findOrFail(session('cartId'));
+        $cart = \App\Cart::current();
+            $tcart->cart_id = $cart->id;
+            $tcart->save();
+        foreach ($tcart->items as $item) {
+            if ($item->hasObject) {
+                $cart->add($item->object);
+            }
+            else{
+                $cart->add(['sku' => $item->sku, 'price' => $item->price,]);
+            }
+        }
+        $tcart->clear();
     }
 }

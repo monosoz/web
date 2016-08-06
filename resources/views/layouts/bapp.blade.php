@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="NNe2MBgqK8T4UN2b1KA-Xc3UNnao_jp7W646odYM-vI" />
 
-    <title>monosoz - Online Food Delivery</title>
+    <title>monosoz</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -15,8 +15,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="{{ url('st1.css') }}" rel="stylesheet">
-    
-    @yield('stylesheet')
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -31,11 +29,11 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="">
+        <div class="container">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                     <span class="sr-only">Toggle Navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -44,7 +42,7 @@
 
                 <!-- Branding Image -->
                 <a class="home-logo" href="{{ url('/') }}">
-                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" alt="mono" />
+                    <img class="nav-logo" src="{{ url('/img/monolv003.png') }}" alt="mono" />
                 </a>
             </div>
 
@@ -58,19 +56,19 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}"><i class="fanav fa fa-btn fa-sign-in" aria-hidden="true"></i>Login</a></li>
-                        <li><a href="{{ url('/register') }}"><i class="fanav fa fa-btn fa-pencil-square-o" aria-hidden="true"></i>Register</a></li>
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                        <li><a href="{{ url('/account') }}"><i class="fanav fa fa-btn fa-user" aria-hidden="true"></i>{{ Auth::user()->name }}</i></a></li>
-                        <!--li class="dropdown">
-                            <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fanav fa fa-btn fa-user" aria-hidden="true"></i>Account <span class="caret"></span></a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }}&nbsp&nbsp<i class="fanav fa fa-user" aria-hidden="true"></i><span class="caret"></span>
+                            </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                
+                                <li><a href="{{ url('/account') }}"><i class="fanav fa fa-btn fa-user" aria-hidden="true"></i>Account</a></li>
+                                <li><a href="{{ url('/orders') }}"><i class="fanav fa fa-btn fa-list-ul" aria-hidden="true"></i>Orders</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fanav fa fa-btn fa-sign-out" aria-hidden="true"></i>Logout</a></li>
                             </ul>
-                        </li-->
-                        <li><a href="{{ url('/orders') }}"><i class="fanav fa fa-btn fa-list-ul" aria-hidden="true"></i>Orders</a></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fanav fa fa-btn fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                        </li>
                     @endif
                 </ul>
             </div>
@@ -80,7 +78,7 @@
     @yield('content')
 
     <footer class="footer cs-footer">
-        <div class="">
+        <div class="container">
             <ul class="footer-list">
                 <li class="footer-li">
                     <a href="">About Us</a>
@@ -89,7 +87,7 @@
                     <a href="">Contact Us</a>
                 </li>
                 <li class="footer-li">
-                    <a href="{{ url('/policy') }}">Policies</a>
+                    <a href="">Policies</a>
                 </li>
             </ul>
         </div>

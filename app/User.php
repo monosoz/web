@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Amsgames\LaravelShop\Traits\ShopUserTrait;
 
 class User extends Authenticatable
 {
@@ -11,8 +12,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    use ShopUserTrait;
     protected $fillable = [
-        'name', 'email', 'mobile_number', 'password', 'address', 'location',
+        'name', 'email', 'mobile_number', 'password',
     ];
 
     /**
@@ -23,4 +25,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function locations()
+    {
+        return $this->hasMany('App\Location');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }
