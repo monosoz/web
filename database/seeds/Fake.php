@@ -26,20 +26,20 @@ class Fake extends Seeder
             
             DB::table('variants')->insert([
                 'product_id' => $product->id,
-                'sku' => $sku.'S',
+                'sku' => $sku.'R',
                 'price' => $price,
-                'name' => $product->name.'-Medium',
+                'name' => $product->name.'-Regular',
             ]);
             DB::table('variants')->insert([
                 'product_id' => $product->id,
                 'sku' => $sku.'M',
-                'price' => $price+$faker->numberBetween($min = 100, $max = 200),
-                'name' => $product->name.'-Large',
+                'price' => $price+$faker->numberBetween($min = 100, $max = 120),
+                'name' => $product->name.'-Medium',
             ]);
             DB::table('variants')->insert([
                 'product_id' => $product->id,
                 'sku' => $sku.'L',
-                'price' => $price+$faker->numberBetween($min = 100, $max = 200),
+                'price' => $price+$faker->numberBetween($min = 150, $max = 200),
                 'name' => $product->name.'-Large',
             ]);
             DB::table('product_tag')->insert([

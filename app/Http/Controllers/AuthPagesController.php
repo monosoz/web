@@ -100,23 +100,34 @@ class AuthPagesController extends Controller
         
     }
 
-    public function transact(Request $request)
+    public function cod(Request $request)
     {
 
         Shop::setGateway('pay');
         $this->success = Shop::checkout();
         $this->order = Shop::placeOrder();
+        $location = Auth::user()->locations()->where('id', session('selectaddress'))->first();
+        $dlocation = new \App\DeliveryLocation;
+        $dlocation->name = $location->name;
+        $dlocation->mobile_number = $location->mobile_number;
+        $dlocation->pincode = $location->pincode;
+        $dlocation->address = $location->address;
+        $dlocation->lat = $location->lat;
+        $dlocation->lng = $location->lng;
+        $dlocation->usercomment = $location->usercomment;
+        $dlocation->comment = $location->comment;
+        $this->order->delivery_location()->save($dlocation);
         return redirect('/orders');
         
     }
 
-    public function orders(Request $request)
+    public function orders()
     {
 
         return redirect('/');
         
     }
-    public function account(Request $request)
+    public function account()
     {
 
         return redirect('/');

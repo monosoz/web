@@ -46,7 +46,7 @@ class PagesController extends Controller
     public function index()
     {
 
-        return view('main', ['products' => Product::all(), 'tags' => Tag::all(), 'cart' => $this->cart,]);
+        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart,]);
     }
 
     public function cart(AddToCart $request)

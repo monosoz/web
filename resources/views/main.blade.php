@@ -20,7 +20,7 @@
         &nbspCart ({{ $cart->id }})
         <span class="pull-right">Items: {{ $cart->count }}</span>
       </div>
-      <div>
+      <div class="cart-body">
           @include('blocks.cart')
       </div>
       <div class="panel-footer">

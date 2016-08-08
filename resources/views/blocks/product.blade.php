@@ -1,7 +1,6 @@
  <div>
-  @if (count($products) === 0)
-  <p>Comming soon. </p>
-  @else
+  <form class="" action="{{ url('cart') }}" method="POST">
+    {{ csrf_field() }}
   <div class="row">
     <div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag1-collapse">> {{ $tags->find(1)->name }}</div>
     <div class="collapse in" id="tag1-collapse">
@@ -18,5 +17,9 @@
       @endforeach
     </div>
   </div>
-  @endif
+  </form>
+
+  <div>
+    @include('blocks.customize')
+  </div>
 </div>

@@ -20,8 +20,8 @@ class AddressSetupTable extends Migration
             $table->string('pincode', 6);
             $table->text('address');
             $table->text('usercomment');
-            $table->float('lat', 10, 6);
-            $table->float('lng', 10, 6);
+            $table->float('lat', 10, 6)->nullable();
+            $table->float('lng', 10, 6)->nullable();
             $table->text('comment');
             $table->string('update', 8);
             $table->timestamps();
@@ -32,15 +32,15 @@ class AddressSetupTable extends Migration
                 ->onDelete('cascade');
         });
 
-        Schema::create('delivery_address', function (Blueprint $table) {
+        Schema::create('delivery_locations', function (Blueprint $table) {
             $table->bigInteger('order_id')->unsigned();
             $table->string('name');
             $table->string('mobile_number');
             $table->string('pincode', 6);
             $table->text('address');
             $table->text('usercomment');
-            $table->float('lat', 10, 6);
-            $table->float('lng', 10, 6);
+            $table->float('lat', 10, 6)->nullable();
+            $table->float('lng', 10, 6)->nullable();
             $table->text('comment');
             $table->foreign('order_id')
                 ->references('id')
@@ -58,6 +58,6 @@ class AddressSetupTable extends Migration
     public function down()
     {
         Schema::drop('locations');
-        Schema::drop('delivery_address');
+        Schema::drop('delivery_locations');
     }
 }

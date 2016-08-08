@@ -24,7 +24,6 @@
               <span class="add-field"><h>Contact:</h></span><h>{{$selectadd->mobile_number}}</h><br>
               <span class="add-field"><h>Address:</h></span><h>{{$selectadd->address}}</h><br>
               <span class="add-field"><h>Pincode:</h></span><h>{{$selectadd->pincode}}</h><br>
-              
             </div>
             <div class="add-map col-xs-6 col-sm-4">
               <img class="img-responsive pull-right" src={{"https://maps.googleapis.com/maps/api/staticmap?key=" . config('app.map_key') . "&center=28.5383277,77.1980605&zoom=11&size=200x200&maptype=roadmap&markers=color:red|" . $selectadd->lat . "," . $selectadd->lng}}>

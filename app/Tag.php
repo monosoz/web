@@ -10,4 +10,8 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Product');
     }
+    public function addons()
+    {
+        return $this->belongsToMany('App\Addon');
+    }
 }

@@ -145,6 +145,8 @@ a:-webkit-any-link {
     font-size: 1.4em;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    font-family:monospace;
 }
 .textclip{
     display: block;
@@ -152,6 +154,25 @@ a:-webkit-any-link {
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.vModal-body{
+    min-height: 400px
+}
+.scrollw-y{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    top: 0px;
+    overflow-y: auto;
+}
+.cart-body{
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    top: 46px;
+    overflow-y: auto;
 }
 .cart{
     position: fixed;
@@ -179,10 +200,6 @@ a:-webkit-any-link {
     width: 100%;
     bottom: 0;
 }
-.buy-form{
-    position: absolute;
-    bottom: 5px;
-}
 .iccon{
     padding: 5px;
 }
@@ -193,16 +210,25 @@ a:-webkit-any-link {
     border-radius: 5px;
 }
 .itemcard{
-    background-color: #acb;
+    background-color: #dee;
     border: 0px solid #111;
     height: 160px;
     position: relative;
     padding: 5px;
 }
+.itemcard>button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
 .prod-price{
     padding-left: 3px
 }
-.itemcard>form>button{
+.buy-form{
+    position: absolute;
+    bottom: 5px;
+}
+.buy-form>button{
     padding-top: 0px;
     padding-right: 6px;
     padding-bottom: 0px;
