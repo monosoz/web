@@ -14,6 +14,8 @@ use App\Product;
 
 use App\Variant;
 
+use App\Addon;
+
 use App\Item;
 
 use App\Tag;
@@ -58,6 +60,14 @@ class PagesController extends Controller
         //Shop::setGateway('pay');
         //$this->success = Shop::checkout();
         //$this->order = Shop::placeOrder();
+        return redirect()->back();
+    }
+    public function add_custom(AddToCart $request)
+    {
+
+        foreach ($request->top_id as $addon) {
+            $this->cart->add(Addon::findOrFail($addon));
+        }
         return redirect()->back();
     }
 

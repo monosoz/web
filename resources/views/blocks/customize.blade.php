@@ -10,32 +10,26 @@
             </div>
             <div class="vModal-body modal-body">
 <div class="col-sm-8 col-xs-8">
-    <div class="tp-selector">
-        <input id="aec" type="checkbox" name="top_id" value="1" />
-        <label class="tp-card add-cheese" for="aec">
-        <img class="tpthumb" src="">
-        Add Extra Cheese</label><br/>
-    </div>
-    <div class="tp-selector">
+    <div class="tp-selector tp-main">
     <p>Veg Topping: </p>
       @foreach ($tags->find(1)->addons as $addon)
       <div class="col-sm-6 tp-card-c">
-        <input id="vt{{$addon->id}}" type="checkbox" name="top_id" value="{{$addon->id}}"/>
+        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}"/>
         <label class="tp-card tp-card-vt" for="vt{{$addon->id}}">
         <img class="tpthumb" src="data:image/jpeg;base64,{{base64_encode($addon->image)}}">
         <span class="tpname">{{$addon->name}}</span></label>
     </div>
       @endforeach
     </div>
-    <div class="tp-selector">
+    <div class="tp-selector tp-main">
     <p>Non-Veg Topping: </p>
       @foreach ($tags->find(2)->addons as $addon)
       <div class="col-sm-6 tp-card-c">
-        <input id="vt{{$addon->id}}" type="checkbox" name="top_id" value="{{$addon->id}}"/>
+        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}"/>
         <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}">
         <img class="tpthumb" src="data:image/jpeg;base64,{{base64_encode($addon->image)}}">
         <span class="tpname">{{$addon->name}}</span></label>
-    </div>
+      </div>
       @endforeach
     </div>
 </div>
@@ -44,16 +38,29 @@
     <div class="pmsize">
     <p>Size:</p>
     <div class="tp-selector">
-        <input id="a1" type="radio" name="a" value="r" />
-        <label class="base-size" for="a1">Regular : 10"</label><br/>
-        <input checked="checked" id="a2" type="radio" name="a" value="m" />
-        <label class="tp-card base-size" for="a2">Medium : 12"</label><br>
-        <input id="a3" type="radio" name="a" value="l" />
-        <label class="base-size" for="a3"> Large : 14"</label>
+        <input id="sz" type="radio" name="sz" value="r">
+        <label class="tp-card base-size" for="sz">Regular : 10"</label><br>
+        <input checked="checked" id="sz" type="radio" name="sz" value="m">
+        <label class="tp-card base-size" for="sz">Medium : 12"</label><br>
+        <input id="sz" type="radio" name="sz" value=""  disabled>
+        <label class="base-size" for="sz" style="cursor:not-allowed;"> Large : 14"</label>
     </div>
     </div>
 </div>
             </div>
+<div class="modal-footer">
+    <div class="tp-selector col-sm-6">
+        <input id="aec" type="checkbox" name="top_id[]" value="1" />
+        <label class="tp-card add-cheese" for="aec">
+        <img class="tpthumb" src="">
+        Add Extra Cheese</label><br/>
+    </div>
+    <div class="col-sm-6">
+        <span>Total:&nbsp</span><i class="fa fa-inr"></i><span class="tp-total">0</span>
+        <input type="reset" value="Reset" class="btn">
+        <input type="submit" value="Submit" class="btn">
+    </div>
+</div>
         </div>
     </div>
 </div>

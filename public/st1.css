@@ -1,7 +1,7 @@
 #toTop {
     text-decoration: none;
     position: fixed;
-    bottom: 1.75rem;
+    top: 6.75rem;
     right: 1.75rem;
     overflow: hidden;
     width: 45px;
@@ -122,6 +122,13 @@ a:-webkit-any-link {
 .navbar-right{
     margin-right: 15px;
 }
+.navbar{
+    background-color: #c70303;
+    border-color: #200000
+}
+.navbar-default .navbar-nav>li>a {
+    color: #eee;
+}
 .pthumb {
                 border-radius: 50%;
                 overflow: hidden;
@@ -210,11 +217,13 @@ a:-webkit-any-link {
     border-radius: 5px;
 }
 .itemcard{
-    background-color: #dee;
+    background-color: #151515;
     border: 0px solid #111;
     height: 160px;
     position: relative;
     padding: 5px;
+    border-radius: 10px;
+    color: #fff;
 }
 .itemcard>button{
     position: absolute;
@@ -233,15 +242,24 @@ a:-webkit-any-link {
     padding-right: 6px;
     padding-bottom: 0px;
     padding-left: 6px;
+    background-color: #eee;
+    color: #000;
+    font-weight: bold;
 }
 .tag{
-    width: auto;
-    background-color: #e5e5e5;
+    width: 33%;
+    background-color: #fff;
     margin-top: 5px;
     margin-bottom: 5px;
     left: 0px;
     right: 0px;
     padding-left: 15px;
+    padding-top: 5px;
+    height: 30px;
+    border-radius: 10px;
+    margin-left: -40px;
+}
+.tag-c{
 }
 .address{
     width: 100%;
@@ -305,6 +323,7 @@ a:-webkit-any-link {
 body {
     margin-top: 61px;
     margin-bottom: 56px;
+    background-color: #980211;
 }
 html {
 position: relative;

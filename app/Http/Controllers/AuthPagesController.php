@@ -124,13 +124,13 @@ class AuthPagesController extends Controller
     public function orders()
     {
 
-        return redirect('/');
+        return view('orders', ['orders' => Auth::user()->orders,]);
         
     }
     public function account()
     {
 
-        return redirect('/');
+        return view('account', ['user' => Auth::user(),]);
         
     }
 }

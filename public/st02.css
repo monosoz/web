@@ -4,10 +4,9 @@
        -moz-appearance:none;
             appearance:none;
 }
-.tp-selector{
+.tp-main{
   max-width: 310px;
 }
-
 .tp-selector-2 input{
     position:absolute;
     z-index:999;
@@ -20,7 +19,7 @@
     -webkit-filter: brightness(1.8) grayscale(.2) opacity(.7);  -card     -moz-filter: brightness(1.8) grayscale(.2) opacity(.7);
             filter: brightness(1.8) grayscale(.2) opacity(.7);
 }
-.tp-card,{
+.tp-card{
     cursor:pointer;
     background-size:contain;
     display:inline-block;
@@ -66,7 +65,7 @@
 .add-cheese{
   background-color: rgba(90, 90, 90, 0.7);
   text-align: center;
-  width: 14em;
+  width: 12em;
 }
 
 /* Extras 
@@ -121,4 +120,7 @@ span.tp{ color:#6d84b4 }
     font-size: 1em;
     padding-left: .2em;
     overflow: hidden;
+}
+.tp-total{
+  padding-right: 10px;
 }

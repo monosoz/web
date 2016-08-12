@@ -25,6 +25,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/', 'PagesController@index');
 
 Route::post('/cart', 'PagesController@cart');
+Route::post('/add_custom', 'PagesController@add_custom');
 
 Route::post('/cart/{item}', 'PagesController@item');
 
