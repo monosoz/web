@@ -65,6 +65,17 @@ class PagesController extends Controller
     public function add_custom(AddToCart $request)
     {
 
+        if ($request->p_id==0) {
+            $this->cart->add(['sku' => 'PROD0002', 'price' => 100]);
+        } else {
+            if ($request->sz=='s') {
+                # code...
+            } else {
+                # code...
+            }
+            
+            
+        }
         foreach ($request->top_id as $addon) {
             $this->cart->add(Addon::findOrFail($addon));
         }

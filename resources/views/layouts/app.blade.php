@@ -14,8 +14,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="{{ url('st1.css') }}" rel="stylesheet">
-    
+    <link href="{{ url('st_m.css') }}" rel="stylesheet">
+    <link href="{{ url('st01.css') }}" rel="stylesheet">
     @yield('stylesheet')
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 

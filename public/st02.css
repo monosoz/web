@@ -7,12 +7,6 @@
 .tp-main{
   max-width: 310px;
 }
-.tp-selector-2 input{
-    position:absolute;
-    z-index:999;
-}
-
-.visa{background-image:url(http://i.imgur.com/lXzJ1eB.png);}
 
 .tp-selector input:active +.base-size, .tp-selector input:active +.tp-card{opacity: .9;}
 .tp-selector input:checked +.base-size, .tp-selector input:checked +.tp-card{

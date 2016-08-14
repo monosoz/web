@@ -6,9 +6,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Customize {{$product->name}}</h4>
+                <h4 class="modal-title" id="custom-title">Customize</h4>
             </div>
             <div class="vModal-body modal-body">
+<div class="row">
 <div class="col-sm-8 col-xs-8">
     <div class="tp-selector tp-main">
     <p>Veg Topping: </p>
@@ -46,6 +47,7 @@
         <label class="base-size" for="sz" style="cursor:not-allowed;"> Large : 14"</label>
     </div>
     </div>
+</div>
 </div>
             </div>
 <div class="modal-footer">

@@ -160,7 +160,8 @@ trait ShopCalculationsTrait
         }
         $this->shopCalculations = DB::table($this->table)
             ->select([
-                DB::raw('sum(' . Config::get('shop.item_table') . '.quantity) as itemCount'),
+                /*DB::raw('sum(' . Config::get('shop.item_table') . '.quantity) as itemCount'),*/
+                DB::raw('sum(CASE WHEN ' . Config::get('shop.item_table') . '.class LIKE ' . '\'%\Addon\'' . ' THEN 0 ELSE ' . Config::get('shop.item_table') . '.quantity END ) as itemCount'),
                 DB::raw('sum(' . Config::get('shop.item_table') . '.price * ' . Config::get('shop.item_table') . '.quantity) as totalPrice'),
                 DB::raw('sum(' . Config::get('shop.item_table') . '.tax * ' . Config::get('shop.item_table') . '.quantity) as totalTax'),
                 DB::raw('sum(' . Config::get('shop.item_table') . '.shipping * ' . Config::get('shop.item_table') . '.quantity) as totalShipping')

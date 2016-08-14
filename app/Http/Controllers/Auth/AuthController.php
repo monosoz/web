@@ -106,7 +106,7 @@ class AuthController extends Controller
             $tcart->save();
         foreach ($tcart->items as $item) {
             if ($item->hasObject) {
-                $cart->add($item->object);
+                $cart->add($item->object, $item->quantity);
             }
             else{
                 $cart->add(['sku' => $item->sku, 'price' => $item->price,]);

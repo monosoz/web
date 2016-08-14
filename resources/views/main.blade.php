@@ -2,9 +2,7 @@
 
 @section('content')
     <div class="container">
-      <div class="col-ls-12">
         @include('blocks.product')
-      </div>
     </div>
 
     <!-- Collapsed Hamburger -->
@@ -28,4 +26,7 @@
       </div>
     </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="{{ url('sc02.js') }}"></script>
 @endsection
