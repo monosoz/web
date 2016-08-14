@@ -82,7 +82,7 @@
     <footer class="footer cs-footer">
         <div class="">
             <ul class="footer-list">
-                <li class="footer-li">
+                <!--li class="footer-li">
                     <a href="">About Us</a>
                 </li>
                 <li class="footer-li">
@@ -90,7 +90,7 @@
                 </li>
                 <li class="footer-li">
                     <a href="{{ url('/policy') }}">Policies</a>
-                </li>
+                </li-->
             </ul>
         </div>
     </footer>

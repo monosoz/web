@@ -1,4 +1,4 @@
-<div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag1-collapse">> Make your own pizza!</div>
+<!--div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag1-collapse">> Make your own pizza!</div>
 <div class="row tag-c">
   <div class="collapse in" id="tag1-collapse">
     <div class="iccon col-md-4 col-sm-6">
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-</div>
+</div-->
 <div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag2-collapse">> {{ $tags->find(1)->name }}</div>
 <form class="" action="{{ url('cart') }}" method="POST">
   {{ csrf_field() }}
@@ -29,14 +29,14 @@
       @endforeach
     </div>
   </div>
-  <div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag3-collapse">> {{ $tags->find(2)->name }}</div>
+  <!--div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag3-collapse">> {{ $tags->find(2)->name }}</div>
   <div class="row tag-c">
     <div class="collapse in" id="tag3-collapse">
       @foreach ($tags->find(2)->products as $product)
       @include('blocks.itemcard')
       @endforeach
     </div>
-  </div>
+  </div-->
 </form>
 <form action="{{ url('add_custom') }}" method="POST">
   {{ csrf_field() }}

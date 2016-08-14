@@ -10,7 +10,7 @@
             </div>
             <div class="vModal-body modal-body">
 <div class="row">
-<div class="col-sm-8 col-xs-8">
+<div class="col-sm-8 col-xs-6">
     <div class="tp-selector tp-main">
     <p>Veg Topping: </p>
       @foreach ($tags->find(1)->addons as $addon)
@@ -22,7 +22,7 @@
     </div>
       @endforeach
     </div>
-    <div class="tp-selector tp-main">
+    <!--div class="tp-selector tp-main">
     <p>Non-Veg Topping: </p>
       @foreach ($tags->find(2)->addons as $addon)
       <div class="col-sm-6 tp-card-c">
@@ -32,13 +32,13 @@
         <span class="tpname">{{$addon->name}}</span></label>
       </div>
       @endforeach
-    </div>
+    </div-->
 </div>
-<div class="col-sm-4 col-xs-4">
-    <img class="pmthumb" src="data:image/jpeg;base64,{{base64_encode($product->image)}}">
+<div class="col-sm-4 col-xs-6">
+    <img class="pmthumb" src="">
     <div class="pmsize">
     <p>Size:</p>
-    <div class="tp-selector">
+    <div class="tp-selector bs-selector">
         <input id="sz" type="radio" name="sz" value="r">
         <label class="tp-card base-size" for="sz">Regular : 10"</label><br>
         <input checked="checked" id="sz" type="radio" name="sz" value="m">

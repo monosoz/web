@@ -79,7 +79,7 @@ span.tp{ color:#6d84b4 }
                 border-radius: 50%;
                 overflow: hidden;
                 position: absolute;
-                right: 0px;
+                right: 10px;
                 width: 200px;
                 height: 200px;
             }
@@ -117,4 +117,10 @@ span.tp{ color:#6d84b4 }
 }
 .tp-total{
   padding-right: 10px;
+}
+.vModal-body{
+  min-height: 400px;
+}
+.bs-selector{
+  margin-left: 10px;
 }

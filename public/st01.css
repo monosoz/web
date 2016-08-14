@@ -7,7 +7,7 @@
     width: 45px;
     height: 45px;
     border: none;
-    z-index: 1051;
+    z-index: 1049;
 }
 /*
 a:link, a:visited {
@@ -321,6 +321,15 @@ a:-webkit-any-link {
     border-top-width : 1px;
     border-color: #e7e7e7;
     }
+.alert{
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.75rem;
+    overflow: hidden;
+    border: none;
+    z-index: 1048;
+    font-weight: bolder;
+}
 body {
     margin-top: 61px;
     margin-bottom: 56px;
