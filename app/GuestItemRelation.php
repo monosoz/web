@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ItemRelation extends Model
+class GuestItemRelation extends Model
 {
     //
     protected $fillable = [
@@ -13,6 +13,6 @@ class ItemRelation extends Model
 
     public function childs()
     {
-        return $this->belongsToMany('App\Addon', 'child_id');
+        return $this->belongsToMany('App\Item', 'child_id');
     }
 }

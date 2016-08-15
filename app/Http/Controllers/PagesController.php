@@ -18,6 +18,10 @@ use App\Addon;
 
 use App\Item;
 
+use App\ItemRelation;
+
+use App\GuestItemRelation;
+
 use App\Tag;
 
 use App\Cart;
@@ -66,18 +70,44 @@ class PagesController extends Controller
     {
 
         if ($request->p_id==0) {
-            $this->cart->add(['sku' => 'PROD0002', 'price' => 100]);
-        } else {
-            if ($request->sz=='s') {
-                # code...
-            } else {
-                # code...
+            if($request->sz==='r'){
+                $this->cart->add(['sku' => 'PROD0002R', 'price' => 100]);
+                    $this->custom_sku='PROD0002R';//$var->sku;
             }
-            
-            
+            elseif($request->sz==='m'){
+                $this->cart->add(['sku' => 'PROD0003M', 'price' => 150]);
+                    $this->custom_sku='PROD0003M';//$var->sku;
+            }
+            elseif($request->sz==='l'){
+                $this->cart->add(['sku' => 'PROD0004L', 'price' => 200]);
+                    $this->custom_sku='PROD0004L';//$var->sku;
+            }
+
+        } else {
+
+            foreach (Product::find($request->p_id)->variants as $var) {
+                if ($var->type==$request->sz) {
+                    $this->cart->add($var);
+                    $this->custom_sku=$var->sku;
+                }
+            }
         }
-        foreach ($request->top_id as $addon) {
-            $this->cart->add(Addon::findOrFail($addon));
+        foreach ($this->cart->items as $item) {
+            if ($item->sku==$this->custom_sku) {
+                $this->custom_item=$item;
+            }
+        }
+        if ($request->top_id!=null) {
+            foreach ($request->top_id as $addon) {
+                $this->cart->add(Addon::findOrFail($addon));
+                if (Auth::guest()) {
+                    $itemr=GuestItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> 1,'child_id' => $addon,]);
+                } else {
+                    $itemr=ItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> 1,'child_id' => $addon,]);
+                }
+                
+                
+            }
         }
         return redirect()->back();
     }

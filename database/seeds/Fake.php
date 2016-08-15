@@ -45,18 +45,21 @@ class Fake extends Seeder
                 'sku' => $sku.$i.'R',
                 'price' => $price,
                 'name' => $product->name.'-Regular',
+                'type' => 'r',
             ]);
             DB::table('variants')->insert([
                 'product_id' => $product->id,
                 'sku' => $sku.$i.'M',
                 'price' => $price,
                 'name' => $product->name.'-Medium',
+                'type' => 'm',
             ]);
             DB::table('variants')->insert([
                 'product_id' => $product->id,
                 'sku' => $sku.$i.'L',
                 'price' => $price,
                 'name' => $product->name.'-Large',
+                'type' => 'l',
             ]);
             $i++;
             DB::table('product_tag')->insert([

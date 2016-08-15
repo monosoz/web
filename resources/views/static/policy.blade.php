@@ -3,17 +3,19 @@
 @section('content')
 
 <div>
-<h4>
-Website Privacy Policy Agreement
-</h4>
+<h3>
+Privacy Policy
+</h3>
 <p>
-This Privacy Policy applies to the Website Name
-
-[Website Name] recognises the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Policy describes how we treat user information we collect on Website Address and other offline sources. This Privacy Policy applies to current and former visitors to our website and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy.
-
-[Website Name] is a property of 
-Company Name
- 
+This Privacy Policy applies to the www.monosoz.com
+</p>
+<p>
+monosoz.com recognises the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Policy describes how we treat user information we collect on Website Address and other offline sources. This Privacy Policy applies to current and former visitors to our website and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy.
+</p>
+<p>
+www.monosoz.com is a property of 
+M/S MONOSOZ FOODS.
+ </p>
 Proprietorship
  
 Address

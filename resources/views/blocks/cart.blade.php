@@ -2,7 +2,21 @@
     <tbody>
     @foreach ($cart->items as $item)
     <tr>
-        <td><span>{{ $item->displayName }}</span></td>
+        @if(substr($item->class, -5, 5)!='Addon')
+        <td><span>
+            @if(substr($item->class, 0, 4)==='App\\')
+            {{ $item->displayName }}
+            @else
+            Custom Pizza
+                @if(substr($item->sku, -1)==='R')
+                -Regular
+                @elseif(substr($item->sku, -1)==='M')
+                -Medium
+                @elseif(substr($item->sku, -1)==='L')
+                -Large
+                @endif
+            @endif
+            </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
            <form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
@@ -15,6 +29,7 @@
                 </button>
             </form>
         </td>
+        @endif
     </tr>
     @endforeach
     </tbody>

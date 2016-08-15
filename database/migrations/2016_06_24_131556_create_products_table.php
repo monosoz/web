@@ -69,6 +69,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price', 20, 2);
             $table->string('name');
             $table->integer('product_id')->unsigned();
+            $table->string('type', 1);
             $table->timestamps();
             $table->index('sku');
             $table->index('price');            

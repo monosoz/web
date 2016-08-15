@@ -9,6 +9,7 @@
                 <h4 class="modal-title" id="custom-title">Customize</h4>
             </div>
             <div class="vModal-body modal-body">
+<input id="custom-id" type="hidden" name="p_id" value="">
 <div class="row">
 <div class="col-sm-8 col-xs-6">
     <div class="tp-selector tp-main">
@@ -22,29 +23,29 @@
     </div>
       @endforeach
     </div>
-    <!--div class="tp-selector tp-main">
+    <div class="tp-selector tp-main">
     <p>Non-Veg Topping: </p>
       @foreach ($tags->find(2)->addons as $addon)
       <div class="col-sm-6 tp-card-c">
-        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}"/>
-        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}">
+        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}" disabled/>
+        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}" style="cursor:not-allowed;>
         <img class="tpthumb" src="data:image/jpeg;base64,{{base64_encode($addon->image)}}">
         <span class="tpname">{{$addon->name}}</span></label>
       </div>
       @endforeach
-    </div-->
+    </div>
 </div>
 <div class="col-sm-4 col-xs-6">
     <img class="pmthumb" src="">
     <div class="pmsize">
     <p>Size:</p>
     <div class="tp-selector bs-selector">
-        <input id="sz" type="radio" name="sz" value="r">
-        <label class="tp-card base-size" for="sz">Regular : 10"</label><br>
-        <input checked="checked" id="sz" type="radio" name="sz" value="m">
-        <label class="tp-card base-size" for="sz">Medium : 12"</label><br>
-        <input id="sz" type="radio" name="sz" value=""  disabled>
-        <label class="base-size" for="sz" style="cursor:not-allowed;"> Large : 14"</label>
+        <input id="szr" type="radio" name="sz" value="r">
+        <label class="tp-card base-size" for="szr">Regular : 10"</label><br>
+        <input checked="checked" id="szm" type="radio" name="sz" value="m">
+        <label class="tp-card base-size" for="szm">Medium : 12"</label><br>
+        <input id="szl" type="radio" name="sz" value=""  disabled>
+        <label class="base-size" for="szl" style="cursor:not-allowed;"> Large : 14"</label>
     </div>
     </div>
 </div>
