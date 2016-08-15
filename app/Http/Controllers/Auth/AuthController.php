@@ -119,10 +119,9 @@ class AuthController extends Controller
             //
             foreach ($cart->items as $nitem) {
                 if ($nitem->sku==$item->sku) {
-                Log::debug('|'.$item->sku.'_'.$nitem->sku.'|'.$nitem->id);
                     if ($itemrs=\App\GuestItemRelation::where('parent_id', '=', $item->id)->get()) {
                         foreach ($itemrs as $itemr) {
-                            $gitr=\App\ItemRelation::create(['parent_id'=> $nitem->id, 'item_no'=> 1,'child_id' => $itemr->child_id,]);
+                            $gitr=\App\ItemRelation::create(['parent_id'=> $nitem->id, 'item_no'=> $nitem->quantity,'child_id' => $itemr->child_id,]);
                         $gitr->save();
                         }
                     }

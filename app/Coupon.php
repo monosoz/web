@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Amsgames\LaravelShop\Models\ShopCouponModel;
+//use Amsgames\LaravelShop\Models\ShopCouponModel;
 
-class Coupon extends ShopCouponModel
+class Coupon// extends ShopCouponModel
 {
     //
 }

@@ -16,9 +16,9 @@
                 -Large
                 @endif
             @endif
-            </span></td>
+        </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-           <form action="{{ url('cart/'.$item->sku) }}" method="POST">
+           <!--form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
                 <button type="submit" name="action" value="add" class="btn-link">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
@@ -27,10 +27,23 @@
                 <button type="submit" name="action" value="rm" class="btn-link">
                     <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
-            </form>
+            </form-->
         </td>
         @endif
     </tr>
+    @if($item->rel->count()!=0)
+    <tr>
+        <td>
+        <ul>
+            @foreach ($item->rel as $rel)
+            <li>
+                <span>{{ $rel->child->name }}</span>
+            </li>
+            @endforeach
+        </ul>
+        </td>
+    </tr>
+    @endif
     @endforeach
     </tbody>
 

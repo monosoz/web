@@ -1,3 +1,6 @@
+@if (count($tags) === 0)
+  <p>Comming Soon.</p>
+@else
 <div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag1-collapse">> Make your own pizza!</div>
 <div class="row tag-c">
   <div class="collapse in" id="tag1-collapse">
@@ -44,3 +47,4 @@
     @include('blocks.customize')
   </div>
 </form>
+@endif

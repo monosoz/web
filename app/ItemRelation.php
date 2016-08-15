@@ -11,8 +11,8 @@ class ItemRelation extends Model
         'parent_id', 'child_id', 'item_no',
     ];
 
-    public function childs()
+    public function child()
     {
-        return $this->belongsToMany('App\Addon', 'child_id');
+        return $this->belongsTo('App\Addon', 'child_id');
     }
 }

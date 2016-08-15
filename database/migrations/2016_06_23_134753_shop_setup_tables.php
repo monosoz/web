@@ -29,7 +29,6 @@ class ShopSetupTables extends Migration
             $table->integer('user_id')->unsigned();
             $table->bigInteger('cart_id')->unsigned()->nullable();
             $table->bigInteger('order_id')->unsigned()->nullable();
-            $table->bigInteger('item_id')->unsigned()->nullable();
             $table->string('sku');
             $table->decimal('price', 20, 2);
             $table->decimal('tax', 20, 2)->default(0);
@@ -49,9 +48,6 @@ class ShopSetupTables extends Migration
                 ->on('cart')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreign('item_id')
-                ->references('id')
-                ->on('items');
             $table->unique(['sku', 'cart_id']);
             $table->unique(['sku', 'order_id']);
             $table->index(['user_id', 'sku']);
@@ -66,6 +62,7 @@ class ShopSetupTables extends Migration
             $table->string('name');
             $table->string('description', 1024)->nullable();
             $table->string('sku');
+            $table->decimal('maxoff', 20, 2)->nullable();
             $table->decimal('value', 20, 2)->nullable();
             $table->decimal('discount', 3, 2)->nullable();
             $table->integer('active')->default(1);

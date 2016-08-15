@@ -60,10 +60,6 @@ class PagesController extends Controller
 
         $this->cart->add(Variant::findOrFail($request->get('id')));
 
-        //$this->cart->add(['sku' => 'PROD0002', 'price' => 199]);
-        //Shop::setGateway('pay');
-        //$this->success = Shop::checkout();
-        //$this->order = Shop::placeOrder();
         return redirect()->back();
     }
     public function add_custom(AddToCart $request)
@@ -101,9 +97,9 @@ class PagesController extends Controller
             foreach ($request->top_id as $addon) {
                 $this->cart->add(Addon::findOrFail($addon));
                 if (Auth::guest()) {
-                    $itemr=GuestItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> 1,'child_id' => $addon,]);
+                    $itemr=GuestItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> $this->custom_item->quantity,'child_id' => $addon,]);
                 } else {
-                    $itemr=ItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> 1,'child_id' => $addon,]);
+                    $itemr=ItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> $this->custom_item->quantity,'child_id' => $addon,]);
                 }
                 
                 

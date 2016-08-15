@@ -14,7 +14,7 @@
 			{{ method_field('PATCH') }}
 			{{ csrf_field() }}
 			<input type="hidden" name="address_id" value="{{$location->id}}">
-			<button>Sellect Address</button>
+			<button>Select Address</button>
 		</form>
 		<form class="btn pull-right" action="{{ url('/user/address') }}" method="POST">
 			{{ method_field('DELETE') }}

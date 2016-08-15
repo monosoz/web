@@ -8,16 +8,22 @@
     <div class="alert alert-danger">Trial Run.</div>
     <!-- Collapsed Hamburger -->
 
-    <div id="toTop" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
-
+    <div class="cart-btn" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
       <i class="fa fa-shopping-cart fa-3x"aria-hidden="true"></i>
+      <sup class="cart-status">{{ $cart->count }}</sup>
     </div>
     <div class="modal fade" id="app-cart-modal">
     <div class="cart panel panel-default modal-content">
       <div class="panel-heading">
         <button type="button" class="" data-dismiss="modal">&times;</button>
-        &nbspCart ({{ $cart->id }})
-        <span class="pull-right">Items: {{ $cart->count }}</span>
+        &nbspCart
+        <span class="pull-right">{{ $cart->count }} 
+        @if($cart->count>1)
+          Items 
+        @else
+          Item
+        @endif
+        &nbsp</span>
       </div>
       <div class="cart-body">
           @include('blocks.cart')
