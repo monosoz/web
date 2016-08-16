@@ -126,4 +126,12 @@ class PagesController extends Controller
         return redirect()->back();
     }
 
+    public function applycoupon(Coupon $request)
+    {
+        if ( \App\Coupon::where('code', '=', $request->get('code'))) {
+            $this->cart->add(['sku' => 'PROMO001', 'price' => -229]);
+        }
+        return redirect()->back();
+    }
+
 }

@@ -31,10 +31,6 @@ class Fake extends Seeder
                 'name' => 'Earthy Delight' ,
                 'description' => 'Mushroom, Paneer, Golden Corn, Onion Rings.'
             ]);
-            DB::table('products')->insert([
-                'name' => 'Comming Soon...' ,
-                'description' => ''
-            ]);
 
         foreach (Product::all() as $product) {
             $sku = 'PIZZA010';

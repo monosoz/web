@@ -182,9 +182,14 @@ a:-webkit-any-link {
     right: 0px;
     left: auto;
     overflow: hidden;
-    width: 320px;
+    width: 350px;
     border: none;
     z-index: 1051;
+}
+@media(max-width:350px) {
+    .cart {
+    width: 320px;
+}
 }
 .cart-table>tbody>tr>td{
     min-width: 6em;
@@ -331,6 +336,9 @@ a:-webkit-any-link {
     border: none;
     z-index: 1048;
     font-weight: bolder;
+    font-size: xx-large;
+    color: #fff;
+    background-color: rgba(242, 222, 222, 0.32);
 }
 body {
     margin-top: 61px;

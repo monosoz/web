@@ -5,7 +5,7 @@
         @include('blocks.product')
     </div>
 
-    <div class="alert alert-danger">Trial Run.</div>
+    <div class="alert"> Trial Run ! </div>
     <!-- Collapsed Hamburger -->
 
     <div class="cart-btn" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
@@ -17,25 +17,30 @@
       <div class="panel-heading">
         <button type="button" class="" data-dismiss="modal">&times;</button>
         &nbspCart
-        <span class="pull-right">{{ $cart->count }} 
-        @if($cart->count>1)
-          Items 
-        @else
-          Item
+        <span class=""> 
+        @if($cart->count>0)
+          ({{ $cart->count }})
         @endif
         &nbsp</span>
+        <form action="{{ url('cart/clear' ) }}" method="POST" class="pull-right">
+            {{ csrf_field() }}
+            <button type="submit" name="action" value="clear" class="">Clear Cart</buttonton>
+        </form>
       </div>
       <div class="cart-body">
           @include('blocks.cart')
       </div>
       <div class="panel-footer">
         <a href="{{url('checkout')}}" class="btn">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
-        <form action="{{ url('cart/clear' ) }}" method="POST" class="pull-right">
-            {{ csrf_field() }}
-            <button type="submit" name="action" value="clear" class="btn">
-              Clear Cart
-            </buttonton>
+        <form action="{{ url('cart/applycoupon' ) }}" method="POST" class="pull-right input-group" style="width:50%;">
+          {{ csrf_field() }}
+          <input type="text"  name="code" placeholder="Apply Coupon" class="form-control">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">+</button>
+          </span>
         </form>
+  
+</div>
       </div>
     </div>
     </div>
