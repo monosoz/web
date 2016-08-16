@@ -44,3 +44,6 @@ Route::delete('/user/address', 'AuthPagesController@deleteaddress');
 
 Route::get('/orders', 'AuthPagesController@orders');
 Route::get('/account', 'AuthPagesController@account');
+
+
+Route::get('/orders0CCAC', 'ShopOperator@orders');

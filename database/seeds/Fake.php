@@ -32,8 +32,6 @@ class Fake extends Seeder
                 'description' => 'Mushroom, Paneer, Golden Corn, Onion Rings.'
             ]);
 
-        
-        $i = 1;
         foreach (Product::all() as $product) {
             $sku = 'PIZZA010';
             $price = 159;

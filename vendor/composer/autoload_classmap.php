@@ -525,5 +525,4 @@ return array(
     'ShopSetupTables' => $baseDir . '/database/migrations/2016_06_23_134753_shop_setup_tables.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-    'Variant' => $baseDir . '/database/seeds/Variant.php',
 );
