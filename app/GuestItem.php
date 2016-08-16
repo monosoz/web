@@ -59,7 +59,7 @@ class GuestItem extends Model
     
     public function rel()
     {
-        return $this->hasMany("App\ItemRelation", 'parent_id');
+        return $this->hasMany("App\GuestItemRelation", 'parent_id');
     }
 
     /**

@@ -27,6 +27,7 @@ Route::get('/', 'PagesController@index');
 Route::post('/cart', 'PagesController@cart');
 Route::post('/add_custom', 'PagesController@add_custom');
 
+Route::post('/cart/clear', 'PagesController@clearcart');
 Route::post('/cart/{item}', 'PagesController@item');
 
 Route::get('/checkout', 'AuthPagesController@checkout');

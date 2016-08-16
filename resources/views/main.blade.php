@@ -29,7 +29,13 @@
           @include('blocks.cart')
       </div>
       <div class="panel-footer">
-        <a href="{{url('checkout')}}">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
+        <a href="{{url('checkout')}}" class="btn">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
+        <form action="{{ url('cart/clear' ) }}" method="POST" class="pull-right">
+            {{ csrf_field() }}
+            <button type="submit" name="action" value="clear" class="btn">
+              Clear Cart
+            </buttonton>
+        </form>
       </div>
     </div>
     </div>

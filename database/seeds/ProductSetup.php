@@ -152,25 +152,25 @@ class ProductSetup extends Seeder
 		    [
 		    		'id'			=> '31',
 		    		'sku'			=> 'BARBEQUECHICKEN',
-		    		'price'			=> '15',
+		    		'price'			=> '30',
 		    		'name' 			=> 'Barbeque Chicken',
 		    ],
 		    [
 		    		'id'			=> '32',
 		    		'sku'			=> 'CHUNKYCHICKEN',
-		    		'price'			=> '15',
+		    		'price'			=> '30',
 		    		'name' 			=> 'Chunky Chicken',
 		    ],
 		    [
 		    		'id'			=> '33',
 		    		'sku'			=> 'KEEMACHICKEN',
-		    		'price'			=> '15',
+		    		'price'			=> '30',
 		    		'name' 			=> 'Keema Chicken',
 		    ],
 		    [
 		    		'id'			=> '34',
 		    		'sku'			=> 'SALAMICHICKEN',
-		    		'price'			=> '15',
+		    		'price'			=> '30',
 		    		'name' 			=> 'Salami Chicken',
 		    ],
         ]);

@@ -38,7 +38,7 @@ class Fake extends Seeder
 
         foreach (Product::all() as $product) {
             $sku = 'PIZZA010';
-            $price = 000;
+            $price = 159;
             
             DB::table('variants')->insert([
                 'product_id' => $product->id,
@@ -50,14 +50,14 @@ class Fake extends Seeder
             DB::table('variants')->insert([
                 'product_id' => $product->id,
                 'sku' => $sku.$i.'M',
-                'price' => $price,
+                'price' => $price+70,
                 'name' => $product->name.'-Medium',
                 'type' => 'm',
             ]);
             DB::table('variants')->insert([
                 'product_id' => $product->id,
                 'sku' => $sku.$i.'L',
-                'price' => $price,
+                'price' => $price+140,
                 'name' => $product->name.'-Large',
                 'type' => 'l',
             ]);

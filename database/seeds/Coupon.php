@@ -13,7 +13,7 @@ class Coupon extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach (range(1,1000) as $index) {
+        foreach (range(1,10) as $index) {
             DB::table('coupons')->insert([
                 'code' => 'FREEDOM'.strtoupper(substr($faker->unique()->md5, $faker->randomDigitNotNull, 5)),
                 'name' => 'free pizza' ,

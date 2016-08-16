@@ -118,4 +118,12 @@ class PagesController extends Controller
         return redirect()->back();
     }
 
+    public function clearcart(Request $request)
+    {
+        if ( $request->get('action') == 'clear' ) {
+            $this->cart->clear();
+        }
+        return redirect()->back();
+    }
+
 }
