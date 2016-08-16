@@ -33,7 +33,7 @@
 <div class="iccon col-md-4 col-sm-6">
   <div class="itemcard card clearfix">
     
-    <span class="pname">Comming Soon...</span>
+    <span class="pname">Coming Soon...</span>
   </div>
 </div>
     </div>

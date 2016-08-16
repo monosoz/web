@@ -19,8 +19,8 @@ class ShopOperator extends Controller
 
     public function orders()
     {
-
-        return view('orders', ['orders' => Order::all(),]);
-        
+		if (Auth::user()->email=='operator@monosoz.com') {
+			return view('orders', ['orders' => Order::all(),]);
+		}
     }
 }
