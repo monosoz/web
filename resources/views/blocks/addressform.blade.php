@@ -7,7 +7,7 @@
 <div class="form-group">
 	<label for="mobile_number" class="col-md-4 control-label">Contact</label>
 	<div class="col-md-6">
-		<input id="mobile_number" type="tel" class="form-control" name="mobile" value="{{$user->mobile_number}}">
+		<input id="mobile_number" type="tel" class="form-control" name="CONTACT" value="{{$user->mobile_number}}">
 	</div>
 </div>
 <div class="form-group">
