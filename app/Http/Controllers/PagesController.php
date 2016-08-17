@@ -60,9 +60,10 @@ class PagesController extends Controller
     {
 
         $cs = Cookie::get('cartStatus');
-
+        $ws = Cookie::get('welcomeStatus');
         Cookie::queue('cartStatus', 0);
-        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $cs,]);
+        Cookie::queue('welcomeStatus', $ws+1);
+        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $cs, 'ws' => $ws,]);
     }
 
     public function cart(Request $request)

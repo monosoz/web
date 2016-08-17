@@ -48,12 +48,20 @@
       </div>
     </div>
     </div>
+@include('blocks.welcome')
 @endsection
 @section('scripts')
   @if($cart_status==1)
     <script type="text/javascript">
         $(window).load(function(){
             $('#app-cart-modal').modal('show');
+        });
+    </script>
+  @endif
+  @if($ws==0)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#wModal').modal('show');
         });
     </script>
   @endif
