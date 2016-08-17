@@ -28,14 +28,15 @@
       @foreach ($tags->find(2)->addons as $addon)
       <div class="col-sm-6 tp-card-c">
         <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}" disabled/>
-        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}" style="cursor:not-allowed;>
+        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}" style="cursor:not-allowed;">
         <img class="tpthumb" src="data:image/jpeg;base64,{{base64_encode($addon->image)}}">
         <span class="tpname">{{$addon->name}}</span></label>
       </div>
       @endforeach
     </div>
 </div>
-<div class="col-sm-4 col-xs-6">
+
+<div class="col-sm-4 col-xs-6" style="min-height:340px;">
     <img class="pmthumb" src="">
     <div class="pmsize">
     <p>Size:</p>

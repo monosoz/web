@@ -50,9 +50,17 @@ class AuthPagesController extends Controller
     public function addaddress(Request $request)
     {
 
+        $this->validate($request, [
+            'name' => 'required',
+            'contact' => 'required',
+            'pincode' => 'required',
+            'address' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+        ]);
         $location = new Location;
         $location->name = $request->name;
-        $location->mobile_number = $request->mobile;
+        $location->mobile_number = $request->contact;
         $location->pincode = $request->pincode;
         $location->address = $request->address;
         $location->lat = $request->lat;
