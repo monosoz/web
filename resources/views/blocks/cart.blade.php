@@ -11,8 +11,10 @@
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
             {{ $item->displayName }}
+            @elseif(substr($item->sku, 0, 4)==='FREE')
+            Free Pizza
             @else
-            Custom Pizza
+            Custom Pizzaa
                 @if(substr($item->sku, -1)==='R')
                 -Regular
                 @elseif(substr($item->sku, -1)==='M')
@@ -59,6 +61,8 @@
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
             {{ $item->displayName }}
+            @elseif(substr($item->sku, 0, 4)==='FREE')
+            Free Pizza
             @else
             Custom Pizza
                 @if(substr($item->sku, -1)==='R')

@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\AddToCart;
 
+use App\Http\Requests\Coupon;
+
 use App\Product;
 
 use App\Variant;
@@ -32,11 +34,16 @@ use App\GuestCart;
 
 use App\User;
 
+use Cookie;
+
+use Session;
+
 class PagesController extends Controller
 {
 	public function __construct()
     {
 
+        
         if (Auth::check()) {
             $this->cart = Cart::current();
         } else {
@@ -52,10 +59,13 @@ class PagesController extends Controller
     public function index()
     {
 
-        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart,]);
+        $cs = Cookie::get('cartStatus');
+
+        Cookie::queue('cartStatus', 0);
+        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $cs,]);
     }
 
-    public function cart(AddToCart $request)
+    public function cart(Request $request)
     {
 
         $this->cart->add(Variant::findOrFail($request->get('id')));
@@ -115,6 +125,7 @@ class PagesController extends Controller
         } elseif ( $request->get('action') == 'add' ) {
             $this->cart->add(['sku' => $item]);
         }
+        Cookie::queue('cartStatus', 1);
         return redirect()->back();
     }
 
@@ -123,13 +134,27 @@ class PagesController extends Controller
         if ( $request->get('action') == 'clear' ) {
             $this->cart->clear();
         }
+        Cookie::queue('cartStatus', 1);
         return redirect()->back();
     }
 
-    public function applycoupon(Coupon $request)
+    public function applycoupon(Request $request)
     {
-        if ( \App\Coupon::where('code', '=', $request->get('code'))) {
-            $this->cart->add(['sku' => 'PROMO001', 'price' => -229]);
+        Cookie::queue('cartStatus', 1);
+        $this->validate($request, [
+            'code' => 'required|exists:coupons,code',
+        ]);
+        $ifc=Item::where('sku', '=', $request->get('code'))->first();
+        if ($this->cart->items->where('price', '229.00')->count()==0) {
+            Session::flash('couponMessage', 'Coupon not applied.');
+        }
+        elseif ( $ifc==null||$ifc->order_id==null) {
+            Item::where('sku', '=', $request->get('code'))->where('order_id', '=', null)->delete();
+            GuestItem::where('sku', '=', $request->get('code'))->delete();
+            $this->cart->add(['sku' => $request->get('code'), 'price' => -229]);
+        }
+        else{
+            Session::flash('couponMessage', 'Coupon already used.');
         }
         return redirect()->back();
     }

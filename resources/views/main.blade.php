@@ -39,6 +39,10 @@
             <button class="btn btn-secondary" type="submit">+</button>
           </span>
         </form>
+        {!!$errors->first('code', '<span class="help-block pull-right">:message</span>')!!}
+        @if (Session::has('couponMessage'))
+            <span class="help-block pull-right">{{ Session::get('couponMessage') }}</span>
+        @endif
   
 </div>
       </div>
@@ -46,5 +50,12 @@
     </div>
 @endsection
 @section('scripts')
+  @if($cart_status==1)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#app-cart-modal').modal('show');
+        });
+    </script>
+  @endif
     <script src="{{ url('sc02.js') }}"></script>
 @endsection
