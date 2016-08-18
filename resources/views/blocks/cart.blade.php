@@ -2,8 +2,8 @@
     <tbody>
     @foreach ($cart->items as $item)
 @if(substr($item->class, -5, 5)!='Addon')
-    {{--*/ $q = $item->quantity /*--}}
-    {{--*/ $ql = $q /*--}}
+    {{ $q = $item->quantity }}
+    {{ $ql = $q }}
 
     <tr>
 @for(; $q>-1; $q--)
@@ -38,7 +38,7 @@
         </td>
     <tr>
         <td>
-        <ul style="list-style:none;">
+        <ul style="list-style: none;">
             @foreach ($item->rel->where('item_no', $q) as $rel)
             <li>
                 <span>{{ $rel->child->name }}</span>
@@ -56,7 +56,7 @@
         </ul>
         </td>
     </tr>
-        {{--*/ $ql-- /*--}}
+        {{ $ql-- }}
     @elseif($q==0&$ql>0)
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
