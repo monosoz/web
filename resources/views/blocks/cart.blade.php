@@ -39,7 +39,7 @@
     <tr>
         <td>
         <ul style="list-style: none;">
-            @foreach ($item->rel->where('item_no', $q) as $rel)
+            @foreach ($item->rel->where('item_no', "$q") as $rel)
             <li>
                 <span>{{ $rel->child->name }}</span>
             </li>
@@ -48,7 +48,7 @@
         </td>
         <td>
         <ul style="list-style-type: none;">
-            @foreach ($item->rel->where('item_no', $q) as $rel)
+            @foreach ($item->rel->where('item_no', "$q") as $rel)
             <li>
                 <span>{{ $rel->child->price }}</span>
             </li>
