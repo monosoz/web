@@ -36,7 +36,7 @@
           {{ csrf_field() }}
           <input type="text"  name="code" placeholder="Apply Coupon" class="form-control">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="submit">+</button>
+            <button class="btn btn-secondary" type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
           </span>
         </form>
         {!!$errors->first('code', '<span class="help-block pull-right">:message</span>')!!}

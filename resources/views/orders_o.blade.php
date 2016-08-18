@@ -13,6 +13,7 @@
             @else
             <div class="clearfix">
                 @foreach ($orders as $cart)
+<div>
 Order Id: {{$cart->id}}<br>
 Map:<a href="{{'https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{' https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
 Order Status: {{$cart->statusCode}}<br>
@@ -29,7 +30,7 @@ Name:{{$cart->delivery_location->name}}<br>
 Mobile No:{{$cart->delivery_location->mobile_number}}<br>
 Address:{{$cart->delivery_location->address}}<br>
 <hr>
-<table class="cart-table" style="width:100%;">
+<table class="cart-table" style="width:100%; font-size:.8em;">
     <tbody>
     @foreach ($cart->items as $item)
 @if(substr($item->class, -5, 5)!='Addon')
@@ -125,9 +126,6 @@ Address:{{$cart->delivery_location->address}}<br>
 @endif
     @endforeach
     </tbody>
-</table>
-<hr>
-<table class="cart-table" style="width:100%;">
     <tfoot>
         <tr>
             <td>Subtotal: </td>
@@ -146,6 +144,7 @@ Address:{{$cart->delivery_location->address}}<br>
 <hr>
 Contact us: support@monosoz.com<br>
 www.monosoz.com<br><hr>
+</div>
                 @endforeach
             </div>
             @endif

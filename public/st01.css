@@ -127,6 +127,7 @@ a:-webkit-any-link {
                 width: 150px;
                 height: 150px;
                 float: right;
+                background-color: #fff;
             }
 .pthumb img {
                 display: block;
