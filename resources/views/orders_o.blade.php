@@ -14,14 +14,22 @@
             <div class="clearfix">
                 @foreach ($orders as $cart)
 Order Id: {{$cart->id}}<br>
-Total: {{$cart->total}}<br>
-Name:{{$cart->delivery_location->name}}<br>
-Mobile No:{{$cart->delivery_location->mobile_number}}<br>
-Delivery Address:{{$cart->delivery_location->address}}<br>
 Map:<a href="{{'https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{' https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
 Order Status: {{$cart->statusCode}}<br>
 {{$cart->created_at}}<br>
-<div class=""><table class="cart-table table table-hover">
+Total: {{$cart->total}}<br>
+<div style="text-align: center;">
+<strong>monosoz</strong><br>
+New Delhi - 110017<br>
+TIN : 07987140098<br>
+{{$cart->created_at}}<br>
+------------------------------------
+</div>
+Name:{{$cart->delivery_location->name}}<br>
+Mobile No:{{$cart->delivery_location->mobile_number}}<br>
+Address:{{$cart->delivery_location->address}}<br>
+<hr>
+<table class="cart-table" style="width:100%;">
     <tbody>
     @foreach ($cart->items as $item)
 @if(substr($item->class, -5, 5)!='Addon')
@@ -117,10 +125,12 @@ Order Status: {{$cart->statusCode}}<br>
 @endif
     @endforeach
     </tbody>
-
+</table>
+<hr>
+<table class="cart-table" style="width:100%;">
     <tfoot>
         <tr>
-            <td>Subtotal:</td>
+            <td>Subtotal: </td>
             <td><i class="fa fa-inr"></i><span> {{ $cart->totalPrice }}</span></td>
         </tr>
         <tr>
@@ -133,6 +143,9 @@ Order Status: {{$cart->statusCode}}<br>
         </tr>
     </tfoot>
 </table></div>
+<hr>
+Contact us: support@monosoz.com<br>
+www.monosoz.com<br><hr>
                 @endforeach
             </div>
             @endif

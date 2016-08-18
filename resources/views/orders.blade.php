@@ -12,7 +12,7 @@
             <p>Nothing to show here!</p>
             @else
             <div class="clearfix">
-                @foreach ($orders as $order)
+                @foreach ($orders as $cart)
                 <div class="">
                   @include('blocks.ordercard')
                 </div>
