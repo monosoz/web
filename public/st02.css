@@ -31,6 +31,7 @@
 }
 .tp-card{
     width: 100%;
+    text-align: center;
 }
 .tp-card-vt{
     background-color: rgba(1, 197, 79, 0.12);
@@ -82,6 +83,7 @@ span.tp{ color:#6d84b4 }
                 right: 10px;
                 width: 200px;
                 height: 200px;
+                display: none;
             }
 .pmsize {
                 position: absolute;
