@@ -112,9 +112,6 @@ class PagesController extends Controller
                 } else {
                     $itemr=ItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> $this->custom_item->quantity,'child_id' => $addon,]);
                 }
-                    $itemr->save();
-                
-                
             }
         }
         return redirect()->back();
