@@ -57,8 +57,7 @@
             $('#app-cart-modal').modal('show');
         });
     </script>
-  @endif
-  @if($ws==0)
+  @else
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');
