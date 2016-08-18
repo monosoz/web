@@ -38,7 +38,7 @@
         </td>
     <tr>
         <td>
-        <ul>
+        <ul style="list-style:none;">
             @foreach ($item->rel->where('item_no', $q) as $rel)
             <li>
                 <span>{{ $rel->child->name }}</span>

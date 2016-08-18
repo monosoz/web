@@ -5,7 +5,7 @@
         @include('blocks.product')
     </div>
 
-    <div class="alert"> Trial Run ! </div>
+    <div class="alert"> BETA </div>
     <!-- Collapsed Hamburger -->
 
     <div class="cart-btn" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">

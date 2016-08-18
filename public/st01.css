@@ -113,6 +113,8 @@ a:-webkit-any-link {
     margin-right: 15px;
 }
 .navbar{
+    font-size: larger;
+    font-weight: 900;
     background-color: #c70303;
     border-color: #200000
 }
@@ -246,19 +248,24 @@ a:-webkit-any-link {
     bottom: 5px;
 }
 .buy-form>button{
+
     padding-top: 0px;
     padding-right: 6px;
     padding-bottom: 0px;
     padding-left: 6px;
-    background-color: #eee;
-    color: #000;
+    background-color: #f9cd11;
+    color: #000;;
     font-weight: bold;
 }
+.cust-btn{
+    background-color: #f9cd11;
+    color: #000
+}
 .tag{
+    background-color: #f9cd11;
     position: absolute;
     width: 33%;
     min-width: 200px;
-    background-color: #fff;
     margin-top: 5px;
     margin-bottom: 5px;left: 1%;
     padding-left: 15px;

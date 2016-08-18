@@ -147,12 +147,39 @@ class PagesController extends Controller
         ]);
         $ifc=Item::where('sku', '=', $request->get('code'))->first();
         if ($this->cart->items->where('price', '229.00')->count()==0) {
-            Session::flash('couponMessage', 'Coupon not applied.');
+            Session::flash('couponMessage', 'Coupon not applicable.');
         }
         elseif ( $ifc==null||$ifc->order_id==null) {
             Item::where('sku', '=', $request->get('code'))->where('order_id', '=', null)->delete();
             GuestItem::where('sku', '=', $request->get('code'))->delete();
-            $this->cart->add(['sku' => $request->get('code'), 'price' => -229]);
+            Item::where('sku', '=', 'OFF1006818')->where('order_id', '=', null)->delete();
+            GuestItem::where('sku', '=', 'OFF1006818')->delete();
+            foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
+                ItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
+                GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
+            }
+            if ($request->get('code')=='OFF100') {
+                if (Auth::guest()) {
+                    $itno=1;
+                    foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
+                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                        $this->cart->add(Addon::findOrFail(101));
+                        $itemr=GuestItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        }
+                    }
+                } else {
+                    $itno=1;
+                    foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
+                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                        $this->cart->add(Addon::findOrFail(101));
+                        $itemr=ItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        }
+                    }
+                }
+            } else {
+                $this->cart->add(['sku' => $request->get('code'), 'price' => -229]);
+            }
+            
         }
         else{
             Session::flash('couponMessage', 'Coupon already used.');

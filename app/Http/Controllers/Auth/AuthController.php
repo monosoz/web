@@ -103,6 +103,7 @@ class AuthController extends Controller
     {
         $tcart= \App\GuestCart::findOrFail(session('cartId'));
         $cart = \App\Cart::current();
+        $cart->clear();
             $tcart->cart_id = $cart->id;
             $tcart->save();
         foreach ($tcart->items as $item) {
@@ -121,7 +122,7 @@ class AuthController extends Controller
                 if ($nitem->sku==$item->sku) {
                     if ($itemrs=\App\GuestItemRelation::where('parent_id', '=', $item->id)->get()) {
                         foreach ($itemrs as $itemr) {
-                            $gitr=\App\ItemRelation::create(['parent_id'=> $nitem->id, 'item_no'=> $nitem->quantity,'child_id' => $itemr->child_id,]);
+                            $gitr=\App\ItemRelation::create(['parent_id'=> $nitem->id, 'item_no'=> $itemr->item_no,'child_id' => $itemr->child_id,]);
                         $gitr->save();
                         }
                     }

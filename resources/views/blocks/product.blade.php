@@ -14,7 +14,7 @@
             <i class="fa fa-inr"></i><span class="prod-price">***</span>
           </button>
         </div>
-        <button type="button" class="btn" data-toggle="modal" data-target="#vModal">
+        <button type="button" class="cust-btn btn" data-toggle="modal" data-target="#vModal">
       <div class="button" onclick="customize('0', 'Make your own...')"></div>
           <i class="fa fa-pencil"></i>
         </button>
