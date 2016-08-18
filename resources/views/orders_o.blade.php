@@ -21,7 +21,6 @@ Delivery Address:{{$cart->delivery_location->address}}<br>
 Map:<a href="{{'https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{' https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
 Order Status: {{$cart->statusCode}}<br>
 {{$cart->created_at}}<br>
-<hr
 <div class=""><table class="cart-table table table-hover">
     <tbody>
     @foreach ($cart->items as $item)
@@ -133,8 +132,7 @@ Order Status: {{$cart->statusCode}}<br>
             <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
         </tr>
     </tfoot>
-</table>
-                </div>
+</table></div>
                 @endforeach
             </div>
             @endif
