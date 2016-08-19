@@ -103,6 +103,7 @@ span.tp{ color:#6d84b4 }
                 overflow: hidden;
                 width: 2em;
                 height: 2em;
+                display: none;
             }
 .tpthumb img {
             display: block;

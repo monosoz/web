@@ -60,7 +60,7 @@
         Add Extra Cheese</label><br/>
     </div>
     <div class="col-sm-6">
-        <span>Total:&nbsp</span><i class="fa fa-inr"></i><span class="tp-total">0</span>
+        <!--span>Total:&nbsp</span><i class="fa fa-inr"></i><span class="tp-total">0</span-->
         <input type="reset" value="Reset" class="btn">
         <input type="submit" value="Submit" class="btn">
     </div>
