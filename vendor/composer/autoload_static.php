@@ -281,6 +281,7 @@ class ComposerStaticInit98921dcadeb4149da467f5d572452f42
         'AddressSetupTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_25_164912_address_setup_table.php',
         'Amsgames\\LaravelShop\\MigrationCommand' => __DIR__ . '/..' . '/amsgames/laravel-shop/src/Commands/MigrationCommand.php',
         'Coupon' => __DIR__ . '/../..' . '/database/seeds/Coupon.php',
+        'CreateFeedbackTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_140152_create_feedback_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_24_131556_create_products_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

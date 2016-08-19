@@ -9,6 +9,7 @@ return array(
     'AddressSetupTable' => $baseDir . '/database/migrations/2016_06_25_164912_address_setup_table.php',
     'Amsgames\\LaravelShop\\MigrationCommand' => $vendorDir . '/amsgames/laravel-shop/src/Commands/MigrationCommand.php',
     'Coupon' => $baseDir . '/database/seeds/Coupon.php',
+    'CreateFeedbackTable' => $baseDir . '/database/migrations/2016_08_19_140152_create_feedback_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProductsTable' => $baseDir . '/database/migrations/2016_06_24_131556_create_products_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
