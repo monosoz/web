@@ -13,6 +13,7 @@
             @else
             <div class="clearfix">
                 @foreach ($orders as $cart)
+                @if($cart->statusCode!='complete')
 <div>
 Order Id: {{$cart->id}}<br>
 Map:<a href="{{'https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{' https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
