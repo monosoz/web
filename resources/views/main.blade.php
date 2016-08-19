@@ -57,7 +57,7 @@
             $('#app-cart-modal').modal('show');
         });
     </script>
-  @else
+  @elseif($cart_status!=2)
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');

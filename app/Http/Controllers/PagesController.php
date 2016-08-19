@@ -71,6 +71,7 @@ class PagesController extends Controller
 
         $this->cart->add(Variant::findOrFail($request->get('id')));
 
+        Cookie::queue('cartStatus', 2);
         return redirect()->back();
     }
     public function add_custom(AddToCart $request)
@@ -114,6 +115,7 @@ class PagesController extends Controller
                 }
             }
         }
+        Cookie::queue('cartStatus', 2);
         return redirect()->back();
     }
 
