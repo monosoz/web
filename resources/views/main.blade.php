@@ -8,7 +8,7 @@
     <div class="alert"> BETA </div>
     <!-- Collapsed Hamburger -->
 
-    <div class="cart-btn" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
+    <div class="cart-btn clickable" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
       <i class="fa fa-shopping-cart fa-3x"aria-hidden="true"></i>
       <sup class="cart-status">{{ $cart->count }}</sup>
     </div>

@@ -94,6 +94,9 @@ a:-webkit-any-link {
     margin-top: 40px;
 }
 }*/
+.clickable {
+    cursor: pointer;
+}
 .home-logo {
     float: left;
     height: 50px;

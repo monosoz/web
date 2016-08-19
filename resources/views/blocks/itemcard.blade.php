@@ -18,7 +18,7 @@
     </div>
 
       <button type="button" class="cust-btn btn" data-toggle="modal" data-target="#vModal">
-      <div class="button" onclick="customize({{'"'.$product->id.'", "'.$product->name.'"'}})"></div>
+      <div class="button clickable" onclick="customize({{'"'.$product->id.'", "'.$product->name.'"'}})"></div>
         <i class="fa fa-pencil"></i>
       </button>
   </div>

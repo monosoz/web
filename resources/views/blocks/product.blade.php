@@ -1,7 +1,7 @@
 @if (count($tags) === 0)
   <p>Comming Soon.</p>
 @else
-<div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag1-collapse">> Make your own pizza!</div>
+<div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag1-collapse">> Make your own pizza!</div>
 <div class="row tag-c">
   <div class="collapse in" id="tag1-collapse">
     <div class="iccon col-md-4 col-sm-6">
@@ -15,14 +15,14 @@
           </button>
         </div>
         <button type="button" class="cust-btn btn" data-toggle="modal" data-target="#vModal">
-      <div class="button" onclick="customize('0', 'Make your own...')"></div>
+      <div class="button clickable" onclick="customize('0', 'Make your own...')"></div>
           <i class="fa fa-pencil"></i>
         </button>
       </div>
     </div>
   </div>
 </div>
-<div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag2-collapse">> {{ $tags->find(1)->name }}</div>
+<div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag2-collapse">> {{ $tags->find(1)->name }}</div>
 <form class="" action="{{ url('cart') }}" method="POST">
   {{ csrf_field() }}
   <div class="row tag-c">
@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <!--div class="tag" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag3-collapse">> {{ $tags->find(2)->name }}</div>
+  <!--div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag3-collapse">> {{ $tags->find(2)->name }}</div>
   <div class="row tag-c">
     <div class="collapse in" id="tag3-collapse">
       @foreach ($tags->find(2)->products as $product)
