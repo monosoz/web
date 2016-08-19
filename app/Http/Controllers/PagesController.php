@@ -152,6 +152,8 @@ class PagesController extends Controller
             GuestItem::where('sku', '=', $request->get('code'))->delete();
             Item::where('sku', '=', 'OFF1006818')->where('order_id', '=', null)->delete();
             GuestItem::where('sku', '=', 'OFF1006818')->delete();
+            Item::where('price', '<', 0)->where('cart_id', '=', $this->cart->id)->delete();
+            GuestItem::where('price', '<', 0)->where('guestcart_id', '=', $this->cart->id)->delete();
             foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                 ItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();

@@ -5,9 +5,9 @@
                     <span aria-hidden="true">×</span>
                 </button>
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
-                <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
-                <!--h1 style="font-size:50px;color:#980211;">Get Any Medium Pizza (12") @ 129!</h1>
-                <h3>use coupon code 'OFF100'</h3-->
+                <!--h1 style="font-size:50px;color:#980211;">We are closed right now.</h1-->
+                <h1 style="font-size:50px;color:#980211;">Get Any Medium Pizza (12") @ 129!</h1>
+                <h3>use coupon code 'OFF100'</h3>
             </div>
         </div>
     </div>
