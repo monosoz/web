@@ -146,6 +146,7 @@ Address:{{$cart->delivery_location->address}}<br>
 Contact us: support@monosoz.com<br>
 www.monosoz.com<br><hr>
 </div>
+                @endif
                 @endforeach
             </div>
             @endif
