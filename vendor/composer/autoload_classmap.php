@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddressSetupTable' => $baseDir . '/database/migrations/2016_06_25_164912_address_setup_table.php',
-    'Amsgames\\LaravelShop\\MigrationCommand' => $vendorDir . '/amsgames/laravel-shop/src/Commands/MigrationCommand.php',
+    'Amsgames\\LaravelShop\\MigrationCommand' => $vendorDir . '/monosoz/laravel-shop/src/Commands/MigrationCommand.php',
     'Coupon' => $baseDir . '/database/seeds/Coupon.php',
     'CreateFeedbackTable' => $baseDir . '/database/migrations/2016_08_19_140152_create_feedback_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
@@ -487,6 +487,9 @@ return array(
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'ProductSetup' => $baseDir . '/database/seeds/ProductSetup.php',
     'Promo_1' => $baseDir . '/database/seeds/Promo_1.php',
+    'Pusher' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
+    'PusherException' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
+    'PusherInstance' => $vendorDir . '/pusher/pusher-php-server/lib/Pusher.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',

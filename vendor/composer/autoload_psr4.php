@@ -37,6 +37,6 @@ return array(
     'ClassPreloader\\' => array($vendorDir . '/classpreloader/classpreloader/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'App\\' => array($baseDir . '/app'),
-    'Amsgames\\LaravelShop\\' => array($vendorDir . '/amsgames/laravel-shop/src'),
+    'Amsgames\\LaravelShop\\' => array($vendorDir . '/monosoz/laravel-shop/src'),
     'Amsgames\\LaravelShopGatewayPaypal\\' => array($vendorDir . '/amsgames/laravel-shop-gateway-paypal/src'),
 );

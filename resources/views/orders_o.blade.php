@@ -12,11 +12,15 @@
             <p>Nothing to show here!</p>
             @else
             <div class="clearfix">
-                @foreach ($orders as $cart)
+                @foreach ($orders->sortByDesc('updated_at') as $cart)
                 @if($cart->statusCode!='complete')
 <div>
 Order Id: {{$cart->id}}<br>
-Map:<a href="{{'https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{' https://www.google.co.in/maps/@'.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
+@if ($cart->is('pending'))
+Pinding
+@else
+Delivery Address:{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
+Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
 Order Status: {{$cart->statusCode}}<br>
 {{$cart->created_at}}<br>
 Total: {{$cart->total}}<br>
@@ -144,8 +148,10 @@ Address:{{$cart->delivery_location->address}}<br>
 </table></div>
 <hr>
 Contact us: support@monosoz.com<br>
-www.monosoz.com<br><hr>
+www.monosoz.com<br>
 </div>
+@endif
+<hr>
                 @endif
                 @endforeach
             </div>

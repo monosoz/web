@@ -31,13 +31,13 @@ Route::post('/cart/clear', 'PagesController@clearcart');
 Route::post('/cart/applycoupon', 'PagesController@applycoupon');
 Route::post('/cart/{item}', 'PagesController@item');
 
-Route::get('/checkout', 'PagesController@index');
-
 /*
+Route::get('/checkout', 'PagesController@index');
+*/
+
 Route::get('/checkout', 'AuthPagesController@checkout');
 Route::patch('/checkout', 'AuthPagesController@selectaddress');
 Route::post('/checkout', 'AuthPagesController@cod');
-*/
 
 Route::get('/user/address', 'AuthPagesController@addresses');
 Route::put('/user/address', 'AuthPagesController@address');
@@ -51,3 +51,19 @@ Route::get('/account', 'AuthPagesController@account');
 
 
 Route::get('/orders0CCAC', 'ShopOperator@orders');
+
+Route::get('/push', function(){
+	$options = array(
+    'cluster' => 'ap1',
+    'encrypted' => true
+  );
+  $pusher = new Pusher(
+    '85af98d3bd88e572165f',
+    '1692b81c6311d8a679e4',
+    '219908',
+    $options
+  );
+
+  $data['message'] = 'hello world';
+  $pusher->trigger('test_channel', 'my_event', $data);
+});

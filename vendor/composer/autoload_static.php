@@ -219,7 +219,7 @@ class ComposerStaticInit98921dcadeb4149da467f5d572452f42
         ),
         'Amsgames\\LaravelShop\\' => 
         array (
-            0 => __DIR__ . '/..' . '/amsgames/laravel-shop/src',
+            0 => __DIR__ . '/..' . '/monosoz/laravel-shop/src',
         ),
         'Amsgames\\LaravelShopGatewayPaypal\\' => 
         array (
@@ -279,7 +279,7 @@ class ComposerStaticInit98921dcadeb4149da467f5d572452f42
 
     public static $classMap = array (
         'AddressSetupTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_25_164912_address_setup_table.php',
-        'Amsgames\\LaravelShop\\MigrationCommand' => __DIR__ . '/..' . '/amsgames/laravel-shop/src/Commands/MigrationCommand.php',
+        'Amsgames\\LaravelShop\\MigrationCommand' => __DIR__ . '/..' . '/monosoz/laravel-shop/src/Commands/MigrationCommand.php',
         'Coupon' => __DIR__ . '/../..' . '/database/seeds/Coupon.php',
         'CreateFeedbackTable' => __DIR__ . '/../..' . '/database/migrations/2016_08_19_140152_create_feedback_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
@@ -759,6 +759,9 @@ class ComposerStaticInit98921dcadeb4149da467f5d572452f42
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'ProductSetup' => __DIR__ . '/../..' . '/database/seeds/ProductSetup.php',
         'Promo_1' => __DIR__ . '/../..' . '/database/seeds/Promo_1.php',
+        'Pusher' => __DIR__ . '/..' . '/pusher/pusher-php-server/lib/Pusher.php',
+        'PusherException' => __DIR__ . '/..' . '/pusher/pusher-php-server/lib/Pusher.php',
+        'PusherInstance' => __DIR__ . '/..' . '/pusher/pusher-php-server/lib/Pusher.php',
         'SebastianBergmann\\Comparator\\ArrayComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ArrayComparator.php',
         'SebastianBergmann\\Comparator\\Comparator' => __DIR__ . '/..' . '/sebastian/comparator/src/Comparator.php',
         'SebastianBergmann\\Comparator\\ComparisonFailure' => __DIR__ . '/..' . '/sebastian/comparator/src/ComparisonFailure.php',

@@ -12,7 +12,7 @@
             <p>Nothing to show here!</p>
             @else
             <div class="clearfix">
-                @foreach ($orders as $cart)
+                @foreach ($orders->sortByDesc('updated_at') as $cart)
                 <div class="">
                   @include('blocks.ordercard')
                 </div>
