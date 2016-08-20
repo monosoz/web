@@ -15,4 +15,9 @@ class Order extends ShopOrderModel
     {
         return $this->hasOne('App\DeliveryLocation');
     }
+
+    public function feedbacks()
+    {
+        return $this->hasOne('App\Feedback');
+    }
 }

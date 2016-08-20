@@ -154,4 +154,16 @@ class AuthPagesController extends Controller
         return view('account', ['user' => Auth::user(),]);
         
     }
+    public function feedback()
+    {
+
+        return view('feedback', ['user' => Auth::user(),]);
+        
+    }
+    public function addfeedback()
+    {
+
+        return view('account', ['user' => Auth::user(),]);
+        
+    }
 }

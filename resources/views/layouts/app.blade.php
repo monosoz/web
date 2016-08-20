@@ -82,15 +82,18 @@
     <footer class="footer cs-footer">
         <div class="">
             <ul class="footer-list">
-                <!--li class="footer-li">
-                    <a href="">About Us</a>
+                <li class="footer-li">
+                    <a href="{{ url('/about') }}">About Us</a>
                 </li>
                 <li class="footer-li">
-                    <a href="">Contact Us</a>
+                    <a href="{{ url('/policy') }}">Privacy Policies</a>
+                    </li>
+                <li class="footer-li">
+                    <a href="{{ url('/terms') }}">Terms and Conditions</a>
                 </li>
                 <li class="footer-li">
-                    <a href="{{ url('/policy') }}">Policies</a>
-                </li-->
+                    <a href="{{ url('/contact') }}">Contact Us</a>
+                </li>
             </ul>
         </div>
     </footer>

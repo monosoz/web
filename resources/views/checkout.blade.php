@@ -37,7 +37,7 @@
         {!!$errors->first('address', '<span class="help-block">:message</span>')!!}
         {!!$errors->first('lat', '<span class="help-block">Please select your location on map.</span>')!!}
               </p>
-              <form class="form-horizontal" method="POST" action="/user/address">
+              <form class="form-horizontal" method="POST" action="{{ url('/user/address') }}">
                 {{ csrf_field() }}
                 <div class="col-sm-6">
                 @include('blocks.addressform')
@@ -46,6 +46,12 @@
                 <div class="col-sm-6">
                   <div id="new_map"></div>
                 </div>
+<div class="col-md-6 col-md-offset-4 pull-right">
+  <button type="submit" class="btn btn-primary">
+    <i class="fa fa-btn fa-user"></i> Add Address
+  </button>
+</div>
+<p class="text-muted"><strong>*</strong> These fields are required.</p>
               </form>
             </div>
           </div>
