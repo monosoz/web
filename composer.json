@@ -6,12 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "pusher/pusher-php-server": "^2.5"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://gitlab.com/admono/laravel-shop.git"
+            "url": "https://gitlab.com/monosoz/shop.git"
     }],
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -19,7 +20,7 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "amsgames/laravel-shop": "v0.1@dev" 
+        "monosoz/laravel-shop": "master@dev" 
     },
     "autoload": {
         "classmap": [

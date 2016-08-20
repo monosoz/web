@@ -56,6 +56,11 @@ class GuestItem extends Model
         parent::__construct($attributes);
         $this->table = 'guestitems';
     }
+    
+    public function rel()
+    {
+        return $this->hasMany("App\GuestItemRelation", 'parent_id');
+    }
 
     /**
      * One-to-One relations with the cart model.

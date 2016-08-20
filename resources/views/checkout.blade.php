@@ -8,9 +8,9 @@
         <div class="panel-heading">Checkout</div>
         <div class="panel-body">
           <div>
-            <p>Name: {{$user->name}} <a class="pull-right" href="#">edit</a></p>
-            <p>Mobile Number: {{$user->mobile_number}} <a class="pull-right" href="#">edit</a></p>
-            <p>Email: {{$user->email}} <a class="pull-right" href="#">edit</a></p>
+            <p>Name: {{$user->name}} <!--a class="pull-right" href="#">edit</a--></p>
+            <!--p>Mobile Number: {{$user->mobile_number}} <a class="pull-right" href="#">edit</a></p-->
+            <p>Email: {{$user->email}} <!--a class="pull-right" href="#">edit</a--></p>
           </div>
           <hr>
           <div>
@@ -30,9 +30,17 @@
             <div class="clearfix">
               <p>New Address:
               </p>
+              <p>
+        {!!$errors->first('name', '<span class="help-block">:message</span>')!!}
+        {!!$errors->first('contact', '<span class="help-block">:message</span>')!!}
+        {!!$errors->first('pincode', '<span class="help-block">:message</span>')!!}
+        {!!$errors->first('address', '<span class="help-block">:message</span>')!!}
+        {!!$errors->first('lat', '<span class="help-block">Please select your location on map.</span>')!!}
+              </p>
               <form class="form-horizontal" method="POST" action="/user/address">
                 {{ csrf_field() }}
-                <div class="col-sm-6">                @include('blocks.addressform')
+                <div class="col-sm-6">
+                @include('blocks.addressform')
                 <div id="mapinput"></div>
                 </div>
                 <div class="col-sm-6">

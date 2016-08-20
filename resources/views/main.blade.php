@@ -2,30 +2,67 @@
 
 @section('content')
     <div class="container">
-      <div class="col-ls-12">
         @include('blocks.product')
-      </div>
     </div>
 
+    <div class="alert"> BETA </div>
     <!-- Collapsed Hamburger -->
 
-    <div id="toTop" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
-
+    <div class="cart-btn clickable" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
       <i class="fa fa-shopping-cart fa-3x"aria-hidden="true"></i>
+      <sup class="cart-status">{{ $cart->count }}</sup>
     </div>
     <div class="modal fade" id="app-cart-modal">
     <div class="cart panel panel-default modal-content">
       <div class="panel-heading">
         <button type="button" class="" data-dismiss="modal">&times;</button>
-        &nbspCart ({{ $cart->id }})
-        <span class="pull-right">Items: {{ $cart->count }}</span>
+        &nbspCart
+        <span class=""> 
+        @if($cart->count>0)
+          ({{ $cart->count }})
+        @endif
+        &nbsp</span>
+        <form action="{{ url('cart/clear' ) }}" method="POST" class="pull-right">
+            {{ csrf_field() }}
+            <button type="submit" name="action" value="clear" class="">Clear Cart</buttonton>
+        </form>
       </div>
-      <div>
+      <div class="cart-body">
           @include('blocks.cart')
       </div>
       <div class="panel-footer">
-        <a href="{{url('checkout')}}">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
+        <a href="{{url('checkout')}}" class="btn">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
+        <form action="{{ url('cart/applycoupon' ) }}" method="POST" class="pull-right input-group" style="width:50%;">
+          {{ csrf_field() }}
+          <input type="text"  name="code" placeholder="Apply Coupon" class="form-control">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+          </span>
+        </form>
+        {!!$errors->first('code', '<span class="help-block pull-right">:message</span>')!!}
+        @if (Session::has('couponMessage'))
+            <span class="help-block pull-right">{{ Session::get('couponMessage') }}</span>
+        @endif
+  
+</div>
       </div>
     </div>
     </div>
+@include('blocks.welcome')
+@endsection
+@section('scripts')
+  @if($cart_status==1)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#app-cart-modal').modal('show');
+        });
+    </script>
+  @elseif($cart_status!=2)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#wModal').modal('show');
+        });
+    </script>
+  @endif
+    <script src="{{ url('sc02.js') }}"></script>
 @endsection

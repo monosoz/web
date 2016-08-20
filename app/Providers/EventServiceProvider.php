@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     /**
+        'Amsgames\LaravelShop\Events\OrderPlaced' => [
+            'App\Events\NotifyPurchase',
+        ],
      * Register any other events for your application.
      *
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events

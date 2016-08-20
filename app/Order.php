@@ -11,8 +11,8 @@ class Order extends ShopOrderModel
         return $this->belongsTo('App\User');
     }
 
-    public function location()
+    public function delivery_location()
     {
-        return $this->hasOne('App\Location');
+        return $this->hasOne('App\DeliveryLocation');
     }
 }

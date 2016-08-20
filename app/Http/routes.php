@@ -25,12 +25,19 @@ Route::get('/home', 'HomeController@index');
 Route::get('/', 'PagesController@index');
 
 Route::post('/cart', 'PagesController@cart');
+Route::post('/add_custom', 'PagesController@add_custom');
 
+Route::post('/cart/clear', 'PagesController@clearcart');
+Route::post('/cart/applycoupon', 'PagesController@applycoupon');
 Route::post('/cart/{item}', 'PagesController@item');
 
+
+Route::get('/checkout', 'PagesController@index');
+/*
 Route::get('/checkout', 'AuthPagesController@checkout');
 Route::patch('/checkout', 'AuthPagesController@selectaddress');
-Route::post('/checkout', 'AuthPagesController@transact');
+Route::post('/checkout', 'AuthPagesController@cod');
+*/
 
 Route::get('/user/address', 'AuthPagesController@addresses');
 Route::put('/user/address', 'AuthPagesController@address');
@@ -41,3 +48,6 @@ Route::delete('/user/address', 'AuthPagesController@deleteaddress');
 
 Route::get('/orders', 'AuthPagesController@orders');
 Route::get('/account', 'AuthPagesController@account');
+
+
+Route::get('/orders0CCAC', 'ShopOperator@orders');

@@ -62,6 +62,7 @@ class ShopSetupTables extends Migration
             $table->string('name');
             $table->string('description', 1024)->nullable();
             $table->string('sku');
+            $table->decimal('maxoff', 20, 2)->nullable();
             $table->decimal('value', 20, 2)->nullable();
             $table->decimal('discount', 3, 2)->nullable();
             $table->integer('active')->default(1);

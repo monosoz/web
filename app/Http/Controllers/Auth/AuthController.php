@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Log;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -102,16 +103,38 @@ class AuthController extends Controller
     {
         $tcart= \App\GuestCart::findOrFail(session('cartId'));
         $cart = \App\Cart::current();
+        $cart->clear();
             $tcart->cart_id = $cart->id;
             $tcart->save();
         foreach ($tcart->items as $item) {
             if ($item->hasObject) {
-                $cart->add($item->object);
+                $cart->add($item->object, $item->quantity);
             }
             else{
                 $cart->add(['sku' => $item->sku, 'price' => $item->price,]);
-            }
+                }
+
+            
         }
+        foreach ($tcart->items as $item) {
+            //
+            foreach ($cart->items as $nitem) {
+                if ($nitem->sku==$item->sku) {
+                    if ($itemrs=\App\GuestItemRelation::where('parent_id', '=', $item->id)->get()) {
+                        foreach ($itemrs as $itemr) {
+                            $gitr=\App\ItemRelation::create(['parent_id'=> $nitem->id, 'item_no'=> $itemr->item_no,'child_id' => $itemr->child_id,]);
+                        $gitr->save();
+                        }
+                    }
+                    
+                    
+                }
+            }//
+
+            
+        }
+
+        
         $tcart->clear();
     }
 }

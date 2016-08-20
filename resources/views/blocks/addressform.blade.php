@@ -7,19 +7,19 @@
 <div class="form-group">
 	<label for="mobile_number" class="col-md-4 control-label">Contact</label>
 	<div class="col-md-6">
-		<input id="mobile_number" type="tel" class="form-control" name="mobile" value="{{$user->mobile_number}}">
+		<input id="mobile_number" type="tel" class="form-control" name="contact" value="{{$user->mobile_number}}">
 	</div>
 </div>
 <div class="form-group">
 	<label for="pincode" class="col-md-4 control-label">Pincode</label>
 	<div class="col-md-6">
-		<input id="pincode" type="text" class="form-control" name="pincode" value="110017">
+		<input id="pincode" type="text" class="form-control" name="pincode" value="">
 	</div>
 </div>
 <div class="form-group">
 	<label for="address" class="col-md-4 control-label">Address</label>
 	<div class="col-md-6">
-		<textarea id="address" name="address" class="form-control">New Delhi</textarea>
+		<textarea id="address" name="address" class="form-control"></textarea>
 	</div>
 </div>
 <div class="form-group">

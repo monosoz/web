@@ -14,41 +14,53 @@ class Fake extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach (range(1,10) as $index) {
+        $i = 1;
             DB::table('products')->insert([
-                'name' => $faker->word.' pizza' ,
-                'description' => $faker->sentence,
+                'name' => 'Veg Fiesta' ,
+                'description' => 'Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
             ]);
-        }
+            DB::table('products')->insert([
+                'name' => 'Margherita' ,
+                'description' => 'Too Much Cheese!'
+            ]);
+            DB::table('products')->insert([
+                'name' => 'Butter Onion Blast' ,
+                'description' => 'Butter, Onion, Onion, Onion.'
+            ]);
+            DB::table('products')->insert([
+                'name' => 'Earthy Delight' ,
+                'description' => 'Mushroom, Paneer, Golden Corn, Onion Rings.'
+            ]);
+
         foreach (Product::all() as $product) {
-            $sku = $faker->numerify('PIZZA####');
-            $price = $faker->numberBetween($min = 149, $max = 189);
+            $sku = 'PIZZA010';
+            $price = 159;
             
             DB::table('variants')->insert([
                 'product_id' => $product->id,
-                'sku' => $sku.'S',
+                'sku' => $sku.$i.'R',
                 'price' => $price,
+                'name' => $product->name.'-Regular',
+                'type' => 'r',
+            ]);
+            DB::table('variants')->insert([
+                'product_id' => $product->id,
+                'sku' => $sku.$i.'M',
+                'price' => $price+70,
                 'name' => $product->name.'-Medium',
+                'type' => 'm',
             ]);
             DB::table('variants')->insert([
                 'product_id' => $product->id,
-                'sku' => $sku.'M',
-                'price' => $price+$faker->numberBetween($min = 100, $max = 200),
+                'sku' => $sku.$i.'L',
+                'price' => $price+140,
                 'name' => $product->name.'-Large',
+                'type' => 'l',
             ]);
-            DB::table('variants')->insert([
-                'product_id' => $product->id,
-                'sku' => $sku.'L',
-                'price' => $price+$faker->numberBetween($min = 100, $max = 200),
-                'name' => $product->name.'-Large',
-            ]);
+            $i++;
             DB::table('product_tag')->insert([
                 'product_id' => $product->id,
-                'tag_id' => $faker->numberBetween($min = 1, $max = 2),
-            ]);
-            DB::table('product_tag')->insert([
-                'product_id' => $product->id,
-                'tag_id' => $faker->randomElement($array = array (11, 12, 13, 21, 22, 23)),
+                'tag_id' => 1,
             ]);
         }
     }
