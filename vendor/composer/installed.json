@@ -1983,64 +1983,6 @@
         ]
     },
     {
-        "name": "monosoz/laravel-shop",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@gitlab.com:monosoz/shop.git",
-            "reference": "783e140041fdf6628a36051a37e879f07d506cb6"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://gitlab.com/api/v3/projects/monosoz%2Fshop/repository/archive.zip?sha=783e140041fdf6628a36051a37e879f07d506cb6",
-            "reference": "783e140041fdf6628a36051a37e879f07d506cb6",
-            "shasum": ""
-        },
-        "require": {
-            "amsgames/laravel-shop-gateway-paypal": "1.0.*",
-            "illuminate/console": "~5.0",
-            "illuminate/support": "~5.0",
-            "php": ">=5.5.9"
-        },
-        "time": "2016-08-20 01:52:22",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "classmap": [
-                "src/Commands"
-            ],
-            "psr-4": {
-                "Amsgames\\LaravelShop\\": "src"
-            }
-        },
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Amsgames, LLC",
-                "email": "support@amsgames.com"
-            },
-            {
-                "name": "Alejandro Mostajo",
-                "email": "amostajo@gmail.com"
-            }
-        ],
-        "description": "Package set to provide shop or e-commerce functionality (such as CART, ORDERS, TRANSACTIONS and ITEMS) to Laravel for customizable builds.",
-        "keywords": [
-            "cart",
-            "e-commerce",
-            "ecommerce",
-            "laravel",
-            "orders",
-            "shop",
-            "shopping",
-            "shopping cart",
-            "transactions"
-        ]
-    },
-    {
         "name": "symfony/var-dumper",
         "version": "v3.0.9",
         "version_normalized": "3.0.9.0",
@@ -3461,6 +3403,64 @@
             "realtime",
             "rest",
             "trigger"
+        ]
+    },
+    {
+        "name": "monosoz/laravel-shop",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@gitlab.com:monosoz/shop.git",
+            "reference": "783e140041fdf6628a36051a37e879f07d506cb6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://gitlab.com/api/v3/projects/monosoz%2Fshop/repository/archive.zip?sha=783e140041fdf6628a36051a37e879f07d506cb6",
+            "reference": "783e140041fdf6628a36051a37e879f07d506cb6",
+            "shasum": ""
+        },
+        "require": {
+            "amsgames/laravel-shop-gateway-paypal": "1.0.*",
+            "illuminate/console": "~5.0",
+            "illuminate/support": "~5.0",
+            "php": ">=5.5.9"
+        },
+        "time": "2016-08-20 01:52:22",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/Commands"
+            ],
+            "psr-4": {
+                "Amsgames\\LaravelShop\\": "src"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Amsgames, LLC",
+                "email": "support@amsgames.com"
+            },
+            {
+                "name": "Alejandro Mostajo",
+                "email": "amostajo@gmail.com"
+            }
+        ],
+        "description": "Package set to provide shop or e-commerce functionality (such as CART, ORDERS, TRANSACTIONS and ITEMS) to Laravel for customizable builds.",
+        "keywords": [
+            "cart",
+            "e-commerce",
+            "ecommerce",
+            "laravel",
+            "orders",
+            "shop",
+            "shopping",
+            "shopping cart",
+            "transactions"
         ]
     }
 ]
