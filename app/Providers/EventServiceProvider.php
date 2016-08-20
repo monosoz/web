@@ -16,12 +16,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
-        'Amsgames\LaravelShop\Events\OrderPlaced' => [
-            'App\Events\NotifyPurchase',
-        ],
     ];
 
     /**
+        'Amsgames\LaravelShop\Events\OrderPlaced' => [
+            'App\Events\NotifyPurchase',
+        ],
      * Register any other events for your application.
      *
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events

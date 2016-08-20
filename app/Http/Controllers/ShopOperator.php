@@ -19,7 +19,7 @@ class ShopOperator extends Controller
 
     public function orders()
     {
-		if (Auth::user()->email=='operator@monosoz.com'||true) {
+		if (Auth::user()->email=='operator@monosoz.com'||Auth::user()->email=='a@monosoz.com') {
 			return view('orders_o', ['orders' => Order::all(),]);
 		}
     }

@@ -125,6 +125,19 @@ class AuthPagesController extends Controller
         $dlocation->usercomment = $location->usercomment;
         $dlocation->comment = $location->comment;
         $this->order->delivery_location()->save($dlocation);
+    $options = array(
+    'cluster' => 'ap1',
+    'encrypted' => true
+  );
+  $pusher = new \Pusher(
+    '85af98d3bd88e572165f',
+    '1692b81c6311d8a679e4',
+    '219908',
+    $options
+  );
+
+  $data['message'] = 'New Order!\nOrderId:'.$this->order->id.'\n'.Auth::user()->name.'\n'.$this->order->delivery_location->address ;
+  $pusher->trigger('test_channel', 'new_order', $data);
         return redirect('/orders');
         
     }

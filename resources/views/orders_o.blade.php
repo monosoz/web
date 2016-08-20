@@ -145,7 +145,7 @@ Address:{{$cart->delivery_location->address}}<br>
             <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
         </tr>
     </tfoot>
-</table></div>
+</table>
 <hr>
 Contact us: support@monosoz.com<br>
 www.monosoz.com<br>
@@ -154,7 +154,7 @@ www.monosoz.com<br>
 <hr>
                 @endif
                 @endforeach
-            </div>
+                </div>
             @endif
           </div>
         </div>
@@ -162,4 +162,23 @@ www.monosoz.com<br>
     </div>
   </div>
 </div>
+@endsection
+
+
+@section('stylesheet')
+  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+  <script type="text/javascript">
+    //Enable pusher logging - don't include this in production
+    //Pusher.logToConsole = true;
+
+    var pusher = new Pusher('85af98d3bd88e572165f', {
+      cluster: 'ap1',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('new_order', function(data) {
+      alert(data.message);
+    });
+  </script>
 @endsection
