@@ -30,15 +30,24 @@
       @foreach ($tags->find(1)->products as $product)
       @include('blocks.itemcard')
       @endforeach
-<div class="iccon col-md-4 col-sm-6">
-  <div class="itemcard card clearfix">
-    
-    <span class="pname">Coming Soon...</span>
-  </div>
-</div>
     </div>
   </div>
-
+<div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tagt-collapse">> Non-Veg</div>
+<div class="row tag-c">
+  <div class="collapse in" id="tagt-collapse">
+    <div class="iccon col-md-4 col-sm-6">
+      <div class="itemcard card clearfix">
+        <img class="pthumb" src="img/IMG_5221s.png">
+        <span class="pname">Coming Soon...</span>
+        <div class="buy-form">
+          <button type="submit" class="btn btn-primary" disabled>
+            <i class="fa fa-inr"></i><span class="prod-price">***</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <!--div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag3-collapse">> {{ $tags->find(2)->name }}</div>
   <div class="row tag-c">
     <div class="collapse in" id="tag3-collapse">

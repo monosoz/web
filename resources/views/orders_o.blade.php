@@ -179,6 +179,7 @@ www.monosoz.com<br>
     var channel = pusher.subscribe('test_channel');
     channel.bind('new_order', function(data) {
       alert(data.message);
+      window.location.reload(true);
     });
   </script>
 @endsection
