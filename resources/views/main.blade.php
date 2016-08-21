@@ -24,7 +24,7 @@
         &nbsp</span>
         <form action="{{ url('cart/clear' ) }}" method="POST" class="pull-right">
             {{ csrf_field() }}
-            <button type="submit" name="action" value="clear" class="">Clear Cart</buttonton>
+            <button type="submit" name="action" value="clear" class="">Clear Cart</button>
         </form>
       </div>
       <div class="cart-body">
@@ -46,7 +46,6 @@
   
 </div>
       </div>
-    </div>
     </div>
 @include('blocks.welcome')
 @endsection
