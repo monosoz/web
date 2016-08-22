@@ -7,17 +7,15 @@
       <div class="panel panel-default">
         <div class="panel-heading">Orders</div>
         <div class="panel-body">
-          <div>
             @if (count($orders) === 0)
             <p>Nothing to show here!</p>
             @else
-            <div class="clearfix">
                 @foreach ($orders->sortByDesc('updated_at') as $cart)
                 @if($cart->statusCode!='complete')
 <div>
 Order Id: {{$cart->id}}<br>
 @if ($cart->is('pending'))
-Pinding
+Pending
 @else
 Delivery Address:{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
@@ -42,9 +40,9 @@ Address:{{$cart->delivery_location->address}}<br>
     {{--*/ $q = $item->quantity /*--}}
     {{--*/ $ql = $q /*--}}
 
-    <tr>
 @for(; $q>-1; $q--)
     @if($item->rel->where('item_no', "$q")->count()!=0)
+    <tr>
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
             {{ $item->displayName }}
@@ -93,8 +91,10 @@ Address:{{$cart->delivery_location->address}}<br>
         </ul>
         </td>
     </tr>
+    </tr>
         {{--*/ $ql-- /*--}}
     @elseif($q==0&$ql>0)
+    <tr>
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
             {{ $item->displayName }}
@@ -125,8 +125,8 @@ Address:{{$cart->delivery_location->address}}<br>
                 </button>
             </form-->
         </td>
-    @endif
     </tr>
+    @endif
 @endfor
 @endif
     @endforeach
@@ -149,14 +149,12 @@ Address:{{$cart->delivery_location->address}}<br>
 <hr>
 Contact us: support@monosoz.com<br>
 www.monosoz.com<br>
-</div>
 @endif
+</div>
 <hr>
                 @endif
                 @endforeach
-                </div>
             @endif
-          </div>
         </div>
       </div>
     </div>
@@ -166,6 +164,7 @@ www.monosoz.com<br>
 
 
 @section('stylesheet')
+
   <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
   <script type="text/javascript">
     //Enable pusher logging - don't include this in production

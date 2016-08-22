@@ -14,7 +14,9 @@
             <div class="clearfix">
                 @foreach ($orders->sortByDesc('updated_at') as $cart)
                 <div class="">
-                  @include('blocks.ordercard')
+@if (!$cart->is('pending'))
+@include('blocks.ordercard')
+@endif
                 </div>
                 @endforeach
             </div>
@@ -25,4 +27,5 @@
     </div>
   </div>
 </div>
+<a class="btn btn-info" href="{{ url('/feedback') }}" style="position:fixed;right:6%;top:110px;">Feedback</a>
 @endsection

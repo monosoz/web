@@ -56,8 +56,6 @@ class AuthPagesController extends Controller
             'contact' => 'required',
             'pincode' => 'required',
             'address' => 'required',
-            'lat' => 'required',
-            'lng' => 'required',
         ]);
         $location = new Location;
         $location->name = $request->name;
@@ -126,18 +124,10 @@ class AuthPagesController extends Controller
         $dlocation->usercomment = $location->usercomment;
         $dlocation->comment = $location->comment;
         $this->order->delivery_location()->save($dlocation);
-    $options = array(
-    'cluster' => 'ap1',
-    'encrypted' => true
-  );
-  $pusher = new \Pusher(
-    '85af98d3bd88e572165f',
-    '1692b81c6311d8a679e4',
-    '219908',
-    $options
-  );
+    $options = array('cluster' => 'ap1', 'encrypted' => true);
+    $pusher = new \Pusher('85af98d3bd88e572165f', '1692b81c6311d8a679e4', '219908', $options );
 
-  $data['message'] = 'New Order !
+    $data['message'] = 'New Order !
   OrderId : '.$this->order->id.'
   '.Auth::user()->name.'
   '.$this->order->delivery_location->address ;

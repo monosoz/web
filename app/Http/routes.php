@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/w', function () {
-    return view('welcome');
-});
-
 Route::auth();
 
 Route::get('/about', function () { return view('static.about'); });
@@ -31,13 +27,13 @@ Route::post('/cart/clear', 'PagesController@clearcart');
 Route::post('/cart/applycoupon', 'PagesController@applycoupon');
 Route::post('/cart/{item}', 'PagesController@item');
 
-/*
-Route::get('/checkout', 'PagesController@index');
-*/
-
+if (env('OPEN')) {
 Route::get('/checkout', 'AuthPagesController@checkout');
 Route::patch('/checkout', 'AuthPagesController@selectaddress');
 Route::post('/checkout', 'AuthPagesController@cod');
+} else {
+Route::get('/checkout', 'PagesController@index');
+}
 
 Route::get('/user/address', 'AuthPagesController@addresses');
 Route::put('/user/address', 'AuthPagesController@address');

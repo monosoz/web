@@ -11,22 +11,11 @@
       <div class="panel panel-default">
         <div class="panel-heading">Checkout</div>
         <div class="panel-body">
-          <div>
-            <p>Name: {{$user->name}} <a class="pull-right" href="#">edit</a></p>
-            <p>Mobile Number: {{$user->mobile_number}} <a class="pull-right" href="#">edit</a></p>
-            <p>Email: {{$user->email}} <a class="pull-right" href="#">edit</a></p>
-          </div>
-          <hr>
-          <div>
-            <p>Delivery Address:</p>
             <div class="add-text col-xs-6">
-              <span class="add-field"><h>Name:</h></span><h>{{$selectadd->name}}</h><br>
-              <span class="add-field"><h>Contact:</h></span><h>{{$selectadd->mobile_number}}</h><br>
-              <span class="add-field"><h>Address:</h></span><h>{{$selectadd->address}}</h><br>
-              <span class="add-field"><h>Pincode:</h></span><h>{{$selectadd->pincode}}</h><br>
-            </div>
-            <div class="add-map col-xs-6 col-sm-4">
-              <img class="img-responsive pull-right" src={{"https://maps.googleapis.com/maps/api/staticmap?key=" . config('app.map_key') . "&center=28.5383277,77.1980605&zoom=11&size=200x200&maptype=roadmap&markers=color:red|" . $selectadd->lat . "," . $selectadd->lng}}>
+              <span class="add-field">Name:</span>{{$selectadd->name}}<br>
+              <span class="add-field">Contact:</span>{{$selectadd->mobile_number}}<br>
+              <span class="add-field">Address:</span>{{$selectadd->address}}<br>
+              <span class="add-field">Pincode:</span>{{$selectadd->pincode}}<br>
             </div>
             <div class="clearfix"></div>
             <hr>
@@ -36,8 +25,6 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs tabs-left sideways">
             <li class="active"><a href="#cod" data-toggle="tab">COD</a></li>
-            <li></li>
-            <li></li>
             <li></li>
             <li></li>
             <!--li><a href="#PayU" data-toggle="tab">PayU</a></li>
@@ -55,7 +42,7 @@
               <form class="btn pull-right" method="POST" action="{{ url('/checkout') }}">
                 {{ csrf_field() }}
                 <input type="hidden" name="total" value="{{ $user->cart->total }}">
-                <button>Confirm</button>
+                <button class="btn btn-success">Confirm</button>
               </form>
               </div>
             </div>

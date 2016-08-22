@@ -4,17 +4,21 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
+            @if(env('OPEN'))
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">Get Any Medium Pizza (12") @ 129!</h1>
                 <h3>use coupon code 'OFF100'</h3>
             </div>
             <span class="pull-right">*Limited Promotion</span>
-            <!--div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
+            @elseif(true)
+            <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
-            </div-->
-            <!--div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
+            </div>
+            @else
+            <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">Under Maintenance!</h1>
-            </div-->
+            </div>
+            @endif
         </div>
     </div>
 </div>

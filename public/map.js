@@ -39,7 +39,7 @@ function Reset(controlDiv, map) {
 function initMap() {
 
   map = new google.maps.Map(document.getElementById('new_map'), {
-    zoom: 12,
+    zoom: 14,
     center: monosoz_latlng,
     draggableCursor: 'pointer',
     draggingCursor: 'move',
