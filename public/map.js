@@ -5,18 +5,26 @@ var markers = [];
 function Reset(controlDiv, map) {
   controlDiv.style.padding = '8px';
   var controlUI = document.createElement('div');
-  controlUI.style.backgroundColor = 'rgb(255, 255, 255)';
-  controlUI.style.border='1px solid';
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border='none';
+  controlUI.style.outline = 'none';
+  controlUI.style.width = '28px';
+  controlUI.style.height = '28px';
+  controlUI.style.borderRadius = '2px';
+  controlUI.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
   controlUI.style.cursor = 'pointer';
-  controlUI.style.textAlign = 'center';
+  controlUI.style.marginRight = '10px';
+  controlUI.style.padding = '5px';
   controlUI.title = 'Reset';
   controlDiv.appendChild(controlUI);
   var controlText = document.createElement('div');
-  controlText.style.fontFamily='Roboto, Arial,sans-serif';
-  controlText.style.fontSize='11px';
-  controlText.style.paddingLeft = '4px';
-  controlText.style.paddingRight = '4px';
-  controlText.innerHTML = '<b>Reset<b>'
+  controlText.style.margin = '0px';
+  controlText.style.width = '18px';
+  controlText.style.height = '18px';
+  controlText.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
+  controlText.style.backgroundSize = '180px 18px';
+  controlText.style.backgroundPosition = '0px 0px';
+  controlText.style.backgroundRepeat = 'no-repeat';
   controlUI.appendChild(controlText);
 
   // Setup click-event listener: simply set the map to London

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 Use Shop;
+use Cookie;
 Use App\Location;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -163,10 +164,14 @@ class AuthPagesController extends Controller
         return view('feedback', ['user' => Auth::user(),]);
         
     }
-    public function addfeedback()
+    public function addfeedback(Request $request)
     {
 
-        return view('account', ['user' => Auth::user(),]);
+        $feedback = new \App\Feedback;
+        $feedback->comment = $request->message;
+        Auth::user()->feedbacks()->save($feedback);
+        Cookie::queue('cartStatus', 3);
+        return redirect('/');
         
     }
 }

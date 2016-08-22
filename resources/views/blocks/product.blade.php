@@ -10,7 +10,7 @@
         <span class="pname">Custom Pizza</span>
         <p class="textclip">Be Your Own Chef...<br>Make Your Own Pizza!</p>
         <div class="buy-form">
-          <button type="submit" class="btn btn-primary" disabled>
+          <button type="submit" class="btn btn-success" disabled>
             <i class="fa fa-inr"></i><span class="prod-price">***</span>
           </button>
         </div>
@@ -40,7 +40,7 @@
         <img class="pthumb" src="img/IMG_5221s.png">
         <span class="pname">Coming Soon...</span>
         <div class="buy-form">
-          <button type="submit" class="btn btn-primary" disabled>
+          <button type="submit" class="btn btn-success" disabled>
             <i class="fa fa-inr"></i><span class="prod-price">***</span>
           </button>
         </div>

@@ -31,13 +31,13 @@ Route::post('/cart/clear', 'PagesController@clearcart');
 Route::post('/cart/applycoupon', 'PagesController@applycoupon');
 Route::post('/cart/{item}', 'PagesController@item');
 
-Route::get('/checkout', 'PagesController@index');
-
 /*
+Route::get('/checkout', 'PagesController@index');
+*/
+
 Route::get('/checkout', 'AuthPagesController@checkout');
 Route::patch('/checkout', 'AuthPagesController@selectaddress');
 Route::post('/checkout', 'AuthPagesController@cod');
-*/
 
 Route::get('/user/address', 'AuthPagesController@addresses');
 Route::put('/user/address', 'AuthPagesController@address');
@@ -51,6 +51,7 @@ Route::get('/account', 'AuthPagesController@account');
 
 Route::get('/feedback', 'AuthPagesController@feedback');
 Route::post('/feedback', 'AuthPagesController@addfeedback');
+Route::post('/contactus', 'PagesController@addmessage');
 
 
 Route::get('/orders0CCAC', 'ShopOperator@orders');

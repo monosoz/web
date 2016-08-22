@@ -8,15 +8,15 @@
         <div class="panel-heading">Feedback</div>
         <div class="panel-body">
           <div>
-            <p>Name: {{$user->name}} <!--a class="pull-right" href="#">edit</a--></p>
-            <!--p>Mobile Number: {{$user->mobile_number}} <a class="pull-right" href="#">edit</a></p-->
-            <p>Email: {{$user->email}} <!--a class="pull-right" href="#">edit</a--></p>
+            <p>Name: {{$user->name}}</p>
+            <p>Phone: {{$user->mobile_number}}</p>
+            <p>Email: {{$user->email}}</p>
           </div>
           <hr>
           <div>
             <div class="clearfix">
 <form id="contact-form" method="post" action="{{ url('/feedback') }}" role="form">
-
+{{ csrf_field() }}
     <div class="messages"></div>
 
     <div class="controls">
@@ -48,9 +48,4 @@
     </div>
   </div>
 </div>
-@endsection
-
-@section('scripts')
-    <script src="https://maps.googleapis.com/maps/api/js?key={{config('app.map_key')}}"></script>
-    <script src="{{ url('map.js') }}"></script>
 @endsection

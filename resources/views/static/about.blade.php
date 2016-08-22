@@ -11,7 +11,7 @@
 		</div>
         <div class="panel-body">
 
-<p><strong>monosoz</strong> was incorporated in 2106 and has been in business since August 2016. We, at Monosoz, aim at delivering delicious pizzas of exceptional quality that are also value for money. The entire pizza making process, right from mixing the dough to delivering it to your doorstep, is carried out by our team of dedicated individuals who strive every day to ensure that you have a wonderful experience with us. We are also constantly working to bring to you a wide variety of pizzas to suit your taste buds. Hope you enjoy our pizza.<p>
+<p><strong style="font-size:16px;">monosoz</strong> was incorporated in 2106 and has been in business since August 2016.</p><p>We, at monosoz, aim at delivering delicious pizzas of exceptional quality that are also value for money. The entire pizza making process, right from mixing the dough to delivering it to your doorstep, is carried out by our team of dedicated individuals who strive every day to ensure that you have a wonderful experience with us. We are also constantly working to bring to you a wide variety of pizzas to suit your taste buds. Hope you enjoy our pizza.<p>
 
         </div>
       </div>

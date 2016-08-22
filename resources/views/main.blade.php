@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<nav class="top-bar">
+        <div class="">
+            <a class="" href="{{ url('/feedback') }}"><strong>We would love to hear from you. </strong><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+</nav>
     <div class="container">
         @include('blocks.product')
     </div>
@@ -47,13 +52,32 @@
 </div>
       </div>
     </div>
-@include('blocks.welcome')
+
+@if($cart_status==3)
+  @include('blocks.feedbacksaved')
+@elseif($cart_status==4)
+  @include('blocks.messagesaved')
+@elseif($cart_status!=2)
+  @include('blocks.welcome')
+@endif
 @endsection
 @section('scripts')
   @if($cart_status==1)
     <script type="text/javascript">
         $(window).load(function(){
             $('#app-cart-modal').modal('show');
+        });
+    </script>
+  @elseif($cart_status==3)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#fModal').modal('show');
+        });
+    </script>
+  @elseif($cart_status==4)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#mModal').modal('show');
         });
     </script>
   @elseif($cart_status!=2)
@@ -63,5 +87,10 @@
         });
     </script>
   @endif
+    <script>
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip(); 
+      });
+    </script>
     <script src="{{ url('sc02.js') }}"></script>
 @endsection

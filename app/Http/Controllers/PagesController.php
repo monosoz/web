@@ -188,5 +188,25 @@ class PagesController extends Controller
         }
         return redirect()->back();
     }
+    public function addmessage(Request $request)
+    {
+        if (Auth::check()) {
+            $feedback = new \App\Feedback;
+            $feedback->name = Auth::user()->name;
+            $feedback->comment = $request->message;
+            Auth::user()->feedbacks()->save($feedback);
+        } else {
+            $feedback = new \App\Feedback;
+            $feedback->name = $request->name;
+            $feedback->comment = "Name: " .$request->name.";
+Email: ".$request->email."; 
+Phone: ".$request->phone."; 
+Message: ".$request->message ;
+            $feedback->save();
+        }
+        Cookie::queue('cartStatus', 4);
+        return redirect('/');
+        
+    }
 
 }
