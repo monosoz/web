@@ -64,3 +64,7 @@
     </div>
 </div>
 @endsection
+
+@section('meta')
+    <meta name="robots" content="noindex">
+@endsection

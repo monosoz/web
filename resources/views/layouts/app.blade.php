@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="NNe2MBgqK8T4UN2b1KA-Xc3UNnao_jp7W646odYM-vI" />
+    @yield('meta')
 
     <title>monosoz - Online Food Delivery</title>
 
@@ -44,7 +45,7 @@
 
                 <!-- Branding Image -->
                 <a class="home-logo" href="{{ url('/') }}">
-                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" alt="mono" />
+                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" alt="monosoz" />
                 </a>
             </div>
 
