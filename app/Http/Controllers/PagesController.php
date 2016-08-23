@@ -66,9 +66,11 @@ class PagesController extends Controller
                 $this->cs = session('cartStatus');
             }
             if ($request->r=='fb') {
-                $this->cs = 0;
+                session(['cartStatus' => 0]);
+                return redirect('/');
             }elseif ($request->r=='off100') {
-                $this->cs = 5;
+                session(['cartStatus' => 5]);
+                return redirect('/');
             }
 
             
