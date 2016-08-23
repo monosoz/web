@@ -80,7 +80,7 @@ class PagesController extends Controller
 
         $this->cart->add(Variant::findOrFail($request->get('id')));
 
-        session(['cartStatus' => 0]);
+        session(['cartStatus' => 2]);
         return redirect()->back();
     }
     public function add_custom(AddToCart $request)
@@ -124,7 +124,7 @@ class PagesController extends Controller
                 }
             }
         }
-        session(['cartStatus' => 0]);
+        session(['cartStatus' => 2]);
         return redirect()->back();
     }
 
