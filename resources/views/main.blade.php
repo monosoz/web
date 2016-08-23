@@ -57,7 +57,7 @@
   @include('blocks.feedbacksaved')
 @elseif($cart_status==4)
   @include('blocks.messagesaved')
-@elseif($cart_status!=2)
+@elseif($cart_status==2)
   @include('blocks.welcome')
 @endif
 @endsection
@@ -66,6 +66,12 @@
     <script type="text/javascript">
         $(window).load(function(){
             $('#app-cart-modal').modal('show');
+        });
+    </script>
+  @elseif($cart_status==2)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#wModal').modal('show');
         });
     </script>
   @elseif($cart_status==3)
@@ -78,12 +84,6 @@
     <script type="text/javascript">
         $(window).load(function(){
             $('#mModal').modal('show');
-        });
-    </script>
-  @elseif($cart_status!=2)
-    <script type="text/javascript">
-        $(window).load(function(){
-            $('#wModal').modal('show');
         });
     </script>
   @endif

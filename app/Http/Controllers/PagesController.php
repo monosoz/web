@@ -56,14 +56,22 @@ class PagesController extends Controller
         }
     }
 
-    public function index()
+    public function index(Request $request)
     {
-
             if (session()->has('cartStatus')) {
                 $this->cs = session('cartStatus');
+                session(['cartStatus' => 0]);
             } else {
                 session(['cartStatus' => 0]);
+                $this->cs = session('cartStatus');
             }
+            if ($request->r=='fb') {
+                $this->cs = 0;
+            }elseif ($request->r=='off100') {
+                $this->cs = 5;
+            }
+
+            
         return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $this->cs,]);
     }
 
@@ -72,7 +80,7 @@ class PagesController extends Controller
 
         $this->cart->add(Variant::findOrFail($request->get('id')));
 
-        session(['cartStatus' => 2]);
+        session(['cartStatus' => 0]);
         return redirect()->back();
     }
     public function add_custom(AddToCart $request)
@@ -116,7 +124,7 @@ class PagesController extends Controller
                 }
             }
         }
-        session(['cartStatus' => 2]);
+        session(['cartStatus' => 0]);
         return redirect()->back();
     }
 

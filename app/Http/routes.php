@@ -11,14 +11,14 @@
 |
 */
 
+Route::get('/', 'PagesController@index');
+
 Route::auth();
 
 Route::get('/about', function () { return view('static.about'); });
 Route::get('/policy', function () { return view('static.policy'); });
 Route::get('/terms', function () { return view('static.terms'); });
 Route::get('/contact', function () { return view('static.contact'); });
-
-Route::get('/', 'PagesController@index');
 
 Route::post('/cart', 'PagesController@cart');
 Route::post('/add_custom', 'PagesController@add_custom');
