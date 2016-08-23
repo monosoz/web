@@ -42,16 +42,16 @@
                 <div class="col-sm-6">
                 @include('blocks.addressform')
                 <div id="mapinput"></div>
-<div class="col-md-6 col-md-offset-4 pull-right">
+<div class="col-md-6 col-md-offset-4">
   <button type="submit" class="btn btn-primary">
     <i class="fa fa-btn fa-user"></i> Add Address
   </button>
 </div>
+<div class="clearfix"></div>
                 </div>
                 <div class="col-sm-6">
                   <div id="new_map"></div>
                 </div>
-<p class="text-muted"><strong>*</strong> These fields are required.</p>
               </form>
             </div>
           </div>
