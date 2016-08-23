@@ -250,6 +250,7 @@ a:-webkit-any-link {
 .buy-form{
     position: absolute;
     bottom: 5px;
+    padding-right: 15px;
 }
 .buy-form>button{
 
