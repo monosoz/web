@@ -45,8 +45,8 @@
         <label class="tp-card base-size" for="szr">Regular : 10"</label><br>
         <input checked="checked" id="szm" type="radio" name="sz" value="m">
         <label class="tp-card base-size" for="szm">Medium : 12"</label><br>
-        <input id="szl" type="radio" name="sz" value=""  disabled>
-        <label class="base-size" for="szl" style="cursor:not-allowed;"> Large : 14"</label>
+        <input id="szl" type="radio" name="sz" value="l">
+        <label class="tp-card base-size" for="szl"> Large : 14"</label>
     </div>
     </div>
 </div>

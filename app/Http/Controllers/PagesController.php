@@ -59,11 +59,12 @@ class PagesController extends Controller
     public function index()
     {
 
-        $cs = Cookie::get('cartStatus');
-        $ws = Cookie::get('welcomeStatus');
-        Cookie::queue('cartStatus', 0);
-        Cookie::queue('welcomeStatus', $ws+1);
-        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $cs, 'ws' => $ws,]);
+            if (session()->has('cartStatus')) {
+                $this->cs = session('cartStatus');
+            } else {
+                session(['cartStatus' => 0]);
+            }
+        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $this->cs,]);
     }
 
     public function cart(Request $request)
@@ -71,7 +72,7 @@ class PagesController extends Controller
 
         $this->cart->add(Variant::findOrFail($request->get('id')));
 
-        Cookie::queue('cartStatus', 2);
+        session(['cartStatus' => 2]);
         return redirect()->back();
     }
     public function add_custom(AddToCart $request)
@@ -115,7 +116,7 @@ class PagesController extends Controller
                 }
             }
         }
-        Cookie::queue('cartStatus', 2);
+        session(['cartStatus' => 2]);
         return redirect()->back();
     }
 
@@ -126,7 +127,7 @@ class PagesController extends Controller
         } elseif ( $request->get('action') == 'add' ) {
             $this->cart->add(['sku' => $item]);
         }
-        Cookie::queue('cartStatus', 1);
+        session(['cartStatus' => 1]);
         return redirect()->back();
     }
 
@@ -135,13 +136,13 @@ class PagesController extends Controller
         if ( $request->get('action') == 'clear' ) {
             $this->cart->clear();
         }
-        Cookie::queue('cartStatus', 1);
+        session(['cartStatus' => 1]);
         return redirect()->back();
     }
 
     public function applycoupon(Request $request)
     {
-        Cookie::queue('cartStatus', 1);
+        session(['cartStatus' => 1]);
         $this->validate($request, [
             'code' => 'required|exists:coupons,code',
         ]);
@@ -204,7 +205,7 @@ Phone: ".$request->phone.";
 Message: ".$request->message ;
             $feedback->save();
         }
-        Cookie::queue('cartStatus', 4);
+        session(['cartStatus' => 4]);
         return redirect('/');
         
     }
