@@ -31,7 +31,7 @@ function Reset(controlDiv, map) {
   google.maps.event.addDomListener(controlUI, 'click', function() {
 
     geolocate();
-    map.setZoom(12);
+    map.setZoom(13);
     map.setCenter(monosoz_latlng)
   });
 }
@@ -39,7 +39,7 @@ function Reset(controlDiv, map) {
 function initMap() {
 
   map = new google.maps.Map(document.getElementById('new_map'), {
-    zoom: 14,
+    zoom: 13,
     center: monosoz_latlng,
     draggableCursor: 'pointer',
     draggingCursor: 'move',

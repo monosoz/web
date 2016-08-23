@@ -6,15 +6,15 @@
     <div class="buy-form">
       @foreach ($product->variants->all() as $variant)
       @if(substr("$variant->sku", -1)==='L')
-      <button type="submit" class="btn btn-success" data-toggle="tooltip" title='14"' disabled>
+      <button type="submit" class="btn btn-success" name="id" value="{{$variant->id}}" data-toggle="tooltip" title='Large 14"'>
         <i class="fa fa-inr"></i><span class="prod-price">{{$variant->price+0}}</span>
       </button>
       @elseif(substr("$variant->sku", -1)==='M')
-      <button type="submit" class="btn btn-success" name="id" value="{{$variant->id}}" data-toggle="tooltip" title='12"'>
+      <button type="submit" class="btn btn-success" name="id" value="{{$variant->id}}" data-toggle="tooltip" title='Medium 12"'>
         <i class="fa fa-inr"></i><span class="prod-price">{{$variant->price+0}}</span>
       </button>
       @else
-      <button type="submit" class="btn btn-success" name="id" value="{{$variant->id}}" data-toggle="tooltip" title='10"'>
+      <button type="submit" class="btn btn-success" name="id" value="{{$variant->id}}" data-toggle="tooltip" title='Regular 10"'>
         <i class="fa fa-inr"></i><span class="prod-price">{{$variant->price+0}}</span>
       </button>
       @endif
