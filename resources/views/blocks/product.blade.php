@@ -6,7 +6,7 @@
   <div class="collapse in" id="tag1-collapse">
     <div class="iccon col-md-4 col-sm-6">
       <div class="itemcard card clearfix">
-        <img class="pthumb" src="img/IMG_5225s.png">
+        <img class="pthumb" src="{{ url('img/custompizza.png') }}">
         <span class="pname">Custom Pizza</span>
         <p class="textclip">Be Your Own Chef...<br>Make Your Own Pizza!</p>
         <div class="buy-form">

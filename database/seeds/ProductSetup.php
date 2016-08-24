@@ -66,16 +66,10 @@ class ProductSetup extends Seeder
 		    		'name' 			=> 'Extra Cheese',
 		    ],
 		    [
-		    		'id'			=> '2',
-		    		'sku'			=> 'REGURALBASE',
-		    		'price'			=> '0',
-		    		'name' 			=> 'Regular Base',
-		    ],
-		    [
 		    		'id'			=> '3',
-		    		'sku'			=> 'REGURALBASE',
+		    		'sku'			=> 'REGULARBASE',
 		    		'price'			=> '0',
-		    		'name' 			=> 'Regular Base',
+		    		'name' 			=> 'Regular',
 		    ],
 		    [
 		    		'id'			=> '4',

@@ -5,13 +5,14 @@
             appearance:none;
 }
 .tp-main{
-  max-width: 310px;
+  max-width: 400px;
+  margin: auto;
 }
 
 .tp-selector input:active +.base-size, .tp-selector input:active +.tp-card{opacity: .9;}
 .tp-selector input:checked +.base-size, .tp-selector input:checked +.tp-card{
-    -webkit-filter: brightness(1.8) grayscale(.2) opacity(.7);  -card     -moz-filter: brightness(1.8) grayscale(.2) opacity(.7);
-            filter: brightness(1.8) grayscale(.2) opacity(.7);
+    -webkit-filter: brightness(.8) grayscale(.2) opacity(.9);  -card     -moz-filter: brightness(.8) grayscale(.2) opacity(.9);
+            filter: brightness(.8) grayscale(.2) opacity(.9);
 }
 .tp-card{
     cursor:pointer;
@@ -30,37 +31,38 @@
             filter: brightness(1.2) grayscale(.5) opacity(.9);
 }
 .tp-card{
+    border-radius: 3px;
     width: 100%;
     text-align: center;
+    display: inline-flex;
 }
 .tp-card-vt{
-    background-color: rgba(1, 197, 79, 0.12);
-    border-width: 2px;
-    border-style: solid;
-    border-color: #070;
-    height: 32px;
+    background-color: #090;
+    height: 36px;
 }
 .tp-card-nvt{
-    background-color: rgba(190, 0, 0, 0.08);
-    border-width: 2px;
-    border-style: solid;
-    border-color: #d00;
-    height: 32px;
+    background-color: #900;
+    height: 36px;
 }
 .tp-card-c{
     padding: 0px;
-    padding-right: 2px;
-    min-width: 150px;
+    padding-right: 4px;
 }
 .base-size{
   background-color: rgba(90, 90, 90, 0.7);
   text-align: center;
   width: 7em;
 }
+.bo-con{
+  width: 100px;
+  margin:auto;
+}
+.bo-con>label{display: block;
+}
 .add-cheese{
   background-color: rgba(90, 90, 90, 0.7);
   text-align: center;
-  width: 12em;
+  height: 36px;
 }
 
 /* Extras 
@@ -79,51 +81,40 @@ span.tp{ color:#6d84b4 }
 .pmthumb {
                 border-radius: 50%;
                 overflow: hidden;
-                position: absolute;
-                right: 10px;
                 width: 200px;
                 height: 200px;
-                display: none;
             }
 .pmsize {
-                position: absolute;
-                top: 220px;
+
             }
 .pmthumb img {
-                display: block;
-            /* Stretch 
-                  height: 100%;
-                  width: 100%; */
+            display: block;
             min-width: 100%;
             min-height: 100%;
             }
 
 .tpthumb {
-                border-radius: 50%;
-                overflow: hidden;
-                width: 2em;
-                height: 2em;
+            height: 36px;
+            width: 60px;
+            float: left;
+            }
+.tpthumb>img {
+            display: block;
+            width: auto;
+            height: 100%;
+            margin: auto;
+            }
+.tp-card-nvt>img {
                 display: none;
             }
-.tpthumb img {
-            display: block;
-            /* Stretch 
-                  height: 100%;
-                  width: 100%; */
-            min-width: 100%;
-            min-height: 100%;
-            }
 .tpname{
-    font-size: 1em;
-    padding-left: .2em;
-    overflow: hidden;
+
+  line-height: 32px;
+  min-width: 80px;
 }
 .tp-total{
   padding-right: 10px;
 }
 .vModal-body{
   min-height: 400px;
-}
-.bs-selector{
-  margin-left: 10px;
 }

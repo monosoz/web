@@ -1,8 +1,8 @@
 <link href="{{ url('st02.css') }}" rel="stylesheet">
 <div class="modal fade" id="vModal" tabindex="-1" role="dialog" aria-labelledby="customize" aria-hidden="false">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="tp-content modal-content">
+            <div class="modal-header" style="border-bottom: 2px solid #222;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -11,36 +11,15 @@
             <div class="vModal-body modal-body">
 <input id="custom-id" type="hidden" name="p_id" value="">
 <div class="row">
-<div class="col-sm-8 col-xs-6">
-    <div class="tp-selector tp-main">
-    <p>Veg Topping: </p>
-      @foreach ($tags->find(1)->addons as $addon)
-      <div class="col-sm-6 tp-card-c">
-        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}"/>
-        <label class="tp-card tp-card-vt" for="vt{{$addon->id}}">
-        <img class="tpthumb" src="data:image/jpeg;base64,{{base64_encode($addon->image)}}">
-        <span class="tpname">{{$addon->name}}</span></label>
+<div class="col-sm-5">
+    <div class="pmsize row">
+    <div class="col-xs-6">
+        <img class="pmthumb" src="{{ url('img/custompizzal.png') }}">
     </div>
-      @endforeach
-    </div>
-    <div class="tp-selector tp-main">
-    <p>Non-Veg Topping: </p>
-      @foreach ($tags->find(2)->addons as $addon)
-      <div class="col-sm-6 tp-card-c">
-        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}" disabled/>
-        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}" style="cursor:not-allowed;">
-        <img class="tpthumb" src="data:image/jpeg;base64,{{base64_encode($addon->image)}}">
-        <span class="tpname">{{$addon->name}}</span></label>
-      </div>
-      @endforeach
-    </div>
-</div>
+    <div class="tp-selector col-xs-6">
+        <p>Size:</p>
 
-<div class="col-sm-4 col-xs-6" style="min-height:340px;">
-    <img class="pmthumb" src="">
-    <div class="pmsize">
-    <p>Size:</p>
-    <div class="tp-selector bs-selector">
+    <div class="bo-con">
         <input id="szr" type="radio" name="sz" value="r">
         <label class="tp-card base-size" for="szr">Regular : 10"</label><br>
         <input checked="checked" id="szm" type="radio" name="sz" value="m">
@@ -49,17 +28,43 @@
         <label class="tp-card base-size" for="szl"> Large : 14"</label>
     </div>
     </div>
+    </div>
 </div>
+<div class="col-sm-7">
+    <div class="tp-selector tp-main clearfix">
+    <p>Veg Topping: </p>
+      @foreach ($tags->find(1)->addons as $addon)
+      <div class="col-xs-6 tp-card-c">
+        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}"/>
+        <label class="tp-card tp-card-vt" for="vt{{$addon->id}}">
+        <div class="tpthumb"><img src="{{url('img/tp/' . $addon->id . '.png')}}"></div>
+        <span class="tpname">{{$addon->name}}</span></label>
+    </div>
+      @endforeach
+    </div>
+    <div class="tp-selector tp-main clearfix">
+    <p>Non-Veg Topping: </p>
+      @foreach ($tags->find(2)->addons as $addon)
+      <div class="col-xs-6 tp-card-c">
+        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}" disabled/>
+        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}" style="cursor:not-allowed;">
+        <img class="tpthumb" src="">
+        <span class="tpname">{{$addon->name}}</span></label>
+      </div>
+      @endforeach
+    </div>
+</div>
+
 </div>
             </div>
-<div class="modal-footer">
-    <div class="tp-selector col-sm-6">
+<div class="modal-footer" style="border-top: 2px solid #222;">
+    <div class="tp-selector col-xs-6">
         <input id="aec" type="checkbox" name="top_id[]" value="1" />
         <label class="tp-card add-cheese" for="aec">
         <img class="tpthumb" src="">
-        Add Extra Cheese</label><br/>
+        <span class="tpname">Add Extra Cheese</span></label><br/>
     </div>
-    <div class="col-sm-6">
+    <div class="col-xs-6">
         <!--span>Total:&nbsp</span><i class="fa fa-inr"></i><span class="tp-total">0</span-->
         <input type="reset" value="Reset" class="btn">
         <input type="submit" value="Submit" class="btn">
