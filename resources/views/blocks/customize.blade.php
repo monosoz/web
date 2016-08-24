@@ -58,17 +58,19 @@
 </div>
             </div>
 <div class="modal-footer" style="border-top: 2px solid #222;">
+<div class="row">
     <div class="tp-selector col-xs-6">
         <input id="aec" type="checkbox" name="top_id[]" value="1" />
         <label class="tp-card add-cheese" for="aec">
-        <img class="tpthumb" src="">
-        <span class="tpname">Add Extra Cheese</span></label><br/>
+        <img class="tpthumb" src="" style="display:none;">
+        <span class="tpname">&nbspAdd Extra Cheese</span></label><br/>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-6" style="white-space: nowrap;">
         <!--span>Total:&nbsp</span><i class="fa fa-inr"></i><span class="tp-total">0</span-->
-        <input type="reset" value="Reset" class="btn">
-        <input type="submit" value="Submit" class="btn">
+        <input type="reset" value="Reset" class="btn btn-primary">
+        <input type="submit" value="Submit" class="btn btn-primary">
     </div>
+</div>
 </div>
         </div>
     </div>
