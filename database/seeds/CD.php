@@ -12,11 +12,6 @@ class CD extends Seeder
     public function run()
     {
 
-    	Schema::table('variants', function($table)
-        {
-            $table->decimal('tax', 20, 2)->default(0)->after('price');
-        });
-
 		DB::table('products')->insert([
     		[
 		    		'id'			=> '101',
