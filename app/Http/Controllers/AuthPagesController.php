@@ -33,7 +33,11 @@ class AuthPagesController extends Controller
 
     public function checkout()
     {
-        return view('checkout', ['user' => Auth::user(),]);
+        if (Auth::user()->cart->count==0) {
+            return redirect('/');
+        } else {
+            return view('checkout', ['user' => Auth::user(),]);
+        }
     }
 
     public function addresses()
@@ -83,7 +87,7 @@ class AuthPagesController extends Controller
         $location->usercomment = $request->comment;
         $location->update = substr($location->updated_at, -8);
         Auth::user()->locations()->save($location);
-        return redirect($request->requrl);
+        return $request->requrl;
         
     }
 

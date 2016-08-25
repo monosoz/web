@@ -96,6 +96,8 @@
                     <a href="{{ url('/contact') }}">Contact Us</a>
                 </li>
             </ul>
+
+            <a href="https://www.facebook.com/monosoz" class="pull-right" style="padding: 4px;"><img src="{{ url('/img/fbs.png') }}">&nbsp</a>
         </div>
     </footer>
 
