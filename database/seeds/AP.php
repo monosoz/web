@@ -12,39 +12,7 @@ class AP extends Seeder
      */
     public function run()
     {
-        $i = 5;
-            DB::table('products')->insert([
-                [
-                    'id'            => '5',
-                    'name' => 'Special Mushroom' ,
-                    'description' => 'Mushroom, Chopped Onion, Tomato, Black Olive, Jalapeno.'
-                ],
-            	[
-                    'id'            => '6',
-                    'name' => 'Veggie Delux' ,
-                    'description' => 'Babycorn, Capcisum, Chopped Onion, Golden Corn, Jalapeno.'
-                ],
-            	[
-                    'id'            => '7',
-                    'name' => 'Sweet Tango' ,
-                    'description' => 'Babycorn, Onion Rings, Jalapeno, Tomato, Green Olive, Black Olive.'
-                ],
-            	[
-                    'id'            => '8',
-                    'name' => 'Veg Extravaganza' ,
-                    'description' => 'Onion Rings, Capcisum, Tomato, Golden Corn, Black Olives, Jalapeno.'
-                ],
-            	[
-                    'id'            => '9',
-                    'name' => 'Olive Garden' ,
-                    'description' => 'Green Olive, Black Olive, Babycorn, Chopped Onion, Paneer.'
-                ],
-            	[
-                    'id'            => '10',
-                    'name' => 'Corn Delux' ,
-                    'description' => 'Caramelized Onion Sauce with Babycorn, Golden Corn, Capcisum, Mushroom, Tomato, Jalapeno.'
-                ],
-            ]);
+        $i = 1;
 
         foreach (Product::all() as $product) {
             $sku = 'PIZZA010';
@@ -81,6 +49,7 @@ class AP extends Seeder
                     'tag_id' => 1,
                 ]);
             }
+            $i++;
         }
     }
 }
