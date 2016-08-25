@@ -278,6 +278,7 @@ class ComposerStaticInit98921dcadeb4149da467f5d572452f42
     );
 
     public static $classMap = array (
+        'AP' => __DIR__ . '/../..' . '/database/seeds/AP.php',
         'AddressSetupTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_25_164912_address_setup_table.php',
         'Amsgames\\LaravelShop\\MigrationCommand' => __DIR__ . '/..' . '/monosoz/laravel-shop/src/Commands/MigrationCommand.php',
         'CD' => __DIR__ . '/../..' . '/database/seeds/CD.php',

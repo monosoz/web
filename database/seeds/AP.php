@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 use App\Product;
 
-class Fake extends Seeder
+class AP extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,46 +12,35 @@ class Fake extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        $i = 1;
+        $i = 5;
             DB::table('products')->insert([
                 [
-                    'name' => 'Veg Fiesta' ,
-                    'description' => 'Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
-                ],
-            	[
-                    'name' => 'Margherita' ,
-                    'description' => 'Too Much Cheese!'
-                ],
-            	[
-                    'name' => 'Butter Onion Blast' ,
-                    'description' => 'Butter, Onion, Onion, Onion.'
-                ],
-            	[
-                    'name' => 'Earthy Delight' ,
-                    'description' => 'Mushroom, Paneer, Golden Corn, Onion Rings.'
-                ],
-            	[
+                    'id'            => '5',
                     'name' => 'Special Mushroom' ,
                     'description' => 'Mushroom, Chopped Onion, Tomato, Black Olive, Jalapeno.'
                 ],
             	[
+                    'id'            => '6',
                     'name' => 'Veggie Delux' ,
                     'description' => 'Babycorn, Capcisum, Chopped Onion, Golden Corn, Jalapeno.'
                 ],
             	[
+                    'id'            => '7',
                     'name' => 'Sweet Tango' ,
                     'description' => 'Babycorn, Onion Rings, Jalapeno, Tomato, Green Olive, Black Olive.'
                 ],
             	[
+                    'id'            => '8',
                     'name' => 'Veg Extravaganza' ,
                     'description' => 'Onion Rings, Capcisum, Tomato, Golden Corn, Black Olives, Jalapeno.'
                 ],
             	[
+                    'id'            => '9',
                     'name' => 'Olive Garden' ,
                     'description' => 'Green Olive, Black Olive, Babycorn, Chopped Onion, Paneer.'
                 ],
             	[
+                    'id'            => '10',
                     'name' => 'Corn Delux' ,
                     'description' => 'Caramelized Onion Sauce with Babycorn, Golden Corn, Capcisum, Mushroom, Tomato, Jalapeno.'
                 ],
@@ -67,6 +55,7 @@ class Fake extends Seeder
                     'product_id' => $product->id,
                     'sku' => $sku.$i.'R',
                     'price' => $price,
+                    'tax' => 0.125,
                     'name' => $product->name.'-Regular',
                     'type' => 'r',
                 ],
@@ -74,6 +63,7 @@ class Fake extends Seeder
                     'product_id' => $product->id,
                     'sku' => $sku.$i.'M',
                     'price' => $price+70,
+                    'tax' => 0.125,
                     'name' => $product->name.'-Medium',
                     'type' => 'm',
                 ],
@@ -81,6 +71,7 @@ class Fake extends Seeder
                     'product_id' => $product->id,
                     'sku' => $sku.$i.'L',
                     'price' => $price+140,
+                    'tax' => 0.125,
                     'name' => $product->name.'-Large',
                     'type' => 'l',
                 ],
