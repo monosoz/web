@@ -156,13 +156,14 @@ class PagesController extends Controller
         $this->validate($request, [
             'code' => 'required|exists:coupons,code',
         ]);
-        $ifc=Item::where('sku', '=', $request->get('code'))->first();
+        $reqcode=strtoupper($request->get('code'));
+        $ifc=Item::where('sku', '=', $reqcode)->first();
         if ($this->cart->items->where('price', '229.00')->count()==0) {
             Session::flash('couponMessage', 'Coupon not applicable.');
         }
         elseif ( $ifc==null||$ifc->order_id==null) {
-            Item::where('sku', '=', $request->get('code'))->where('order_id', '=', null)->delete();
-            GuestItem::where('sku', '=', $request->get('code'))->delete();
+            Item::where('sku', '=', $reqcode)->where('order_id', '=', null)->delete();
+            GuestItem::where('sku', '=', $reqcode)->delete();
             Item::where('sku', '=', 'OFF1006818')->where('order_id', '=', null)->delete();
             GuestItem::where('sku', '=', 'OFF1006818')->delete();
             Item::where('price', '<', 0)->where('cart_id', '=', $this->cart->id)->delete();
@@ -171,7 +172,7 @@ class PagesController extends Controller
                 ItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
             }
-            if ($request->get('code')=='OFF100') {
+            if ($reqcode=='OFF100') {
                 if (Auth::guest()) {
                     $itno=1;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
@@ -190,7 +191,7 @@ class PagesController extends Controller
                     }
                 }
             } else {
-                $this->cart->add(['sku' => $request->get('code'), 'price' => -229]);
+                $this->cart->add(['sku' => $reqcode, 'price' => -229]);
             }
             
         }

@@ -63,7 +63,7 @@
             {{ $item->displayName }}
             @elseif(substr($item->sku, 0, 4)==='FREE')
             Free Pizza
-            @else
+            @elseif(substr($item->sku, 0, 4)==='PROD')
             Custom Pizza
                 @if(substr($item->sku, -1)==='R')
                 -Regular
