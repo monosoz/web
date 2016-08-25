@@ -31,21 +31,21 @@ class CU extends Seeder
     	DB::table('addons')->insert([
             [
 		    		'id'			=> '41',
-		    		'sku'			=> 'SAUCE',
+		    		'sku'			=> 'SAUCE01241',
 		    		'price'			=> '0',
-		    		'name' 			=> 'Sauce',
+		    		'name' 			=> 'Standard Tomato Sauce',
 		    ],
         	[
 		    		'id'			=> '42',
-		    		'sku'			=> 'SAUCE',
+		    		'sku'			=> 'SAUCE01242',
 		    		'price'			=> '0',
-		    		'name' 			=> 'Sauce',
+		    		'name' 			=> 'Indian Masala Sauce',
 		    ],
         	[
 		    		'id'			=> '43',
-		    		'sku'			=> 'SAUCE',
+		    		'sku'			=> 'SAUCE01243',
 		    		'price'			=> '0',
-		    		'name' 			=> 'Sauce',
+		    		'name' 			=> 'Caramelized Onion Sauce',
 		    ],
         ]);
 

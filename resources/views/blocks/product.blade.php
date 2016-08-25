@@ -30,6 +30,17 @@
       @foreach ($tags->find(1)->products as $product)
       @include('blocks.itemcard')
       @endforeach
+      <div class="iccon col-md-4 col-sm-6">
+      <div class="itemcard card clearfix">
+        <img class="pthumb" src="{{ url('img/custompizza.png') }}">
+        <span class="pname">More Coming Soon...</span>
+        <div class="buy-form">
+          <button type="submit" class="btn btn-success" disabled>
+            <i class="fa fa-inr"></i><span class="prod-price">***</span>
+          </button>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 <div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tagt-collapse">> Non-Veg</div>
@@ -56,6 +67,15 @@
       @endforeach
     </div>
   </div-->
+
+  <div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tagt-collapse">> {{ $tags->find(51)->name }}</div>
+<div class="row tag-c">
+  <div class="collapse in" id="tagt-collapse">
+      @foreach ($tags->find(51)->products()->find(101)->variants as $product)
+      @include('blocks.colddrinkcard')
+      @endforeach
+  </div>
+</div>
 </form>
 <form action="{{ url('add_custom') }}" method="POST">
   {{ csrf_field() }}

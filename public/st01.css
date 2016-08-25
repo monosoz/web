@@ -38,11 +38,20 @@
             }
 .pthumb img {
                 display: block;
-            /* Stretch 
-                  height: 100%;
-                  width: 100%; */
-            min-width: 100%;
-            min-height: 100%;
+                min-width: 100%;
+                min-height: 100%;
+            }
+.cbthumb{
+                width: 45px;
+                height: 150px;
+                float: right;
+                background-color: transparent;
+    
+}
+.cbthumb img {
+                display: block;
+                min-width: 100%;
+                min-height: 100%;
             }
 .mthumb {
                 float: right;
