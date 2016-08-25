@@ -116,6 +116,12 @@ class PagesController extends Controller
                 $this->custom_item=$item;
             }
         }
+                $this->cart->add(Addon::findOrFail($request->base_id));
+                if (Auth::guest()) {
+                    $itemr=GuestItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> $this->custom_item->quantity,'child_id' => $request->base_id,]);
+                } else {
+                    $itemr=ItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> $this->custom_item->quantity,'child_id' => $request->base_id,]);
+                }
         if ($request->top_id!=null) {
             foreach ($request->top_id as $addon) {
                 $this->cart->add(Addon::findOrFail($addon));

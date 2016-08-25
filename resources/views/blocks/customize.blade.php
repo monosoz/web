@@ -17,15 +17,22 @@
         <img class="pmthumb" src="{{ url('img/custompizzal.png') }}">
     </div>
     <div class="tp-selector col-xs-6">
-        <p>Size:</p>
 
     <div class="bo-con">
+        <p>Size:</p>
         <input id="szr" type="radio" name="sz" value="r">
-        <label class="tp-card base-size" for="szr">Regular : 10"</label><br>
+        <label class="tp-card base-size" for="szr">Regular : 10"</label>
         <input checked="checked" id="szm" type="radio" name="sz" value="m">
-        <label class="tp-card base-size" for="szm">Medium : 12"</label><br>
+        <label class="tp-card base-size" for="szm">Medium : 12"</label>
         <input id="szl" type="radio" name="sz" value="l">
         <label class="tp-card base-size" for="szl"> Large : 14"</label>
+        <p>Base:</p>
+        <input id="b1" type="radio" name="base_id" value="4">
+        <label class="tp-card base-size" for="b1">Thin Crust</label>
+        <input checked="checked" id="b2" type="radio" name="base_id" value="3">
+        <label class="tp-card base-size" for="b2">Regular</label>
+        <input id="b3" type="radio" name="base_id" value="5">
+        <label class="tp-card base-size" for="b3">Double Dough</label>
     </div>
     </div>
     </div>
