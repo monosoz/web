@@ -68,9 +68,9 @@
     </div>
   </div-->
 
-  <div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tagt-collapse">> {{ $tags->find(51)->name }}</div>
+  <div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tagb-collapse">> {{ $tags->find(51)->name }}</div>
 <div class="row tag-c">
-  <div class="collapse in" id="tagt-collapse">
+  <div class="collapse in" id="tagb-collapse">
       @foreach ($tags->find(51)->products()->find(101)->variants as $product)
       @include('blocks.colddrinkcard')
       @endforeach
