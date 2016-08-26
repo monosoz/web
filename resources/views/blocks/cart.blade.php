@@ -36,7 +36,7 @@
                 </button>
             </form-->
         </td>
-    <tr>
+    <tr class="cart-addon">
         <td>
         <ul style="list-style: none;">
             @foreach ($item->rel->where('item_no', "$q") as $rel)

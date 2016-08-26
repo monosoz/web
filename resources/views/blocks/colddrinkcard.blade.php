@@ -1,5 +1,5 @@
 <div class="iccon col-md-2 col-sm-3 col-xs-6">
-  <div class="itemcard card clearfix">
+  <div class="cdcard card clearfix">
     <img class="cbthumb" src="img/items/{{$product->name}}.png">
     <span class="pname">{{$product->name}}</span>
     <div class="buy-form">

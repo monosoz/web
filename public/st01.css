@@ -121,6 +121,13 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+.cart-addon>td{
+    padding: 0px;
+    line-height: 0;
+}
+.cart-addon>td>ul>li{
+    margin: 0px;
+}
 .panel-footer{
     position: absolute;
     width: 100%;
@@ -159,6 +166,24 @@
     right: 5px;
 }
 .itemcard>button>div{
+    position: absolute;
+    top:0;bottom:0;left:0;right:0;
+}
+.cdcard{
+    background-color: #151515;
+    border: 0px solid #111;
+    height: 160px;
+    position: relative;
+    padding: 5px;
+    border-radius: 10px;
+    color: #fff;
+}
+.cdcard>button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.cdcard>button>div{
     position: absolute;
     top:0;bottom:0;left:0;right:0;
 }
