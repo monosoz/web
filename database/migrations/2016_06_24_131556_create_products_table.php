@@ -67,7 +67,6 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('sku');
             $table->decimal('price', 20, 2);
-            $table->decimal('tax', 20, 2)->default(0)
             $table->string('name');
             $table->integer('product_id')->unsigned();
             $table->string('type', 1);

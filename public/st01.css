@@ -31,8 +31,8 @@
 .pthumb {
                 border-radius: 50%;
                 overflow: hidden;
-                width: 150px;
-                height: 150px;
+                width: 200px;
+                height: 200px;
                 float: right;
                 background-color: transparent;
             }
@@ -147,7 +147,7 @@
 .itemcard{
     background-color: #151515;
     border: 0px solid #111;
-    height: 160px;
+    height: 210px;
     position: relative;
     padding: 5px;
     border-radius: 10px;

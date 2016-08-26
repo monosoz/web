@@ -153,9 +153,23 @@ class ProductSetup extends Seeder
 		    		'name' 			=> 'Salami Chicken',
 		    ],
             [
-                    'id'            => '101',
-                    'name'          => 'Cold Drink',
-            ],
+		    		'id'			=> '41',
+		    		'sku'			=> 'SAUCE01241',
+		    		'price'			=> '0',
+		    		'name' 			=> 'Standard Tomato Sauce',
+		    ],
+        	[
+		    		'id'			=> '42',
+		    		'sku'			=> 'SAUCE01242',
+		    		'price'			=> '0',
+		    		'name' 			=> 'Indian Masala Sauce',
+		    ],
+        	[
+		    		'id'			=> '43',
+		    		'sku'			=> 'SAUCE01243',
+		    		'price'			=> '0',
+		    		'name' 			=> 'Caramelized Onion Sauce',
+		    ],
         ]);
 
         foreach (range(11,20) as $index) {

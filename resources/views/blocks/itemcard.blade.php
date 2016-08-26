@@ -1,6 +1,6 @@
 <div class="iccon col-md-4 col-sm-6">
   <div class="itemcard card clearfix">
-    <img class="pthumb" src="data:image/jpeg;base64,{{base64_encode($product->image)}}">
+    <img class="pthumb" src="{{ url('img/" . $product->id . ".png') }}">
     <span class="pname">{{$product->name}}</span>
     <p class="textclip">{{$product->description}}</p>
     <div class="buy-form">

@@ -11,6 +11,13 @@ class CD extends Seeder
      */
     public function run()
     {
+        DB::table('products')->insert([
+            [
+                    'id' => 101,
+                    'name' => 'Cold Drink' ,
+                    'description' => 'Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
+            ],
+        ]);
 
     	DB::table('variants')->insert([
     		[
