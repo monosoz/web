@@ -36,7 +36,7 @@
           @include('blocks.cart')
       </div>
       <div class="panel-footer">
-        <a href="{{url('checkout')}}" class="btn">Checkout: <i class="fa fa-inr"></i>&nbsp{{ $cart->total }}</a>
+        <a href="{{url('checkout')}}" class="btn btn-default">Checkout: <i class="fa fa-inr"></i>&nbsp{{ number_format($cart->total, 0) }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         <form action="{{ url('cart/applycoupon' ) }}" method="POST" class="pull-right input-group" style="width:50%;">
           {{ csrf_field() }}
           <input type="text"  name="code" placeholder="Apply Coupon" class="form-control">
