@@ -69,7 +69,10 @@ class AuthPagesController extends Controller
         $location->lat = $request->lat;
         $location->lng = $request->lng;
         $location->usercomment = $request->comment;
-        Auth::user()->locations()->save($location);
+        $location->user_id = Auth::user()->id;
+        $location->save();
+        session(['selectaddress' => $location->id]);
+        return view('checkoutpay', ['user' => Auth::user(), 'selectadd' => $location,]);
         return redirect()->back();
         
     }

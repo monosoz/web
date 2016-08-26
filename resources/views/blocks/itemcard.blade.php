@@ -1,7 +1,7 @@
 <div class="iccon col-md-4 col-sm-6">
   <div class="itemcard card clearfix">
     <img class="pthumb" src="{{ url("img/items/" . $product->id . ".png") }}">
-    <span class="pname">{{$product->name}}</span>
+    <strong class="pname">{{$product->name}}</strong>
     <p class="textclip">{{$product->description}}</p>
     <div class="buy-form">
       @foreach ($product->variants->all() as $variant)

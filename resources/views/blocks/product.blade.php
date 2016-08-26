@@ -7,7 +7,7 @@
     <div class="iccon col-md-4 col-sm-6">
       <div class="itemcard card clearfix">
         <img class="pthumb" src="{{ url('img/custompizza.png') }}">
-        <span class="pname">Custom Pizza</span>
+        <strong class="pname">Custom Pizza</strong>
         <p class="textclip">Be Your Own Chef...<br>Make Your Own Pizza!</p>
         <div class="buy-form">
           <button type="submit" class="btn btn-success" disabled>
@@ -38,7 +38,7 @@
     <div class="iccon col-md-4 col-sm-6">
       <div class="itemcard card clearfix">
         <img class="pthumb" src="{{ url('img/nonveg.png') }}">
-        <span class="pname">Coming Soon...</span>
+        <strong class="pname">Coming Soon...</strong>
         <div class="buy-form">
           <button type="submit" class="btn btn-success" disabled>
             <i class="fa fa-inr"></i><span class="prod-price">***</span>

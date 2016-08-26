@@ -106,11 +106,6 @@
     border: none;
     z-index: 1051;
 }
-@media(max-width:350px) {
-    .cart {
-    width: 320px;
-}
-}
 .cart-table>tbody>tr>td{
     min-width: 6em;
 }
@@ -317,4 +312,16 @@ body {
 html {
 position: relative;
 min-height: 100%;
+}
+@media(max-width:350px) {
+    .cart {
+        width: 320px;
+    }
+    .itemcard{
+        height: 160px;
+    }
+    .pthumb {
+        width: 150px;
+        height: 150px;
+    }
 }
