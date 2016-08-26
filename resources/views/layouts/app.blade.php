@@ -87,7 +87,7 @@
                     <a href="{{ url('/about') }}">About Us</a>
                 </li>
                 <li class="footer-li">
-                    <a href="{{ url('/policy') }}">Privacy Policies</a>
+                    <a href="{{ url('/policy') }}">Privacy Policy</a>
                     </li>
                 <li class="footer-li">
                     <a href="{{ url('/terms') }}">Terms and Conditions</a>

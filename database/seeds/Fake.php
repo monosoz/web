@@ -37,7 +37,7 @@ class Fake extends Seeder
                     'description' => 'Mushroom, Chopped Onion, Tomato, Black Olive, Jalapeno.'
                 ],
             	[
-                    'name' => 'Veggie Delux' ,
+                    'name' => 'Veggie Deluxe' ,
                     'description' => 'Babycorn, Capcisum, Chopped Onion, Golden Corn, Jalapeno.'
                 ],
             	[
@@ -53,7 +53,7 @@ class Fake extends Seeder
                     'description' => 'Green Olive, Black Olive, Babycorn, Chopped Onion, Paneer.'
                 ],
             	[
-                    'name' => 'Corn Delux' ,
+                    'name' => 'Corn Deluxe' ,
                     'description' => 'Caramelized Onion Sauce with Babycorn, Golden Corn, Capcisum, Mushroom, Tomato, Jalapeno.'
                 ],
             ]);
