@@ -113,7 +113,6 @@
 }
 .cart-table>tbody>tr>td{
     min-width: 6em;
-    border-top: 0px;
 }
 .cart-table>tbody>tr>td>form{
     float: right;
@@ -124,6 +123,7 @@
 }
 #cart-addon>td{
     padding: 0px;
+    border-top: 0px;
 }
 #cart-addon>td>ul{
     margin: 0px;
