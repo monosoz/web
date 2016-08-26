@@ -64,3 +64,5 @@
   </div>
 </div>
 @endsection
+
+@section('title')Checkout: @endsection

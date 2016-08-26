@@ -20,3 +20,5 @@
 </div>
 
 @endsection
+
+@section('title')About Us: @endsection

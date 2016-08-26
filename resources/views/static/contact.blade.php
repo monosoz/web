@@ -90,3 +90,5 @@
 </div>
 
 @endsection
+
+@section('title')Contact Us: @endsection

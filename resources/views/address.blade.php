@@ -67,3 +67,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key={{config('app.map_key')}}"></script>
     <script src="{{ url('map.js') }}"></script>
 @endsection
+
+@section('title')Address: @endsection

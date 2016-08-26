@@ -38,3 +38,5 @@
 </div>
 
 @endsection
+
+@section('title')Privacy Policy: @endsection

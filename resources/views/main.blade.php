@@ -3,14 +3,20 @@
 @section('content')
 <nav class="top-bar">
         <div class="">
-            <a class="" href="{{ url('/feedback') }}"><strong>We would love to hear from you. </strong><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="{{ url('/feedback') }}" class="input-group">
+            <strong class="form-control btn-default">We would love to hear from you.</strong>
+            <span class="input-group-btn">
+            <span class="btn btn-primary">
+            <span class="xxs-h">Feedback&nbsp</span>
+            <i class="fa fa-arrow-right" aria-hidden="true"></i></span></span>
+            </a>
         </div>
 </nav>
     <div class="container">
         @include('blocks.product')
     </div>
 
-    <div class="alert"> BETA </div>
+    <div class="alert" style="pointer-events: none;"> BETA </div>
     <!-- Collapsed Hamburger -->
 
     <div class="cart-btn clickable" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
@@ -36,22 +42,29 @@
           @include('blocks.cart')
       </div>
       <div class="panel-footer">
-        <a href="{{url('checkout')}}" class="btn btn-default">Checkout: <i class="fa fa-inr"></i>&nbsp{{ number_format($cart->total, 0) }} <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-        <form action="{{ url('cart/applycoupon' ) }}" method="POST" class="pull-right input-group" style="width:50%;">
+      <div class="row-10">
+        <form action="{{ url('cart/applycoupon' ) }}" method="POST" class="pull-right input-group col-xs-6">
           {{ csrf_field() }}
           <input type="text"  name="code" placeholder="Apply Coupon" class="form-control">
           <span class="input-group-btn">
-            <button class="btn btn-secondary" type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
           </span>
         </form>
+        <a href="{{url('checkout')}}" class="input-group col-xs-6"">
+            <span class="form-control btn-default">Checkout</span>
+            <span class="input-group-btn">
+            <span class="btn btn-primary"><i class="fa fa-inr"></i>&nbsp{{ number_format($cart->total, 0) }}</span></span>
+        </a>
         {!!$errors->first('code', '<span class="help-block pull-right">:message</span>')!!}
         @if (Session::has('couponMessage'))
             <span class="help-block pull-right">{{ Session::get('couponMessage') }}</span>
         @endif
-  
+      </div>
 </div>
       </div>
     </div>
+
+
 
 @if($cart_status==3)
   @include('blocks.feedbacksaved')
@@ -101,4 +114,5 @@
       });
     </script>
     <script src="{{ url('sc02.js') }}"></script>
+
 @endsection

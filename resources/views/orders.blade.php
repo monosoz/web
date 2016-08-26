@@ -29,3 +29,5 @@
 </div>
 <a class="btn btn-info" href="{{ url('/feedback') }}" style="position:fixed;right:6%;top:110px;">Feedback</a>
 @endsection
+
+@section('title')Orders: @endsection

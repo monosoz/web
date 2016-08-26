@@ -37,3 +37,5 @@
 </div>
 
 @endsection
+
+@section('title')Terms and Conditions: @endsection

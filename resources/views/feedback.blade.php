@@ -49,3 +49,5 @@
   </div>
 </div>
 @endsection
+
+@section('title')Feedback: @endsection

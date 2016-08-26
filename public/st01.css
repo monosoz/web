@@ -288,10 +288,10 @@
     background-color: rgba(242, 222, 222, 0.32);
 }
 .top-bar{
-    padding: 10px;
+    padding: 2px;
     text-align: center;
     font-size: 16px;
-    margin-top: -5px;
+    margin-top: -12px;
 }
 .top-bar>div>a{
     text-decoration: none;
@@ -302,6 +302,10 @@
 }
 .fb-page{
 
+}
+.row-10{
+    margin-right: -10px;
+    margin-left: -10px;
 }
 body {
     margin-top: 61px;
@@ -323,5 +327,8 @@ min-height: 100%;
     .pthumb {
         width: 150px;
         height: 150px;
+    }
+    .xxs-h{
+        display: none;
     }
 }

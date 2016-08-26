@@ -136,7 +136,7 @@ class AuthPagesController extends Controller
 
     $data['message'] = 'New Order !
   OrderId : '.$this->order->id.'
-  '.Auth::user()->name.'
+  ('.Auth::user()->id.')  '.Auth::user()->name.'
   '.$this->order->delivery_location->address ;
   $pusher->trigger('test_channel', 'new_order', $data);
         return redirect('/orders');

@@ -182,3 +182,5 @@ www.monosoz.com<br>
     });
   </script>
 @endsection
+
+@section('title')Orders: @endsection
