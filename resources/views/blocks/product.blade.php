@@ -37,7 +37,7 @@
   <div class="collapse in" id="tagt-collapse">
     <div class="iccon col-md-4 col-sm-6">
       <div class="itemcard card clearfix">
-        <img class="pthumb" src="img/IMG_5221s.png">
+        <img class="pthumb" src="{{ url('img/nonveg.png') }}">
         <span class="pname">Coming Soon...</span>
         <div class="buy-form">
           <button type="submit" class="btn btn-success" disabled>
