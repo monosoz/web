@@ -121,11 +121,11 @@
     padding-left: 0px;
     padding-right: 0px;
 }
-.cart-addon>td{
+#cart-addon>td{
     padding: 0px;
     line-height: 0;
 }
-.cart-addon>td>ul{
+#cart-addon>td>ul{
     margin: 0px;
 }
 .panel-footer{
