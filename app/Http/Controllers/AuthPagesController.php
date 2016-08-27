@@ -34,6 +34,7 @@ class AuthPagesController extends Controller
     public function checkout()
     {
         if (Auth::user()->cart->count==0) {
+            session(['cartStatus' => 2]);
             return redirect('/');
         } else {
             return view('checkout', ['user' => Auth::user(),]);

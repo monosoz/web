@@ -35,11 +35,16 @@
                 height: 200px;
                 float: right;
                 background-color: transparent;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                z-index: -1;
             }
 .pthumb img {
                 display: block;
                 min-width: 100%;
                 min-height: 100%;
+                z-index: -1;
             }
 .cbthumb{
                 width: 45px;
@@ -66,7 +71,7 @@
 }
 .textclip{
     display: block;
-    height: 80px;
+    width: 165px;
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -138,7 +143,7 @@
   color: #fff;
 }
 .iccon{
-    padding: 5px;
+    padding: 24px 8px;
 }
 .addcard{
     padding: 5px;
@@ -154,6 +159,7 @@
     padding: 5px;
     border-radius: 10px;
     color: #fff;
+    z-index: 51;
 }
 .itemcard>button{
     position: absolute;
@@ -330,5 +336,11 @@ min-height: 100%;
     }
     .xxs-h{
         display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .iccon{
+        padding: 12px 8px;
     }
 }
