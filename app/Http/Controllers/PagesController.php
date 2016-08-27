@@ -63,7 +63,7 @@ class PagesController extends Controller
                 session(['cartStatus' => 2]);
             } else {
                 session(['cartStatus' => 0]);
-                $this->cs = 0;
+                $this->cs = 2;
             }
             if ($request->r=='fb') {
                 session(['cartStatus' => 0]);
