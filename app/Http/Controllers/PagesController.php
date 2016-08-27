@@ -58,12 +58,17 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
+            $csd = 5;
+            if (!env('OPEN')) {
+                $csd=0;
+            }
+
             if (session()->has('cartStatus')) {
                 $this->cs = session('cartStatus');
-                session(['cartStatus' => 2]);
+                session(['cartStatus' => $csd]);
             } else {
-                session(['cartStatus' => 0]);
-                $this->cs = 2;
+                session(['cartStatus' => $csd]);
+                $this->cs = $csd;
             }
             if ($request->r=='fb') {
                 session(['cartStatus' => 0]);
