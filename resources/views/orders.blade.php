@@ -27,7 +27,19 @@
     </div>
   </div>
 </div>
-<a class="btn btn-info" href="{{ url('/feedback') }}" style="position:fixed;right:6%;top:110px;">Feedback</a>
+@if($cart_status==11)
+  @include('blocks.welcome')
+@endif
+@endsection
+
+@section('scripts')
+  @if($cart_status==11)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#wModal').modal('show');
+        });
+    </script>
+  @endif
 @endsection
 
 @section('title')Orders: @endsection

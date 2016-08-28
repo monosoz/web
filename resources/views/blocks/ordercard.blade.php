@@ -2,7 +2,7 @@
 Order Id: {{$cart->id}}<br>
 Total: {{$cart->total}}<br>
 @if (!$cart->is('pending')) 
-Delivery Address:{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
+Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 @endif
 Order Status: {{$cart->statusCode}}<br>
 {{$cart->created_at}}<br>

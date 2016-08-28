@@ -9,7 +9,11 @@
                 <h1 style="font-size:50px;color:#980211;">Get Any Medium Pizza (12") @ 129!</h1>
                 <h3>use coupon code 'OFF100'</h3>
             </div>
-            <span class="pull-right" style="padding: 5px;">*Limited Promotion</span>
+            <span class="pull-right" style="margin-top: -10px;">*Limited Promotion</span>
+            @elseif($cart_status==11)
+            <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
+                <h1 style="font-size:50px;color:#980211;">Your order has been placed.</h1>
+            </div>
             @elseif(!env('OPEN'))
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>

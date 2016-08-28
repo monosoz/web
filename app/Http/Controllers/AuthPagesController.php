@@ -140,6 +140,7 @@ class AuthPagesController extends Controller
   ('.Auth::user()->id.')  '.Auth::user()->name.'
   '.$this->order->delivery_location->address ;
   $pusher->trigger('test_channel', 'new_order', $data);
+        session(['cartStatus' => 11]);
         return redirect('/orders');
         
     }
@@ -147,7 +148,13 @@ class AuthPagesController extends Controller
     public function orders()
     {
 
-        return view('orders', ['orders' => Auth::user()->orders,]);
+            if (session()->has('cartStatus')) {
+                $this->cs = session('cartStatus');
+                session(['cartStatus' => 0]);
+            } else {
+                $this->cs = 0;
+            }
+        return view('orders', ['orders' => Auth::user()->orders, 'cart_status' => $this->cs,]);
         
     }
     public function account()
