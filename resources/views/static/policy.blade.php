@@ -2,90 +2,41 @@
 
 @section('content')
 
-<div>
-<h3>
-Privacy Policy
-</h3>
-<p>
-This Privacy Policy applies to the www.monosoz.com
-</p>
-<p>
-monosoz.com recognises the importance of maintaining your privacy. We value your privacy and appreciate your trust in us. This Policy describes how we treat user information we collect on Website Address and other offline sources. This Privacy Policy applies to current and former visitors to our website and to our online customers. By visiting and/or using our website, you agree to this Privacy Policy.
-</p>
-<p>
-www.monosoz.com is a property of 
-M/S MONOSOZ FOODS.
- </p>
-Proprietorship
- 
-Address
-
-INFORMATION WE COLLECT 
-Contact information. We might collect your  Name Email  Phone Address  IP Address 
-
-Does the website have payment gateway?  Yes
-
-Does the website have social media accounts?  Yes
-
-Do you track users on your website?  Yes
-
-Demographic information. We may collect demographic information about you, or any other information provided by your during the use of our website. We might collect this as a part of a survey also. 
-
-Other information. If you use our website, we may collect information about your IP address and the browser you're using. We might look at what site you came from, duration of time spent on our website, pages accessed or what site you visit when you leave us. We might also collect the type of mobile device you are using, or the version of the operating system your computer or device is running. 
-
-WE COLLECT INFORMATION IN DIFFERENT WAYS. 
-We collect information directly from you. We collect information directly from you when you contact us. We also collect information if you post a comment on our websites or ask us a question through phone or email. 
-
-
-Do you use third party databases to contact users?  Yes
-Do you contact website users?  Yes
-USE OF YOUR PERSONAL INFORMATION 
-Will you send marketing communications?  Yes
-We use information to respond to your requests or questions. We might use your information to confirm your registration for an event or contest. 
-We use information to improve our products and services. We might use your information to customize your experience with us. This could include displaying content based upon your preferences. 
-We use information to look at site trends and customer interests. We may use your information to make our website and products better. We may combine information we get from you with information about you we get from third parties. 
-We use information for security purposes. We may use information to protect our company, our customers, or our websites. 
-Will you send transactional messages?  Yes
-We use information as otherwise permitted by law. 
-
-SHARING OF INFORMATION WITH THIRD-PARTIES 
-Do you share customer information with vendors?  Yes
-Do you have third party website links on your website?  Yes
-EMAIL OPT-OUT 
-You can opt out of receiving our marketing emails. To stop receiving our promotional emails, please email Unsubscribe Email. It may take about ten days to process your request. Even if you opt out of getting marketing messages, we will still be sending you transactional messages through email and SMS about your purchases. 
-
-
-GRIEVANCE OFFICER 
-In accordance with Information Technology Act 2000 and rules made there under, the name and contact details of the Grievance Officer are provided below: 
- 
-Mr.
-  
-Grievance Officer Name
-,
-
-[Address Line 1] 
-[Address Line 2] 
-[City Name] 
-[State Name] - 
-[Postal Code] 
-
-Phone: 
-Phone Number
-, 
-
-Email: 
-Email Address
-, 
-
-If you have any questions about this Policy or other privacy concerns, you can also email us at [Email Address].
-
-UPDATES TO THIS POLICY 
-This Privacy Policy was last updated on 
-Privacy Policy Date
- From time to time we may change our privacy practices. We will notify you of any material changes to this policy as required by law. We will also post an updated copy on our website. Please check our site periodically for updates. 
-
-JURISDICTION 
-If you choose to visit the website, your visit and any dispute over privacy is subject to this Policy and the website's terms of use. In addition to the foregoing, any disputes arising under this Policy shall be governed by the laws of India. 
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-10 col-lg-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+<h4>PRIVACY POLICY</h4>
+		</div>
+        <div class="panel-body">
+<p>This privacy policy discloses the privacy practices of www.monosoz.com. By using our website, the user is consenting to our privacy policy.</p>
+<ol>
+<li>We collect information from our users when they register on our website or fill out a form.</li>
+<li>When ordering from or registering on our website, as appropriate, the users may be asked to enter their details such as name, email address, telephone number and address.</li>
+<li>Any of the information we collect from our users may be used in one of the following ways:
+<ul>
+	<li>To personalize user’s experience</li>
+	<li>To improve our website</li>
+	<li>To improve our service</li>
+	<li>To process transactions</li>
+	<li>To send periodic emails about new offers, company news and other updates</li>
+	<li>To receive feedback</li>
+</ul></li>
+<li>The user’s  information, whether public or private, will not be sold, exchanged, transferred or given to any other company for any reason whatsoever, without their consent, other than for the express purpose of delivering the services requested by them.</li>
+<li>We implement a variety of security measures to maintain the safety of the user’s personal information.</li>
+<li>We do not sell, trade or otherwise transfer to other parties, the user’s personally identifiable information. However, we my release such information when we believe that doing so is appropriate to comply with the law, to enforce our site policies, or to protect ours or others rights, property or safety. Although, non-identifiable personal information may be provided to other parties for marketing, advertising or other purposes.</li>
+<li>Occasionally, at our discretion, we may include or offer third party products or services on our website. These third party sites have separate and independent privacy policies. We, therefore, have no responsibility or liability for the content and activities of these linked websites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.</li>
+<li>This online privacy policy only applies to the information collected through our website and not to information collected offline.</li>
+<li>Please also visit our Terms and Conditions section establishing the use, disclaimers and limitations of liability governing the use of our website.</li>
+<li>If we decide to change our privacy policy, we will post those changes on this website.</li>
+</ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 @endsection
+
+@section('title')Privacy Policy: @endsection

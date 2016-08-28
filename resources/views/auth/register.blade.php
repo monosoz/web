@@ -94,3 +94,5 @@
     </div>
 </div>
 @endsection
+
+@section('title')Register: @endsection

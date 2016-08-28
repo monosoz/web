@@ -6,11 +6,11 @@
   <div class="collapse in" id="tag1-collapse">
     <div class="iccon col-md-4 col-sm-6">
       <div class="itemcard card clearfix">
-        <img class="pthumb" src="">
-        <span class="pname">Custom Pizza</span>
+        <img class="pthumb" src="{{ url('img/custompizza.png') }}">
+        <strong class="pname">Custom Pizza</strong>
         <p class="textclip">Be Your Own Chef...<br>Make Your Own Pizza!</p>
         <div class="buy-form">
-          <button type="submit" class="btn btn-primary" disabled>
+          <button type="submit" class="btn btn-success" disabled>
             <i class="fa fa-inr"></i><span class="prod-price">***</span>
           </button>
         </div>
@@ -30,15 +30,24 @@
       @foreach ($tags->find(1)->products as $product)
       @include('blocks.itemcard')
       @endforeach
-<div class="iccon col-md-4 col-sm-6">
-  <div class="itemcard card clearfix">
-    
-    <span class="pname">Coming Soon...</span>
-  </div>
-</div>
     </div>
   </div>
-
+<div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tagt-collapse">> Non-Veg</div>
+<div class="row tag-c">
+  <div class="collapse in" id="tagt-collapse">
+    <div class="iccon col-md-4 col-sm-6">
+      <div class="itemcard card clearfix">
+        <img class="pthumb" src="{{ url('img/nonveg.png') }}">
+        <strong class="pname">Coming Soon...</strong>
+        <div class="buy-form">
+          <button type="submit" class="btn btn-success" disabled>
+            <i class="fa fa-inr"></i><span class="prod-price">***</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <!--div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tag3-collapse">> {{ $tags->find(2)->name }}</div>
   <div class="row tag-c">
     <div class="collapse in" id="tag3-collapse">
@@ -47,6 +56,15 @@
       @endforeach
     </div>
   </div-->
+
+  <div class="tag clickable" type="button" class="tag-btn" data-toggle="collapse" data-target="#tagb-collapse">> {{ $tags->find(51)->name }}</div>
+<div class="row tag-c">
+  <div class="collapse in" id="tagb-collapse">
+      @foreach ($tags->find(51)->products()->find(101)->variants as $product)
+      @include('blocks.colddrinkcard')
+      @endforeach
+  </div>
+</div>
 </form>
 <form action="{{ url('add_custom') }}" method="POST">
   {{ csrf_field() }}

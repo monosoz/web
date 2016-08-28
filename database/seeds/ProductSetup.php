@@ -24,34 +24,19 @@ class ProductSetup extends Seeder
 		    		'name' 			=> 'non-veg',
 		    		'description'	=> '',
 		    ],
-		    [
+            [
 		    		'id'			=> '11',
-		    		'name' 			=> 'cat1',
-		    		'description'	=> '',
-		    ],
-		    [
-		    		'id'			=> '21',
-		    		'name' 			=> 'cat2',
+		    		'name' 			=> 'Base',
 		    		'description'	=> '',
 		    ],
 		    [
 		    		'id'			=> '12',
-		    		'name' 			=> 'cat3',
+		    		'name' 			=> 'Sauce',
 		    		'description'	=> '',
 		    ],
 		    [
-		    		'id'			=> '22',
-		    		'name' 			=> 'cat4',
-		    		'description'	=> '',
-		    ],
-		    [
-		    		'id'			=> '13',
-		    		'name' 			=> 'cat5',
-		    		'description'	=> '',
-		    ],
-		    [
-		    		'id'			=> '23',
-		    		'name' 			=> 'cat6',
+		    		'id'			=> '51',
+		    		'name' 			=> 'Beverages',
 		    		'description'	=> '',
 		    ],
 		]);
@@ -66,16 +51,10 @@ class ProductSetup extends Seeder
 		    		'name' 			=> 'Extra Cheese',
 		    ],
 		    [
-		    		'id'			=> '2',
-		    		'sku'			=> 'REGURALBASE',
-		    		'price'			=> '0',
-		    		'name' 			=> 'Regular Base',
-		    ],
-		    [
 		    		'id'			=> '3',
-		    		'sku'			=> 'REGURALBASE',
+		    		'sku'			=> 'REGULARBASE',
 		    		'price'			=> '0',
-		    		'name' 			=> 'Regular Base',
+		    		'name' 			=> 'Regular',
 		    ],
 		    [
 		    		'id'			=> '4',
@@ -85,9 +64,9 @@ class ProductSetup extends Seeder
 		    ],
 		    [
 		    		'id'			=> '5',
-		    		'sku'			=> 'THICKCRUST',
+		    		'sku'			=> 'DOUBLEDOUGH',
 		    		'price'			=> '0',
-		    		'name' 			=> 'Thick Crust',
+		    		'name' 			=> 'Double Dough',
 		    ],
 		    [
 		    		'id'			=> '11',
@@ -173,6 +152,24 @@ class ProductSetup extends Seeder
 		    		'price'			=> '30',
 		    		'name' 			=> 'Salami Chicken',
 		    ],
+            [
+		    		'id'			=> '41',
+		    		'sku'			=> 'SAUCE01241',
+		    		'price'			=> '0',
+		    		'name' 			=> 'Standard Tomato Sauce',
+		    ],
+        	[
+		    		'id'			=> '42',
+		    		'sku'			=> 'SAUCE01242',
+		    		'price'			=> '0',
+		    		'name' 			=> 'Indian Masala Sauce',
+		    ],
+        	[
+		    		'id'			=> '43',
+		    		'sku'			=> 'SAUCE01243',
+		    		'price'			=> '0',
+		    		'name' 			=> 'Caramelized Onion Sauce',
+		    ],
         ]);
 
         foreach (range(11,20) as $index) {
@@ -186,6 +183,20 @@ class ProductSetup extends Seeder
         DB::table('addon_tag')->insert([
                 'addon_id' => $index,
                 'tag_id' => '2',
+        ]);
+        }
+
+        foreach (range(3,5) as $index) {
+        DB::table('addon_tag')->insert([
+                'addon_id' => $index,
+                'tag_id' => '11',
+        ]);
+        }
+
+        foreach (range(41,43) as $index) {
+        DB::table('addon_tag')->insert([
+                'addon_id' => $index,
+                'tag_id' => '12',
         ]);
         }
     }

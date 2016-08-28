@@ -14,7 +14,9 @@
             <div class="clearfix">
                 @foreach ($orders->sortByDesc('updated_at') as $cart)
                 <div class="">
-                  @include('blocks.ordercard')
+@if (!$cart->is('pending'))
+@include('blocks.ordercard')
+@endif
                 </div>
                 @endforeach
             </div>
@@ -25,4 +27,19 @@
     </div>
   </div>
 </div>
+@if($cart_status==11)
+  @include('blocks.welcome')
+@endif
 @endsection
+
+@section('scripts')
+  @if($cart_status==11)
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#wModal').modal('show');
+        });
+    </script>
+  @endif
+@endsection
+
+@section('title')Orders: @endsection

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call('LaravelShopSeeder');
         $this->call('ProductSetup');
         $this->call('Fake');
+        $this->call('CD');
         //Model::reguard();
     }
 }

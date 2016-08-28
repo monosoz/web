@@ -45,3 +45,5 @@
     </div>
 </div>
 @endsection
+
+@section('title')Reset Password: @endsection

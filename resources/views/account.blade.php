@@ -19,3 +19,5 @@
   </div>
 </div>
 @endsection
+
+@section('title'){{$user->name}}: @endsection

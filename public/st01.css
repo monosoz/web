@@ -1,99 +1,3 @@
-
-/*
-a:link, a:visited {
-    color: #ccc;
-}
-a {
-    text-decoration: none;
-}
-a {
-    border-bottom: 1px solid;
-}
-user agent stylesheet
-a:-webkit-any-link {
-    color: -webkit-link;
-    text-decoration: underline;
-    cursor: auto;
-}
-.row {
-    margin-bottom: 20px;
-}
-.nav {
-    top: 0px;
-    padding-left: 0;
-    margin-bottom: 0;
-    position: fixed;
-    width: 100%;
-    list-style: none;
-    background-color: #337AB7;
-    z-index: 1;
-}
-.navr{
-    float: left;
-    height: inherit;
-}
-.botr{
-	 position: absolute;
-    bottom: 0px;
-    right: 0px;
-    height: 20px;
-}
-
-
-@media(max-width:1366px) {
-	 .nav {
-    height: 60px;
-    }
-	 body {
-    margin-top: 60px;
-    }
-}
-
-@media(max-width:991px) {
-	.nav {
-    height: 60px;
-}
-	 body {
-    margin-top: 60px;
-}
-}
-
-@media(max-width:768px) {
-	.nav {
-    height: 40px;
-}
-	 body {
-    margin-top: 40px;
-}
-}
-
-@media(max-width:668px) {
-	
-	.nav {
-    height: 40px;
-}
-	 body {
-    margin-top: 40px;
-}
-}
-
-@media(max-width:640px) {
-	.nav {
-    height: 40px;
-}
-	 body {
-    margin-top: 40px;
-}
-}
-
-@media(max-width:375px) {
-	.nav {
-    height: 40px;
-}
-	 body {
-    margin-top: 40px;
-}
-}*/
 .clickable {
     cursor: pointer;
 }
@@ -127,18 +31,32 @@ a:-webkit-any-link {
 .pthumb {
                 border-radius: 50%;
                 overflow: hidden;
-                width: 150px;
-                height: 150px;
+                width: 200px;
+                height: 200px;
                 float: right;
-                background-color: #fff;
+                background-color: transparent;
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                z-index: -1;
             }
 .pthumb img {
                 display: block;
-            /* Stretch 
-                  height: 100%;
-                  width: 100%; */
-            min-width: 100%;
-            min-height: 100%;
+                min-width: 100%;
+                min-height: 100%;
+                z-index: -1;
+            }
+.cbthumb{
+                width: 45px;
+                height: 150px;
+                float: right;
+                background-color: transparent;
+    
+}
+.cbthumb img {
+                display: block;
+                min-width: 100%;
+                min-height: 100%;
             }
 .mthumb {
                 float: right;
@@ -153,7 +71,7 @@ a:-webkit-any-link {
 }
 .textclip{
     display: block;
-    height: 80px;
+    width: 165px;
     white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -176,10 +94,11 @@ a:-webkit-any-link {
 }
 .cart-btn {
     position: fixed;
-    top: 6rem;
+    top: 10rem;
     right: 1.75rem;
     border: none;
     z-index: 1049;
+    color: #fff
 }
 .cart{
     position: fixed;
@@ -192,11 +111,6 @@ a:-webkit-any-link {
     border: none;
     z-index: 1051;
 }
-@media(max-width:350px) {
-    .cart {
-    width: 320px;
-}
-}
 .cart-table>tbody>tr>td{
     min-width: 6em;
 }
@@ -206,6 +120,13 @@ a:-webkit-any-link {
 .cart-table>tbody>tr>td>form>button{
     padding-left: 0px;
     padding-right: 0px;
+}
+#cart-addon>td{
+    padding: 0px;
+    border-top: 0px;
+}
+#cart-addon>td>ul{
+    margin: 0px;
 }
 .panel-footer{
     position: absolute;
@@ -217,8 +138,12 @@ a:-webkit-any-link {
     color: #fff;
     top: -.8em;
 }
+.tp-content{
+  background-color: #000;
+  color: #fff;
+}
 .iccon{
-    padding: 5px;
+    padding: 24px 8px;
 }
 .addcard{
     padding: 5px;
@@ -229,11 +154,12 @@ a:-webkit-any-link {
 .itemcard{
     background-color: #151515;
     border: 0px solid #111;
-    height: 160px;
+    height: 210px;
     position: relative;
     padding: 5px;
     border-radius: 10px;
     color: #fff;
+    z-index: 51;
 }
 .itemcard>button{
     position: absolute;
@@ -244,12 +170,31 @@ a:-webkit-any-link {
     position: absolute;
     top:0;bottom:0;left:0;right:0;
 }
+.cdcard{
+    background-color: #151515;
+    border: 0px solid #111;
+    height: 160px;
+    position: relative;
+    padding: 5px;
+    border-radius: 10px;
+    color: #fff;
+}
+.cdcard>button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.cdcard>button>div{
+    position: absolute;
+    top:0;bottom:0;left:0;right:0;
+}
 .prod-price{
     padding-left: 3px
 }
 .buy-form{
     position: absolute;
     bottom: 5px;
+    padding-right: 15px;
 }
 .buy-form>button{
 
@@ -283,9 +228,6 @@ a:-webkit-any-link {
 .address{
     width: 100%;
 }
-/*.conl{
-    height: 100%;
-}*/
 .height-100{
     position: absolute;
     top: 5px;
@@ -325,8 +267,8 @@ a:-webkit-any-link {
     padding: 15px;
 }
 #new_map {
-    width: 100%;
-    height: 300px;
+    width: 90%;
+    height: 285px;
     }
 .footer {
     position: absolute;
@@ -351,13 +293,54 @@ a:-webkit-any-link {
     color: #fff;
     background-color: rgba(242, 222, 222, 0.32);
 }
+.top-bar{
+    padding: 2px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: -12px;
+}
+.top-bar>div>a{
+    text-decoration: none;
+    color: #ddd;
+}
+.top-bar>div>a:hover{
+    color: #111;
+}
+.fb-page{
+
+}
+.row-10{
+    margin-right: -10px;
+    margin-left: -10px;
+}
 body {
     margin-top: 61px;
-    margin-bottom: 56px;
+    margin-bottom: 100px;
     background-color: #980211;
     color: #000;
 }
 html {
 position: relative;
 min-height: 100%;
+}
+@media(max-width:350px) {
+    .cart {
+        width: 320px;
+    }
+    .itemcard{
+        height: 160px;
+    }
+    .pthumb {
+        width: 150px;
+        height: 150px;
+    }
+    .xxs-h{
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .iccon{
+        padding: 12px 8px;
+    }
 }

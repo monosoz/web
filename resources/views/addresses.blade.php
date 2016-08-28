@@ -34,5 +34,6 @@
 </div>
 @endsection
 
+@section('scripts')
     <script src="{{ url('map.js') }}"></script>
 @endsection

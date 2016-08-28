@@ -56,14 +56,30 @@ class PagesController extends Controller
         }
     }
 
-    public function index()
+    public function index(Request $request)
     {
+            $csd = 5;
+            if (!env('OPEN')) {
+                $csd=0;
+            }
 
-        $cs = Cookie::get('cartStatus');
-        $ws = Cookie::get('welcomeStatus');
-        Cookie::queue('cartStatus', 0);
-        Cookie::queue('welcomeStatus', $ws+1);
-        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $cs, 'ws' => $ws,]);
+            if (session()->has('cartStatus')) {
+                $this->cs = session('cartStatus');
+                session(['cartStatus' => $csd]);
+            } else {
+                session(['cartStatus' => $csd]);
+                $this->cs = $csd;
+            }
+            if ($request->r=='fb') {
+                session(['cartStatus' => 0]);
+                return redirect('/');
+            }elseif ($request->r=='off100') {
+                session(['cartStatus' => 5]);
+                return redirect('/');
+            }
+
+            
+        return view('main', ['tags' => Tag::all(), 'cart' => $this->cart, 'cart_status' => $this->cs,]);
     }
 
     public function cart(Request $request)
@@ -71,7 +87,7 @@ class PagesController extends Controller
 
         $this->cart->add(Variant::findOrFail($request->get('id')));
 
-        Cookie::queue('cartStatus', 2);
+        session(['cartStatus' => 2]);
         return redirect()->back();
     }
     public function add_custom(AddToCart $request)
@@ -105,6 +121,12 @@ class PagesController extends Controller
                 $this->custom_item=$item;
             }
         }
+                $this->cart->add(Addon::findOrFail($request->base_id));
+                if (Auth::guest()) {
+                    $itemr=GuestItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> $this->custom_item->quantity,'child_id' => $request->base_id,]);
+                } else {
+                    $itemr=ItemRelation::create(['parent_id'=> $this->custom_item->id, 'item_no'=> $this->custom_item->quantity,'child_id' => $request->base_id,]);
+                }
         if ($request->top_id!=null) {
             foreach ($request->top_id as $addon) {
                 $this->cart->add(Addon::findOrFail($addon));
@@ -115,7 +137,7 @@ class PagesController extends Controller
                 }
             }
         }
-        Cookie::queue('cartStatus', 2);
+        session(['cartStatus' => 2]);
         return redirect()->back();
     }
 
@@ -126,7 +148,7 @@ class PagesController extends Controller
         } elseif ( $request->get('action') == 'add' ) {
             $this->cart->add(['sku' => $item]);
         }
-        Cookie::queue('cartStatus', 1);
+        session(['cartStatus' => 1]);
         return redirect()->back();
     }
 
@@ -135,23 +157,24 @@ class PagesController extends Controller
         if ( $request->get('action') == 'clear' ) {
             $this->cart->clear();
         }
-        Cookie::queue('cartStatus', 1);
+        session(['cartStatus' => 1]);
         return redirect()->back();
     }
 
     public function applycoupon(Request $request)
     {
-        Cookie::queue('cartStatus', 1);
+        session(['cartStatus' => 1]);
         $this->validate($request, [
             'code' => 'required|exists:coupons,code',
         ]);
-        $ifc=Item::where('sku', '=', $request->get('code'))->first();
+        $reqcode=strtoupper($request->get('code'));
+        $ifc=Item::where('sku', '=', $reqcode)->first();
         if ($this->cart->items->where('price', '229.00')->count()==0) {
             Session::flash('couponMessage', 'Coupon not applicable.');
         }
         elseif ( $ifc==null||$ifc->order_id==null) {
-            Item::where('sku', '=', $request->get('code'))->where('order_id', '=', null)->delete();
-            GuestItem::where('sku', '=', $request->get('code'))->delete();
+            Item::where('sku', '=', $reqcode)->where('order_id', '=', null)->delete();
+            GuestItem::where('sku', '=', $reqcode)->delete();
             Item::where('sku', '=', 'OFF1006818')->where('order_id', '=', null)->delete();
             GuestItem::where('sku', '=', 'OFF1006818')->delete();
             Item::where('price', '<', 0)->where('cart_id', '=', $this->cart->id)->delete();
@@ -160,7 +183,7 @@ class PagesController extends Controller
                 ItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
             }
-            if ($request->get('code')=='OFF100') {
+            if ($reqcode=='OFF100') {
                 if (Auth::guest()) {
                     $itno=1;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
@@ -179,7 +202,7 @@ class PagesController extends Controller
                     }
                 }
             } else {
-                $this->cart->add(['sku' => $request->get('code'), 'price' => -229]);
+                $this->cart->add(['sku' => $reqcode, 'price' => -229]);
             }
             
         }
@@ -187,6 +210,26 @@ class PagesController extends Controller
             Session::flash('couponMessage', 'Coupon already used.');
         }
         return redirect()->back();
+    }
+    public function addmessage(Request $request)
+    {
+        if (Auth::check()) {
+            $feedback = new \App\Feedback;
+            $feedback->name = Auth::user()->name;
+            $feedback->comment = $request->message;
+            Auth::user()->feedbacks()->save($feedback);
+        } else {
+            $feedback = new \App\Feedback;
+            $feedback->name = $request->name;
+            $feedback->comment = "Name: " .$request->name.";
+Email: ".$request->email."; 
+Phone: ".$request->phone."; 
+Message: ".$request->message ;
+            $feedback->save();
+        }
+        session(['cartStatus' => 4]);
+        return redirect('/');
+        
     }
 
 }

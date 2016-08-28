@@ -6,8 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AP' => $baseDir . '/database/seeds/AP.php',
     'AddressSetupTable' => $baseDir . '/database/migrations/2016_06_25_164912_address_setup_table.php',
     'Amsgames\\LaravelShop\\MigrationCommand' => $vendorDir . '/monosoz/laravel-shop/src/Commands/MigrationCommand.php',
+    'CD' => $baseDir . '/database/seeds/CD.php',
+    'CU' => $baseDir . '/database/seeds/CU.php',
     'Coupon' => $baseDir . '/database/seeds/Coupon.php',
     'CreateFeedbackTable' => $baseDir . '/database/migrations/2016_08_19_140152_create_feedback_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

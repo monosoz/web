@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DeliveryLocation extends Model
 {
 
-    public function user()
+    public function order()
     {
         return $this->belongsTo('App\Order');
     }

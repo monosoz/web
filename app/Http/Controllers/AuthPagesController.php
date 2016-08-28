@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 Use Shop;
+use Cookie;
 Use App\Location;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -32,7 +33,12 @@ class AuthPagesController extends Controller
 
     public function checkout()
     {
-        return view('checkout', ['user' => Auth::user(),]);
+        if (Auth::user()->cart->count==0) {
+            session(['cartStatus' => 2]);
+            return redirect('/');
+        } else {
+            return view('checkout', ['user' => Auth::user(),]);
+        }
     }
 
     public function addresses()
@@ -55,8 +61,6 @@ class AuthPagesController extends Controller
             'contact' => 'required',
             'pincode' => 'required',
             'address' => 'required',
-            'lat' => 'required',
-            'lng' => 'required',
         ]);
         $location = new Location;
         $location->name = $request->name;
@@ -66,7 +70,10 @@ class AuthPagesController extends Controller
         $location->lat = $request->lat;
         $location->lng = $request->lng;
         $location->usercomment = $request->comment;
-        Auth::user()->locations()->save($location);
+        $location->user_id = Auth::user()->id;
+        $location->save();
+        session(['selectaddress' => $location->id]);
+        return view('checkoutpay', ['user' => Auth::user(), 'selectadd' => $location,]);
         return redirect()->back();
         
     }
@@ -84,7 +91,7 @@ class AuthPagesController extends Controller
         $location->usercomment = $request->comment;
         $location->update = substr($location->updated_at, -8);
         Auth::user()->locations()->save($location);
-        return redirect($request->requrl);
+        return $request->requrl;
         
     }
 
@@ -125,19 +132,15 @@ class AuthPagesController extends Controller
         $dlocation->usercomment = $location->usercomment;
         $dlocation->comment = $location->comment;
         $this->order->delivery_location()->save($dlocation);
-    $options = array(
-    'cluster' => 'ap1',
-    'encrypted' => true
-  );
-  $pusher = new \Pusher(
-    '85af98d3bd88e572165f',
-    '1692b81c6311d8a679e4',
-    '219908',
-    $options
-  );
+    $options = array('cluster' => 'ap1', 'encrypted' => true);
+    $pusher = new \Pusher('85af98d3bd88e572165f', '1692b81c6311d8a679e4', '219908', $options );
 
-  $data['message'] = 'New Order!\nOrderId:'.$this->order->id.'\n'.Auth::user()->name.'\n'.$this->order->delivery_location->address ;
+    $data['message'] = 'New Order !
+  OrderId : '.$this->order->id.'
+  ('.Auth::user()->id.')  '.Auth::user()->name.'
+  '.$this->order->delivery_location->address ;
   $pusher->trigger('test_channel', 'new_order', $data);
+        session(['cartStatus' => 11]);
         return redirect('/orders');
         
     }
@@ -145,13 +148,35 @@ class AuthPagesController extends Controller
     public function orders()
     {
 
-        return view('orders', ['orders' => Auth::user()->orders,]);
+            if (session()->has('cartStatus')) {
+                $this->cs = session('cartStatus');
+                session(['cartStatus' => 0]);
+            } else {
+                $this->cs = 0;
+            }
+        return view('orders', ['orders' => Auth::user()->orders, 'cart_status' => $this->cs,]);
         
     }
     public function account()
     {
 
         return view('account', ['user' => Auth::user(),]);
+        
+    }
+    public function feedback()
+    {
+
+        return view('feedback', ['user' => Auth::user(),]);
+        
+    }
+    public function addfeedback(Request $request)
+    {
+
+        $feedback = new \App\Feedback;
+        $feedback->comment = $request->message;
+        Auth::user()->feedbacks()->save($feedback);
+        Cookie::queue('cartStatus', 3);
+        return redirect('/');
         
     }
 }

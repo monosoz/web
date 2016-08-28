@@ -16,52 +16,80 @@ class Fake extends Seeder
         $faker = Faker::create();
         $i = 1;
             DB::table('products')->insert([
-                'name' => 'Veg Fiesta' ,
-                'description' => 'Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
-            ]);
-            DB::table('products')->insert([
-                'name' => 'Margherita' ,
-                'description' => 'Too Much Cheese!'
-            ]);
-            DB::table('products')->insert([
-                'name' => 'Butter Onion Blast' ,
-                'description' => 'Butter, Onion, Onion, Onion.'
-            ]);
-            DB::table('products')->insert([
-                'name' => 'Earthy Delight' ,
-                'description' => 'Mushroom, Paneer, Golden Corn, Onion Rings.'
+                [
+                    'name' => 'Veg Fiesta' ,
+                    'description' => 'Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
+                ],
+            	[
+                    'name' => 'Margherita' ,
+                    'description' => 'Too Much Cheese!'
+                ],
+            	[
+                    'name' => 'Butter Onion Blast' ,
+                    'description' => 'Butter, Onion, Onion, Onion.'
+                ],
+            	[
+                    'name' => 'Earthy Delight' ,
+                    'description' => 'Mushroom, Paneer, Golden Corn, Onion Rings.'
+                ],
+            	[
+                    'name' => 'Special Mushroom' ,
+                    'description' => 'Mushroom, Chopped Onion, Tomato, Black Olive, Jalapeno.'
+                ],
+            	[
+                    'name' => 'Veggie Deluxe' ,
+                    'description' => 'Babycorn, Capcisum, Chopped Onion, Golden Corn, Jalapeno.'
+                ],
+            	[
+                    'name' => 'Sweet Tango' ,
+                    'description' => 'Babycorn, Onion Rings, Jalapeno, Tomato, Green Olive, Black Olive.'
+                ],
+            	[
+                    'name' => 'Veg Extravaganza' ,
+                    'description' => 'Onion Rings, Capcisum, Tomato, Golden Corn, Black Olives, Jalapeno.'
+                ],
+            	[
+                    'name' => 'Olive Garden' ,
+                    'description' => 'Green Olive, Black Olive, Babycorn, Chopped Onion, Paneer.'
+                ],
+            	[
+                    'name' => 'Corn Deluxe' ,
+                    'description' => 'Caramelized Onion Sauce with Babycorn, Golden Corn, Capcisum, Mushroom, Tomato, Jalapeno.'
+                ],
             ]);
 
         foreach (Product::all() as $product) {
             $sku = 'PIZZA010';
             $price = 159;
-            
+            if ($product->variants->count()==0) {
             DB::table('variants')->insert([
-                'product_id' => $product->id,
-                'sku' => $sku.$i.'R',
-                'price' => $price,
-                'name' => $product->name.'-Regular',
-                'type' => 'r',
-            ]);
-            DB::table('variants')->insert([
-                'product_id' => $product->id,
-                'sku' => $sku.$i.'M',
-                'price' => $price+70,
-                'name' => $product->name.'-Medium',
-                'type' => 'm',
-            ]);
-            DB::table('variants')->insert([
-                'product_id' => $product->id,
-                'sku' => $sku.$i.'L',
-                'price' => $price+140,
-                'name' => $product->name.'-Large',
-                'type' => 'l',
-            ]);
-            $i++;
-            DB::table('product_tag')->insert([
-                'product_id' => $product->id,
-                'tag_id' => 1,
-            ]);
+                [
+                    'product_id' => $product->id,
+                    'sku' => $sku.$i.'R',
+                    'price' => $price,
+                    'name' => $product->name.'-Regular',
+                    'type' => 'r',
+                ],
+                [
+                    'product_id' => $product->id,
+                    'sku' => $sku.$i.'M',
+                    'price' => $price+70,
+                    'name' => $product->name.'-Medium',
+                    'type' => 'm',
+                ],
+                [
+                    'product_id' => $product->id,
+                    'sku' => $sku.$i.'L',
+                    'price' => $price+140,
+                    'name' => $product->name.'-Large',
+                    'type' => 'l',
+                ],
+                ]);
+                DB::table('product_tag')->insert([
+                    'product_id' => $product->id,
+                    'tag_id' => 1,
+                ]);
+            }
         }
     }
 }

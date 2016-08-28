@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="NNe2MBgqK8T4UN2b1KA-Xc3UNnao_jp7W646odYM-vI" />
+    @yield('meta')
 
-    <title>monosoz - Online Food Delivery</title>
+    <title>@yield('title')monosoz - Online Food Delivery</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -44,7 +45,7 @@
 
                 <!-- Branding Image -->
                 <a class="home-logo" href="{{ url('/') }}">
-                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" alt="mono" />
+                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" alt="monosoz" />
                 </a>
             </div>
 
@@ -82,16 +83,21 @@
     <footer class="footer cs-footer">
         <div class="">
             <ul class="footer-list">
-                <!--li class="footer-li">
-                    <a href="">About Us</a>
+                <li class="footer-li">
+                    <a href="{{ url('/about') }}">About Us</a>
                 </li>
                 <li class="footer-li">
-                    <a href="">Contact Us</a>
+                    <a href="{{ url('/policy') }}">Privacy Policy</a>
+                    </li>
+                <li class="footer-li">
+                    <a href="{{ url('/terms') }}">Terms and Conditions</a>
                 </li>
                 <li class="footer-li">
-                    <a href="{{ url('/policy') }}">Policies</a>
-                </li-->
+                    <a href="{{ url('/contact') }}">Contact Us</a>
+                </li>
             </ul>
+
+            <a href="https://www.facebook.com/monosoz" class="pull-right" style="padding: 4px;"><img src="{{ url('/img/fbs.png') }}">&nbsp</a>
         </div>
     </footer>
 
@@ -102,6 +108,5 @@
 
     @yield('scripts')
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-    <noscript> &lt;div id="no-script"&gt; &lt;div class="no-script-message"&gt; &lt;div&gt; When you have eliminated the &lt;strong&gt;JavaScript&lt;/strong&gt;, whatever remains must be an empty page. &lt;/div&gt; &lt;a class="no-script-help-link" href="//support.google.com/maps/?hl=en&amp;amp;authuser=0&amp;amp;p=no_javascript" target="_blank"&gt; Enable JavaScript to see Google Maps. &lt;/a&gt; &lt;/div&gt; &lt;/div&gt; </noscript>
 </body>
 </html>

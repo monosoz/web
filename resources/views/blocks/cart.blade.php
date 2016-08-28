@@ -36,22 +36,26 @@
                 </button>
             </form-->
         </td>
-    <tr>
+    <tr id="cart-addon">
         <td>
         <ul style="list-style: none;">
             @foreach ($item->rel->where('item_no', "$q") as $rel)
+            @if($rel->child->price!=0)
             <li>
                 <span>{{ $rel->child->name }}</span>
             </li>
+            @endif
             @endforeach
         </ul>
         </td>
         <td>
         <ul style="list-style-type: none;">
             @foreach ($item->rel->where('item_no', "$q") as $rel)
+            @if($rel->child->price!=0)
             <li>
                 <span>{{ $rel->child->price }}</span>
             </li>
+            @endif
             @endforeach
         </ul>
         </td>
@@ -63,7 +67,7 @@
             {{ $item->displayName }}
             @elseif(substr($item->sku, 0, 4)==='FREE')
             Free Pizza
-            @else
+            @elseif(substr($item->sku, 0, 4)==='PROD')
             Custom Pizza
                 @if(substr($item->sku, -1)==='R')
                 -Regular

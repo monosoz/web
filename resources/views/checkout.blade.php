@@ -37,11 +37,17 @@
         {!!$errors->first('address', '<span class="help-block">:message</span>')!!}
         {!!$errors->first('lat', '<span class="help-block">Please select your location on map.</span>')!!}
               </p>
-              <form class="form-horizontal" method="POST" action="/user/address">
+              <form class="form-horizontal" method="POST" action="{{ url('/user/address') }}">
                 {{ csrf_field() }}
                 <div class="col-sm-6">
                 @include('blocks.addressform')
                 <div id="mapinput"></div>
+<div class="col-md-6 col-md-offset-4">
+  <button type="submit" class="btn btn-primary">
+    <i class="fa fa-btn fa-user"></i> Add Address
+  </button>
+</div>
+<div class="clearfix"></div>
                 </div>
                 <div class="col-sm-6">
                   <div id="new_map"></div>
@@ -60,3 +66,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key={{config('app.map_key')}}"></script>
     <script src="{{ url('map.js') }}"></script>
 @endsection
+
+@section('title')Checkout: @endsection
