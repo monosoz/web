@@ -66,6 +66,7 @@ Total: {{$cart->total}}<br>
 
 {{--*/ $opcal->ocount++ /*--}}
 {{--*/ $opcal->total += $cart->total /*--}}
+{{--*/ $opcal->pcount += $cart->count /*--}}
 
 <div style="text-align: center;">
 <strong>monosoz</strong><br>
@@ -143,7 +144,6 @@ Address:{{$cart->delivery_location->address}}<br>
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
             {{ $item->displayName }}
-{{--*/ $opcal->pcount++ /*--}}
             @elseif(substr($item->sku, 0, 4)==='FREE')
             Free Pizza
             @else
@@ -155,7 +155,6 @@ Address:{{$cart->delivery_location->address}}<br>
                 @elseif(substr($item->sku, -1)==='L')
                 -Large
                 @endif
-{{--*/ $opcal->pcount++ /*--}}
             @endif
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
