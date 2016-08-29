@@ -18,6 +18,11 @@ class AlterMyTable extends Migration
             $table->decimal('tax', 20, 2)->after('price')->default(0);
             $table->index('tax');
         });
+        Schema::table('addons', function($table)
+        {
+            $table->decimal('tax', 20, 2)->after('price')->default(0);
+            $table->index('tax');
+        });
     }
 
     /**
@@ -28,5 +33,6 @@ class AlterMyTable extends Migration
     public function down()
     {
         //
+            $table->dropColumn('tax');
     }
 }
