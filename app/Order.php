@@ -6,6 +6,11 @@ use Amsgames\LaravelShop\Models\ShopOrderModel;
 
 class Order extends ShopOrderModel
 {
+
+    protected $fillable = [
+        'statusCode',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');

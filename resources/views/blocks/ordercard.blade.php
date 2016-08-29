@@ -6,6 +6,9 @@ Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location
 @endif
 Order Status: {{$cart->statusCode}}<br>
 {{$cart->created_at}}<br>
+@include('blocks.cart')
+<hr>
+@if(false)
 <div class=""><table class="cart-table table table-hover">
     <tbody>
     @foreach ($cart->items as $item)
@@ -18,7 +21,7 @@ Order Status: {{$cart->statusCode}}<br>
     @if($item->rel->where('item_no', "$q")->count()!=0)
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
-            {{ $item->displayName }}
+            {{ $item->displayName }}z
             @elseif(substr($item->sku, 0, 4)==='FREE')
             Free Pizza
             @else
@@ -117,5 +120,5 @@ Order Status: {{$cart->statusCode}}<br>
             <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
         </tr>
     </tfoot>
-</table>
-                </div>
+</table></div>
+@endif

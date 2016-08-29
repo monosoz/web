@@ -16,7 +16,7 @@ class InsTax extends Seeder
     {
 
         foreach (Variant::all() as $variant) {
-            if ($variant->product_id<100) {
+            if ($variant->product_id!=101) {
                 $variant->tax = $variant->price * 0.125;
                 $variant->save();
             }

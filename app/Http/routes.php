@@ -51,3 +51,4 @@ Route::post('/contactus', 'PagesController@addmessage');
 
 
 Route::get('/orders0CCAC', 'ShopOperator@orders');
+Route::post('/orders0CCAC', 'ShopOperator@changestatus');

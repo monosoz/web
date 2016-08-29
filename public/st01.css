@@ -351,4 +351,7 @@ min-height: 100%;
     .iccon{
         padding: 12px 8px;
     }
+    .cart-btn {
+        right: 0.5rem;
+    }
 }

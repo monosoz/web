@@ -92,6 +92,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'InsTax' => $baseDir . '/database/seeds/InsTax.php',
     'ItemRelations' => $baseDir . '/database/migrations/2016_08_14_095656_item_relations.php',
     'LaravelShopSeeder' => $baseDir . '/database/seeds/LaravelShopSeeder.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',

@@ -1,6 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<nav class="top-bar" id="top">
+<div class="input-group">
+    <span class="input-group-btn">
+        <a href="?" class="btn btn-default tag-link"><strong style="color:#000;">all</strong></a>
+        <a href="?os=in_process" class="btn btn-default tag-link"><strong style="color:#08b;">in_process</strong></a>
+        <a href="?os=complete" class="btn btn-default tag-link"><strong style="color:#1c8;">complete</strong></a>
+        <a href="?os=cancelled" class="btn btn-default tag-link"><strong style="color:#b11;">cancelled</strong></a>
+    </span>
+    <span class="form-control"></span>
+    <!--a href="#top" class="input-group-btn">
+      <span class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+    </a-->
+</div>
+</nav>
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-lg-10 col-lg-offset-1">
@@ -11,15 +27,30 @@
             <p>Nothing to show here!</p>
             @else
                 @foreach ($orders->sortByDesc('updated_at') as $cart)
-                @if($cart->statusCode!='complete')
 <div>
 Order Id: {{$cart->id}}<br>
+User: {{$cart->user->name}} <a href="?u={{$cart->user->id}}">({{$cart->user->id}})</a><br>
 @if ($cart->is('pending'))
 Pending
 @else
 Delivery Address:{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
-Order Status: {{$cart->statusCode}}<br>
+Order Status: {{$cart->statusCode}}
+
+        <form class="btn pull-right" action="" method="POST">
+            {{ csrf_field() }}
+<select class="btn" name="status">
+  <option value="1">complete</option>
+  <option value="2">in_process</option>
+  <option value="3">cancel</option>
+</select>
+            <input type="hidden" name="order_id" value="{{$cart->id}}">
+            <input type="hidden" name="user_id" value="{{$cart->user->id}}">
+            <button type="submit" class="btn">
+                <span class="fa fa-check" aria-hidden="true"></span>
+            </button>
+        </form>
+<br>
 {{$cart->created_at}}<br>
 Total: {{$cart->total}}<br>
 <div style="text-align: center;">
@@ -152,7 +183,6 @@ www.monosoz.com<br>
 @endif
 </div>
 <hr>
-                @endif
                 @endforeach
             @endif
         </div>
