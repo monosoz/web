@@ -188,16 +188,18 @@ class PagesController extends Controller
                     $itno=1;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                        $this->cart->add(Addon::findOrFail(101));
-                        $itemr=GuestItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        if ($this->cart->add(Addon::findOrFail(101))) {
+                            $itemr=GuestItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        }
                         }
                     }
                 } else {
                     $itno=1;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                        $this->cart->add(Addon::findOrFail(101));
-                        $itemr=ItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        if ($this->cart->add(Addon::findOrFail(101))) {
+                            $itemr=ItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        }
                         }
                     }
                 }
