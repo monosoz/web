@@ -37,5 +37,9 @@ class AlterMyTable extends Migration
         {
             $table->dropColumn('tax');
         });
+        Schema::table('addons', function($table)
+        {
+            $table->dropColumn('tax');
+        });
     }
 }
