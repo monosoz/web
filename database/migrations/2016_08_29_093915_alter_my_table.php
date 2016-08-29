@@ -15,7 +15,7 @@ class AlterMyTable extends Migration
         //
         Schema::table('variants', function($table)
         {
-            $table->decimal('price', 20, 2)->after('price')->default(0);
+            $table->decimal('tax', 20, 2)->after('price')->default(0);
             $table->index('tax');
         });
     }
