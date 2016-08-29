@@ -33,6 +33,9 @@ class AlterMyTable extends Migration
     public function down()
     {
         //
+        Schema::table('variants', function($table)
+        {
             $table->dropColumn('tax');
+        });
     }
 }
