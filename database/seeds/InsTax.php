@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Product;
 
-class Fake extends Seeder
+class InsTax extends Seeder
 {
     /**
      * Run the database seeds.
