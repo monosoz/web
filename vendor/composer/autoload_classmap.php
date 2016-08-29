@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'AP' => $baseDir . '/database/seeds/AP.php',
     'AddressSetupTable' => $baseDir . '/database/migrations/2016_06_25_164912_address_setup_table.php',
+    'AlterMyTable' => $baseDir . '/database/migrations/2016_08_29_093915_alter_my_table.php',
     'Amsgames\\LaravelShop\\MigrationCommand' => $vendorDir . '/monosoz/laravel-shop/src/Commands/MigrationCommand.php',
     'CD' => $baseDir . '/database/seeds/CD.php',
     'CU' => $baseDir . '/database/seeds/CU.php',

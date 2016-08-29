@@ -11,7 +11,7 @@
             <p>Nothing to show here!</p>
             @else
                 @foreach ($orders->sortByDesc('updated_at') as $cart)
-                @if($cart->statusCode!='complet')
+                @if($cart->statusCode!='complete')
 <div>
 Order Id: {{$cart->id}}<br>
 @if ($cart->is('pending'))

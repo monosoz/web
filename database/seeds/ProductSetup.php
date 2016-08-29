@@ -54,7 +54,7 @@ class ProductSetup extends Seeder
 		    		'id'			=> '3',
 		    		'sku'			=> 'REGULARBASE',
 		    		'price'			=> '0',
-		    		'name' 			=> 'Regular',
+		    		'name' 			=> 'Regular Base',
 		    ],
 		    [
 		    		'id'			=> '4',
