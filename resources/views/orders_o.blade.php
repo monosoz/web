@@ -200,17 +200,17 @@ www.monosoz.com<br>
 </div>
 <hr>
                 @endforeach
-            @endif
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <div style="padding: 31px; position: fixed; left: 0; right: 0; bottom: 0; background-color: #eee; z-index: 1;">
 <span class="col-sm-3 col-xs-6">Total: {{ $opcal->total }}</span>
 <span class="col-sm-3 col-xs-6">Discount: {{ $opcal->off }}</span>
 <span class="col-sm-3 col-xs-6">Order Count: {{ $opcal->ocount }}</span>
 <span class="col-sm-3 col-xs-6">Pizza Count: {{ $opcal->pcount }}</span>
+</div>
+            @endif
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
 
