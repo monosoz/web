@@ -34,8 +34,8 @@ User: {{$cart->user->name}} <a href="?u={{$cart->user->id}}">({{$cart->user->id}
 Pending
 @else
 Delivery Address:{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
-Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
-Order Status: {{$cart->statusCode}}
+<!--Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
+Order Status: {{$cart->statusCode}}-->
 
         <form class="btn pull-right" action="" method="POST">
             {{ csrf_field() }}
