@@ -18,7 +18,7 @@ class Fake extends Seeder
             DB::table('products')->insert([
                 [
                     'name' => 'Veg Fiesta' ,
-                    'description' => 'Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
+                    'description' => 'Indian Masala Sauce, Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
                 ],
             	[
                     'name' => 'Margherita' ,
