@@ -74,7 +74,7 @@ trait ShopCartTrait
      */
     public function add($item, $quantity = 1, $quantityReset = false)
     {
-        if (!is_array($item) && !$item->isShoppable) return;
+        if (!is_array($item) && !$item->isShoppable) return false;
         // Get item
         $cartItem = $this->getItem(is_array($item) ? $item['sku'] : $item->sku);
         // Add new or sum quantity
