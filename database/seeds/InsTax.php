@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\Product;
+use App\Variant;
+use App\Addon;
 
 class InsTax extends Seeder
 {
@@ -19,6 +20,10 @@ class InsTax extends Seeder
                 $variant->tax = $variant->price * 0.125;
                 $variant->save();
             }
+        }
+        foreach (Addon::all() as $variant) {
+                $variant->tax = $variant->price * 0.125;
+                $variant->save();
         }
     }
 }
