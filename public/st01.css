@@ -98,7 +98,9 @@
     right: 1.75rem;
     border: none;
     z-index: 1049;
-    color: #fff
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.39);
+    padding: 12px 3px 14px 15px;
 }
 .cart{
     position: fixed;
@@ -294,10 +296,10 @@
     background-color: rgba(242, 222, 222, 0.32);
 }
 .top-bar{
-    padding: 2px;
+    padding: 0px;
     text-align: center;
     font-size: 16px;
-    margin-top: -12px;
+    margin-top: -10px;
 }
 .top-bar>div>a{
     text-decoration: none;
@@ -305,6 +307,12 @@
 }
 .top-bar>div>a:hover{
     color: #111;
+}
+.tag-link{
+    min-width: 90px;
+}
+.tag-link>*{
+    text-decoration: underline;
 }
 .fb-page{
 

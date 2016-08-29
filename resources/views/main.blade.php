@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<nav class="top-bar">
+<nav class="top-bar" id="top">
         <div class="">
             <a href="{{ url('/feedback') }}" class="input-group">
             <strong class="form-control btn-default">We would love to hear from you.</strong>
@@ -12,6 +12,17 @@
             </a>
         </div>
 </nav>
+<div class="input-group">
+    <span class="input-group-btn">
+        <a href="#veg" class="btn btn-default tag-link"><strong style="color:#1c8;">Veg</strong></a>
+        <a href="#nveg" class="btn btn-default tag-link"><strong style="color:#b11;">Non-Veg</strong></a>
+        <a href="#bev" class="btn btn-default tag-link"><strong style="color:#08b;">Beverages</strong></a>
+    </span>
+    <span class="form-control"></span>
+    <!--a href="#top" class="input-group-btn">
+      <span class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+    </a-->
+</div>
     <div class="container">
         @include('blocks.product')
     </div>
