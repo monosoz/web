@@ -30,7 +30,7 @@ class ShopOperator extends Controller
         } elseif ($request->has('u')) {
             return view('op.orders_o', ['orders' => Order::where('user_id', '=', $request->u)->get(),]);
         } elseif ($request->has('fb')) {
-            return view('op.feedback', ['feedbacks' => Feedback::whereDate('created_at', '=', date('y-m-d'))->get(),]);
+            return view('op.feedback', ['feedbacks' => Feedback::whereDate('created_at', '=', date('y'))->get(),]);
         } else {
             return view('op.orders_o', ['orders' => Order::all(),]);
         }
