@@ -1,7 +1,10 @@
 <table class="cart-table table table-hover">
     <tbody>
+{{--*/ $toff = 0 /*--}}
     @foreach ($cart->items as $item)
-@if(substr($item->class, -5, 5)!='Addon')
+@if($item->price<0)
+    {{--*/ $toff += $item->price * $item->quantity /*--}}
+@elseif(substr($item->class, -5, 5)!='Addon')
     {{--*/ $q = $item->quantity /*--}}
     {{--*/ $ql = $q /*--}}
 
@@ -108,6 +111,12 @@
             <td>Vat:</td>
             <td><i class="fa fa-inr"></i><span> {{ $cart->totalTax }}</span></td>
         </tr>
+        @if($toff != 0)
+        <tr>
+            <th>Discount:</th>
+            <th><i class="fa fa-inr"></i><span> {{ $toff }}</span></th>
+        </tr>
+        @endif
         <tr>
             <th>Total:</th>
             <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>

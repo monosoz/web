@@ -205,7 +205,7 @@ return [
     | This configuration option exists if you don't wish to overload your cache.
     |
     */
-    'cache_calculations' => false,
+    'cache_calculations' => true,
 
     /*
     |--------------------------------------------------------------------------
