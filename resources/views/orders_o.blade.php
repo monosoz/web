@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.opapp')
 
 @section('content')
 <nav class="top-bar" id="top">
@@ -81,8 +81,11 @@ Address:{{$cart->delivery_location->address}}<br>
 <hr>
 <table class="cart-table" style="width:100%; font-size:.8em;">
     <tbody>
+{{--*/ $toff = 0 /*--}}
     @foreach ($cart->items as $item)
-@if(substr($item->class, -5, 5)!='Addon')
+@if($item->price<0)
+    {{--*/ $toff += $item->price * $item->quantity /*--}}
+@elseif(substr($item->class, -5, 5)!='Addon')
     {{--*/ $q = $item->quantity /*--}}
     {{--*/ $ql = $q /*--}}
 
@@ -180,12 +183,19 @@ Address:{{$cart->delivery_location->address}}<br>
     <tfoot>
         <tr>
             <td>Subtotal: </td>
-            <td><i class="fa fa-inr"></i><span> {{ $cart->totalPrice }}</span></td>
+            <td><i class="fa fa-inr"></i><span> {{ $cart->totalPrice +$toff }}</span></td>
         </tr>
         <tr>
             <td>Vat:</td>
             <td><i class="fa fa-inr"></i><span> {{ $cart->totalTax }}</span></td>
         </tr>
+        @if($toff != 0)
+        <tr>
+            <th>Discount:</th>
+            <th><i class="fa fa-inr"></i><span> {{ $toff }}</span></th>
+        </tr>
+{{--*/ $opcal->off += $toff /*--}}
+        @endif
         <tr>
             <th>Total:</th>
             <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
@@ -215,23 +225,6 @@ www.monosoz.com<br>
 
 
 @section('stylesheet')
-
-  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
-  <script type="text/javascript">
-    //Enable pusher logging - don't include this in production
-    //Pusher.logToConsole = true;
-
-    var pusher = new Pusher('85af98d3bd88e572165f', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('new_order', function(data) {
-      alert(data.message);
-      window.location.reload(true);
-    });
-  </script>
 @endsection
 
 @section('title')Orders: @endsection

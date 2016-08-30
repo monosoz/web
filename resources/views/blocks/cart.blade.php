@@ -105,7 +105,7 @@
     <tfoot>
         <tr>
             <td>Subtotal:</td>
-            <td><i class="fa fa-inr"></i><span> {{ $cart->totalPrice }}</span></td>
+            <td><i class="fa fa-inr"></i><span> {{ $cart->totalPrice + $toff }}</span></td>
         </tr>
         <tr>
             <td>Vat:</td>
