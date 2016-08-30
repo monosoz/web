@@ -30,7 +30,7 @@
         <input id="b1" type="radio" name="base_id" value="4">
         <label class="tp-card base-size" for="b1">Thin Crust</label>
         <input checked="checked" id="b2" type="radio" name="base_id" value="3">
-        <label class="tp-card base-size" for="b2">Regular</label>
+        <label class="tp-card base-size" for="b2">Standard</label>
         <input id="b3" type="radio" name="base_id" value="5">
         <label class="tp-card base-size" for="b3">Double Dough</label>
     </div>
