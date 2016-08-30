@@ -94,6 +94,24 @@
         </div>
     </nav>
 
+<nav class="top-bar" id="top">
+<div class="input-group">
+    <span class="input-group-btn">
+        <a href="?" class="btn btn-default tag-link"><strong style="color:#000;">all</strong></a>
+        <a href="?os=in_process" class="btn btn-default tag-link"><strong style="color:#08b;">in_process</strong></a>
+        <a href="?os=complete" class="btn btn-default tag-link"><strong style="color:#1c8;">complete</strong></a>
+        <a href="?os=cancelled" class="btn btn-default tag-link"><strong style="color:#b11;">cancelled</strong></a>
+    </span>
+    <span class="form-control"></span>
+    <span class="input-group-btn">
+        <a href="?fb=1" class="btn btn-primary"><strong style="color:#fff;">Feedback</strong></a>
+    </span>
+    <!--a href="#top" class="input-group-btn">
+      <span class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+    </a-->
+</div>
+</nav>
+<br>
     @yield('content')
 
     <footer class="footer cs-footer">

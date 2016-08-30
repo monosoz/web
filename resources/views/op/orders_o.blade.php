@@ -1,7 +1,7 @@
 @extends('layouts.opapp')
 
 @section('content')
-<nav class="top-bar" id="top">
+<!--nav class="top-bar" id="top">
 <div class="input-group">
     <span class="input-group-btn">
         <a href="?" class="btn btn-default tag-link"><strong style="color:#000;">all</strong></a>
@@ -10,11 +10,8 @@
         <a href="?os=cancelled" class="btn btn-default tag-link"><strong style="color:#b11;">cancelled</strong></a>
     </span>
     <span class="form-control"></span>
-    <!--a href="#top" class="input-group-btn">
-      <span class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
-    </a-->
 </div>
-</nav>
+</nav-->
 
 
 <div class="container">

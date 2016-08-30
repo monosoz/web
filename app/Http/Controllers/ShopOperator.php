@@ -7,6 +7,7 @@ Use Shop;
 Use App\Location;
 Use App\User;
 Use App\Order;
+Use App\Feedback;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -23,13 +24,15 @@ class ShopOperator extends Controller
 	if (Auth::user()->email=='operator@monosoz.com'||Auth::user()->email=='a@monosoz.com') {
         //
         if ($request->has('os')&&$request->has('tm')) {
-            return view('orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->get(),]);
+            return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->get(),]);
         } elseif ($request->has('os')) {
-            return view('orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereDate('created_at', '=', date('y-m-d'))->get(),]);
+            return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereDate('created_at', '=', date('y-m-d'))->get(),]);
         } elseif ($request->has('u')) {
-            return view('orders_o', ['orders' => Order::where('user_id', '=', $request->u)->get(),]);
+            return view('op.orders_o', ['orders' => Order::where('user_id', '=', $request->u)->get(),]);
+        } elseif ($request->has('fb')) {
+            return view('op.feedback', ['feedbacks' => Feedback::whereDate('created_at', '=', date('y-m-d'))->get(),]);
         } else {
-            return view('orders_o', ['orders' => Order::all(),]);
+            return view('op.orders_o', ['orders' => Order::all(),]);
         }
         
 		
