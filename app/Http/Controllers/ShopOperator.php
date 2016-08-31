@@ -53,6 +53,8 @@ class ShopOperator extends Controller
             $status = 'in_process';
         } elseif ($request->status==3) {
             $status = 'cancelled';
+        } elseif ($request->status==4) {
+            $status = 'confirmed';
         }
         if ($status != $ordertc->statusCode) {
             $ordertc->statusCode = $status;

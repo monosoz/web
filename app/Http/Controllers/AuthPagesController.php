@@ -132,6 +132,8 @@ class AuthPagesController extends Controller
         $dlocation->usercomment = $location->usercomment;
         $dlocation->comment = $location->comment;
         $this->order->delivery_location()->save($dlocation);
+        $this->order->statusCode='confirmed';
+        $this->order->save();
     $options = array('cluster' => 'ap1', 'encrypted' => true);
     $pusher = new \Pusher('85af98d3bd88e572165f', '1692b81c6311d8a679e4', '219908', $options );
 

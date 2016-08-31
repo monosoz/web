@@ -98,6 +98,7 @@
 <div class="input-group">
     <span class="input-group-btn">
         <a href="?" class="btn btn-default tag-link"><strong style="color:#000;">all</strong></a>
+        <a href="?os=confirmed" class="btn btn-default tag-link"><strong style="color:#b33;">confirmed</strong></a>
         <a href="?os=in_process" class="btn btn-default tag-link"><strong style="color:#08b;">in_process</strong></a>
         <a href="?os=complete" class="btn btn-default tag-link"><strong style="color:#1c8;">complete</strong></a>
         <a href="?os=cancelled" class="btn btn-default tag-link"><strong style="color:#b11;">cancelled</strong></a>

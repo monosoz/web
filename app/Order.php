@@ -11,6 +11,10 @@ class Order extends ShopOrderModel
     {
         return $this->belongsTo('App\User');
     }
+    public function status()
+    {
+        return $this->belongsTo('App\StatusCode', 'statusCode');
+    }
 
     public function delivery_location()
     {

@@ -1,10 +1,10 @@
-
+<div style="position: relative;">
 Order Id: {{$cart->id}}<br>
+<strong style="position: absolute; top: 0; right: 0; padding: 5px 10px; background-color: rgba(239, 76, 28, 0.39)">Status: {{$cart->status->name}}<br></strong>
 Total: {{$cart->total}}<br>
 @if (!$cart->is('pending')) 
 Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 @endif
-Order Status: {{$cart->statusCode}}<br>
 {{$cart->created_at}}<br>
 @include('blocks.cart')
 <hr>
@@ -122,3 +122,4 @@ Order Status: {{$cart->statusCode}}<br>
     </tfoot>
 </table></div>
 @endif
+</div>

@@ -169,14 +169,12 @@ class PagesController extends Controller
         ]);
         $reqcode=strtoupper($request->get('code'));
         $ifc=Item::where('sku', '=', $reqcode)->first();
-        if ($this->cart->items->where('price', '229.00')->count()==0) {
+        if ($this->cart->items->where('price', '229.00')->count()==0 && $this->cart->items->where('price', '299.00')->count()==0) {
             Session::flash('couponMessage', 'Coupon not applicable.');
         }
         elseif ( $ifc==null||$ifc->order_id==null) {
             Item::where('sku', '=', $reqcode)->where('order_id', '=', null)->delete();
             GuestItem::where('sku', '=', $reqcode)->delete();
-            Item::where('sku', '=', 'OFF1006818')->where('order_id', '=', null)->delete();
-            GuestItem::where('sku', '=', 'OFF1006818')->delete();
             Item::where('price', '<', 0)->where('cart_id', '=', $this->cart->id)->delete();
             GuestItem::where('price', '<', 0)->where('guestcart_id', '=', $this->cart->id)->delete();
             foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
@@ -199,6 +197,13 @@ class PagesController extends Controller
                         }
                     }
                 }
+            } elseif ($reqcode=='MONO100') {
+                    $itno=1;
+                    foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
+                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                            $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
+                        }
+                    }
             } else {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
             }
