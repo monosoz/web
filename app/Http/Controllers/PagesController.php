@@ -181,40 +181,29 @@ class PagesController extends Controller
                 ItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
             }
-            $couponMessage=0;
             if ($reqcode=='OFF100') {
                 if (Auth::guest()) {
                     $itno=1;
-                            $couponMessage=2;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(Addon::findOrFail(101));
-                            $couponMessage=1;
                         }
                     }
                 } else {
                     $itno=1;
-                            $couponMessage=2;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(Addon::findOrFail(101));
-                            $couponMessage=1;
                         }
                     }
                 }
             } elseif ($reqcode=='MONO100') {
                     $itno=1;
-                            $couponMessage=2;
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
-                            $couponMessage=1;
                         }
                     }
-            } elseif ($couponMessage>0) {
-                if ($couponMessage==2) {
-                    Session::flash('couponMessage', 'Coupon not applicable.');
-                }
             } else {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
             }
