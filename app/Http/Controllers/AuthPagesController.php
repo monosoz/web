@@ -91,7 +91,7 @@ class AuthPagesController extends Controller
         $location->usercomment = $request->comment;
         $location->update = substr($location->updated_at, -8);
         Auth::user()->locations()->save($location);
-        return $request->requrl;
+        return redirect($request->requrl);
         
     }
 
