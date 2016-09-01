@@ -8,7 +8,7 @@
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">Get Any Medium Pizza (12") @ 129!</h1>
                 <h3>use coupon code 'OFF100'</h3>
-                <h5 style="color: #192; font-weight: bold;">*valid  till 31st August</h5>
+                <!--h5 style="color: #192; font-weight: bold;">*valid  till 31st August</h5-->
             </div>
             <span class="pull-right" style="margin-top: -10px;">*Limited Promotion</span>
             @elseif($cart_status==11)
