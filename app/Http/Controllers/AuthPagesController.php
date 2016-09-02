@@ -37,7 +37,7 @@ class AuthPagesController extends Controller
             session(['cartStatus' => 2]);
             return redirect('/');
         } else {
-            return view('checkout', ['user' => Auth::user(),]);
+            return view('checkout', ['user' => Auth::user(), 'cart' => Auth::user()->cart,]);
         }
     }
 
@@ -81,6 +81,12 @@ class AuthPagesController extends Controller
     public function editaddress(Request $request)
     {
 
+        $this->validate($request, [
+            'name' => 'required',
+            'contact' => 'required',
+            'pincode' => 'required',
+            'address' => 'required',
+        ]);
         $location = Auth::user()->locations()->where('id', $request->address_id)->first();
         $location->name = $request->name;
         $location->mobile_number = $request->mobile;

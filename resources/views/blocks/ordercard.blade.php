@@ -5,7 +5,8 @@ Total: {{$cart->total}}<br>
 @if (!$cart->is('pending')) 
 Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 @endif
-{{$cart->created_at}}<br>
+Date: {{substr($cart->created_at, 0, 10)}}<br>
+Time: {{substr($cart->created_at, -8)}}<br>
 @include('blocks.cart')
 <hr>
 @if(false)

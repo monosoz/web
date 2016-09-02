@@ -31,7 +31,7 @@
 {{--*/ $opcal->pcount = 0 /*--}}
 
 
-                @foreach ($orders->sortByDesc('updated_at') as $cart)
+                @foreach ($orders->sortByDesc('created_at') as $cart)
 <div style="position: relative;">
 Order Id: {{$cart->id}}<br>
 <strong style="position: absolute; top: 0; right: 0; padding: 5px 10px; background-color: rgba(239, 76, 28, 0.39)">Status: {{$cart->status->name}}<br></strong>
@@ -59,7 +59,8 @@ Order Status: {{$cart->statusCode}}
             </button>
         </form>
 <br>
-{{$cart->created_at}}<br>
+Date: {{substr($cart->created_at, 0, 10)}}<br>
+Time: {{substr($cart->created_at, -8)}}<br>
 Total: {{$cart->total}}<br>
 
 {{--*/ $opcal->ocount++ /*--}}
