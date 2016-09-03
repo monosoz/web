@@ -61,7 +61,7 @@ Order Status: {{$cart->statusCode}}
         </form>
 <br>
 Date: {{substr($cart->created_at, 0, 10)}}<br>
-Time: {{substr($cart->created_at, -8)}}<br>
+Time: {{substr($cart->created_at, -8, 5)}}<br>
 Total: {{$cart->total}}<br>
 
 {{--*/ $opcal->ocount++ /*--}}
