@@ -219,7 +219,16 @@ class PagesController extends Controller
         if (Auth::check()) {
             $feedback = new \App\Feedback;
             $feedback->name = Auth::user()->name;
-            $feedback->comment = $request->message;
+            if ($request->has('order_id')) {
+                $feedback->order_id = substr($request->order_id, -4) - 1000;
+                $feedback->comment = $request->message;
+                session(['cartStatus' => 12]);
+            } else {
+                $feedback->comment = "Counact Us:
+" . $request->message;
+                session(['cartStatus' => 4]);
+            }
+            
             Auth::user()->feedbacks()->save($feedback);
         } else {
             $feedback = new \App\Feedback;
@@ -236,7 +245,6 @@ Message: ".$request->message ;
 
     $data['message'] = 'New Feedback !' ;
   $pusher->trigger('test_channel', 'new_order', $data);
-        session(['cartStatus' => 4]);
         return redirect('/');
         
     }

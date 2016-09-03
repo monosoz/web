@@ -15,6 +15,10 @@
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">Your order has been placed.</h1>
             </div>
+            @elseif($cart_status==12)
+            <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
+                <h1 style="font-size:50px;color:#980211;">Callback Request Send.</h1>
+            </div>
             @elseif(!env('OPEN'))
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
