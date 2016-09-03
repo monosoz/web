@@ -85,6 +85,7 @@
   background-color: rgba(90, 90, 90, 0.7);
   text-align: center;
   height: 36px;
+  min-width: 150px;
 }
 
 /* Extras 
@@ -133,6 +134,7 @@ span.tp{ color:#6d84b4 }
 
   line-height: 32px;
   min-width: 80px;
+  margin: auto;
 }
 .tp-total{
   padding-right: 10px;

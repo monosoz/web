@@ -1,5 +1,5 @@
 <div style="position: relative;">
-Order Id: {{$cart->id}}<br>
+Order Id: {{$cart->order_id}}<br>
 <strong style="position: absolute; top: 0; right: 0; padding: 5px 10px; background-color: rgba(239, 76, 28, 0.39)">Status: {{$cart->status->name}}<br></strong>
 Total: {{$cart->total}}<br>
 @if (!$cart->is('pending')) 

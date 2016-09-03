@@ -365,6 +365,7 @@ class ComposerStaticInit98921dcadeb4149da467f5d572452f42
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'InsOid' => __DIR__ . '/../..' . '/database/seeds/InsOid.php',
         'InsTax' => __DIR__ . '/../..' . '/database/seeds/InsTax.php',
         'ItemRelations' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_095656_item_relations.php',
         'KU' => __DIR__ . '/../..' . '/database/seeds/KU.php',

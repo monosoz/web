@@ -138,6 +138,8 @@ class AuthPagesController extends Controller
         $dlocation->usercomment = $location->usercomment;
         $dlocation->comment = $location->comment;
         $this->order->delivery_location()->save($dlocation);
+        $oid=$this->order->id+1000;
+        $this->order->order_id = 'OD1' . substr($this->order->created_at, 5, 2) . substr($this->order->created_at, 8, 2) . $oid;
         $this->order->statusCode='confirmed';
         $this->order->save();
     $options = array('cluster' => 'ap1', 'encrypted' => true);
