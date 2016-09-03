@@ -1,6 +1,6 @@
 <div>
 <div style="position: relative;">
-<form id="contact-form" method="post" action="{{ url('/contactus') }}" role="form" style="position: absolute; top: -5px; right: -6px;>
+<form id="contact-form" method="post" action="{{ url('/contactus') }}" role="form" style="position: absolute; top: -5px; right: -6px;">
 {{ csrf_field() }}
                 <input type="hidden" name="order_id" value="{{$cart->order_id}}"></input>
                 <input type="hidden" name="message" value="Callback Request: {{$cart->delivery_location->mobile_number}}"></input>
