@@ -86,6 +86,8 @@
   @include('blocks.welcome')
 @elseif($cart_status==5)
   @include('blocks.welcome')
+@elseif($cart_status>9)
+  @include('blocks.welcome')
 @endif
 @endsection
 @section('scripts')
@@ -113,7 +115,7 @@
             $('#wModal').modal('show');
         });
     </script>
-  @elseif($cart_status==5)
+  @elseif($cart_status>4)
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');
