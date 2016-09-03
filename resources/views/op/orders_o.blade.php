@@ -161,6 +161,9 @@ Address:{{$cart->delivery_location->address}}<br>
             @endif
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
+@if($item->price<50)
+{{--*/ $opcal->pcount-=$item->quantity /*--}}
+@endif
             <!--form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
                 <button type="submit" name="action" value="add" class="btn-link">
