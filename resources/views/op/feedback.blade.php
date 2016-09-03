@@ -26,9 +26,13 @@
             <p>Phone: {{$feedback->user->mobile_number}}</p>
             <p>Email: {{$feedback->user->email}}</p>
     @endif
+<blockquote>
 Name: {{$feedback->name}}<br>
+Order Id: {{$feedback->order_id}}<br>
 {{$feedback->created_at}}<br>
-Comment: {{$feedback->comment}}<br>
+Comment: <br>
+<pre>{{$feedback->comment}}</pre><br>
+</blockquote>
 </div>
 <hr>
                 @endforeach
