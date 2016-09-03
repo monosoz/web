@@ -14,21 +14,7 @@
           </div>
           <hr>
           <div class="clearfix">
-            <form action="{{ url('cart/') }}" method="POST" class="pull-right">
-                {{ csrf_field() }}
-        <div class="input-group">
-          <span class="input-group-btn" style="width: auto;">
-                <button type="submit" name="id" value="{{\App\Product::find(102)->variants->first()->id}}" class="btn btn-primary">
-                    <span><i class="fa fa-inr"></i>{{\App\Product::find(102)->variants->first()->price+0}}</span>
-                </button>
-          </span>
-          <span class="input-group-btn" style="width: auto;">
-                <button type="submit" name="id" value="{{\App\Product::find(102)->variants->first()->id}}" class="btn btn-default">
-                    <span>Add Ketchup</span>
-                </button>
-          </span>
-        </div>
-            </form>
+            @include('blocks.addketchup')
             <p>Cart Summary:</p>
             @include('blocks.cart')
           </div>

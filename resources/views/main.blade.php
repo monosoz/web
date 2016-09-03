@@ -50,6 +50,7 @@
         </form>
       </div>
       <div class="cart-body">
+          @include('blocks.addketchup')
           @include('blocks.cart')
       </div>
       <div class="panel-footer">
