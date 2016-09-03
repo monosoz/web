@@ -7,7 +7,7 @@
                 <input type="submit" class="btn btn-success btn-send" value="Request Callback">
 
 </form>
-<span class="xxs-">Order Id:</span>{{$cart->order_id}}<br>
+<span class="xxs-h">Order Id:</span>{{$cart->order_id}}<br>
 <strong style="position: absolute; bottom: 2px; right: -9px; padding: 4px 10px; background-color: rgba(239, 76, 28, 0.39)">Status: {{$cart->status->name}}<br></strong>
 Total: {{$cart->total}}<br>
 @if (!$cart->is('pending')) 
