@@ -342,6 +342,9 @@ min-height: 100%;
         width: 150px;
         height: 150px;
     }
+    .req-call>input{
+        padding: 2px;
+    }
     .xxs-h{
         display: none;
     }
