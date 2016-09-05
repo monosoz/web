@@ -98,6 +98,7 @@ return array(
     'ItemRelations' => $baseDir . '/database/migrations/2016_08_14_095656_item_relations.php',
     'KU' => $baseDir . '/database/seeds/KU.php',
     'LaravelShopSeeder' => $baseDir . '/database/seeds/LaravelShopSeeder.php',
+    'NV' => $baseDir . '/database/seeds/NV.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',

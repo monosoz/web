@@ -130,9 +130,9 @@ class ProductSetup extends Seeder
 		    ],
 		    [
 		    		'id'			=> '31',
-		    		'sku'			=> 'BARBEQUECHICKEN',
+		    		'sku'			=> 'BACON',
 		    		'price'			=> '40',
-		    		'name' 			=> 'Barbeque Chicken',
+		    		'name' 			=> 'Bacon',
 		    ],
 		    [
 		    		'id'			=> '32',

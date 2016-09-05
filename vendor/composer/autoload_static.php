@@ -370,6 +370,7 @@ class ComposerStaticInit98921dcadeb4149da467f5d572452f42
         'ItemRelations' => __DIR__ . '/../..' . '/database/migrations/2016_08_14_095656_item_relations.php',
         'KU' => __DIR__ . '/../..' . '/database/seeds/KU.php',
         'LaravelShopSeeder' => __DIR__ . '/../..' . '/database/seeds/LaravelShopSeeder.php',
+        'NV' => __DIR__ . '/../..' . '/database/seeds/NV.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',

@@ -14,7 +14,6 @@ class Fake extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $i = 1;
             DB::table('products')->insert([
                 [
                     'name' => 'Veg Fiesta' ,
@@ -57,6 +56,7 @@ class Fake extends Seeder
                     'description' => 'Caramelized Onion Sauce, Babycorn, Golden Corn, Capcisum, Mushroom, Tomato, Jalapeno.'
                 ],
             ]);
+        $i = 1;
 
         foreach (Product::all() as $product) {
             $sku = 'PIZZA010';
@@ -81,7 +81,7 @@ class Fake extends Seeder
                 ],
                 [
                     'product_id' => $product->id,
-                    'sku' => $sku.$i.'L',
+                    'sku' => $sku.$i++.'L',
                     'price' => $price+140,
                     'tax' => ($price+140) * 0.125,
                     'name' => $product->name.'-Large',
