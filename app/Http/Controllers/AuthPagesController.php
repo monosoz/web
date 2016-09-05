@@ -152,7 +152,7 @@ class AuthPagesController extends Controller
   $pusher->trigger('test_channel', 'new_order', $data);
         session(['cartStatus' => 11]);
     $tosmskey = '124443AMVTHynd57cc7231';
-    $message = urlencode("Your Order " . $this->order->order_id . " at monosoz is placed. Expect your order in 45 minutes.");
+    $message = urlencode("Your Order " . $this->order->order_id . " for Rs." . number_format($this->order->total, 0) . " at monosoz has been placed. Expect your order in 45 minutes.");
     $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($location->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91");
         return redirect('/orders');
         
