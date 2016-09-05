@@ -35,13 +35,10 @@
 <div class="tag clickable tag-btn" id="nveg" type="button" data-toggle="collapse" data-target="#tagt-collapse"><strong> Non-Veg</strong></div>
 <div class="row tag-c">
   <div class="collapse in" id="tagt-collapse">
-      @foreach ($tags->find(2)->products as $product)
-      @include('blocks.itemcard')
-      @endforeach
     <div class="iccon col-md-4 col-sm-6">
       <div class="itemcard card clearfix">
         <img class="pthumb" src="{{ url('img/nonveg.png') }}">
-        <strong class="pname">More Coming Soon...</strong>
+        <strong class="pname">Coming Soon...</strong>
         <div class="buy-form">
           <button type="submit" class="btn btn-success" disabled>
             <i class="fa fa-inr"></i><span class="prod-price">***</span>
