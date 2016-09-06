@@ -37,7 +37,7 @@ class AuthPagesController extends Controller
             session(['cartStatus' => 2]);
             return redirect('/');
         } else {
-            return view('checkout', ['user' => Auth::user(),]);
+            return view('checkout', ['user' => Auth::user(), 'cart' => Auth::user()->cart,]);
         }
     }
 
@@ -81,6 +81,12 @@ class AuthPagesController extends Controller
     public function editaddress(Request $request)
     {
 
+        $this->validate($request, [
+            'name' => 'required',
+            'contact' => 'required',
+            'pincode' => 'required',
+            'address' => 'required',
+        ]);
         $location = Auth::user()->locations()->where('id', $request->address_id)->first();
         $location->name = $request->name;
         $location->mobile_number = $request->mobile;
@@ -91,7 +97,7 @@ class AuthPagesController extends Controller
         $location->usercomment = $request->comment;
         $location->update = substr($location->updated_at, -8);
         Auth::user()->locations()->save($location);
-        return $request->requrl;
+        return redirect($request->requrl);
         
     }
 
@@ -132,6 +138,10 @@ class AuthPagesController extends Controller
         $dlocation->usercomment = $location->usercomment;
         $dlocation->comment = $location->comment;
         $this->order->delivery_location()->save($dlocation);
+        $oid=$this->order->id+1000;
+        $this->order->order_id = 'OD1' . substr($this->order->created_at, 5, 2) . substr($this->order->created_at, 8, 2) . $oid;
+        $this->order->statusCode='confirmed';
+        $this->order->save();
     $options = array('cluster' => 'ap1', 'encrypted' => true);
     $pusher = new \Pusher('85af98d3bd88e572165f', '1692b81c6311d8a679e4', '219908', $options );
 
@@ -141,6 +151,9 @@ class AuthPagesController extends Controller
   '.$this->order->delivery_location->address ;
   $pusher->trigger('test_channel', 'new_order', $data);
         session(['cartStatus' => 11]);
+    $tosmskey = '124443AMVTHynd57cc7231';
+    $message = urlencode("Your Order " . $this->order->order_id . " for Rs." . number_format($this->order->total, 0) . " at monosoz has been placed. Expect your order in 45 minutes.");
+    $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($location->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91");
         return redirect('/orders');
         
     }
@@ -175,6 +188,11 @@ class AuthPagesController extends Controller
         $feedback = new \App\Feedback;
         $feedback->comment = $request->message;
         Auth::user()->feedbacks()->save($feedback);
+    $options = array('cluster' => 'ap1', 'encrypted' => true);
+    $pusher = new \Pusher('85af98d3bd88e572165f', '1692b81c6311d8a679e4', '219908', $options );
+
+    $data['message'] = 'New Feedback !' ;
+  $pusher->trigger('test_channel', 'new_order', $data);
         Cookie::queue('cartStatus', 3);
         return redirect('/');
         

@@ -1,11 +1,24 @@
+<div>
+<div style="position: relative;">
+<form class="req-call" method="post" action="{{ url('/contactus') }}" role="form" style="position: absolute; top: -5px; right: -10px;">
+{{ csrf_field() }}
+                <input type="hidden" name="order_id" value="{{$cart->order_id}}"></input>
+                <input type="hidden" name="message" value="Callback Request: {{$cart->delivery_location->mobile_number}}"></input>
+                <input type="submit" class="btn btn-success btn-send" value="Request Callback">
 
-Order Id: {{$cart->id}}<br>
+</form>
+<span class="xxs-h">Order Id:</span>{{$cart->order_id}}<br>
+<strong style="position: absolute; bottom: 2px; right: -9px; padding: 4px 10px; background-color: rgba(239, 76, 28, 0.39)">Status: {{$cart->status->name}}<br></strong>
 Total: {{$cart->total}}<br>
 @if (!$cart->is('pending')) 
 Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 @endif
-Order Status: {{$cart->statusCode}}<br>
-{{$cart->created_at}}<br>
+Date: {{substr($cart->created_at, 0, 10)}}<br>
+Time: {{substr($cart->created_at, -8)}}<br>
+</div>
+@include('blocks.cart')
+<hr>
+@if(false)
 <div class=""><table class="cart-table table table-hover">
     <tbody>
     @foreach ($cart->items as $item)
@@ -18,7 +31,7 @@ Order Status: {{$cart->statusCode}}<br>
     @if($item->rel->where('item_no', "$q")->count()!=0)
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
-            {{ $item->displayName }}
+            {{ $item->displayName }}z
             @elseif(substr($item->sku, 0, 4)==='FREE')
             Free Pizza
             @else
@@ -117,5 +130,6 @@ Order Status: {{$cart->statusCode}}<br>
             <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
         </tr>
     </tfoot>
-</table>
-                </div>
+</table></div>
+@endif
+</div>

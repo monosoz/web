@@ -27,13 +27,13 @@
     </div>
   </div>
 </div>
-@if($cart_status==11)
+@if($cart_status>10)
   @include('blocks.welcome')
 @endif
 @endsection
 
 @section('scripts')
-  @if($cart_status==11)
+  @if($cart_status>10)
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');

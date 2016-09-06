@@ -111,7 +111,7 @@ class AuthController extends Controller
                 $cart->add($item->object, $item->quantity);
             }
             else{
-                $cart->add(['sku' => $item->sku, 'price' => $item->price,]);
+                $cart->add(['sku' => $item->sku, 'price' => $item->price], $item->quantity);
                 }
 
             

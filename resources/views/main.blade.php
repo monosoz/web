@@ -1,16 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<nav class="top-bar">
-        <div class="">
-            <a href="{{ url('/feedback') }}" class="input-group">
-            <strong class="form-control btn-default">We would love to hear from you.</strong>
-            <span class="input-group-btn">
-            <span class="btn btn-primary">
+<nav class="top-bar" id="top">
+    <div class="input-group">
+        <span class="input-group-btn">
+            <a href="#veg" class="btn btn-default tag-link"><strong style="color:#1c8;">Veg</strong></a>
+            <a href="#nveg" class="btn btn-default tag-link"><strong style="color:#b11;">Non-Veg</strong></a>
+            <a href="#bev" class="btn btn-default tag-link"><strong style="color:#08b;">Beverages</strong></a>
+        </span>
+        <span class="form-control"></span>
+        <!--a href="#top" class="input-group-btn">
+          <span class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+        </a-->
+        <span class="input-group-btn">
+            <a href="{{ url('/feedback') }}" class="btn btn-primary">
             <span class="xxs-h">Feedback&nbsp</span>
-            <i class="fa fa-arrow-right" aria-hidden="true"></i></span></span>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
             </a>
-        </div>
+        </span>
+    </div>
 </nav>
     <div class="container">
         @include('blocks.product')
@@ -39,6 +47,7 @@
         </form>
       </div>
       <div class="cart-body">
+          @include('blocks.addketchup')
           @include('blocks.cart')
       </div>
       <div class="panel-footer">
@@ -74,6 +83,8 @@
   @include('blocks.welcome')
 @elseif($cart_status==5)
   @include('blocks.welcome')
+@elseif($cart_status>9)
+  @include('blocks.welcome')
 @endif
 @endsection
 @section('scripts')
@@ -101,7 +112,7 @@
             $('#wModal').modal('show');
         });
     </script>
-  @elseif($cart_status==5)
+  @elseif($cart_status>4)
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');

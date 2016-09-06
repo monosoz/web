@@ -13,6 +13,12 @@
             <p>Email: {{$user->email}} <!--a class="pull-right" href="#">edit</a--></p>
           </div>
           <hr>
+          <div class="clearfix">
+            @include('blocks.addketchup')
+            <p>Cart Summary:</p>
+            @include('blocks.cart')
+          </div>
+          <hr>
           <div>
             @if (count($user->locations) === 0)
             <p>Enter Delivery Address:</p>

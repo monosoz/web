@@ -14,11 +14,10 @@ class Fake extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        $i = 1;
             DB::table('products')->insert([
                 [
                     'name' => 'Veg Fiesta' ,
-                    'description' => 'Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
+                    'description' => 'Indian Masala Sauce, Chopped Onion, Capcisum, Tomato, Golden Corn, Black Olives.'
                 ],
             	[
                     'name' => 'Margherita' ,
@@ -34,11 +33,11 @@ class Fake extends Seeder
                 ],
             	[
                     'name' => 'Special Mushroom' ,
-                    'description' => 'Mushroom, Chopped Onion, Tomato, Black Olive, Jalapeno.'
+                    'description' => 'Caramelized Onion Sauce, Mushroom, Chopped Onion, Tomato, Black Olive, Jalapeno.'
                 ],
             	[
                     'name' => 'Veggie Deluxe' ,
-                    'description' => 'Babycorn, Capcisum, Chopped Onion, Golden Corn, Jalapeno.'
+                    'description' => 'Babycorn, Capcisum, Chopped Onion, Golden Corn, Mushroom.'
                 ],
             	[
                     'name' => 'Sweet Tango' ,
@@ -54,9 +53,10 @@ class Fake extends Seeder
                 ],
             	[
                     'name' => 'Corn Deluxe' ,
-                    'description' => 'Caramelized Onion Sauce with Babycorn, Golden Corn, Capcisum, Mushroom, Tomato, Jalapeno.'
+                    'description' => 'Caramelized Onion Sauce, Babycorn, Golden Corn, Capcisum, Mushroom, Tomato, Jalapeno.'
                 ],
             ]);
+        $i = 1;
 
         foreach (Product::all() as $product) {
             $sku = 'PIZZA010';
@@ -67,6 +67,7 @@ class Fake extends Seeder
                     'product_id' => $product->id,
                     'sku' => $sku.$i.'R',
                     'price' => $price,
+                    'tax' => $price * 0.125,
                     'name' => $product->name.'-Regular',
                     'type' => 'r',
                 ],
@@ -74,13 +75,15 @@ class Fake extends Seeder
                     'product_id' => $product->id,
                     'sku' => $sku.$i.'M',
                     'price' => $price+70,
+                    'tax' => ($price+70) * 0.125,
                     'name' => $product->name.'-Medium',
                     'type' => 'm',
                 ],
                 [
                     'product_id' => $product->id,
-                    'sku' => $sku.$i.'L',
+                    'sku' => $sku.$i++.'L',
                     'price' => $price+140,
+                    'tax' => ($price+140) * 0.125,
                     'name' => $product->name.'-Large',
                     'type' => 'l',
                 ],

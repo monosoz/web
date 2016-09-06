@@ -169,12 +169,14 @@ class PagesController extends Controller
         ]);
         $reqcode=strtoupper($request->get('code'));
         $ifc=Item::where('sku', '=', $reqcode)->first();
-        if ($this->cart->count==0) {
+        if ($this->cart->items->where('price', '229.00')->count()==0) {
             Session::flash('couponMessage', 'Coupon not applicable.');
         }
         elseif ( $ifc==null||$ifc->order_id==null) {
             Item::where('sku', '=', $reqcode)->where('order_id', '=', null)->delete();
             GuestItem::where('sku', '=', $reqcode)->delete();
+            Item::where('sku', '=', 'OFF1006818')->where('order_id', '=', null)->delete();
+            GuestItem::where('sku', '=', 'OFF1006818')->delete();
             Item::where('price', '<', 0)->where('cart_id', '=', $this->cart->id)->delete();
             GuestItem::where('price', '<', 0)->where('guestcart_id', '=', $this->cart->id)->delete();
             foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
@@ -182,27 +184,25 @@ class PagesController extends Controller
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
             }
             if ($reqcode=='OFF100') {
+                if (Auth::guest()) {
+                    $itno=1;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
+                        if ($this->cart->add(Addon::findOrFail(101))) {
+                            $itemr=GuestItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        }
                         }
                     }
-                    foreach ($this->cart->items->where('price', '269.00') as $custom_item) {
+                } else {
+                    $itno=1;
+                    foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
+                        if ($this->cart->add(Addon::findOrFail(101))) {
+                            $itemr=ItemRelation::create(['parent_id'=> $custom_item->id, 'item_no'=> $itno,'child_id' => 101,]);
+                        }
                         }
                     }
-            } elseif ($reqcode=='MONO100') {
-                    foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
-                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
-                        }
-                    }
-                    foreach ($this->cart->items->where('price', '339.00') as $custom_item) {
-                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
-                        }
-                    }
+                }
             } else {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
             }
@@ -218,16 +218,7 @@ class PagesController extends Controller
         if (Auth::check()) {
             $feedback = new \App\Feedback;
             $feedback->name = Auth::user()->name;
-            if ($request->has('order_id')) {
-                $feedback->order_id = substr($request->order_id, -4) - 1000;
-                $feedback->comment = $request->message;
-                session(['cartStatus' => 12]);
-            } else {
-                $feedback->comment = "Counact Us:
-" . $request->message;
-                session(['cartStatus' => 4]);
-            }
-            
+            $feedback->comment = $request->message;
             Auth::user()->feedbacks()->save($feedback);
         } else {
             $feedback = new \App\Feedback;
@@ -238,15 +229,7 @@ Phone: ".$request->phone.";
 Message: ".$request->message ;
             $feedback->save();
         }
-
-    $options = array('cluster' => 'ap1', 'encrypted' => true);
-    $pusher = new \Pusher('85af98d3bd88e572165f', '1692b81c6311d8a679e4', '219908', $options );
-
-    $data['message'] = 'New Feedback !' ;
-    $pusher->trigger('test_channel', 'new_order', $data);
-        if ($request->has('order_id')) {
-            return redirect('/orders');
-        }
+        session(['cartStatus' => 4]);
         return redirect('/');
         
     }

@@ -72,7 +72,7 @@ class GuestCart extends Model
      */
     public function add($item, $quantity = 1, $quantityReset = false)
     {
-        if (!is_array($item) && !$item->isShoppable) return;
+        if (!is_array($item) && !$item->isShoppable) return false;
         // Get item
         $cartItem = $this->getItem(is_array($item) ? $item['sku'] : $item->sku);
         // Add new or sum quantity
@@ -441,7 +441,7 @@ class GuestCart extends Model
         }
         $this->shopCalculations = DB::table($this->table)
             ->select([
-                DB::raw('sum(CASE WHEN guestitems.class LIKE ' . '\'%\Addon\'' . ' THEN 0 ELSE ' . 'guestitems' . '.quantity END ) as itemCount'),
+                DB::raw('sum(CASE WHEN guestitems.class LIKE ' . '\'%\Variant\'' . ' THEN ' . 'guestitems' . '.quantity' . ' WHEN guestitems.sku LIKE ' . '\'PROD%\'' . ' THEN ' . 'guestitems' . '.quantity' . ' ELSE 0 END ) as itemCount'),
                 DB::raw('sum(' . 'guestitems' . '.price * ' . 'guestitems' . '.quantity) as totalPrice'),
                 DB::raw('sum(' . 'guestitems' . '.tax * ' . 'guestitems' . '.quantity) as totalTax'),
                 DB::raw('sum(' . 'guestitems' . '.shipping * ' . 'guestitems' . '.quantity) as totalShipping')

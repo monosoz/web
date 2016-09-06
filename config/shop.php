@@ -167,7 +167,7 @@ return [
     | Tax config value:        0.08
     |
     */
-    'tax' => 0.125,
+    'tax' => 0.0,
 
     /*
     |--------------------------------------------------------------------------
@@ -205,7 +205,7 @@ return [
     | This configuration option exists if you don't wish to overload your cache.
     |
     */
-    'cache_calculations' => true,
+    'cache_calculations' => false,
 
     /*
     |--------------------------------------------------------------------------

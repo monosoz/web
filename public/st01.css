@@ -98,7 +98,9 @@
     right: 1.75rem;
     border: none;
     z-index: 1049;
-    color: #fff
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.39);
+    padding: 12px 3px 14px 15px;
 }
 .cart{
     position: fixed;
@@ -223,7 +225,7 @@
     border-radius: 10px;
 }
 .tag-c{
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .address{
     width: 100%;
@@ -294,10 +296,14 @@
     background-color: rgba(242, 222, 222, 0.32);
 }
 .top-bar{
-    padding: 2px;
+    padding: 0px;
     text-align: center;
     font-size: 16px;
-    margin-top: -12px;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
 .top-bar>div>a{
     text-decoration: none;
@@ -305,6 +311,12 @@
 }
 .top-bar>div>a:hover{
     color: #111;
+}
+.tag-link{
+    min-width: 90px;
+}
+.tag-link>*{
+    text-decoration: underline;
 }
 .fb-page{
 
@@ -314,7 +326,7 @@
     margin-left: -10px;
 }
 body {
-    margin-top: 61px;
+    margin-top: 90px;
     margin-bottom: 100px;
     background-color: #980211;
     color: #000;
@@ -337,10 +349,16 @@ min-height: 100%;
     .xxs-h{
         display: none;
     }
+    .xxs-12{
+        width: 100%;
+    }
 }
 
 @media (max-width: 767px) {
     .iccon{
         padding: 12px 8px;
+    }
+    .cart-btn {
+        right: 0.5rem;
     }
 }

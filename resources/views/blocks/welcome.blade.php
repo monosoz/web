@@ -6,18 +6,23 @@
                 </button>
             @if($cart_status==5)
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
-                <h1 style="font-size:50px;color:#980211;">Get Any Medium Pizza (12") @ 129!</h1>
-                <h3>use coupon code 'OFF100'</h3>
+                <h1 style="font-size:50px;font-weight: 900;color:#980211;">Get <i class="fa fa-inr"></i>100 off on any Medium or Large Pizza!</h1>
+                <h4>use coupon code '<strong style="color:#090;">OFF100</strong>' for Medium Pizza</h4>
+                <h4>use coupon code '<strong style="color:#090;">MONO100</strong>' for Large Pizza</h4>
+                <!--h5 style="color: #192; font-weight: bold;">*valid  till 31st August</h5-->
             </div>
             <span class="pull-right" style="margin-top: -10px;">*Limited Promotion</span>
             @elseif($cart_status==11)
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">Your order has been placed.</h1>
             </div>
+            @elseif($cart_status==12)
+            <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
+                <h1 style="font-size:50px;color:#980211;">Callback Request Sent.</h1>
+            </div>
             @elseif(!env('OPEN'))
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
-                <h3>Visit us tomorrow.</h3>
             </div>
             @else
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">

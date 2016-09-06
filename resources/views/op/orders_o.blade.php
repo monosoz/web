@@ -1,6 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.opapp')
 
 @section('content')
+<!--nav class="top-bar" id="top">
+<div class="input-group">
+    <span class="input-group-btn">
+        <a href="?" class="btn btn-default tag-link"><strong style="color:#000;">all</strong></a>
+        <a href="?os=in_process" class="btn btn-default tag-link"><strong style="color:#08b;">in_process</strong></a>
+        <a href="?os=complete" class="btn btn-default tag-link"><strong style="color:#1c8;">complete</strong></a>
+        <a href="?os=cancelled" class="btn btn-default tag-link"><strong style="color:#b11;">cancelled</strong></a>
+    </span>
+    <span class="form-control"></span>
+</div>
+</nav-->
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-lg-10 col-lg-offset-1">
@@ -10,18 +23,51 @@
             @if (count($orders) === 0)
             <p>Nothing to show here!</p>
             @else
-                @foreach ($orders->sortByDesc('updated_at') as $cart)
-                @if($cart->statusCode!='complet')
-<div>
-Order Id: {{$cart->id}}<br>
+
+{{--*/ $opcal = new stdClass() /*--}}
+{{--*/ $opcal->total = 0 /*--}}
+{{--*/ $opcal->off = 0 /*--}}
+{{--*/ $opcal->ocount = 0 /*--}}
+{{--*/ $opcal->pcount = 0 /*--}}
+
+
+                @foreach ($orders->sortByDesc('created_at') as $cart)
+<div style="position: relative;">
+Id: {{$cart->id}}<br>
+Order Id: {{$cart->order_id}}<br>
+<strong style="position: absolute; top: 0; right: 0; padding: 5px 10px; background-color: rgba(239, 76, 28, 0.39)">Status: {{$cart->status->name}}<br></strong>
+User: {{$cart->user->name}} <a href="?u={{$cart->user->id}}">({{$cart->user->id}})</a><br>
+User Contact: {{$cart->user->mobile_number}}<br>
 @if ($cart->is('pending'))
 Pending
 @else
 Delivery Address:{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
-Order Status: {{$cart->statusCode}}<br>
-{{$cart->created_at}}<br>
+Order Status: {{$cart->statusCode}}
+
+        <form class="btn pull-right" action="" method="POST">
+            {{ csrf_field() }}
+<select class="btn" name="status">
+  <option value=""></option>
+  <option value="1">complete</option>
+  <option value="2">in_process</option>
+  <option value="3">cancel</option>
+</select>
+            <input type="hidden" name="order_id" value="{{$cart->id}}">
+            <input type="hidden" name="user_id" value="{{$cart->user->id}}">
+            <button type="submit" class="btn">
+                <span class="fa fa-check" aria-hidden="true"></span>
+            </button>
+        </form>
+<br>
+Date: {{substr($cart->created_at, 0, 10)}}<br>
+Time: {{substr($cart->created_at, -8, 5)}}<br>
 Total: {{$cart->total}}<br>
+
+{{--*/ $opcal->ocount++ /*--}}
+{{--*/ $opcal->total += $cart->total /*--}}
+{{--*/ $opcal->pcount += $cart->count /*--}}
+
 <div style="text-align: center;">
 <strong>monosoz</strong><br>
 New Delhi - 110017<br>
@@ -35,8 +81,11 @@ Address:{{$cart->delivery_location->address}}<br>
 <hr>
 <table class="cart-table" style="width:100%; font-size:.8em;">
     <tbody>
+{{--*/ $toff = 0 /*--}}
     @foreach ($cart->items as $item)
-@if(substr($item->class, -5, 5)!='Addon')
+@if($item->price<0)
+    {{--*/ $toff += $item->price * $item->quantity /*--}}
+@elseif(substr($item->class, -5, 5)!='Addon')
     {{--*/ $q = $item->quantity /*--}}
     {{--*/ $ql = $q /*--}}
 
@@ -112,6 +161,9 @@ Address:{{$cart->delivery_location->address}}<br>
             @endif
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
+@if($item->price<50)
+{{--*/ $opcal->pcount-=$item->quantity /*--}}
+@endif
             <!--form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
                 <button type="submit" name="action" value="add" class="btn-link">
@@ -134,12 +186,19 @@ Address:{{$cart->delivery_location->address}}<br>
     <tfoot>
         <tr>
             <td>Subtotal: </td>
-            <td><i class="fa fa-inr"></i><span> {{ $cart->totalPrice }}</span></td>
+            <td><i class="fa fa-inr"></i><span> {{ $cart->totalPrice - $toff }}</span></td>
         </tr>
         <tr>
             <td>Vat:</td>
             <td><i class="fa fa-inr"></i><span> {{ $cart->totalTax }}</span></td>
         </tr>
+        @if($toff != 0)
+        <tr>
+            <th>Discount:</th>
+            <th><i class="fa fa-inr"></i><span> {{ $toff }}</span></th>
+        </tr>
+{{--*/ $opcal->off += $toff /*--}}
+        @endif
         <tr>
             <th>Total:</th>
             <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
@@ -152,8 +211,13 @@ www.monosoz.com<br>
 @endif
 </div>
 <hr>
-                @endif
                 @endforeach
+<div style="padding: 31px; position: fixed; left: 0; right: 0; bottom: 0; background-color: #eee; z-index: 1;">
+<span class="col-sm-3 col-xs-6">Total: {{ $opcal->total }}</span>
+<span class="col-sm-3 col-xs-6">Discount: {{ $opcal->off }}</span>
+<span class="col-sm-3 col-xs-6">Order Count: {{ $opcal->ocount }}</span>
+<span class="col-sm-3 col-xs-6">Pizza Count: {{ $opcal->pcount }}</span>
+</div>
             @endif
         </div>
       </div>
@@ -164,23 +228,6 @@ www.monosoz.com<br>
 
 
 @section('stylesheet')
-
-  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
-  <script type="text/javascript">
-    //Enable pusher logging - don't include this in production
-    //Pusher.logToConsole = true;
-
-    var pusher = new Pusher('85af98d3bd88e572165f', {
-      cluster: 'ap1',
-      encrypted: true
-    });
-
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('new_order', function(data) {
-      alert(data.message);
-      window.location.reload(true);
-    });
-  </script>
 @endsection
 
 @section('title')Orders: @endsection
