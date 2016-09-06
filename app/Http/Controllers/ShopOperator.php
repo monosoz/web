@@ -31,6 +31,21 @@ class ShopOperator extends Controller
             return view('op.orders_o', ['orders' => Order::where('user_id', '=', $request->u)->get(),]);
         } elseif ($request->has('fb')) {
             return view('op.feedback', ['feedbacks' => Feedback::all(),]);
+        } elseif ($request->has('sms')) {
+            if ($request->sms=='qwa') {
+                $from = $request->f;
+                $to = $request->t;
+                foreach (User::whereBetween('id', [$from, $to])->get() as $user) {
+    $tosmskey = '124443AMVTHynd57cc7231';
+    $name = $user->name;
+    $fname = explode(' ', trim($name));
+    $message = urlencode("Hi " . substr($fname[0], 0, 15) . " 
+Try new range of Non-Veg and Veg Pizzas @ MONOSOZ
+Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @ www.monosoz.com");
+    $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91&unicode=1");
+                }
+            }
+            return view('op.feedback', ['feedbacks' => Feedback::all(),]);
         } else {
             return view('op.orders_o', ['orders' => Order::all(),]);
         }

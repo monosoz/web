@@ -12,14 +12,14 @@
         <!--a href="#top" class="input-group-btn">
           <span class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
         </a-->
-        <span class="input-group-btn">
-            <a href="{{ url('/feedback') }}" class="btn btn-primary">
-            <span class="xxs-h">Feedback&nbsp</span>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-            </a>
-        </span>
     </div>
 </nav>
+
+        <span class="input-group-btn" style="position: fixed;right: 30px;bottom: 160px;z-index: 52;">
+            <a href="{{ url('/feedback') }}" class="btn btn-primary">
+              <img src="{{ url('img/feedback.png') }}">
+            </a>
+        </span>
     <div class="container">
         @include('blocks.product')
     </div>
