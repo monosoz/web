@@ -15,7 +15,7 @@
     </div>
 </nav>
 
-        <span class="input-group-btn" style="position: fixed;right: 30px;bottom: 160px;z-index: 52;">
+        <span class="input-group-btn" style="position: fixed;right: 30px;bottom: 120px;z-index: 52;">
             <a href="{{ url('/feedback') }}" class="btn btn-primary">
               <img src="{{ url('img/feedback.png') }}">
             </a>
