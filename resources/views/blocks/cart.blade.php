@@ -17,7 +17,7 @@
             @elseif(substr($item->sku, 0, 4)==='FREE')
             Free Pizza
             @else
-            Custom Pizzaa
+            Custom Pizza
                 @if(substr($item->sku, -1)==='R')
                 -Regular
                 @elseif(substr($item->sku, -1)==='M')

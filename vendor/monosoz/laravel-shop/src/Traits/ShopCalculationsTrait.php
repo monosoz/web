@@ -161,7 +161,7 @@ trait ShopCalculationsTrait
         $this->shopCalculations = DB::table($this->table)
             ->select([
                 /*DB::raw('sum(' . Config::get('shop.item_table') . '.quantity) as itemCount'),*/
-                DB::raw('sum(CASE WHEN ' . Config::get('shop.item_table') . '.class LIKE ' . '\'%\Variant\'' . ' THEN ' . Config::get('shop.item_table') . '.quantity' . ' ELSE 0 END ) as itemCount'),
+                DB::raw('sum(CASE WHEN ' . Config::get('shop.item_table') . '.class LIKE ' . '\'%\Variant\'' . ' THEN ' . Config::get('shop.item_table') . '.quantity' . ' WHEN ' . Config::get('shop.item_table') . '.sku LIKE ' . '\'PROD%\'' . ' THEN ' . Config::get('shop.item_table') . '.quantity' . ' ELSE 0 END ) as itemCount'),
                 DB::raw('sum(' . Config::get('shop.item_table') . '.price * ' . Config::get('shop.item_table') . '.quantity) as totalPrice'),
                 DB::raw('sum(' . Config::get('shop.item_table') . '.tax * ' . Config::get('shop.item_table') . '.quantity) as totalTax'),
                 DB::raw('sum(' . Config::get('shop.item_table') . '.shipping * ' . Config::get('shop.item_table') . '.quantity) as totalShipping')
