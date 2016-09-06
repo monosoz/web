@@ -225,7 +225,7 @@
     border-radius: 10px;
 }
 .tag-c{
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .address{
     width: 100%;
@@ -299,7 +299,11 @@
     padding: 0px;
     text-align: center;
     font-size: 16px;
-    margin-top: -10px;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
 .top-bar>div>a{
     text-decoration: none;
@@ -322,7 +326,7 @@
     margin-left: -10px;
 }
 body {
-    margin-top: 61px;
+    margin-top: 90px;
     margin-bottom: 100px;
     background-color: #980211;
     color: #000;

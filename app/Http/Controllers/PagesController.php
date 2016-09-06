@@ -169,7 +169,7 @@ class PagesController extends Controller
         ]);
         $reqcode=strtoupper($request->get('code'));
         $ifc=Item::where('sku', '=', $reqcode)->first();
-        if ($this->cart->items->where('price', '229.00')->count()==0 && $this->cart->items->where('price', '299.00')->count()==0) {
+        if ($this->cart->count==0) {
             Session::flash('couponMessage', 'Coupon not applicable.');
         }
         elseif ( $ifc==null||$ifc->order_id==null) {
@@ -183,23 +183,24 @@ class PagesController extends Controller
             }
             if ($reqcode=='OFF100') {
                 if (Auth::guest()) {
-                    $itno=1;
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $this->cart->add(Addon::findOrFail(101));
+                            $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
                         }
                     }
-                } else {
-                    $itno=1;
-                    foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
+                    foreach ($this->cart->items->where('price', '269.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $this->cart->add(Addon::findOrFail(101));
+                            $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
                         }
                     }
                 }
             } elseif ($reqcode=='MONO100') {
-                    $itno=1;
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
+                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                            $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
+                        }
+                    }
+                    foreach ($this->cart->items->where('price', '339.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
                         }

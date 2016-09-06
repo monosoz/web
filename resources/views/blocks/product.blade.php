@@ -22,8 +22,9 @@
     </div>
   </div>
 </div>
-<div class="tag clickable tag-btn" id="veg" type="button" data-toggle="collapse" data-target="#tag2-collapse"><strong> Veg</strong></div>
 <form class="" action="{{ url('cart') }}" method="POST">
+<div id="veg" style="margin-top: -80px;padding-top: 82px;"></div>
+<div class="tag clickable tag-btn" type="button" data-toggle="collapse" data-target="#tag2-collapse"><strong> Veg</strong></div>
   {{ csrf_field() }}
   <div class="row tag-c">
     <div class="collapse in" id="tag2-collapse">
@@ -32,7 +33,8 @@
       @endforeach
     </div>
   </div>
-<div class="tag clickable tag-btn" id="nveg" type="button" data-toggle="collapse" data-target="#tagt-collapse"><strong> Non-Veg</strong></div>
+<div id="nveg" style="margin-top: -80px;padding-top: 82px;"></div>
+<div class="tag clickable tag-btn" type="button" data-toggle="collapse" data-target="#tagt-collapse"><strong> Non-Veg</strong></div>
 <div class="row tag-c">
   <div class="collapse in" id="tagt-collapse">
       @foreach ($tags->find(2)->products as $product)
@@ -60,7 +62,8 @@
     </div>
   </div-->
 
-  <div class="tag clickable tag-btn" id="bev" type="button" data-toggle="collapse" data-target="#tagb-collapse"><strong> {{ $tags->find(51)->name }}</strong></div>
+<div id="bev" style="margin-top: -80px;padding-top: 82px;"></div>
+  <div class="tag clickable tag-btn" type="button" data-toggle="collapse" data-target="#tagb-collapse"><strong> {{ $tags->find(51)->name }}</strong></div>
 <div class="row tag-c">
   <div class="collapse in" id="tagb-collapse">
       @foreach ($tags->find(51)->products()->find(101)->variants as $product)
