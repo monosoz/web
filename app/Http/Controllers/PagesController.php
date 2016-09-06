@@ -182,7 +182,6 @@ class PagesController extends Controller
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
             }
             if ($reqcode=='OFF100') {
-                if (Auth::guest()) {
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
@@ -193,7 +192,6 @@ class PagesController extends Controller
                             $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
                         }
                     }
-                }
             } elseif ($reqcode=='MONO100') {
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
