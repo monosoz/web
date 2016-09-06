@@ -52,12 +52,14 @@
     <div class="tp-selector tp-main clearfix">
     <p>Non-Veg Topping - <i class="fa fa-inr"></i> 40</p>
       @foreach ($tags->find(2)->addons as $addon)
+      @if ($addon->id!=31)
       <div class="col-xs-6 tp-card-c">
-        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}" disabled/>
-        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}" style="cursor:not-allowed;">
-        <img class="tpthumb" src="">
+        <input id="vt{{$addon->id}}" type="checkbox" name="top_id[]" value="{{$addon->id}}"/>
+        <label class="tp-card tp-card-nvt" for="vt{{$addon->id}}">
+        <img class="tpthumb" src="{{url('img/tp/' . $addon->id . '.png')}}">
         <span class="tpname">{{$addon->name}}</span></label>
       </div>
+      @endif
       @endforeach
     </div>
 </div>

@@ -17,7 +17,7 @@
     opacity: .9;
 }
 .tp-selector input:checked +.base-size{
-    -webkit-filter: brightness(.8) grayscale(.2) opacity(.9);  -card
+    -webkit-filter: brightness(.8) grayscale(.2) opacity(.9);
      -moz-filter: brightness(.8) grayscale(.2) opacity(.9);
             filter: brightness(.8) grayscale(.2) opacity(.9);
             background-image: url("img/sel2.png");
@@ -27,7 +27,7 @@
     color: #fff;
 }
 .tp-selector input:checked +.tp-card{
-    -webkit-filter: brightness(.8) grayscale(.2) opacity(.9);  -card
+    -webkit-filter: brightness(.8) grayscale(.2) opacity(.9);
      -moz-filter: brightness(.8) grayscale(.2) opacity(.9);
             filter: brightness(.8) grayscale(.2) opacity(.9);
             background-image: url("img/sel2.png");
