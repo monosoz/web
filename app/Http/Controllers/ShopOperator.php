@@ -45,7 +45,7 @@ Try new range of Non-Veg and Veg Pizzas @ MONOSOZ
 Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @ www.monosoz.com");
     $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91&unicode=1");
                 $retstr = $retstr . '<br>
-' substr($fname[0], 0, 15) . ' - ' . substr($user->mobile_number, -10);
+' . substr($fname[0], 0, 15) . ' - ' . substr($user->mobile_number, -10);
                 }
             }
             return $retstr;
