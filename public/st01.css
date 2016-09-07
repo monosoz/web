@@ -19,15 +19,20 @@
 .navbar-right{
     margin-right: 15px;
 }
-.navbar{
+.navbar {
     font-size: larger;
     font-weight: 900;
-    background-color: #c70303;
-    border-color: #200000
+    background-color: #d01;
+    border-color: #f00
 }
 .navbar-default .navbar-nav>li>a {
     color: #eee;
 }
+.navbar-toggle{
+    padding: 8px;
+    border: 2px solid transparent;
+}
+
 .pthumb {
                 border-radius: 50%;
                 overflow: hidden;
@@ -154,9 +159,10 @@
     border-radius: 5px;
 }
 .itemcard{
-    background-color: #151515;
-    border: 0px solid #111;
-    height: 210px;
+    background-color: rgba(0,0,0,0.92);;
+    border: 1px solid #722;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.51);
+    height: 212px;
     position: relative;
     padding: 5px;
     border-radius: 10px;
@@ -205,6 +211,7 @@
     padding-bottom: 0px;
     padding-left: 6px;
     background-color: #f9cd11;
+    border-color: #da0;
     color: #000;;
     font-weight: bold;
 }
@@ -303,7 +310,7 @@
     top: 50px;
     right: 0;
     left: 0;
-    z-index: 1030;
+    z-index: 1028;
 }
 .top-bar>div>a{
     text-decoration: none;
@@ -328,7 +335,7 @@
 body {
     margin-top: 90px;
     margin-bottom: 100px;
-    background-color: #980211;
+    background-color: #e01a21;
     color: #000;
 }
 html {
