@@ -217,8 +217,10 @@ class PagesController extends Controller
                             $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                     }
                 }
-            } else {
+            } elseif (substr($reqcode, 0, 5)=='FREEDOM' && $this->cart->items->where('price', '229.00')->count()>0) {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
+            } else {
+                Session::flash('couponMessage', 'Coupon not applicable.');
             }
             
         }
