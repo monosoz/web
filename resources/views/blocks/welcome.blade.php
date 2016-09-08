@@ -1,15 +1,14 @@
 <div class="modal fade" id="wModal" tabindex="-1" role="dialog" aria-labelledby="welcome" aria-hidden="false">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content" style="border-radius:40px;font-size:larger;background-color:#f9cd11;padding:5%">
+        <div class="modal-content offers" style="border-radius:40px;font-size:larger;background-color:#f9cd11;padding:5%">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             @if($cart_status==5)
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
-                <h1 style="font-size:50px;font-weight: 900;color:#980211;">Get <i class="fa fa-inr"></i>100 off on any Medium or Large Pizza!</h1>
+                <h1 style="font-size:40px;font-weight: 900;color:#980211;">Get <i class="fa fa-inr"></i>100 off on any Medium or Large Pizza!</h1>
                 <h4>use coupon code '<strong style="color:#090;">OFF100</strong>' for Medium Pizza</h4>
                 <h4>use coupon code '<strong style="color:#090;">MONO100</strong>' for Large Pizza</h4>
-                <!--h5 style="color: #192; font-weight: bold;">*valid  till 31st August</h5-->
             </div>
             <span class="pull-right" style="margin-top: -10px;">*Limited Promotion</span>
             @elseif($cart_status==11)

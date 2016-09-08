@@ -68,6 +68,7 @@
             }
 .pname{
     display: block;
+    color: #0ae;
     font-size: 1.4em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -99,7 +100,7 @@
 }
 .cart-btn {
     position: fixed;
-    top: 10rem;
+    top: 6rem;
     right: 1.75rem;
     border: none;
     z-index: 1049;
@@ -159,7 +160,7 @@
     border-radius: 5px;
 }
 .itemcard{
-    background-color: rgba(0,0,0,0.92);;
+    background-color: rgba(0,0,0,0.92);
     border: 1px solid #722;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.51);
     height: 212px;
@@ -179,9 +180,10 @@
     top:0;bottom:0;left:0;right:0;
 }
 .cdcard{
-    background-color: #151515;
-    border: 0px solid #111;
-    height: 160px;
+    background-color: rgba(0,0,0,0.92);
+    border: 1px solid #722;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.51);
+    height: 162px;
     position: relative;
     padding: 5px;
     border-radius: 10px;
@@ -236,6 +238,11 @@
 }
 .address{
     width: 100%;
+}
+.offersd{
+    background-image: url("img/wb01.png");
+    background-repeat: no-repeat;
+    background-position: left top;
 }
 .height-100{
     position: absolute;

@@ -203,6 +203,20 @@ class PagesController extends Controller
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
                         }
                     }
+            } elseif ($reqcode=='MONO50') {
+                if (!Auth::check()) {
+                    Session::flash('couponMessage', 'Login to your acount first.');
+                } elseif (Auth::User()->orders->count()!=0) {
+                    Session::flash('couponMessage', 'Coupon only valid for new users.');
+                } else {
+                    $disc50 = 0.00;
+                    foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                            $disc50 += $custom_item->price * 0.5;
+                        }
+                            $this->cart->add(['sku' => 'MONO5006908', 'price' => 0 - $disc50]);
+                    }
+                }
             } else {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
             }
