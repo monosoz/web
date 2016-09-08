@@ -87,6 +87,11 @@
   @include('blocks.welcome')
 @endif
 @endsection
+
+@section('analytics')
+@include('blocks.analyticstracking')
+@endsection
+
 @section('scripts')
   @if($cart_status==1)
     <script type="text/javascript">
@@ -125,7 +130,5 @@
       });
     </script>
     <script src="{{ url('sc02.js') }}"></script>
-
-@include('blocks.analyticstracking')
 
 @endsection
