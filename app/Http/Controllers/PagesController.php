@@ -225,7 +225,8 @@ class PagesController extends Controller
                 }
             } elseif (substr($reqcode, 0, 5)=='FREEDOM' && $this->cart->items->where('price', '229.00')->count()>0) {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
-            } elseif (!$applicable) {
+            }
+            if (!$applicable) {
                 Session::flash('couponMessage', 'Coupon not applicable.');
             }
             
