@@ -239,11 +239,16 @@
 .address{
     width: 100%;
 }
-.offersd{
+.offers{
     background-image: url("img/wb01.png");
     background-repeat: no-repeat;
     background-position: left top;
 }
+/*.offers2{
+    background-image: url("img/wb02.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}*/
 .height-100{
     position: absolute;
     top: 5px;

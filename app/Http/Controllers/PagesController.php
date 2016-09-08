@@ -58,7 +58,7 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
-            $csd = 5;
+            $csd = 0;
             if (!env('OPEN')) {
                 $csd=0;
             }
@@ -74,6 +74,9 @@ class PagesController extends Controller
                 session(['cartStatus' => 0]);
                 return redirect('/');
             }elseif ($request->r=='off100') {
+                session(['cartStatus' => 5]);
+                return redirect('/');
+            }elseif ($request->r=='ga1') {
                 session(['cartStatus' => 5]);
                 return redirect('/');
             }

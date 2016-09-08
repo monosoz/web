@@ -5,8 +5,14 @@
                     <span aria-hidden="true">×</span>
                 </button>
             @if($cart_status==5)
+            <!--div class="offers2" style="
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    right: 0;"></div-->
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
-                <h1 style="font-size:40px;font-weight: 900;color:#980211;">Get <i class="fa fa-inr"></i>100 off on any Medium or Large Pizza!</h1>
+                <h1 style="font-size:40px;font-weight: 900;color:#05293e;">Get <i class="fa fa-inr"></i>100 off on any Medium or Large Pizza!</h1>
                 <h4>use coupon code '<strong style="color:#090;">OFF100</strong>' for Medium Pizza</h4>
                 <h4>use coupon code '<strong style="color:#090;">MONO100</strong>' for Large Pizza</h4>
             </div>
