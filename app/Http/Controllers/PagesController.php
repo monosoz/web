@@ -181,29 +181,35 @@ class PagesController extends Controller
                 ItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
             }
+            $applicable = false;
             if ($reqcode=='OFF100') {
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
                     foreach ($this->cart->items->where('price', '269.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
             } elseif ($reqcode=='MONO100') {
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
                     foreach ($this->cart->items->where('price', '339.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
             } elseif ($reqcode=='MONO50') {
+                            $applicable = true;
                 if (!Auth::check()) {
                     Session::flash('couponMessage', 'Login to your acount first.');
                 } elseif (Auth::User()->orders->count()!=0) {
@@ -219,7 +225,7 @@ class PagesController extends Controller
                 }
             } elseif (substr($reqcode, 0, 5)=='FREEDOM' && $this->cart->items->where('price', '229.00')->count()>0) {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
-            } else {
+            } elseif (!$applicable) {
                 Session::flash('couponMessage', 'Coupon not applicable.');
             }
             
