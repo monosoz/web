@@ -214,7 +214,7 @@ class PagesController extends Controller
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $disc50 += $custom_item->price * 0.5;
                         }
-                            $this->cart->add(['sku' => 'MONO5006908', 'price' => 0 - $disc50]);
+                            $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                     }
                 }
             } else {
