@@ -126,4 +126,6 @@
     </script>
     <script src="{{ url('sc02.js') }}"></script>
 
+@include('blocks.analyticstracking')
+
 @endsection

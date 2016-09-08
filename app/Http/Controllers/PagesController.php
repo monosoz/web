@@ -76,7 +76,7 @@ class PagesController extends Controller
             }elseif ($request->r=='off100') {
                 session(['cartStatus' => 5]);
                 return redirect('/');
-            }elseif ($request->r=='ga1') {
+            }elseif ($request->r=='ga1' || $request->r=='ga2') {
                 session(['cartStatus' => 5]);
                 return redirect('/');
             }
