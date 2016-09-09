@@ -98,15 +98,15 @@ class PagesController extends Controller
 
         if ($request->p_id==0) {
             if($request->sz==='r'){
-                $this->cart->add(['sku' => 'PROD0002R', 'price' => 100]);
+                $this->cart->add(['sku' => 'PROD0002R', 'price' => 100, 'tax' => 12.5]);
                     $this->custom_sku='PROD0002R';//$var->sku;
             }
             elseif($request->sz==='m'){
-                $this->cart->add(['sku' => 'PROD0003M', 'price' => 150]);
+                $this->cart->add(['sku' => 'PROD0003M', 'price' => 150, 'tax' => 18.75]);
                     $this->custom_sku='PROD0003M';//$var->sku;
             }
             elseif($request->sz==='l'){
-                $this->cart->add(['sku' => 'PROD0004L', 'price' => 200]);
+                $this->cart->add(['sku' => 'PROD0004L', 'price' => 200, 'tax' => 25]);
                     $this->custom_sku='PROD0004L';//$var->sku;
             }
 
@@ -223,8 +223,8 @@ class PagesController extends Controller
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $disc50 += $custom_item->price * 0.5;
                         }
-                            $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                     }
+                    $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
             } elseif (substr($reqcode, 0, 5)=='FREEDOM' && $this->cart->items->where('price', '229.00')->count()>0) {
                 $this->cart->add(['sku' => $reqcode, 'price' => -229]);
