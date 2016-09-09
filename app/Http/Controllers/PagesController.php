@@ -219,7 +219,7 @@ class PagesController extends Controller
                     Session::flash('couponMessage', 'Coupon only valid for new users.');
                 } else {
                     $disc50 = 0.00;
-                    foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                    foreach (Item::where('cart_id', '=', $this->cart->id)->where('price', '>', 50)->get() as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $disc50 += $custom_item->price * 0.5;
                         }
