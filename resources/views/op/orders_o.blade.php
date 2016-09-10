@@ -49,9 +49,10 @@ Order Status: {{$cart->statusCode}}
             {{ csrf_field() }}
 <select class="btn" name="status">
   <option value=""></option>
-  <option value="1">complete</option>
   <option value="2">in_process</option>
   <option value="5">out_for_delivery</option>
+  <option value="1">complete</option>
+  <option value=""></option>
   <option value="3">cancel</option>
 </select>
             <input type="hidden" name="order_id" value="{{$cart->id}}">
