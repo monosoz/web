@@ -69,6 +69,8 @@ Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @
             $status = 'complete';
         } elseif ($request->status==2) {
             $status = 'in_process';
+        } elseif ($request->status==5) {
+            $status = 'out_for_delivery';
         } elseif ($request->status==3) {
             $status = 'cancelled';
         } elseif ($request->status==4) {
