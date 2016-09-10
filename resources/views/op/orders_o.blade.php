@@ -65,7 +65,7 @@ Time: {{substr($cart->created_at, -8, 5)}}<br>
 Total: {{$cart->total}}<br>
 
 {{--*/ $opcal->ocount++ /*--}}
-{{--*/ $opcal->total += $cart->total /*--}}
+{{--*/ $opcal->total += number_format($cart->total, 0) /*--}}
 {{--*/ $opcal->pcount += $cart->count /*--}}
 
 <div style="text-align: center;">
