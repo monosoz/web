@@ -14,22 +14,22 @@
 			{{ method_field('PATCH') }}
 			{{ csrf_field() }}
 			<input type="hidden" name="address_id" value="{{$location->id}}">
-			<button>Select Address</button>
+			<button class="btn btn-primary">Select Address</button>
 		</form>
-		<form class="btn pull-right" action="{{ url('/user/address') }}" method="POST">
+		<form class="pull-right" style="padding: 6px" action="{{ url('/user/address') }}" method="POST">
 			{{ method_field('DELETE') }}
 			{{ csrf_field() }}
 			<input type="hidden" name="address_id" value="{{$location->id}}">
-			<button type="submit">
+			<button type="submit" class="btn btn-primary">
 				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 			</button>
 		</form>
-		<form class="btn pull-right" action="{{ url('/user/address') }}" method="POST">
+		<form class="pull-right" style="padding: 6px" action="{{ url('/user/address') }}" method="POST">
 			{{ method_field('PUT') }}
 			{{ csrf_field() }}
 			<input type="hidden" name="address_id" value="{{$location->id}}">
 			<input type="hidden" name="requrl" value="/checkout">
-			<button type="submit">
+			<button type="submit" class="btn btn-primary">
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			</button>
 		</form>

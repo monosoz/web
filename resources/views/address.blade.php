@@ -15,13 +15,13 @@
                 <div class="col-sm-6"> <div class="form-group">
   <label for="name" class="col-md-4 control-label">Name*</label>
   <div class="col-md-6">
-    <input id="name" type="text" class="form-control" name="name" value="{{$location->name}}">
+    <input id="name" type="text" required="required" class="form-control" name="name" value="{{$location->name}}">
   </div>
 </div>
 <div class="form-group">
   <label for="mobile_number" class="col-md-4 control-label">Contact*</label>
   <div class="col-md-6">
-    <input id="mobile_number" type="tel" class="form-control" name="mobile" value="{{$location->mobile_number}}">
+    <input id="mobile_number" type="tel" required="required" class="form-control" name="contact" value="{{$location->mobile_number}}">
   </div>
 </div>
 <div class="form-group">
@@ -33,7 +33,7 @@
 <div class="form-group">
   <label for="address" class="col-md-4 control-label">Address*</label>
   <div class="col-md-6">
-    <textarea id="address" name="address" class="form-control">{{$location->address}}</textarea>
+    <textarea id="address" required="required" name="address" class="form-control">{{$location->address}}</textarea>
   </div>
 </div>
 <div class="form-group">

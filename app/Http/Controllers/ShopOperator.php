@@ -24,7 +24,7 @@ class ShopOperator extends Controller
 	if (Auth::user()->email=='operator@monosoz.com'||Auth::user()->email=='a@monosoz.com') {
         //
         if ($request->has('os')&&$request->has('tm')) {
-            return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->get(),]);
+            return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereBetween('created_at', [date('y-m-d', time()-86400*$request->tm) . ' 00:00:00', date('y-m-d', time()) . ' 00:00:00'])->get(),]);
         } elseif ($request->has('os')) {
             return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereDate('created_at', '=', date('y-m-d'))->get(),]);
         } elseif ($request->has('u')) {

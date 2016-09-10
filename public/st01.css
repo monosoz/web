@@ -156,8 +156,10 @@
 .addcard{
     padding: 5px;
     margin-bottom: 10px;
-    background-color: grey;
+    background-color: rgba(249, 205, 17, 0.3);
     border-radius: 5px;
+    border: 2px solid #000;
+    box-shadow: 5px 5px 10px;
 }
 .itemcard{
     background-color: rgba(0,0,0,0.92);
@@ -273,6 +275,9 @@
 .add-map{
     min-width: 230px;
     float: right;
+}
+.add-map>img{
+    border: 1px solid;
 }
 .add-field{
     width: 5em;
