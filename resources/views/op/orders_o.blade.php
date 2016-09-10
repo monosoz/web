@@ -201,7 +201,7 @@ Address:{{$cart->delivery_location->address}}<br>
         @endif
         <tr>
             <th>Total:</th>
-            <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
+            <th><i class="fa fa-inr"></i><span> {{ number_format($cart->total, 0) }}</span></th>
         </tr>
     </tfoot>
 </table>
