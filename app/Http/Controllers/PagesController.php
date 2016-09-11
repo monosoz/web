@@ -226,12 +226,13 @@ class PagesController extends Controller
                     }
                     $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
-            } elseif (substr($reqcode, 0, 5)=='FREEDOM' && Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 229)->count()>0) {
-                $this->cart->add(['sku' => $reqcode, 'price' => -229]);
+            } elseif (substr($reqcode, 0, 7)=='FREEDOM') {
+                if (Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 229)->count()>0) {
+                    $this->cart->add(['sku' => $reqcode, 'price' => -229]);
                             $applicable = true;
-            } elseif (substr($reqcode, 0, 5)=='FREEDOM' && Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 269)->count()>0) {
-                $this->cart->add(['sku' => $reqcode, 'price' => -229]);
-                            $applicable = true;
+                } elseif (Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 269)->count()>0) {
+                    $this->cart->add(['sku' => $reqcode, 'price' => -229]);
+                            $applicable = true;                }
             }
             if (!$applicable) {
                 Session::flash('couponMessage', 'Coupon not applicable.');
