@@ -1,6 +1,6 @@
 <div class="modal fade" id="wModal" tabindex="-1" role="dialog" aria-labelledby="welcome" aria-hidden="false">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content offers" style="border-radius:40px;font-size:larger;background-color:#f9cd11;padding:5%">
+        <div class="modal-content" style="border-radius:40px;font-size:larger;background-color:#f9cd11;padding:5%">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>

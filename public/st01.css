@@ -241,12 +241,12 @@
 .address{
     width: 100%;
 }
-.offers{
+/*.offers{
     background-image: url("img/wb01.png");
     background-repeat: no-repeat;
     background-position: left top;
 }
-/*.offers2{
+.offers2{
     background-image: url("img/wb02.png");
     background-repeat: no-repeat;
     background-position: right bottom;
