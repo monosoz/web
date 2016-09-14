@@ -231,7 +231,7 @@ class PagesController extends Controller
                     $this->cart->add(['sku' => $reqcode, 'price' => -229]);
                             $applicable = true;
                 } elseif (Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 269)->count()>0) {
-                    $this->cart->add(['sku' => $reqcode, 'price' => -229]);
+                    $this->cart->add(['sku' => $reqcode, 'price' => -269]);
                             $applicable = true;                }
             }
             if (!$applicable) {
