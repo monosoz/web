@@ -27,7 +27,7 @@ Route::post('/cart/clear', 'PagesController@clearcart');
 Route::post('/cart/applycoupon', 'PagesController@applycoupon');
 Route::post('/cart/{item}', 'PagesController@item');
 
-if (env('OPEN')) {
+if (config('app.open')) {
 Route::get('/checkout', 'AuthPagesController@checkout');
 Route::patch('/checkout', 'AuthPagesController@selectaddress');
 Route::post('/checkout', 'AuthPagesController@cod');
