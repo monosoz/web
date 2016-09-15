@@ -19,12 +19,7 @@ return [
     shop open
     */
 
-    if (date('H')+0>11) {
         'open' => env('OPEN', true),
-    } else {
-        'open' => false,
-    }
-
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
