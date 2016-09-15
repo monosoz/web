@@ -19,7 +19,8 @@ return [
     shop open
     */
 
-        'open' => env('OPEN', true),
+    'open' => env('OPEN', date('H')+0>11) && (date('H')+0>11),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
