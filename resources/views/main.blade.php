@@ -79,7 +79,7 @@
   @include('blocks.feedbacksaved')
 @elseif($cart_status==4)
   @include('blocks.messagesaved')
-@elseif(!config('app.open') && $cart_status==0)
+@elseif(!config('shop.open') && $cart_status==0)
   @include('blocks.welcome')
 @elseif($cart_status==5)
   @include('blocks.welcome')
@@ -111,7 +111,7 @@
             $('#mModal').modal('show');
         });
     </script>
-  @elseif(!config('app.open') && $cart_status==0)
+  @elseif(!config('shop.open') && $cart_status==0)
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');

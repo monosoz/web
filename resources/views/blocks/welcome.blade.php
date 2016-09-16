@@ -25,7 +25,7 @@
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">Callback Request Sent.</h1>
             </div>
-            @elseif(!config('app.open'))
+            @elseif(!config('shop.open'))
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
             </div>

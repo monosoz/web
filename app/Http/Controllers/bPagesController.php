@@ -59,7 +59,7 @@ class PagesController extends Controller
     public function index(Request $request)
     {
             $csd = 5;
-            if (!config('app.open')) {
+            if (!config('shop.open')) {
                 $csd=0;
             }
 
