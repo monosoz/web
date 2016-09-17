@@ -58,7 +58,7 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
-            $csd = 0;
+            $csd = 21;
             if (!config('shop.open')) {
                 $csd=0;
             }
@@ -186,6 +186,10 @@ class PagesController extends Controller
             }
             $applicable = false;
             if ($reqcode=='OFF100') {
+                if (true) {
+                    Session::flash('couponMessage', 'Coupon expired.');
+                            $applicable = true;
+                } else {
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
@@ -198,6 +202,15 @@ class PagesController extends Controller
                             $applicable = true;
                         }
                     }
+                }
+            } elseif ($reqcode=='OFF50') {
+                if ($this->cart->total > 99) {
+                    $this->cart->add(['sku' => 'OFF506917', 'price' => -50]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
+                
             } elseif ($reqcode=='MONO100') {
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
