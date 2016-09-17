@@ -42,8 +42,8 @@ User Contact: {{$cart->user->mobile_number}}<br>
 Pending
 @else
 Pincode: {{$cart->delivery_location->pincode}}<br>
-Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
-<strong style="color:#f00;">Comment: {{$cart->delivery_location->usercomment}}</strong><br>
+Delivery Address: <strong style="color:#f00;">{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}</strong><br>
+Comment: <strong style="color:#f00;">{{$cart->delivery_location->usercomment}}</strong><br>
 Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
 Order Status: {{$cart->statusCode}}
 
