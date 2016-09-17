@@ -43,7 +43,7 @@ Pending
 @else
 Pincode: {{$cart->delivery_location->pincode}}<br>
 Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
-Comment: {{$cart->delivery_location->usercomment}}<br>
+<strong style="color:#f00;">Comment: {{$cart->delivery_location->usercomment}}</strong><br>
 Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
 Order Status: {{$cart->statusCode}}
 

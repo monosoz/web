@@ -267,7 +267,7 @@ class PagesController extends Controller
                 $feedback->comment = $request->message;
                 session(['cartStatus' => 12]);
             } else {
-                $feedback->comment = "Counact Us:
+                $feedback->comment = "Conact Us:
 " . $request->message;
                 session(['cartStatus' => 4]);
             }
