@@ -107,6 +107,6 @@ return [
     |
     */
 
-    'sendmail' => '/usr/lib/sendmail -t',
+    'sendmail' => '/usr/sbin/sendmail -bs',
 
 ];
