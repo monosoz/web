@@ -219,7 +219,7 @@ class PagesController extends Controller
                             $disc50 += $custom_item->price * 0.25;
                         }
                     }
-                    $this->cart->add(['sku' => 'OFF206920', 'price' => 0 - $disc25]);
+                    $this->cart->add(['sku' => 'OFF256920', 'price' => 0 - $disc25]);
                     $applicable = true;
                 } else {
                     # code...
