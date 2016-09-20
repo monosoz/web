@@ -31,6 +31,7 @@
     </style>
 </head>
 <body id="app-layout">
+    @yield('analytics')
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="">
             <div class="navbar-header">

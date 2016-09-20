@@ -103,7 +103,8 @@ class AuthController extends Controller
     {
         $tcart= \App\GuestCart::findOrFail(session('cartId'));
         $cart = \App\Cart::current();
-        $cart->clear();
+        if ($tcart->total > 10) {
+            $cart->clear();
             $tcart->cart_id = $cart->id;
             $tcart->save();
         foreach ($tcart->items as $item) {
@@ -134,6 +135,11 @@ class AuthController extends Controller
             
         }
 
+        } else {
+            # code...
+        }
+        
+        
         
         $tcart->clear();
     }

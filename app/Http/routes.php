@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/home', 'PagesController@index');
 
 Route::auth();
 
@@ -27,7 +28,7 @@ Route::post('/cart/clear', 'PagesController@clearcart');
 Route::post('/cart/applycoupon', 'PagesController@applycoupon');
 Route::post('/cart/{item}', 'PagesController@item');
 
-if (env('OPEN')) {
+if (config('shop.open')) {
 Route::get('/checkout', 'AuthPagesController@checkout');
 Route::patch('/checkout', 'AuthPagesController@selectaddress');
 Route::post('/checkout', 'AuthPagesController@cod');

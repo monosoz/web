@@ -41,7 +41,9 @@ User Contact: {{$cart->user->mobile_number}}<br>
 @if ($cart->is('pending'))
 Pending
 @else
-Delivery Address:{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
+Pincode: {{$cart->delivery_location->pincode}}<br>
+Delivery Address: <strong style="color:#f00;">{{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}</strong><br>
+Comment: <strong style="color:#f00;">{{$cart->delivery_location->usercomment}}</strong><br>
 Map:<a href="{{'https://www.google.co.in/maps/?q='.$cart->delivery_location->lat.','.$cart->delivery_location->lng}}">{{$cart->delivery_location->lat.','.$cart->delivery_location->lng}}</a><br>
 Order Status: {{$cart->statusCode}}
 
@@ -49,8 +51,10 @@ Order Status: {{$cart->statusCode}}
             {{ csrf_field() }}
 <select class="btn" name="status">
   <option value=""></option>
-  <option value="1">complete</option>
   <option value="2">in_process</option>
+  <option value="5">out_for_delivery</option>
+  <option value="1">complete</option>
+  <option value=""></option>
   <option value="3">cancel</option>
 </select>
             <input type="hidden" name="order_id" value="{{$cart->id}}">
@@ -65,7 +69,7 @@ Time: {{substr($cart->created_at, -8, 5)}}<br>
 Total: {{$cart->total}}<br>
 
 {{--*/ $opcal->ocount++ /*--}}
-{{--*/ $opcal->total += $cart->total /*--}}
+{{--*/ $opcal->total += number_format($cart->total, 0) /*--}}
 {{--*/ $opcal->pcount += $cart->count /*--}}
 
 <div style="text-align: center;">
@@ -201,7 +205,7 @@ Address:{{$cart->delivery_location->address}}<br>
         @endif
         <tr>
             <th>Total:</th>
-            <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
+            <th><i class="fa fa-inr"></i><span> {{ number_format($cart->total, 0) }}</span></th>
         </tr>
     </tfoot>
 </table>

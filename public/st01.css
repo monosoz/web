@@ -19,15 +19,20 @@
 .navbar-right{
     margin-right: 15px;
 }
-.navbar{
+.navbar {
     font-size: larger;
     font-weight: 900;
-    background-color: #c70303;
-    border-color: #200000
+    background-color: #d01;
+    border-color: #f00
 }
 .navbar-default .navbar-nav>li>a {
     color: #eee;
 }
+.navbar-toggle{
+    padding: 8px;
+    border: 2px solid transparent;
+}
+
 .pthumb {
                 border-radius: 50%;
                 overflow: hidden;
@@ -63,6 +68,7 @@
             }
 .pname{
     display: block;
+    color: #0ae;
     font-size: 1.4em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -94,7 +100,7 @@
 }
 .cart-btn {
     position: fixed;
-    top: 10rem;
+    top: 6rem;
     right: 1.75rem;
     border: none;
     z-index: 1049;
@@ -150,13 +156,16 @@
 .addcard{
     padding: 5px;
     margin-bottom: 10px;
-    background-color: grey;
+    background-color: rgba(249, 205, 17, 0.3);
     border-radius: 5px;
+    border: 2px solid #000;
+    box-shadow: 5px 5px 10px;
 }
 .itemcard{
-    background-color: #151515;
-    border: 0px solid #111;
-    height: 210px;
+    background-color: rgba(0,0,0,0.92);
+    border: 1px solid #722;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.51);
+    height: 212px;
     position: relative;
     padding: 5px;
     border-radius: 10px;
@@ -173,9 +182,10 @@
     top:0;bottom:0;left:0;right:0;
 }
 .cdcard{
-    background-color: #151515;
-    border: 0px solid #111;
-    height: 160px;
+    background-color: rgba(0,0,0,0.92);
+    border: 1px solid #722;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.51);
+    height: 162px;
     position: relative;
     padding: 5px;
     border-radius: 10px;
@@ -205,6 +215,7 @@
     padding-bottom: 0px;
     padding-left: 6px;
     background-color: #f9cd11;
+    border-color: #da0;
     color: #000;;
     font-weight: bold;
 }
@@ -230,6 +241,16 @@
 .address{
     width: 100%;
 }
+/*.offers{
+    background-image: url("img/wb01.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.offers2{
+    background-image: url("img/wb02.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}*/
 .height-100{
     position: absolute;
     top: 5px;
@@ -254,6 +275,9 @@
 .add-map{
     min-width: 230px;
     float: right;
+}
+.add-map>img{
+    border: 1px solid;
 }
 .add-field{
     width: 5em;
@@ -303,7 +327,7 @@
     top: 50px;
     right: 0;
     left: 0;
-    z-index: 1030;
+    z-index: 1028;
 }
 .top-bar>div>a{
     text-decoration: none;
@@ -328,7 +352,7 @@
 body {
     margin-top: 90px;
     margin-bottom: 100px;
-    background-color: #980211;
+    background-color: #e01a21;
     color: #000;
 }
 html {

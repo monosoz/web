@@ -9,7 +9,7 @@
 </form>
 <span class="xxs-h">Order Id:</span>{{$cart->order_id}}<br>
 <strong style="position: absolute; bottom: 2px; right: -9px; padding: 4px 10px; background-color: rgba(239, 76, 28, 0.39)">Status: {{$cart->status->name}}<br></strong>
-Total: {{$cart->total}}<br>
+Total: {{ number_format($cart->total, 0) }}<br>
 @if (!$cart->is('pending')) 
 Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location->address}}<br>
 @endif
@@ -127,7 +127,7 @@ Time: {{substr($cart->created_at, -8)}}<br>
         </tr>
         <tr>
             <th>Total:</th>
-            <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
+            <th><i class="fa fa-inr"></i><span> {{ number_format($cart->total, 0) }}</span></th>
         </tr>
     </tfoot>
 </table></div>

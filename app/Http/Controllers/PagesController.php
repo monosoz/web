@@ -58,8 +58,8 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
-            $csd = 5;
-            if (!env('OPEN')) {
+            $csd = 21;
+            if (!config('shop.open')) {
                 $csd=0;
             }
 
@@ -74,6 +74,9 @@ class PagesController extends Controller
                 session(['cartStatus' => 0]);
                 return redirect('/');
             }elseif ($request->r=='off100') {
+                session(['cartStatus' => 5]);
+                return redirect('/');
+            }elseif ($request->r=='ga1' || $request->r=='ga2') {
                 session(['cartStatus' => 5]);
                 return redirect('/');
             }
@@ -95,15 +98,15 @@ class PagesController extends Controller
 
         if ($request->p_id==0) {
             if($request->sz==='r'){
-                $this->cart->add(['sku' => 'PROD0002R', 'price' => 100]);
+                $this->cart->add(['sku' => 'PROD0002R', 'price' => 100, 'tax' => 12.5]);
                     $this->custom_sku='PROD0002R';//$var->sku;
             }
             elseif($request->sz==='m'){
-                $this->cart->add(['sku' => 'PROD0003M', 'price' => 150]);
+                $this->cart->add(['sku' => 'PROD0003M', 'price' => 150, 'tax' => 18.75]);
                     $this->custom_sku='PROD0003M';//$var->sku;
             }
             elseif($request->sz==='l'){
-                $this->cart->add(['sku' => 'PROD0004L', 'price' => 200]);
+                $this->cart->add(['sku' => 'PROD0004L', 'price' => 200, 'tax' => 25]);
                     $this->custom_sku='PROD0004L';//$var->sku;
             }
 
@@ -181,30 +184,71 @@ class PagesController extends Controller
                 ItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
                 GuestItemRelation::where('parent_id', '=', $custom_item->id)->where('child_id', '=', '101')->delete();
             }
+            $applicable = false;
             if ($reqcode=='OFF100') {
+                if (true) {
+                    Session::flash('couponMessage', 'Coupon expired.');
+                            $applicable = true;
+                } else {
                     foreach ($this->cart->items->where('price', '229.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
                     foreach ($this->cart->items->where('price', '269.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'OFF1006818', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
+                }
+            } elseif ($reqcode=='OFF50') {
+                if ($this->cart->total > 99) {
+                    $this->cart->add(['sku' => 'OFF506917', 'price' => -50]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
+                
             } elseif ($reqcode=='MONO100') {
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
                     foreach ($this->cart->items->where('price', '339.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
+                            $applicable = true;
                         }
                     }
-            } else {
-                $this->cart->add(['sku' => $reqcode, 'price' => -229]);
+            } elseif ($reqcode=='MONO50') {
+                            $applicable = true;
+                if (!Auth::check()) {
+                    Session::flash('couponMessage', 'Login to your acount first.');
+                } elseif (Auth::User()->orders->count()!=0) {
+                    Session::flash('couponMessage', 'Coupon only valid for new users.');
+                } else {
+                    $disc50 = 0.00;
+                    foreach (Item::where('cart_id', '=', $this->cart->id)->where('price', '>', 50)->get() as $custom_item) {
+                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                            $disc50 += $custom_item->price * 0.5;
+                        }
+                    }
+                    $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
+                }
+            } elseif (substr($reqcode, 0, 7)=='FREEDOM') {
+                if (Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 229)->count()>0) {
+                    $this->cart->add(['sku' => $reqcode, 'price' => -229]);
+                            $applicable = true;
+                } elseif (Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 269)->count()>0) {
+                    $this->cart->add(['sku' => $reqcode, 'price' => -269]);
+                            $applicable = true;                }
+            }
+            if (!$applicable) {
+                Session::flash('couponMessage', 'Coupon not applicable.');
             }
             
         }
@@ -223,7 +267,7 @@ class PagesController extends Controller
                 $feedback->comment = $request->message;
                 session(['cartStatus' => 12]);
             } else {
-                $feedback->comment = "Counact Us:
+                $feedback->comment = "Conact Us:
 " . $request->message;
                 session(['cartStatus' => 4]);
             }

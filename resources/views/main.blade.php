@@ -12,14 +12,14 @@
         <!--a href="#top" class="input-group-btn">
           <span class="btn btn-primary"><i class="fa fa-arrow-up" aria-hidden="true"></i></span>
         </a-->
-        <span class="input-group-btn">
-            <a href="{{ url('/feedback') }}" class="btn btn-primary">
-            <span class="xxs-h">Feedback&nbsp</span>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-            </a>
-        </span>
     </div>
 </nav>
+
+        <span class="input-group-btn" style="position: fixed;right: 30px;bottom: 120px;z-index: 52;">
+            <a href="{{ url('/feedback') }}" class="btn btn-primary">
+              <img src="{{ url('img/feedback.png') }}">
+            </a>
+        </span>
     <div class="container">
         @include('blocks.product')
     </div>
@@ -79,7 +79,7 @@
   @include('blocks.feedbacksaved')
 @elseif($cart_status==4)
   @include('blocks.messagesaved')
-@elseif(!env('OPEN') && $cart_status==0)
+@elseif(!config('shop.open') && $cart_status==0)
   @include('blocks.welcome')
 @elseif($cart_status==5)
   @include('blocks.welcome')
@@ -87,6 +87,11 @@
   @include('blocks.welcome')
 @endif
 @endsection
+
+@section('analytics')
+@include('blocks.analyticstracking')
+@endsection
+
 @section('scripts')
   @if($cart_status==1)
     <script type="text/javascript">
@@ -106,7 +111,7 @@
             $('#mModal').modal('show');
         });
     </script>
-  @elseif(!env('OPEN') && $cart_status==0)
+  @elseif(!config('shop.open') && $cart_status==0)
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');

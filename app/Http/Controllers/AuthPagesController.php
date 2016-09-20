@@ -89,14 +89,14 @@ class AuthPagesController extends Controller
         ]);
         $location = Auth::user()->locations()->where('id', $request->address_id)->first();
         $location->name = $request->name;
-        $location->mobile_number = $request->mobile;
+        $location->mobile_number = $request->contact;
         $location->pincode = $request->pincode;
         $location->address = $request->address;
         $location->lat = $request->lat;
         $location->lng = $request->lng;
         $location->usercomment = $request->comment;
         $location->update = substr($location->updated_at, -8);
-        Auth::user()->locations()->save($location);
+        $location->save();
         return redirect($request->requrl);
         
     }

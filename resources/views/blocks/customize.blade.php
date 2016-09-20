@@ -14,7 +14,7 @@
 <div class="col-sm-5">
     <div class="pmsize row">
     <div class="col-xs-6">
-        <img class="pmthumb" src="{{ url('img/custompizza.png') }}">
+        <img id="custom-img" class="pmthumb" src="{{ url('img/custompizza.png') }}">
     </div>
     <div class="tp-selector col-xs-6">
 
