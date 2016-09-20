@@ -42,9 +42,14 @@ class ShopOperator extends Controller
     $tosmskey = '124443AMVTHynd57cc7231';
     $name = $user->name;
     $fname = explode(' ', trim($name));
+    $message = urlencode("Dear customer,
+Enjoy our new and improved MONOSOZ pizza at 25% off (excluding taxes).
+Use code OFF25 @ www.monosoz.com");
+/*
     $message = urlencode("Hi " . substr($fname[0], 0, 15) . " 
 Try new range of Non-Veg and Veg Pizzas @ MONOSOZ
 Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @ www.monosoz.com");
+*/
     $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91&unicode=0");
                 $retstr = $retstr . '<br>
 ' . substr($fname[0], 0, 15) . ' - ' . substr($user->mobile_number, -10) . ' ' . $xml;
