@@ -214,11 +214,20 @@ class PagesController extends Controller
             } elseif ($reqcode=='OFF25') {
                 if ($this->cart->total > 99) {
                     $disc25 = 0.00;
-                    foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
-                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $disc25 += $custom_item->price * 0.25;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
                         }
                     }
+                    
                     $this->cart->add(['sku' => 'OFF256920', 'price' => 0 - $disc25]);
                     $applicable = true;
                 } else {
