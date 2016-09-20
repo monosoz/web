@@ -216,7 +216,7 @@ class PagesController extends Controller
                     $disc25 = 0.00;
                     foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
-                            $disc50 += $custom_item->price * 0.25;
+                            $disc25 += $custom_item->price * 0.25;
                         }
                     }
                     $this->cart->add(['sku' => 'OFF256920', 'price' => 0 - $disc25]);
