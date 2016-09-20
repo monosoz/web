@@ -24,7 +24,7 @@
             <span class="pull-right" style="margin-top: -10px;">*Limited Promotion</span>
             @elseif($cart_status==22)
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
-                <h1 style="font-size:40px;font-weight: 900;color:#980211;">Use coupon code '<strong style="color:#090;">OFF20</strong>' and get flat 20% off on all purchases!</h1>
+                <h1 style="font-size:40px;font-weight: 900;color:#980211;">Use coupon code '<strong style="color:#090;">OFF25</strong>' and get flat 25% off on all purchases!</h1>
             </div>
             <span class="pull-right" style="margin-top: -10px;">*Limited Promotion</span>
             @elseif($cart_status==11)
