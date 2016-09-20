@@ -39,6 +39,7 @@ class ShopOperator extends Controller
                 $from = $request->f;
                 $to = $request->t;
                 foreach (User::whereBetween('id', [$from, $to])->get() as $user) {
+                    if ($user->orders->count()>0) {
     $tosmskey = '124443AMVTHynd57cc7231';
     $name = $user->name;
     $fname = explode(' ', trim($name));
@@ -53,6 +54,7 @@ Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @
     $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91&unicode=0");
                 $retstr = $retstr . '<br>
 ' . substr($fname[0], 0, 15) . ' - ' . substr($user->mobile_number, -10) . ' ' . $xml;
+                    }
                 }
             }
             return $retstr;
