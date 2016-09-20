@@ -58,7 +58,7 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
-            $csd = 21;
+            $csd = 22;
             if (!config('shop.open')) {
                 $csd=0;
             }
@@ -206,6 +206,20 @@ class PagesController extends Controller
             } elseif ($reqcode=='OFF50') {
                 if ($this->cart->total > 99) {
                     $this->cart->add(['sku' => 'OFF506917', 'price' => -50]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
+                
+            } elseif ($reqcode=='OFF25') {
+                if ($this->cart->total > 99) {
+                    $disc25 = 0.00;
+                    foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                        for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                            $disc50 += $custom_item->price * 0.25;
+                        }
+                    }
+                    $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc25]);
                     $applicable = true;
                 } else {
                     # code...
