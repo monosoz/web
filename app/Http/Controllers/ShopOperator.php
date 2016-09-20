@@ -57,7 +57,12 @@ Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @
                     }
                 }
             }
-            return $retstr;
+        } elseif ($request->has('u')) {
+            $retstr="";
+            if ($request->u=='m') {
+                $user=User::where('mobile_number', '=', $request->m])->first();
+            }
+            return $user;
         } else {
             return view('op.orders_o', ['orders' => Order::whereDate('created_at', '=', date('y-m-d'))->get(),]);
         }
