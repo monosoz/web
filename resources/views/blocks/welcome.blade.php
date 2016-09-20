@@ -1,10 +1,10 @@
-@if ($cart_status!=0)
 <div class="modal fade" id="wModal" tabindex="-1" role="dialog" aria-labelledby="welcome" aria-hidden="false">
     <div class="modal-dialog modal-lg">
         <div class="modal-content" style="border-radius:40px;font-size:larger;background-color:#f9cd11;padding:5%">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
+        @if ($cart_status!=0)
             @if($cart_status==5)
             <!--div class="offers2" style="
     position: absolute;
@@ -44,13 +44,12 @@
                 <h1 style="font-size:50px;color:#980211;">Wellcome to monosoz!</h1>
             </div>
             @endif
+        @elseif(!config('shop.open'))
+            <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
+                <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
+            </div>
+        @endif
         </div>
     </div>
 </div>
 
-
-@elseif(!config('shop.open'))
-<div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
-    <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
-</div>
-@endif

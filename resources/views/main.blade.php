@@ -111,7 +111,7 @@
             $('#mModal').modal('show');
         });
     </script>
-  @elseif(!config('shop.open'))
+  @elseif(!config('shop.open') && $cart_status==0)
     <script type="text/javascript">
         $(window).load(function(){
             $('#wModal').modal('show');
