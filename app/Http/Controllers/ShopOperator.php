@@ -57,6 +57,7 @@ Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @
                     }
                 }
             }
+            return $retstr;
         } elseif ($request->has('fu')) {
             $retstr="";
             if ($request->fu=='m') {
