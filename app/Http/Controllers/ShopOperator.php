@@ -62,6 +62,8 @@ Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @
             $retstr="";
             if ($request->fu=='m') {
                 $user=User::where('mobile_number', '=', $request->m)->first();
+            } else {
+                $user=User::where('id', '=', $request->fu)->first();
             }
             return $user;
         } else {
