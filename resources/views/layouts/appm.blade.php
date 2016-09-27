@@ -46,7 +46,7 @@
 
                 <!-- Branding Image -->
                 <a class="home-logo" href="{{ url('/') }}">
-                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" />
+                    <img class="nav-logo" src="{{ url('/img/monolv002.png') }}" alt="monosoz" />
                 </a>
             </div>
 
@@ -100,12 +100,13 @@
 
             <ul class="footer-list pull-right">
                 <li class="footer-li">
-                    <a href="https://twitter.com/monosoz" class="" style="padding: 4px;"><img src="{{ url('/img/tws.png') }}" alt="twitter">&nbsp</a>
+                    <a href="https://twitter.com/monosoz" class="" style="padding: 4px;"><img src="{{ url('/img/tws.png') }}" alt="twitter monosoz">&nbsp</a>
                 </li>
                 <li class="footer-li">
-                    <a href="https://www.facebook.com/monosoz" class="" style="padding: 4px;"><img src="{{ url('/img/fbs.png') }}" alt="fb">&nbsp</a>
+                    <a href="https://www.facebook.com/monosoz" class="" style="padding: 4px;"><img src="{{ url('/img/fbs.png') }}" alt="fb monosoz">&nbsp</a>
                 </li>
             </ul>
+
         </div>
     </footer>
 
