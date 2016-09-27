@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appm')
 
 @section('content')
 <nav class="top-bar" id="top">
