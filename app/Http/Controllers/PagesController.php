@@ -240,6 +240,29 @@ class PagesController extends Controller
                     # code...
                 }
                 
+            } elseif ($reqcode=='FEST33') {
+                if ($this->cart->total > 99) {
+                    $disc33 = 0.00;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc33 += $custom_item->price * 0.33;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc33 += $custom_item->price * 0.33;
+                            }
+                        }
+                    }
+                    
+                    $this->cart->add(['sku' => 'FEST3361011', 'price' => 0 - $disc33]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
+                
             } elseif ($reqcode=='MONO100') {
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
