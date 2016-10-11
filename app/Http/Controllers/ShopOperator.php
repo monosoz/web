@@ -43,10 +43,12 @@ class ShopOperator extends Controller
     $tosmskey = '124443AMVTHynd57cc7231';
     $name = $user->name;
     $fname = explode(' ', trim($name));
+    $message = urlencode("Dushehra offer: Get 33% OFF on all pizzas. Offer applicable only on 11th Oct.
+Use Code FEST33 @ www.monosoz.com");
+/*
     $message = urlencode("Dear customer,
 Enjoy our new and improved MONOSOZ pizza at 25% off (excluding taxes).
 Use code OFF25 @ www.monosoz.com");
-/*
     $message = urlencode("Hi " . substr($fname[0], 0, 15) . " 
 Try new range of Non-Veg and Veg Pizzas @ MONOSOZ
 Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @ www.monosoz.com");
