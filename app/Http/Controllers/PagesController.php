@@ -241,7 +241,10 @@ class PagesController extends Controller
                 }
                 
             } elseif ($reqcode=='FEST33') {
-                if ($this->cart->total > 99) {
+                if (true) {
+                    Session::flash('couponMessage', 'Coupon expired.');
+                            $applicable = true;
+                } elseif ($this->cart->total > 99) {
                     $disc33 = 0.00;
                     if (Auth::check()) {
                         foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
@@ -258,6 +261,29 @@ class PagesController extends Controller
                     }
                     
                     $this->cart->add(['sku' => 'FEST3361011', 'price' => 0 - $disc33]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
+                
+            } elseif ($reqcode=='BESTBUY') {
+                if ($this->cart->total > 99) {
+                    $disc25 = 0.00;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    }
+                    
+                    $this->cart->add(['sku' => 'BESTBUY61015', 'price' => 0 - $disc25]);
                     $applicable = true;
                 } else {
                     # code...
