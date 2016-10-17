@@ -315,6 +315,9 @@ class PagesController extends Controller
                             $disc50 += $custom_item->price * 0.5;
                         }
                     }
+                    if ($disc50>500) {
+                        $disc50=500;
+                    }
                     $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
             } elseif (substr($reqcode, 0, 7)=='FREEDOM') {
