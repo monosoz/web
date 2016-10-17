@@ -43,7 +43,7 @@ class ShopOperator extends Controller
     $tosmskey = '124443AMVTHynd57cc7231';
     $name = $user->name;
     $fname = explode(' ', trim($name));
-    $message = urlencode("Get a LARGE CHEESILICIOUS pizza delivered @ your doorstep with flat 25% off. Use code 'BESTBUY' this weekend @ www.monosoz.com");
+    $message = urlencode("Get a LARGE CHEESILICIOUS pizza delivered @ your doorstep with flat 25% off. Use code 'BESTBUY' @ www.monosoz.com");
 /*
     $message = urlencode("Dushehra offer: Get 33% OFF on all pizzas. Offer applicable only on 11th Oct.
 Use Code FEST33 @ www.monosoz.com");
