@@ -147,7 +147,21 @@ class PagesController extends Controller
     public function item(Request $request, $item)
     {
         if ( $request->get('action') == 'rm' ) {
-            $this->cart->remove(['sku' => $item], 1);
+            if (Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()!=null) {
+                ItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no'))->delete();
+                foreach (ItemRelation::where('parent_id', '=', $item)->where('item_no', '>', $request->get('item_no')) as $itr) {
+                    $itr->item_no = $itr->item_no -1;
+                    $itr->save();
+                }
+                $this->cart->remove(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku, 1);
+            } elseif (GuestItem::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()!=null) {
+                GuestItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no'))->delete();
+                foreach (GueatItemRelation::where('parent_id', '=', $item)->where('item_no', '>', $request->get('item_no')) as $itr) {
+                    $itr->item_no = $itr->item_no -1;
+                    $itr->save();
+                }
+                $this->cart->remove(['sku' => GuestItem::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku, 1);
+            }
         } elseif ( $request->get('action') == 'add' ) {
             $this->cart->add(['sku' => $item]);
         }

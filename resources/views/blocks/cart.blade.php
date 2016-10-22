@@ -26,7 +26,7 @@
             @endif
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/'.$item->sku) }}" method="POST">
+            <form action="{{ url('cart/'.$item->id) }}" method="POST">
                 {{ csrf_field() }}
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
                 <!--button type="submit" name="action" value="add" class="btn-link">
@@ -81,7 +81,7 @@
             @endif
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/'.$item->sku) }}" method="POST">
+            <form action="{{ url('cart/'.$item->id) }}" method="POST">
                 {{ csrf_field() }}
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
                 <button type="submit" name="action" value="rm" class="btn-link">
