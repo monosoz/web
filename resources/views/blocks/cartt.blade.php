@@ -29,9 +29,9 @@
             <form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
-                <button type="submit" name="action" value="add" class="btn-link">
+                <!--button type="submit" name="action" value="add" class="btn-link">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
-                </button>
+                </button-->
                 <span> - 1</span>
                 <button type="submit" name="action" value="rm" class="btn-link">
                     <i class="fa fa-minus-square" aria-hidden="true"></i>
@@ -84,14 +84,14 @@
             <form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
-                <button type="submit" name="action" value="add" class="btn-link">
-                    <i class="fa fa-plus-square" aria-hidden="true"></i>
-                </button>
-                @if($ql>1)
-                <span style="padding-left:10px;">x {{$ql}} </span>
-                @endif
                 <button type="submit" name="action" value="rm" class="btn-link">
                     <i class="fa fa-minus-square" aria-hidden="true"></i>
+                </button>
+                @if($ql>0)
+                <span style="padding-left:10px;">{{$ql}}</span>
+                @endif
+                <button type="submit" name="action" value="add" class="btn-link">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
                 </button>
             </form>
         </td>

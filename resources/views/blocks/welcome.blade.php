@@ -47,6 +47,7 @@
         @elseif(!config('shop.open'))
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
+                <h4>Open from  <strong>11 AM</strong> to <strong>12 Midnight</strong>.</h4>
             </div>
         @endif
         </div>
