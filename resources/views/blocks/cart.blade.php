@@ -32,7 +32,7 @@
                 <!--button type="submit" name="action" value="add" class="btn-link">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
                 </button-->
-                <span> - 1</span>
+                <span style="padding:5px;">1</span>
                 <button type="submit" name="action" value="rm" class="btn-link">
                     <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
@@ -88,7 +88,7 @@
                     <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
                 @if($ql>0)
-                <span style="padding-left:10px;">{{$ql}}</span>
+                <span style="padding:5px;">{{$ql}}</span>
                 @endif
                 <button type="submit" name="action" value="add" class="btn-link">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
