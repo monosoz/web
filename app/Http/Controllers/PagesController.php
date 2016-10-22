@@ -158,6 +158,9 @@ class PagesController extends Controller
                 }
                 $this->cart->remove(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku], 1);
             } elseif (GuestItem::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()!=null) {
+                foreach (GuestItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no')) as $itr) {
+                    $this->cart->remove(['sku' => $itr->child->sku], 1);
+                }
                 GuestItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no'))->delete();
                 foreach (GueatItemRelation::where('parent_id', '=', $item)->where('item_no', '>', $request->get('item_no')) as $itr) {
                     $itr->item_no = $itr->item_no -1;
@@ -166,7 +169,12 @@ class PagesController extends Controller
                 $this->cart->remove(['sku' => GuestItem::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku], 1);
             }
         } elseif ( $request->get('action') == 'add' ) {
-            $this->cart->add(['sku' => $item]);
+            if (Auth::check()) {
+                $this->cart->add(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku]);
+            } else {
+                $this->cart->add(['sku' => GuestItem::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku]);
+            }
+            
         }
         session(['cartStatus' => 1]);
         return redirect()->back();
