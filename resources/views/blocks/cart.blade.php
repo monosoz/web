@@ -34,7 +34,7 @@
                 </button-->
                 <span style="padding:5px;">1</span>
                 <button type="submit" name="action" value="rm" class="btn-link">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                    <i class="fa fa-remove" aria-hidden="true"></i>
                 </button>
             </form>
         </td>
