@@ -24,7 +24,6 @@
         @include('blocks.product')
     </div>
 
-    <div class="alert" style="pointer-events: none;"> BETA </div>
     <!-- Collapsed Hamburger -->
 
     <div class="cart-btn clickable" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
