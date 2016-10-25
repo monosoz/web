@@ -7,6 +7,7 @@
 @elseif(substr($item->class, -5, 5)!='Addon')
     {{--*/ $q = $item->quantity /*--}}
     {{--*/ $ql = $q /*--}}
+        {{--*/ $i_n = 0 /*--}}
 
     <tr>
 @for(; $q>-1; $q--)
@@ -26,8 +27,9 @@
             @endif
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/'.$item->id) }}" method="POST">
+            <form action="{{ url('cart/item') }}" method="POST">
                 {{ csrf_field() }}
+                <input id="" type="hidden" name="item" value="{{ $item->id }}">
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
                 <!--button type="submit" name="action" value="add" class="btn-link">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
@@ -81,9 +83,10 @@
             @endif
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/'.$item->id) }}" method="POST">
+            <form action="{{ url('cart/item') }}" method="POST">
                 {{ csrf_field() }}
-                <input id="" type="hidden" name="item_no" value="{{ $q }}">
+                <input id="" type="hidden" name="item" value="{{ $item->id }}">
+                <input id="" type="hidden" name="item_no" value="{{ $i_n }}">
                 <button type="submit" name="action" value="rm" class="btn-link">
                     <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
@@ -95,6 +98,9 @@
                 </button>
             </form>
         </td>
+    @elseif($i_n==0)
+        {{--*/ $i_n = $q /*--}}
+
     @endif
     </tr>
 @endfor

@@ -144,36 +144,35 @@ class PagesController extends Controller
         return redirect()->back();
     }
 
-    public function item(Request $request, $item)
+    public function item(Request $request)
     {
         if ( $request->get('action') == 'rm' ) {
-            if (Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()!=null) {
-                return $request->all() . $item;
-                foreach (ItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no')) as $itr) {
+            if (Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()!=null) {
+                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no')) as $itr) {
                     $this->cart->remove(['sku' => $itr->child->sku], 1);
                 }
-                ItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no'))->delete();
-                foreach (ItemRelation::where('parent_id', '=', $item)->where('item_no', '>', $request->get('item_no')) as $itr) {
+                ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->delete();
+                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '>', $request->get('item_no')) as $itr) {
                     $itr->item_no = $itr->item_no -1;
                     $itr->save();
                 }
-                $this->cart->remove(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku], 1);
-            } elseif (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $item)->first()!=null) {
-                foreach (GuestItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no')) as $itr) {
+                $this->cart->remove(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku], 1);
+            } elseif (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()!=null) {
+                foreach (GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->get() as $itr) {
                     $this->cart->remove(['sku' => $itr->child->sku], 1);
                 }
-                GuestItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no'))->delete();
-                foreach (GueatItemRelation::where('parent_id', '=', $item)->where('item_no', '>', $request->get('item_no')) as $itr) {
+                GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->delete();
+                foreach (GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '>', $request->get('item_no'))->get() as $itr) {
                     $itr->item_no = $itr->item_no -1;
                     $itr->save();
                 }
-                $this->cart->remove(['sku' => GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku], 1);
+                $this->cart->remove(['sku' => GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku], 1);
             }
         } elseif ( $request->get('action') == 'add' ) {
             if (Auth::check()) {
-                $this->cart->add(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku]);
+                $this->cart->add(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku]);
             } else {
-                $this->cart->add(['sku' => GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $item)->first()->sku]);
+                $this->cart->add(['sku' => GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku]);
             }
             
         }
