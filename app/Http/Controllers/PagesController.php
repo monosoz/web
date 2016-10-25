@@ -148,13 +148,12 @@ class PagesController extends Controller
     {
         if ( $request->get('action') == 'rm' ) {
             if (Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()!=null) {
-                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no')) as $itr) {
+                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->get() as $itr) {
                     $this->cart->remove(['sku' => $itr->child->sku], 1);
                 }
                 ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->delete();
-                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '>', $request->get('item_no')) as $itr) {
-                    $itr->item_no = $itr->item_no -1;
-                    $itr->save();
+                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '>', $request->get('item_no'))->get() as $itr) {
+                    GuestItemRelation::where('parent_id', '=', $itr->parent_id)->where('item_no', '=', $itr->item_no)->update(array('item_no' => $itr->item_no -1));
                 }
                 $this->cart->remove(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku], 1);
             } elseif (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()!=null) {
@@ -163,8 +162,7 @@ class PagesController extends Controller
                 }
                 GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->delete();
                 foreach (GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '>', $request->get('item_no'))->get() as $itr) {
-                    $itr->item_no = $itr->item_no -1;
-                    $itr->save();
+                    GuestItemRelation::where('parent_id', '=', $itr->parent_id)->where('item_no', '=', $itr->item_no)->update(array('item_no' => $itr->item_no -1));
                 }
                 $this->cart->remove(['sku' => GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku], 1);
             }
