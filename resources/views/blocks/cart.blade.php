@@ -31,8 +31,8 @@
                 {{ csrf_field() }}
                 <input id="" type="hidden" name="item" value="{{ $item->id }}">
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
-                <!--button type="submit" name="action" value="add" class="btn-link">
-                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                <!--button type="submit" name="action" value="" class="btn-link">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button-->
                 <span style="padding:5px;">1</span>
                 <button type="submit" name="action" value="rm" class="btn-link">
