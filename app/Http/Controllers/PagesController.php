@@ -148,7 +148,7 @@ class PagesController extends Controller
     {
         if ( $request->get('action') == 'rm' ) {
             if (Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $item)->first()!=null) {
-                return $request;
+                return $request->all();
                 foreach (ItemRelation::where('parent_id', '=', $item)->where('item_no', '=', $request->get('item_no')) as $itr) {
                     $this->cart->remove(['sku' => $itr->child->sku], 1);
                 }
