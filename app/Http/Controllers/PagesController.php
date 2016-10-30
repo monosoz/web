@@ -146,6 +146,8 @@ class PagesController extends Controller
 
     public function item(Request $request)
     {
+        Item::where('price', '<', 0)->where('cart_id', '=', $this->cart->id)->delete();
+        GuestItem::where('price', '<', 0)->where('guestcart_id', '=', $this->cart->id)->delete();
         if ( $request->get('action') == 'rm' ) {
             if (Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()!=null) {
                 foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->get() as $itr) {
@@ -338,8 +340,8 @@ class PagesController extends Controller
                             $disc50 += $custom_item->price * 0.5;
                         }
                     }
-                    if ($disc50>500) {
-                        $disc50=500;
+                    if ($disc50>200) {
+                        $disc50=200;
                     }
                     $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
