@@ -16,7 +16,7 @@ Delivery Address: {{$cart->delivery_location->name}}, {{$cart->delivery_location
 Date: {{substr($cart->created_at, 0, 10)}}<br>
 Time: {{substr($cart->created_at, -8)}}<br>
 </div>
-@include('blocks.cart')
+@include('blocks.cartb')
 <hr>
 @if(false)
 <div class=""><table class="cart-table table table-hover">
