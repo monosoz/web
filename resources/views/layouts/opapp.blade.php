@@ -28,7 +28,9 @@
     });
 
     var channel = pusher.subscribe('test_channel');
+    var audio = new Audio('alert_5.mp3');
     channel.bind('new_order', function(data) {
+      audio.play();
       alert(data.message);
       window.location.reload(true);
     });
