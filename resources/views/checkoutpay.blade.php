@@ -19,16 +19,18 @@
             </div>
             <div class="clearfix"></div>
             <hr>
-             <div  class="col-sm-11">
+      <div  class="col-sm-11">
         <p>Select Payment Method</p>
+      </div>
+      <div class="row">
         <div class="col-xs-3"> <!-- required for floating -->
           <!-- Nav tabs -->
           <ul class="nav nav-tabs tabs-left sideways">
             <li class="active"><a href="#cod" data-toggle="tab">COD</a></li>
+            <li><a href="#PayTM" data-toggle="tab" style="padding: 10px 5px;">
+              <img src="{{ url("img/paytm.png") }}" alt="paytm"></a></li>
             <li></li>
-            <li></li>
-            <!--li><a href="#PayU" data-toggle="tab">PayU</a></li>
-            <li><a href="#PayTM" data-toggle="tab">PayTM</a></li-->
+            <!--li><a href="#PayU" data-toggle="tab">PayU</a></li-->
           </ul>
         </div>
 
@@ -37,7 +39,20 @@
           <div class="tab-content">
             <div class="tab-pane active" id="cod">
             <h4>Cash on Delivery</h4>
-            <div class="pull-down">
+            <div class="col-md-4">
+              <span>Amount Payable: <i class="fa fa-inr"></i>&nbsp{{ $user->cart->total }}</span><br>
+              <form class="btn pull-right" method="POST" action="{{ url('/checkout') }}">
+                {{ csrf_field() }}
+                <input type="hidden" name="total" value="{{ $user->cart->total }}">
+                <button class="btn btn-success">Confirm</button>
+              </form>
+              </div>
+            </div>
+            <div class="tab-pane" id="PayTM">
+            <div class="col-md-6 col-lg-6">
+              <img src="{{ url("img/paytmqrc.png") }}" style="max-width:100%;">
+            </div>
+            <div class="col-md-4">
               <span>Amount Payable: <i class="fa fa-inr"></i>&nbsp{{ $user->cart->total }}</span><br>
               <form class="btn pull-right" method="POST" action="{{ url('/checkout') }}">
                 {{ csrf_field() }}
@@ -47,7 +62,6 @@
               </div>
             </div>
             <div class="tab-pane" id="PayU">Comming soon</div>
-            <div class="tab-pane" id="PayTM">Comming soon</div>
           </div>
         </div>
 
