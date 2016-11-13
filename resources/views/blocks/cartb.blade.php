@@ -26,6 +26,10 @@
                 -Large
                 @endif
             @endif
+            @foreach ($item->rel->where('item_no', "$q") as $rel)
+            @if($rel->child->price==0)({{ $rel->child->name }})
+            @endif
+            @endforeach
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
             <!--form action="{{ url('cart/'.$item->sku) }}" method="POST">
@@ -121,7 +125,9 @@
         @endif
         <tr>
             <th>Total:</th>
-            <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
+            <th><i class="fa fa-inr"></i><span> {{ number_format($cart->total, 0) }}</span>
+            <button class="pull-right btn" type="button" data-toggle="modal" data-target="#paytm">Pay Online</button>
+            </th>
         </tr>
     </tfoot>
 </table>

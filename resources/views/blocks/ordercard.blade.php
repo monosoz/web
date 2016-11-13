@@ -17,7 +17,6 @@ Date: {{substr($cart->created_at, 0, 10)}}<br>
 Time: {{substr($cart->created_at, -8)}}<br>
 </div>
 @include('blocks.cartb')
-<button class="pull-right btn" type="button" data-toggle="modal" data-target="#paytm">Pay Online</button>
 <hr>
 @if(false)
 <div class=""><table class="cart-table table table-hover">
