@@ -25,6 +25,10 @@
                 -Large
                 @endif
             @endif
+            @foreach ($item->rel->where('item_no', "$q") as $rel)
+            @if($rel->child->id==4 || $rel->child->id==5)({{ $rel->child->name }})
+            @endif
+            @endforeach
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
             <form action="{{ url('cart/item') }}" method="POST">
@@ -81,6 +85,10 @@
                 -Large
                 @endif
             @endif
+            @foreach ($item->rel->where('item_no', "$q") as $rel)
+            @if($rel->child->id==4 || $rel->child->id==5)({{ $rel->child->name }})
+            @endif
+            @endforeach
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
             <form action="{{ url('cart/item') }}" method="POST">
