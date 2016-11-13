@@ -44,7 +44,7 @@ class ShopOperator extends Controller
     $name = $user->name;
     $fname = explode(' ', trim($name));
     $message = urlencode("Cash problem? Now pay for most economical bite via paytm @ www.monosoz.com.
-        500 bills accepted only for orders above Rs400");
+500 bills accepted only for orders above Rs400");
 /*
     $message = urlencode("Get a LARGE CHEESILICIOUS pizza delivered @ your doorstep with flat 25% off. Use code 'BESTBUY' @ www.monosoz.com");
     $message = urlencode("Dushehra offer: Get 33% OFF on all pizzas. Offer applicable only on 11th Oct.
