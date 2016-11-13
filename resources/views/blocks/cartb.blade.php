@@ -27,7 +27,7 @@
                 @endif
             @endif
             @foreach ($item->rel->where('item_no', "$q") as $rel)
-            @if($rel->child->price==0)({{ $rel->child->name }})
+            @if($rel->child->id==4 || $rel->child->id==5)({{ $rel->child->name }})
             @endif
             @endforeach
         </span></td>
