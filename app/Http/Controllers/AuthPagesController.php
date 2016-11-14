@@ -123,6 +123,9 @@ class AuthPagesController extends Controller
 
     public function cod(Request $request)
     {
+        if (Auth::user()->cart->count==0) {
+            return redirect('/orders');
+        }
 
         Shop::setGateway('pay');
         $this->success = Shop::checkout();
