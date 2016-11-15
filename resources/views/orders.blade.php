@@ -40,7 +40,7 @@
                 </button>
                 <h4 class="modal-title" id="custom-title">Pay using paytm</h4>
             </div>
-              <img src="{{ url("img/paytmqrc.png") }}" style="max-width:100%;display: block;margin: auto;">
+              <img src="{{ url("img/paytmqrc" . env('PAYTM_QRC') . ".png") }}" style="max-width:100%;display: block;margin: auto;">
         </div>
     </div>
 </div>

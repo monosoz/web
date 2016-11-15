@@ -50,7 +50,7 @@
             </div>
             <div class="tab-pane" id="PayTM">
             <div class="col-md-6 col-lg-6">
-              <img src="{{ url("img/paytmqrc.png") }}" style="max-width:100%;">
+              <img src="{{ url("img/paytmqrc" . env('PAYTM_QRC') . ".png") }}" style="max-width:100%;">
             </div>
             <div class="col-md-4">
               <span>Amount Payable: <i class="fa fa-inr"></i>&nbsp{{ $user->cart->total }}</span><br>
