@@ -43,7 +43,7 @@ class ShopOperator extends Controller
     $tosmskey = '124443AMVTHynd57cc7231';
     $name = $user->name;
     $fname = explode(' ', trim($name));
-    $message = urlencode("Enjoy this winter with a hot delicious pizza. Get 25% off during HAPPY HOURS (12:30PM-4:30PM). Use code HAPPY25.");
+    $message = urlencode("Enjoy this winter with a hot delicious pizza. Get 25% off during HAPPY HOURS (12:30PM-4:30PM). Use code HAPPY25 @ www.monosoz.com");
 /*
     $message = urlencode("Get a LARGE CHEESILICIOUS pizza delivered @ your doorstep with flat 25% off. Use code 'BESTBUY' @ www.monosoz.com");
     $message = urlencode("Dushehra offer: Get 33% OFF on all pizzas. Offer applicable only on 11th Oct.
@@ -76,7 +76,7 @@ Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @
                     }
                 }
     $tosmskey = '124443AMVTHynd57cc7231';
-    $message = urlencode("Enjoy this winter with a hot delicious pizza. Get 25% off during HAPPY HOURS (12:30PM-4:30PM). Use code HAPPY25.");
+    $message = urlencode("Enjoy this winter with a hot delicious pizza. Get 25% off during HAPPY HOURS (12:30PM-4:30PM). Use code HAPPY25 @ www.monosoz.com");
 /*
 */
     $apilink = "https://control.msg91.com/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=" . $mobile_numbers . "&message=" . $message . "&sender=MONOSZ&route=4&country=91";
