@@ -29,8 +29,11 @@ trait RegistersUsers
         if (property_exists($this, 'registerView')) {
             return view($this->registerView);
         }
+        if (session()->has('mobileNumber') && session('matchOTP')) {
+            return view('auth.register', ['mobile_number' => session('mobileNumber'),]);
+        }
 
-        return view('auth.register');
+        return redirect("/register");
     }
 
     /**

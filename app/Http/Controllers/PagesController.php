@@ -394,7 +394,7 @@ Message: ".$request->message ;
             $feedback->save();
         }
 
-    $options = array('cluster' => 'ap1', 'encrypted' => true);
+    $options = array('cluster' => 'a p1', 'encrypted' => true);
     $pusher = new \Pusher('85af98d3bd88e572165f', '1692b81c6311d8a679e4', '219908', $options );
 
     $data['message'] = 'New Feedback !' ;
