@@ -350,6 +350,31 @@ class PagesController extends Controller
                     }
                     $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
+            } elseif ($reqcode=='HAPPY25') {
+                if ($this->cart->total > 99) {
+                    $disc25 = 0.00;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    }
+                    if ($disc25>100) {
+                        $disc25=100;
+                    }
+                    
+                    $this->cart->add(['sku' => 'HAPPY257106', 'price' => 0 - $disc25]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
             } elseif (substr($reqcode, 0, 7)=='FREEDOM') {
                 if (Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 229)->count()>0) {
                     $this->cart->add(['sku' => $reqcode, 'price' => -229]);

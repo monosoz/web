@@ -43,8 +43,7 @@ class ShopOperator extends Controller
     $tosmskey = '124443AMVTHynd57cc7231';
     $name = $user->name;
     $fname = explode(' ', trim($name));
-    $message = urlencode("Cash problem? Now pay for most economical bite via paytm @ www.monosoz.com.
-500 bills accepted only for orders above Rs400");
+    $message = urlencode("Enjoy this winter with a hot delicious pizza. Get 25% off during HAPPY HOURS (12:30PM-4:30PM). Use code HAPPY25.");
 /*
     $message = urlencode("Get a LARGE CHEESILICIOUS pizza delivered @ your doorstep with flat 25% off. Use code 'BESTBUY' @ www.monosoz.com");
     $message = urlencode("Dushehra offer: Get 33% OFF on all pizzas. Offer applicable only on 11th Oct.
@@ -55,14 +54,35 @@ Use code OFF25 @ www.monosoz.com");
     $message = urlencode("Hi " . substr($fname[0], 0, 15) . " 
 Try new range of Non-Veg and Veg Pizzas @ MONOSOZ
 Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @ www.monosoz.com");
-*/
     $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91&unicode=0");
+*/
+    $xml = file_get_contents("https://control.msg91.com/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91")
+        ;
                 $retstr = $retstr . '<br>
 ' . substr($fname[0], 0, 15) . ' - ' . substr($user->mobile_number, -10) . ' ' . $xml;
                     }
                 }
+            } elseif ($request->sms=='qws') {
+                $from = $request->f + 1;
+                $to = $request->t;
+                $mobile_numbers = "91" . substr(User::find($request->f)->mobile_number, -10);
+                foreach (User::whereBetween('id', [$from, $to])->get() as $user) {
+                    if ($user->orders->count()>-1) {
+                        $mobile_numbers = $mobile_numbers . ",91" . substr($user->mobile_number, -10);
+                        $name = $user->name;
+                        $fname = explode(' ', trim($name));
+                        $retstr = $retstr . '<br>
+' . substr($fname[0], 0, 15) . ' - ' . substr($user->mobile_number, -10) . ' ';
+                    }
+                }
+    $tosmskey = '124443AMVTHynd57cc7231';
+    $message = urlencode("Enjoy this winter with a hot delicious pizza. Get 25% off during HAPPY HOURS (12:30PM-4:30PM). Use code HAPPY25.");
+/*
+*/
+    $apilink = "https://control.msg91.com/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=" . $mobile_numbers . "&message=" . $message . "&sender=MONOSZ&route=4&country=91";
+    $xml = file_get_contents($apilink);
             }
-            return $retstr."---end";
+            return $retstr . "---end.<br>" . $xml . "<br>" . $apilink;
         } elseif ($request->has('fu')) {
             $retstr="";
             if ($request->fu=='m') {
