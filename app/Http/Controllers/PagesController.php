@@ -351,7 +351,10 @@ class PagesController extends Controller
                     $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
             } elseif ($reqcode=='HAPPY25') {
-                if ($this->cart->total > 99) {
+                if (true) {
+                    Session::flash('couponMessage', 'Coupon only valid from 12:30 to 4:30pm.');
+                            $applicable = true;
+                } elseif ($this->cart->total > 99) {
                     $disc25 = 0.00;
                     if (Auth::check()) {
                         foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
