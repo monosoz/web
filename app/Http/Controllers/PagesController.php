@@ -351,7 +351,7 @@ class PagesController extends Controller
                     $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
             } elseif ($reqcode=='HAPPY25') {
-                if (false) {
+                if (true) {
                     Session::flash('couponMessage', 'Coupon only valid from 12:30pm to 4:30pm.');
                             $applicable = true;
                 } elseif ($this->cart->total > 99) {
