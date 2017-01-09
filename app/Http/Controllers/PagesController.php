@@ -228,17 +228,6 @@ class PagesController extends Controller
                         }
                     }
                 }
-            } elseif ($reqcode=='OFF50') {
-                if (true) {
-                    Session::flash('couponMessage', 'Coupon expired.');
-                            $applicable = true;
-                } elseif ($this->cart->total > 99) {
-                    $this->cart->add(['sku' => 'OFF506917', 'price' => -50]);
-                    $applicable = true;
-                } else {
-                    # code...
-                }
-                
             } elseif ($reqcode=='OFF25') {
                 if (true) {
                     Session::flash('couponMessage', 'Coupon expired.');
@@ -332,7 +321,7 @@ class PagesController extends Controller
                         }
                     }
                 }
-            } elseif ($reqcode=='MONO50') {
+            } elseif ($reqcode=='MONO50' || $reqcode=='OFF50') {
                             $applicable = true;
                 if (!Auth::check()) {
                     Session::flash('couponMessage', 'Login to your acount first.');
@@ -351,7 +340,7 @@ class PagesController extends Controller
                     $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
                 }
             } elseif ($reqcode=='HAPPY25') {
-                if (true) {
+                if (false) {
                     Session::flash('couponMessage', 'Coupon only valid from 12:30pm to 4:30pm.');
                             $applicable = true;
                 } elseif ($this->cart->total > 99) {
