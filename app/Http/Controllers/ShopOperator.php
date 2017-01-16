@@ -25,6 +25,8 @@ class ShopOperator extends Controller
         //
         if ($request->has('os') && $request->has('tm') && $request->has('t')) {
             return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereBetween('created_at', [date('y-m-d', time()-86400*$request->tm) . ' 00:00:00', date('y-m-d', time()-86400*$request->t) . ' 23:59:59'])->get(),]);
+        } elseif ($request->has('tm') && $request->has('t')) {
+            return view('op.orders_o', ['orders' => Order::where('statusCode', '=', 'complete')->whereBetween('created_at', [date('y-m-d', time()-86400*$request->tm) . ' 00:00:00', date('y-m-d', time()-86400*$request->t) . ' 23:59:59'])->get(),]);
         } elseif ($request->has('os') && $request->has('tm')) {
             return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereBetween('created_at', [date('y-m-d', time()-86400*$request->tm) . ' 00:00:00', date('y-m-d', time()) . ' 00:00:01'])->get(),]);
         } elseif ($request->has('os')) {
