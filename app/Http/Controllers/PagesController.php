@@ -297,7 +297,7 @@ class PagesController extends Controller
                         }
                     }
                     
-                    $this->cart->add(['sku' => 'BESTBUY61015', 'price' => 0 - $disc25]);
+                    $this->cart->add(['sku' => 'BESTBUY61015', 'price' => 0 - $disc25, 'tax' => -$disc25*0.125]);
                     $applicable = true;
                 } else {
                     # code...
@@ -337,7 +337,7 @@ class PagesController extends Controller
                     if ($disc50>200) {
                         $disc50=200;
                     }
-                    $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
+                    $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50, 'tax' => -$disc50*0.125]);
                 }
             } elseif ($reqcode=='HAPPY25') {
                 if (time() <= strtotime('12:30:00') || time() >= strtotime('16:30:00')) {
@@ -362,7 +362,7 @@ class PagesController extends Controller
                         $disc25=100;
                     }
                     
-                    $this->cart->add(['sku' => 'HAPPY257106', 'price' => 0 - $disc25]);
+                    $this->cart->add(['sku' => 'HAPPY257106', 'price' => 0 - $disc25, 'tax' => -$disc25*0.125]);
                     $applicable = true;
                 } else {
                     # code...
