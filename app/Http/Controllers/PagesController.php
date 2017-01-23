@@ -98,15 +98,15 @@ class PagesController extends Controller
 
         if ($request->p_id==0) {
             if($request->sz==='r'){
-                $this->cart->add(['sku' => 'PROD0002R', 'price' => 100, 'tax' => 12.5]);
+                $this->cart->add(['sku' => 'PROD0002R', 'price' => 150, 'tax' => 18.75]);
                     $this->custom_sku='PROD0002R';//$var->sku;
             }
             elseif($request->sz==='m'){
-                $this->cart->add(['sku' => 'PROD0003M', 'price' => 150, 'tax' => 18.75]);
+                $this->cart->add(['sku' => 'PROD0003M', 'price' => 200, 'tax' => 25]);
                     $this->custom_sku='PROD0003M';//$var->sku;
             }
             elseif($request->sz==='l'){
-                $this->cart->add(['sku' => 'PROD0004L', 'price' => 200, 'tax' => 25]);
+                $this->cart->add(['sku' => 'PROD0004L', 'price' => 250, 'tax' => 31.25]);
                     $this->custom_sku='PROD0004L';//$var->sku;
             }
 

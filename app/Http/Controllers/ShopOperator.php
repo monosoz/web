@@ -7,6 +7,7 @@ Use Shop;
 Use App\Location;
 Use App\User;
 Use App\Order;
+Use App\Item;
 Use App\Feedback;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -27,6 +28,8 @@ class ShopOperator extends Controller
             return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereBetween('created_at', [date('y-m-d', time()-86400*$request->tm) . ' 00:00:00', date('y-m-d', time()-86400*$request->t) . ' 23:59:59'])->get(),]);
         } elseif ($request->has('tm') && $request->has('t')) {
             return view('op.orders_o', ['orders' => Order::where('statusCode', '=', 'complete')->whereBetween('created_at', [date('y-m-d', time()-86400*$request->tm) . ' 00:00:00', date('y-m-d', time()-86400*$request->t) . ' 23:59:59'])->get(),]);
+        } elseif ($request->has('d')) {
+            return view('op.orders_o', ['orders' => Order::where('statusCode', '=', 'complete')->whereBetween('created_at', [date('y-m-d', time()-86400*$request->d) . ' 00:00:00', date('y-m-d', time()-86400*$request->d) . ' 23:59:59'])->get(),]);
         } elseif ($request->has('os') && $request->has('tm')) {
             return view('op.orders_o', ['orders' => Order::where('statusCode', '=', $request->os)->whereBetween('created_at', [date('y-m-d', time()-86400*$request->tm) . ' 00:00:00', date('y-m-d', time()) . ' 00:00:01'])->get(),]);
         } elseif ($request->has('os')) {
@@ -60,7 +63,8 @@ Try new range of Non-Veg and Veg Pizzas @ MONOSOZ
 Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @ www.monosoz.com");
     $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91&unicode=0");
 */
-    $xml = file_get_contents("https://control.msg91.com/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91")
+    $apilink = "https://control.msg91.com/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=" . substr($user->mobile_number, -10) . "&message=" . $message . "&sender=MONOSZ&route=4&country=91";
+    $xml = file_get_contents($apilink);
         ;
                 $retstr = $retstr . '<br>
 ' . substr($fname[0], 0, 15) . ' - ' . substr($user->mobile_number, -10) . ' ' . $xml;
@@ -97,6 +101,36 @@ Use code OFF100 for medium and MONO100 for large pizza and get ₹100 off only @
                 $user=User::where('id', '=', $request->fu)->first();
             }
             return $user;
+//         } elseif ($request->has('taxoff')) {
+//             $total=0;
+//             foreach (Item::where('price', '<' , -1)->get() as $item) {
+//                 $item->tax = $item->price * 0.125;
+//                 $total += $item->tax;
+//                 $item->save();
+//             }
+//             return "Total ".$total;
+//         } elseif ($request->has('dt') && $request->has('t')) {
+//             $retstr="Date,  Total,  Discount,   Orders";
+//             $total = 0;
+//             $disc = 0;
+//             $oc = 0;
+//             for ($i=0; $i < $request->t; $i++) {
+//                 $d = $request->dt - $i;
+//                 foreach (Order::where('statusCode', '=', 'complete')->whereBetween('created_at', [date('y-m-d', time()-$d*86400) . ' 00:00:00', date('y-m-d', time()-$d*86400) . ' 23:59:59'])->get() as $order) {
+//                     $oc +=1;
+//                     $total += round($order->total);
+//                     if (Item::where('order_id', '=', $order->id)->where('price', '<', 0)->first() != null) {
+//                         $disc -= Item::where('order_id', '=', $order->id)->where('price', '<', 0)->first()->price;
+//                     }
+//                 }
+//                 $retstr = $retstr . ";
+// <br>" . date('d-m-y', time()-86400*($request->dt-$i)) . ", " . $total . ", " . $disc . ", " . $oc;
+//             $total = 0;
+//             $disc = 0;
+//             $oc = 0;
+//             }
+//             return $retstr;
+//             return view('op.orders_o', ['orders' => Order::where('statusCode', '=', 'complete')->whereBetween('created_at', [date('y-m-d', time()-86400*$request->d) . ' 00:00:00', date('y-m-d', time()-86400*$request->d) . ' 23:59:59'])->get(),]);
         } else {
             return view('op.orders_o', ['orders' => Order::whereDate('created_at', '=', date('y-m-d'))->get(),]);
         }
