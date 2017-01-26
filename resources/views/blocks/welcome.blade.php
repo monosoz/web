@@ -44,12 +44,15 @@
                 <h1 style="font-size:50px;color:#980211;">Wellcome to monosoz!</h1>
             </div>
             @endif
-        @elseif(!config('shop.open'))
+        @elseif(env('DOWN', false)===true)
             <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
                 <h1 style="font-size:50px;color:#980211;">Under maintenance.</h1>
-                <h1 style="font-size:50px;color:#980211;">Be back tomorrow 11:00 AM .</h1>
-                <!--h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
-                <h4>Open from  <strong>11 AM</strong> to <strong>12 Midnight</strong>.</h4-->
+                <h1 style="font-size:50px;color:#980211;">Be back tomorrow 11:00 AM.</h1>
+            </div>
+        @elseif(!config('shop.open'))
+            <div style="text-align: center; padding-top: 10%; padding-bottom: 10%;">
+                <h1 style="font-size:50px;color:#980211;">We are closed right now.</h1>
+                <h4>Open from  <strong>11 AM</strong> to <strong>12 Midnight</strong>.</h4>
             </div>
         @endif
         </div>
