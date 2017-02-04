@@ -58,7 +58,7 @@ class PagesController extends Controller
 
     public function index(Request $request)
     {
-            $csd = 21;
+            $csd = 0;
             if (!config('shop.open')) {
                 $csd=0;
             }
@@ -98,15 +98,15 @@ class PagesController extends Controller
 
         if ($request->p_id==0) {
             if($request->sz==='r'){
-                $this->cart->add(['sku' => 'PROD0002R', 'price' => 100, 'tax' => 12.5]);
+                $this->cart->add(['sku' => 'PROD0002R', 'price' => 150, 'tax' => 18.75]);
                     $this->custom_sku='PROD0002R';//$var->sku;
             }
             elseif($request->sz==='m'){
-                $this->cart->add(['sku' => 'PROD0003M', 'price' => 150, 'tax' => 18.75]);
+                $this->cart->add(['sku' => 'PROD0003M', 'price' => 200, 'tax' => 25]);
                     $this->custom_sku='PROD0003M';//$var->sku;
             }
             elseif($request->sz==='l'){
-                $this->cart->add(['sku' => 'PROD0004L', 'price' => 200, 'tax' => 25]);
+                $this->cart->add(['sku' => 'PROD0004L', 'price' => 250, 'tax' => 31.25]);
                     $this->custom_sku='PROD0004L';//$var->sku;
             }
 
@@ -144,12 +144,37 @@ class PagesController extends Controller
         return redirect()->back();
     }
 
-    public function item(Request $request, $item)
+    public function item(Request $request)
     {
+        Item::where('price', '<', 0)->where('cart_id', '=', $this->cart->id)->delete();
+        GuestItem::where('price', '<', 0)->where('guestcart_id', '=', $this->cart->id)->delete();
         if ( $request->get('action') == 'rm' ) {
-            $this->cart->remove(['sku' => $item], 1);
+            if (Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()!=null) {
+                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->get() as $itr) {
+                    $this->cart->remove(['sku' => $itr->child->sku], 1);
+                }
+                ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->delete();
+                foreach (ItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '>', $request->get('item_no'))->get() as $itr) {
+                    ItemRelation::where('parent_id', '=', $itr->parent_id)->where('item_no', '=', $itr->item_no)->update(array('item_no' => $itr->item_no -1));
+                }
+                $this->cart->remove(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku], 1);
+            } elseif (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()!=null) {
+                foreach (GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->get() as $itr) {
+                    $this->cart->remove(['sku' => $itr->child->sku], 1);
+                }
+                GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '=', $request->get('item_no'))->delete();
+                foreach (GuestItemRelation::where('parent_id', '=', $request->get('item'))->where('item_no', '>', $request->get('item_no'))->get() as $itr) {
+                    GuestItemRelation::where('parent_id', '=', $itr->parent_id)->where('item_no', '=', $itr->item_no)->update(array('item_no' => $itr->item_no -1));
+                }
+                $this->cart->remove(['sku' => GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku], 1);
+            }
         } elseif ( $request->get('action') == 'add' ) {
-            $this->cart->add(['sku' => $item]);
+            if (Auth::check()) {
+                $this->cart->add(['sku' => Item::where('cart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku]);
+            } else {
+                $this->cart->add(['sku' => GuestItem::where('guestcart_id', '=', $this->cart->id)->where('id', '=', $request->get('item'))->first()->sku]);
+            }
+            
         }
         session(['cartStatus' => 1]);
         return redirect()->back();
@@ -203,15 +228,86 @@ class PagesController extends Controller
                         }
                     }
                 }
-            } elseif ($reqcode=='OFF50') {
+            } elseif ($reqcode=='OFF25') {
+                if (true) {
+                    Session::flash('couponMessage', 'Coupon expired.');
+                            $applicable = true;
+                } elseif ($this->cart->total > 99) {
+                    $disc25 = 0.00;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    }
+                    
+                    $this->cart->add(['sku' => 'OFF256920', 'price' => 0 - $disc25]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
+                
+            } elseif ($reqcode=='FEST33') {
+                if (true) {
+                    Session::flash('couponMessage', 'Coupon expired.');
+                            $applicable = true;
+                } elseif ($this->cart->total > 99) {
+                    $disc33 = 0.00;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc33 += $custom_item->price * 0.33;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc33 += $custom_item->price * 0.33;
+                            }
+                        }
+                    }
+                    
+                    $this->cart->add(['sku' => 'FEST3361011', 'price' => 0 - $disc33]);
+                    $applicable = true;
+                } else {
+                    # code...
+                }
+                
+            } elseif ($reqcode=='BESTBUY') {
                 if ($this->cart->total > 99) {
-                    $this->cart->add(['sku' => 'OFF506917', 'price' => -50]);
+                    $disc25 = 0.00;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('price', '>', 50)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.1;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('price', '>', 50)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.1;
+                            }
+                        }
+                    }
+                    
+                    $this->cart->add(['sku' => 'BESTBUY61015', 'price' => 0 - $disc25, 'tax' => -$disc25*0.125]);
                     $applicable = true;
                 } else {
                     # code...
                 }
                 
             } elseif ($reqcode=='MONO100') {
+                if (true) {
+                    Session::flash('couponMessage', 'Coupon expired.');
+                            $applicable = true;
+                } else {
                     foreach ($this->cart->items->where('price', '299.00') as $custom_item) {
                         for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
                             $this->cart->add(['sku' => 'MONO1006831', 'price' => -100]);
@@ -224,7 +320,8 @@ class PagesController extends Controller
                             $applicable = true;
                         }
                     }
-            } elseif ($reqcode=='MONO50') {
+                }
+            } elseif ($reqcode=='MONO50' || $reqcode=='OFF50') {
                             $applicable = true;
                 if (!Auth::check()) {
                     Session::flash('couponMessage', 'Login to your acount first.');
@@ -237,7 +334,38 @@ class PagesController extends Controller
                             $disc50 += $custom_item->price * 0.5;
                         }
                     }
-                    $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50]);
+                    if ($disc50>200) {
+                        $disc50=200;
+                    }
+                    $this->cart->add(['sku' => 'MONO506908', 'price' => 0 - $disc50, 'tax' => -$disc50*0.125]);
+                }
+            } elseif ($reqcode=='HAPPY25') {
+                if (time() <= strtotime('12:30:00') || time() >= strtotime('16:30:00')) {
+                    Session::flash('couponMessage', 'Coupon only valid from 12:30pm to 4:30pm.');
+                            $applicable = true;
+                } elseif ($this->cart->total > 99) {
+                    $disc25 = 0.00;
+                    if (Auth::check()) {
+                        foreach (Item::where('cart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    } else {
+                        foreach (GuestItem::where('guestcart_id', '=', $this->cart->id)->where('tax', '>', 0)->get() as $custom_item) {
+                            for ($itno=1; $itno <=  $custom_item->quantity ; $itno++) {
+                                $disc25 += $custom_item->price * 0.25;
+                            }
+                        }
+                    }
+                    if ($disc25>100) {
+                        $disc25=100;
+                    }
+                    
+                    $this->cart->add(['sku' => 'HAPPY257106', 'price' => 0 - $disc25, 'tax' => -$disc25*0.125]);
+                    $applicable = true;
+                } else {
+                    # code...
                 }
             } elseif (substr($reqcode, 0, 7)=='FREEDOM') {
                 if (Item::where('cart_id', '=', $this->cart->id)->where('price', '=', 229)->count()>0) {

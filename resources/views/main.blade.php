@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appm')
 
 @section('content')
 <nav class="top-bar" id="top">
@@ -24,10 +24,9 @@
         @include('blocks.product')
     </div>
 
-    <div class="alert" style="pointer-events: none;"> BETA </div>
     <!-- Collapsed Hamburger -->
 
-    <div class="cart-btn clickable" type="button" class="carticon" data-toggle="modal" data-target="#app-cart-modal">
+    <div class="cart-btn clickable carticon" type="button" data-toggle="modal" data-target="#app-cart-modal">
       <i class="fa fa-shopping-cart fa-3x"aria-hidden="true"></i>
       <sup class="cart-status">{{ $cart->count }}</sup>
     </div>

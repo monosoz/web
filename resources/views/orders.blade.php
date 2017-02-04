@@ -30,6 +30,22 @@
 @if($cart_status>10)
   @include('blocks.welcome')
 @endif
+
+<div class="modal fade" id="paytm" tabindex="-1" role="dialog" aria-labelledby="paytm" aria-hidden="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="custom-title">Pay using paytm</h4>
+            </div>
+              <img src="{{ url("img/paytmqrc" . env('PAYTM_QRC') . ".png") }}" style="max-width:100%;display: block;margin: auto;">
+        </div>
+    </div>
+</div>
+
+
 @endsection
 
 @section('scripts')

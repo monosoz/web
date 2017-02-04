@@ -26,7 +26,7 @@ Route::post('/add_custom', 'PagesController@add_custom');
 
 Route::post('/cart/clear', 'PagesController@clearcart');
 Route::post('/cart/applycoupon', 'PagesController@applycoupon');
-Route::post('/cart/{item}', 'PagesController@item');
+Route::post('/cart/item', 'PagesController@item');
 
 if (config('shop.open')) {
 Route::get('/checkout', 'AuthPagesController@checkout');

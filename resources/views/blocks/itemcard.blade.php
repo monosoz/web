@@ -4,6 +4,10 @@
     <strong class="pname">{{$product->name}}</strong>
     <p class="textclip">{{$product->description}}</p>
     <div class="buy-form">
+      <span>R 10"</span>
+      <span>M 12"</span>
+      <span>L 14"</span>
+      <br>
       @foreach ($product->variants->all() as $variant)
       @if(substr("$variant->sku", -1)==='L')
       <button type="submit" class="btn btn-success" name="id" value="{{$variant->id}}" data-toggle="tooltip" title='Large 14"'>

@@ -7,7 +7,6 @@
 @elseif(substr($item->class, -5, 5)!='Addon')
     {{--*/ $q = $item->quantity /*--}}
     {{--*/ $ql = $q /*--}}
-        {{--*/ $i_n = 0 /*--}}
 
     <tr>
 @for(; $q>-1; $q--)
@@ -15,6 +14,8 @@
         <td><span>
             @if(substr($item->class, 0, 4)==='App\\')
             {{ $item->displayName }}
+            @elseif(substr($item->sku, 0, 4)==='FREE')
+            Free Pizza
             @else
             Custom Pizza
                 @if(substr($item->sku, -1)==='R')
@@ -31,18 +32,17 @@
             @endforeach
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/item') }}" method="POST">
+            <!--form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
-                <input id="" type="hidden" name="item" value="{{ $item->id }}">
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
-                <!--button type="submit" name="action" value="" class="btn-link">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                <button type="submit" name="action" value="add" class="btn-link">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
                 </button-->
-                <span style="padding:5px;">1</span>
-                <button type="submit" name="action" value="rm" class="btn-link">
-                    <i class="fa fa-remove" aria-hidden="true"></i>
+                <span> - 1</span>
+                <!--button type="submit" name="action" value="rm" class="btn-link">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
-            </form>
+            </form-->
         </td>
     <tr id="cart-addon">
         <td>
@@ -91,24 +91,20 @@
             @endforeach
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/item') }}" method="POST">
+            <!--form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
-                <input id="" type="hidden" name="item" value="{{ $item->id }}">
-                <input id="" type="hidden" name="item_no" value="{{ $i_n }}">
-                <button type="submit" name="action" value="rm" class="btn-link">
-                    <i class="fa fa-minus-square" aria-hidden="true"></i>
-                </button>
-                @if($ql>0)
-                <span style="padding:5px;">{{$ql}}</span>
-                @endif
+                <input id="" type="hidden" name="item_no" value="{{ $q }}">
                 <button type="submit" name="action" value="add" class="btn-link">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
+                </button-->
+                @if($ql>1)
+                <span style="padding-left:10px;">x {{$ql}} </span>
+                @endif
+                <!--button type="submit" name="action" value="rm" class="btn-link">
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
-            </form>
+            </form-->
         </td>
-    @elseif($i_n==0)
-        {{--*/ $i_n = $q /*--}}
-
     @endif
     </tr>
 @endfor
@@ -133,7 +129,9 @@
         @endif
         <tr>
             <th>Total:</th>
-            <th><i class="fa fa-inr"></i><span> {{ $cart->total }}</span></th>
+            <th><i class="fa fa-inr"></i><span> {{ number_format($cart->total, 0) }}</span>
+            <button class="pull-right btn" type="button" data-toggle="modal" data-target="#paytm">Pay Online</button>
+            </th>
         </tr>
     </tfoot>
 </table>

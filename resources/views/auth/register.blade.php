@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appnm')
 
 @section('content')
 <div class="container">
@@ -28,13 +28,14 @@
                             <label for="mobile_number" class="col-md-4 control-label">Mobile Number</label>
 
                             <div class="col-md-6">
-                                <input id="mobile_number" type="tel" class="form-control" name="mobile_number" value="{{ old('mobile_number') }}">
+                                <span class="form-control">{{ $mobile_number }}</span>
 
                                 @if ($errors->has('mobile_number'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('mobile_number') }}</strong>
                                     </span>
                                 @endif
+                                <input id="mobile_number" type="hidden" class="form-control" name="mobile_number" value="{{ $mobile_number }}">
                             </div>
                         </div>
 

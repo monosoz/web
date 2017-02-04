@@ -7,7 +7,6 @@
 @elseif(substr($item->class, -5, 5)!='Addon')
     {{--*/ $q = $item->quantity /*--}}
     {{--*/ $ql = $q /*--}}
-        {{--*/ $i_n = 0 /*--}}
 
     <tr>
 @for(; $q>-1; $q--)
@@ -25,22 +24,17 @@
                 -Large
                 @endif
             @endif
-            @foreach ($item->rel->where('item_no', "$q") as $rel)
-            @if($rel->child->id==4 || $rel->child->id==5)({{ $rel->child->name }})
-            @endif
-            @endforeach
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/item') }}" method="POST">
+            <form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
-                <input id="" type="hidden" name="item" value="{{ $item->id }}">
                 <input id="" type="hidden" name="item_no" value="{{ $q }}">
-                <!--button type="submit" name="action" value="" class="btn-link">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                <!--button type="submit" name="action" value="add" class="btn-link">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
                 </button-->
-                <span style="padding:5px;">1</span>
+                <span> - 1</span>
                 <button type="submit" name="action" value="rm" class="btn-link">
-                    <i class="fa fa-remove" aria-hidden="true"></i>
+                    <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
             </form>
         </td>
@@ -85,30 +79,22 @@
                 -Large
                 @endif
             @endif
-            @foreach ($item->rel->where('item_no', "$q") as $rel)
-            @if($rel->child->id==4 || $rel->child->id==5)({{ $rel->child->name }})
-            @endif
-            @endforeach
         </span></td>
         <td><i class="fa fa-inr"></i><span> {{ $item->price + 0 }}</span>
-            <form action="{{ url('cart/item') }}" method="POST">
+            <form action="{{ url('cart/'.$item->sku) }}" method="POST">
                 {{ csrf_field() }}
-                <input id="" type="hidden" name="item" value="{{ $item->id }}">
-                <input id="" type="hidden" name="item_no" value="{{ $i_n }}">
+                <input id="" type="hidden" name="item_no" value="{{ $q }}">
                 <button type="submit" name="action" value="rm" class="btn-link">
                     <i class="fa fa-minus-square" aria-hidden="true"></i>
                 </button>
                 @if($ql>0)
-                <span style="padding:5px;">{{$ql}}</span>
+                <span style="padding-left:10px;">{{$ql}}</span>
                 @endif
                 <button type="submit" name="action" value="add" class="btn-link">
                     <i class="fa fa-plus-square" aria-hidden="true"></i>
                 </button>
             </form>
         </td>
-    @elseif($i_n==0)
-        {{--*/ $i_n = $q /*--}}
-
     @endif
     </tr>
 @endfor

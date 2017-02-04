@@ -54,7 +54,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'mobile_number' => 'required|regex:/\d{10}/|unique:users',
+            'mobile_number' => 'required|regex:/^\d{10}$/|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -75,10 +75,68 @@ class AuthController extends Controller
         ]);
     }
 
+    protected function showOTPForm()
+    {
+
+        return view('auth.otpform');
+    }
+    protected function otpvalidator(array $data)
+    {
+        return Validator::make($data, [
+            'mobile_number' => 'required|regex:/^\d{10}$/|unique:users',
+        ]);
+    }
+    protected function OTP(Request $request)
+    {
+        $validator = $this->otpvalidator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+        session(['mobileNumber' => $request->mobile_number]);
+        session(['matchOTP' => false]);
+        $otp = substr(hexdec(substr(md5(session('mobileNumber')), -6)), -6);
+
+    $tosmskey = '124443AMVTHynd57cc7231';
+    $message = urlencode("Your OTP for www.monosoz.com is " . $otp);
+    $xml = file_get_contents("http://dashboard.tosms.in/api/sendhttp.php?authkey=" . $tosmskey . "&mobiles=91" . substr($request->mobile_number, -10) . "&message=" . $message . ".&sender=MONOSZ&route=4&country=91&unicode=0");
+
+        return redirect("/register/otp");
+
+        return view('auth.otpsubmit', ['mobile_number' => session('mobileNumber'),]);
+    }
+    protected function enterOTP(Request $request)
+    {
+        
+        if (session()->has('mobileNumber')) {
+            return view('auth.otpsubmit', ['mobile_number' => session('mobileNumber'),]);
+        }
+
+        return redirect("/register");
+    }
+    protected function matchOTP(Request $request)
+    {
+        $this->validate($request, [
+            'otp' => 'required',
+        ]);
+        if(substr(hexdec(substr(md5(session('mobileNumber')), -6)), -6)==$request->otp){
+            session(['matchOTP' => true]);
+            return redirect("/register/new");
+        }
+
+        return redirect()->back()->withErrors(['otp' => 'Invalid OTP.',]);
+        
+    }
+
     protected function register(Request $request)
     {
         $validator = $this->validator($request->all());
 
+        if (session('mobileNumber')!=$request->mobile_number) {
+                return redirect("/register");
+        }
         if ($validator->fails()) {
             $this->throwValidationException(
                 $request, $validator
@@ -112,7 +170,7 @@ class AuthController extends Controller
                 $cart->add($item->object, $item->quantity);
             }
             else{
-                $cart->add(['sku' => $item->sku, 'price' => $item->price], $item->quantity);
+                $cart->add(['sku' => $item->sku, 'price' => $item->price, 'tax' => $item->tax], $item->quantity);
                 }
 
             

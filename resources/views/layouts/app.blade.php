@@ -98,7 +98,15 @@
                 </li>
             </ul>
 
-            <a href="https://www.facebook.com/monosoz" class="pull-right" style="padding: 4px;"><img src="{{ url('/img/fbs.png') }}">&nbsp</a>
+            <ul class="footer-list pull-right">
+                <li class="footer-li">
+                    <a href="https://twitter.com/monosoz" class="" style="padding: 4px;"><img src="{{ url('/img/tws.png') }}" alt="twitter">&nbsp</a>
+                </li>
+                <li class="footer-li">
+                    <a href="https://www.facebook.com/monosoz" class="" style="padding: 4px;"><img src="{{ url('/img/fbs.png') }}" alt="fb">&nbsp</a>
+                </li>
+            </ul>
+
         </div>
     </footer>
 
